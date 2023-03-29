@@ -25,8 +25,8 @@ jobs:
         dotnet-version: '8.0.x'
         dotnet-quality: 'preview'
     - name: Restore dependencies
-      run: |
-        dotnet restore src/sdk/EventBus/src/ParusRX.EventBus.csproj
+      run: dotnet restore src/ParusRX.sln
     - name: Build
-      run: |
-        dotnet build src/sdk/EventBus/src/ParusRX.EventBus.csproj --configuration Release --no-restore
+      run: dotnet build src/ParusRX.sln --configuration Release --no-restore
+    - name: Test
+      run: dotnet test src/ParusRX.sln --no-build --verbosity normal
