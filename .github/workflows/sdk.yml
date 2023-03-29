@@ -29,4 +29,4 @@ jobs:
     - name: Build
       run: dotnet build src/ParusRX.sln --configuration Release --no-restore
     - name: Test
-      run: dotnet test src/ParusRX.sln --no-build --verbosity normal
+      run: dotnet test src/ParusRX.sln --configuration Release --no-build --verbosity normal
