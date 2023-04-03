@@ -35,6 +35,8 @@ internal static class HostingExtensions
             options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
 
+        builder.Services.AddHealthChecks()
+            .AddCheck("self", () => HealthCheckResult.Healthy());
 
         return builder.Build();
     }
@@ -65,7 +67,20 @@ internal static class HostingExtensions
         // Redirect to swagger
         app.MapGet("/", () => Results.LocalRedirect("~/swagger")).ExcludeFromDescription();
 
-        // MQ API endpoints
+        // Health checks
+        app.MapHealthChecks("/hc", new HealthCheckOptions
+        {
+            Predicate = _ => true,
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+        });
+
+        // Liveness probe
+        app.MapHealthChecks("/liveness", new HealthCheckOptions
+        {
+            Predicate = r => r.Name.Contains("self")
+        });
+
+        // Publish integration event
         app.MapGroup("/api/v1/mq")
             .MapMqEndpoint()
             .WithTags("MQ API");

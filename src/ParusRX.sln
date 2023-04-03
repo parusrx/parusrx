@@ -45,6 +45,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6D83689F-7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParusRX.ApiGateway.UnitTests", "ApiGateways\test\ApiGateway.UnitTests\ParusRX.ApiGateway.UnitTests.csproj", "{79FDE682-B5D7-4C68-9BC3-B88C827014A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParusRX.ApiGateway.FunctionalTests", "ApiGateways\test\ApiGateway.FunctionalTests\ParusRX.ApiGateway.FunctionalTests.csproj", "{5E20A151-A023-4124-97DD-FAD45BC846DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -94,6 +96,10 @@ Global
 		{79FDE682-B5D7-4C68-9BC3-B88C827014A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79FDE682-B5D7-4C68-9BC3-B88C827014A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79FDE682-B5D7-4C68-9BC3-B88C827014A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E20A151-A023-4124-97DD-FAD45BC846DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E20A151-A023-4124-97DD-FAD45BC846DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E20A151-A023-4124-97DD-FAD45BC846DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E20A151-A023-4124-97DD-FAD45BC846DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9DF9AB64-93AE-4BD2-8061-89719DBE3FB0} = {D91A6054-31C7-4F89-B155-2A2A0E5C2EE4}
@@ -115,5 +121,6 @@ Global
 		{83ECA13A-1927-42C5-97B8-EF750CCAE8DB} = {DDD5257C-10D0-41DF-8D7F-8C79B9416BCC}
 		{6D83689F-74A3-4FB2-AFCB-F90FDC0E56F4} = {2CA42B72-0870-411C-B5B2-2E0C31C3B94C}
 		{79FDE682-B5D7-4C68-9BC3-B88C827014A8} = {6D83689F-74A3-4FB2-AFCB-F90FDC0E56F4}
+		{5E20A151-A023-4124-97DD-FAD45BC846DA} = {6D83689F-74A3-4FB2-AFCB-F90FDC0E56F4}
 	EndGlobalSection
 EndGlobal
