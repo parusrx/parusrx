@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  api-gateway:
+    image: ${REGISTRY:-parusrx}/api-gateway:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ApiGateway/src/Dockerfile

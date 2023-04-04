@@ -41,11 +41,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DDD5257C-10D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParusRX.ApiGateway", "ApiGateway\src\ParusRX.ApiGateway.csproj", "{83ECA13A-1927-42C5-97B8-EF750CCAE8DB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6D83689F-74A3-4FB2-AFCB-F90FDC0E56F4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6D83689F-74A3-4FB2-AFCB-F90FDC0E56F4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParusRX.ApiGateway.UnitTests", "ApiGateway\tests\ApiGateway.UnitTests\ParusRX.ApiGateway.UnitTests.csproj", "{79FDE682-B5D7-4C68-9BC3-B88C827014A8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParusRX.ApiGateway.FunctionalTests", "ApiGateway\tests\ApiGateway.FunctionalTests\ParusRX.ApiGateway.FunctionalTests.csproj", "{5E20A151-A023-4124-97DD-FAD45BC846DA}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0AB44E35-B19A-4B34-8D2A-AFDA89EF3085}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +99,10 @@ Global
 		{5E20A151-A023-4124-97DD-FAD45BC846DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E20A151-A023-4124-97DD-FAD45BC846DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E20A151-A023-4124-97DD-FAD45BC846DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AB44E35-B19A-4B34-8D2A-AFDA89EF3085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AB44E35-B19A-4B34-8D2A-AFDA89EF3085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AB44E35-B19A-4B34-8D2A-AFDA89EF3085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AB44E35-B19A-4B34-8D2A-AFDA89EF3085}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,5 +128,8 @@ Global
 		{6D83689F-74A3-4FB2-AFCB-F90FDC0E56F4} = {2CA42B72-0870-411C-B5B2-2E0C31C3B94C}
 		{79FDE682-B5D7-4C68-9BC3-B88C827014A8} = {6D83689F-74A3-4FB2-AFCB-F90FDC0E56F4}
 		{5E20A151-A023-4124-97DD-FAD45BC846DA} = {6D83689F-74A3-4FB2-AFCB-F90FDC0E56F4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {641A00EC-0E84-42C7-A30E-A6D8AFF7C984}
 	EndGlobalSection
 EndGlobal
