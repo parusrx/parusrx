@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ApiGateway\ParusRX.Api.Gateway.csproj" />
+    <ProjectReference Include="..\..\src\ParusRX.ApiGateway.csproj" />
   </ItemGroup>
 
 </Project>

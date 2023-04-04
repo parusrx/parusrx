@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SDK\EventBus\src\ParusRX.EventBus.csproj" />
+    <ProjectReference Include="..\..\SDK\EventBus\src\ParusRX.EventBus.csproj" />
   </ItemGroup>
 
 </Project>

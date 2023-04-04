@@ -3,10 +3,18 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace ParusRX.Api.Gateway.MqEndpoints;
+namespace ParusRX.ApiGateway.MqEndpoints;
 
+/// <summary>
+/// Represents MQ endpoint.
+/// </summary>
 public static class MqEndpoint
 {
+    /// <summary>
+    /// Map MQ endpoint.
+    /// </summary>
+    /// <param name="group">The route group builder.</param>
+    /// <returns>The route group builder.</returns>
     public static RouteGroupBuilder MapMqEndpoint(this RouteGroupBuilder group)
     {
         group.MapPost("/", PublishMessage)
@@ -61,14 +69,24 @@ public static class MqEndpoint
         return group;
     }
 
-    public static async Task<IResult> PublishMessage([FromHeader(Name = "X-Tenant-Id")]string tenantId, Message message, IEventBus eventBus)
+    /// <summary>
+    /// Publish integration event.
+    /// </summary>
+    /// <param name="tenantId">The tenant identifier.</param>
+    /// <param name="message">The message.</param>
+    /// <param name="eventBus">The event bus.</param>
+    /// <returns>The result.</returns>
+    public static async Task<IResult> PublishMessage(
+        [FromHeader(Name = "X-Tenant-Id")]string tenantId, 
+        Message message, 
+        [FromServices]IEventBus eventBus)
     {
         if (string.IsNullOrWhiteSpace(tenantId))
         {
             return TypedResults.BadRequest();
         }
 
-        if (message is null || string.IsNullOrWhiteSpace(message.Topic) || string.IsNullOrWhiteSpace(message.Payload))
+        if (message is null)
         {
             return TypedResults.BadRequest();
         }
@@ -82,13 +100,12 @@ public static class MqEndpoint
         try
         {
             await eventBus.PublishAsync(message.Topic, @event);
+            return TypedResults.Ok();
         }
         catch (Exception ex)
         {
             Serilog.Log.Error(ex, "Failed to publish integration event: {Event}", @event);
             return Results.BadRequest();
         }
-
-        return TypedResults.Ok();
     }
 }

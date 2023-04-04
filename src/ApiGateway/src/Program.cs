@@ -3,9 +3,9 @@
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
-    .CreateBootstrapLogger();
+    .CreateLogger();
 
-Log.Information("Starting up");
+Log.Information("Starting up...");
 
 try
 {
@@ -24,11 +24,11 @@ try
 }
 catch (Exception ex)
 {
-    Log.Fatal(ex, "Host terminated unexpectedly");
+    Log.Fatal(ex, "Host terminated unexpectedly.");
 }
 finally
 {
-    Log.Information("Shutting down");
+    Log.Information("Shutting down.");
     Log.CloseAndFlush();
 }
 

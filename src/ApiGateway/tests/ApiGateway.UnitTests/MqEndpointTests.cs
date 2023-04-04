@@ -3,7 +3,6 @@
 
 using ParusRX.EventBus.Abstractions;
 using ParusRX.EventBus.Events;
-using ParusRX.Api.Gateway.MqEndpoints;
 
 namespace ParusRX.ApiGateway.UnitTests;
 
