@@ -1,0 +1,23 @@
+name: "Test"
+description: "Tests the project"
+
+inputs:
+  dotnet-version:
+    description: "The version of .NET to use"
+    required: true
+  dotnet-quality:
+    description: "The quality of .NET to use"
+    required: false
+    default: "stable"
+  tests_path:
+    description: "Test path"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Tests"
+      shell: bash
+      working-directory: ${{ inputs.tests_path }}
+      run: |
+        dotnet test -c Release --no-build --no-restore --verbosity normal
