@@ -33,7 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MultiTenancy", "MultiTenanc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParusRX.MultiTenancy", "Common\MultiTenancy\src\ParusRX.MultiTenancy.csproj", "{4E813B70-96B4-4DE1-A2C9-500F1D4DE4B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParusRX.MultiTenancy.Tests", "Common\MultiTenancy\test\ParusRX.MultiTenancy.Tests.csproj", "{4BD4DEA6-C365-4BE6-A4C0-1F9C5CC4AE50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParusRX.MultiTenancy.Tests", "Common\MultiTenancy\tests\ParusRX.MultiTenancy.Tests.csproj", "{4BD4DEA6-C365-4BE6-A4C0-1F9C5CC4AE50}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{2CA42B72-0870-411C-B5B2-2E0C31C3B94C}"
 EndProject
