@@ -19,7 +19,7 @@ on:
 env:
   DOTNET_VERSION: '8.0.x'
   DOTNET_QUALITY: 'preview'
-  PROJECT_PATH: 'src/Common/Storage/src'
+  PROJECT_PATH: 'src/Common/Storage'
   TESTS_PATH: 'src/Common/Storage/tests'
 
 jobs:
