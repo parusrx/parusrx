@@ -5,20 +5,20 @@ on:
     branches:
       - main
     paths:
-      - 'src/Common/Multitenancy/**'
+      - 'src/Common/MultiTenancy/**'
       - '.github/workflows/multitenancy.yml'
   pull_request:
     branches:
       - main
     paths:
-      - 'src/Common/Multitenancy/**'
+      - 'src/Common/MultiTenancy/**'
       - '.github/workflows/multitenancy.yml'
 
 env:
   DOTNET_VERSION: '8.0.x'
   DOTNET_QUALITY: 'preview'
-  PROJECT_PATH: 'src/Common/Multitenancy/src'
-  TESTS_PATH: 'src/Common/Multitenancy/tests'
+  PROJECT_PATH: 'src/Common/MultiTenancy/src'
+  TESTS_PATH: 'src/Common/MultiTenancy/tests'
 
 jobs:
   ci:
