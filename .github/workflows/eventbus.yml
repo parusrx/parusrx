@@ -6,12 +6,14 @@ on:
       - main
     paths:
       - 'src/Common/EventBus/**'
+      - '.github/workflows/composite/**'
       - '.github/workflows/eventbus.yml'
   pull_request:
     branches:
       - main
     paths:
       - 'src/Common/EventBus/**'
+      - '.github/workflows/composite/**'
       - '.github/workflows/eventbus.yml'
 
 env:
