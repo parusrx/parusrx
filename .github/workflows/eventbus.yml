@@ -26,15 +26,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Build
-        uses: ./.github/workflows/composite/build
+      - name: Build and Test
+        uses: ./.github/workflows/composite/build-test
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
           dotnet-quality: ${{ env.DOTNET_QUALITY }}
           project_path: ${{ env.PROJECT_PATH }}
-      - name: Test
-        uses: ./.github/workflows/composite/test
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-          dotnet-quality: ${{ env.DOTNET_QUALITY }}
           tests_path: ${{ env.PROJECT_PATH }}
