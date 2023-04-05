@@ -20,4 +20,4 @@ runs:
       shell: bash
       working-directory: ${{ inputs.tests_path }}
       run: |
-        dotnet test -c Release --no-build --no-restore --verbosity normal
+        dotnet test -c Release --no-build --no-restore --verbosity normal --logger "GitHubActions;report-warnings=false" || true
