@@ -1,25 +1,26 @@
-name: 'eventbus'
+name: 'common-multitenancy'
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'src/Common/EventBus/**'
+      - 'src/Common/MultiTenancy/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/eventbus.yml'
+      - '.github/workflows/common-multitenancy.yml'
   pull_request:
     branches:
       - main
     paths:
-      - 'src/Common/EventBus/**'
+      - 'src/Common/MultiTenancy/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/eventbus.yml'
+      - '.github/workflows/common-multitenancy.yml'
 
 env:
   DOTNET_VERSION: '8.0.x'
   DOTNET_QUALITY: 'preview'
-  PROJECT_PATH: 'src/Common/EventBus/src'
+  PROJECT_PATH: 'src/Common/MultiTenancy/src'
+  TESTS_PATH: 'src/Common/MultiTenancy/tests'
 
 jobs:
   ci:
@@ -27,9 +28,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Build
-        uses: ./.github/workflows/composite/build
+      - name: Build and Test
+        uses: ./.github/workflows/composite/build-test
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
           dotnet-quality: ${{ env.DOTNET_QUALITY }}
           project_path: ${{ env.PROJECT_PATH }}
+          tests_path: ${{ env.TESTS_PATH }}

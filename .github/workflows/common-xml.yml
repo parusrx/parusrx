@@ -1,26 +1,26 @@
-name: 'multitenancy'
+name: 'common-xml'
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'src/Common/MultiTenancy/**'
+      - 'src/Common/Xml/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/multitenancy.yml'
+      - '.github/workflows/common-xml.yml'
   pull_request:
     branches:
       - main
     paths:
-      - 'src/Common/MultiTenancy/**'
+      - 'src/Common/Xml/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/multitenancy.yml'
+      - '.github/workflows/common-xml.yml'
 
 env:
   DOTNET_VERSION: '8.0.x'
   DOTNET_QUALITY: 'preview'
-  PROJECT_PATH: 'src/Common/MultiTenancy/src'
-  TESTS_PATH: 'src/Common/MultiTenancy/tests'
+  PROJECT_PATH: 'src/Common/Xml/src'
+  TESTS_PATH: 'src/Common/Xml/tests'
 
 jobs:
   ci:

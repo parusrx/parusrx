@@ -1,0 +1,35 @@
+name: 'common-eventbus'
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/Common/EventBus/**'
+      - '.github/workflows/composite/**'
+      - '.github/workflows/common-eventbus.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/Common/EventBus/**'
+      - '.github/workflows/composite/**'
+      - '.github/workflows/common-eventbus.yml'
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  DOTNET_QUALITY: 'preview'
+  PROJECT_PATH: 'src/Common/EventBus/src'
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build
+        uses: ./.github/workflows/composite/build
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-quality: ${{ env.DOTNET_QUALITY }}
+          project_path: ${{ env.PROJECT_PATH }}
