@@ -19,5 +19,9 @@ runs:
     - name: "Tests"
       shell: bash
       working-directory: ${{ inputs.tests_path }}
+      # run: |
+      #   dotnet test -c Release --no-restore --verbosity normal
       run: |
-        dotnet test -c Release --no-restore --verbosity normal
+        for file in $(find . -name '*.csproj' -type f); do
+          dotnet test $file -c Release --no-restore --verbosity normal
+        done
