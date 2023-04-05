@@ -1,10 +1,10 @@
 // Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using ParusRX.EventBus.Abstractions;
-using ParusRX.EventBus.Events;
+using ParusRx.EventBus.Abstractions;
+using ParusRx.EventBus.Events;
 
-namespace ParusRX.ApiGateway.UnitTests;
+namespace ParusRx.ApiGateway.UnitTests;
 
 public class MqEndpointTests
 {

@@ -3,7 +3,7 @@
 
 using Microsoft.Extensions.Configuration;
 
-namespace ParusRX.MultiTenancy;
+namespace ParusRx.MultiTenancy;
 
 /// <summary>
 /// Represents something that configures <see cref="MultiTenancyOptions"/>.

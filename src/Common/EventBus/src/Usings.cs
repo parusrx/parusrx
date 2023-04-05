@@ -3,6 +3,6 @@
 
 global using System;
 global using Dapr.Client;
-global using ParusRX.EventBus.Abstractions;
-global using ParusRX.EventBus.Events;
+global using ParusRx.EventBus.Abstractions;
+global using ParusRx.EventBus.Events;
 global using Microsoft.Extensions.Logging;

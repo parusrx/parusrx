@@ -4,7 +4,7 @@
 using System.Reflection;
 using System.Xml.Serialization;
 
-namespace ParusRX.Xml.Tests;
+namespace ParusRx.Xml.Tests;
 
 public class XmlSerializerUtilityTests
 {

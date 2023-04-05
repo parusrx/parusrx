@@ -3,4 +3,4 @@
 
 global using Moq;
 global using Xunit;
-global using ParusRX.MultiTenancy.Tests.Stubs;
+global using ParusRx.MultiTenancy.Tests.Stubs;

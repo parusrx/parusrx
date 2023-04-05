@@ -1,10 +1,10 @@
 // Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using ParusRX.EventBus.Events;
+using ParusRx.EventBus.Events;
 using Microsoft.AspNetCore.Http;
 
-namespace ParusRX.MultiTenancy;
+namespace ParusRx.MultiTenancy;
 
 /// <summary>
 /// Multi-tenancy middleware.

@@ -2,4 +2,4 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 global using Microsoft.Extensions.Options;
-global using ParusRX.MultiTenancy;
+global using ParusRx.MultiTenancy;

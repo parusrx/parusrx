@@ -4,9 +4,9 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Hosting;
 
-using ParusRX.EventBus.Abstractions;
+using ParusRx.EventBus.Abstractions;
 
-namespace ParusRX.ApiGateway.FunctionalTests.Base;
+namespace ParusRx.ApiGateway.FunctionalTests.Base;
 
 /// Test web application factory.
 /// </summary>

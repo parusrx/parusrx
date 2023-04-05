@@ -6,7 +6,7 @@ using Dapper;
 using Evolve.Data;
 using Npgsql;
 
-namespace ParusRX.Storage.Postgres;
+namespace ParusRx.Storage.Postgres;
 
 /// <summary>
 /// Provides methods allowing to manage the metadata stored in a PostgreSQL database.

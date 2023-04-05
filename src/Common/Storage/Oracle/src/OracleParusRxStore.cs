@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
 
-namespace ParusRX.Storage.Oracle;
+namespace ParusRx.Storage.Oracle;
 
 /// <summary>
 /// Provides methods allowing to manage the metadata in an Oracle database.

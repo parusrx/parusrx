@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
-namespace ParusRX.MultiTenancy.Tests;
+namespace ParusRx.MultiTenancy.Tests;
 
 public class MultiTenancyMiddlewareTests
 {

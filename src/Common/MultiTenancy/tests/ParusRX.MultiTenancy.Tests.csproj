@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ParusRX.MultiTenancy.csproj" />
+    <ProjectReference Include="..\src\ParusRx.MultiTenancy.csproj" />
   </ItemGroup>
 
 </Project>

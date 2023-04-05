@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\EventBus\src\ParusRX.EventBus.csproj" />
+    <ProjectReference Include="..\..\Common\EventBus\src\ParusRx.EventBus.csproj" />
   </ItemGroup>
 
 </Project>

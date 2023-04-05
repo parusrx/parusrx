@@ -5,4 +5,4 @@ global using Moq;
 global using Xunit;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.AspNetCore.Http.HttpResults;
-global using ParusRX.ApiGateway.MqEndpoints;
+global using ParusRx.ApiGateway.MqEndpoints;

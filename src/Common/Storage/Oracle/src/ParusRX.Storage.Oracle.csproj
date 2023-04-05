@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Abstractions\src\ParusRX.Storage.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Abstractions\src\ParusRx.Storage.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

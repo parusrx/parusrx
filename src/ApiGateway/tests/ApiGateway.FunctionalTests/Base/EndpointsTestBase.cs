@@ -1,7 +1,7 @@
 // Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRX.ApiGateway.FunctionalTests.Base;
+namespace ParusRx.ApiGateway.FunctionalTests.Base;
 
 public class EndpointsTestBase : IClassFixture<TestWebApplicationFactory<Program>>
 {

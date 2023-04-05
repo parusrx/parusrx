@@ -1,7 +1,7 @@
 // Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRX.MultiTenancy.Tests;
+namespace ParusRx.MultiTenancy.Tests;
 
 public class TenantServiceTests
 {

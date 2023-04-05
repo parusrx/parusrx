@@ -1,7 +1,7 @@
 // Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRX.MultiTenancy;
+namespace ParusRx.MultiTenancy;
 
 /// <summary>
 /// Multi-tenancy options.

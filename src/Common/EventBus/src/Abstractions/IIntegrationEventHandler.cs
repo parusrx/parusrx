@@ -1,7 +1,7 @@
 // Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRX.EventBus.Abstractions;
+namespace ParusRx.EventBus.Abstractions;
 
 /// <summary>
 /// Provides an abstraction for handling integration events.

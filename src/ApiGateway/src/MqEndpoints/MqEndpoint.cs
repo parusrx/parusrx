@@ -3,7 +3,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace ParusRX.ApiGateway.MqEndpoints;
+namespace ParusRx.ApiGateway.MqEndpoints;
 
 /// <summary>
 /// Represents MQ endpoint.

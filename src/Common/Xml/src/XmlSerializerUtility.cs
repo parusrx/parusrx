@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace ParusRX.Xml;
+namespace ParusRx.Xml;
 
 /// <summary>
 /// Serializes the specified objects of <typeparamref name="T"/> type and writes the XML document to a byte array.
