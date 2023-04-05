@@ -1,32 +1,32 @@
-name: 'api-gateway'
+# name: 'api-gateway'
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'src/ApiGateways/**'
-      - '.github/workflows/api-gateway.yml'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'src/ApiGateways/**'
-      - '.github/workflows/api-gateway.yml'
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'src/ApiGateways/**'
+#       - '.github/workflows/api-gateway.yml'
+#   pull_request:
+#     branches:
+#       - main
+#     paths:
+#       - 'src/ApiGateways/**'
+#       - '.github/workflows/api-gateway.yml'
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '8.0.x'
-        dotnet-quality: 'preview'
-    - name: Restore dependencies
-      run: dotnet restore src/ParusRX.sln
-    - name: Build
-      run: dotnet build src/ParusRX.sln --configuration Release --no-restore
-    - name: Test
-      run: dotnet test src/ParusRX.sln --configuration Release --no-build --verbosity normal
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v3
+#     - name: Setup .NET
+#       uses: actions/setup-dotnet@v3
+#       with:
+#         dotnet-version: '8.0.x'
+#         dotnet-quality: 'preview'
+#     - name: Restore dependencies
+#       run: dotnet restore src/ParusRX.sln
+#     - name: Build
+#       run: dotnet build src/ParusRX.sln --configuration Release --no-restore
+#     - name: Test
+#       run: dotnet test src/ParusRX.sln --configuration Release --no-build --verbosity normal
