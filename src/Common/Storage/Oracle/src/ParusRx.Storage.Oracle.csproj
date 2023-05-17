@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Evolve.Data.Oracle" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0-preview.2.23128.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0-preview.4.23259.5" />
   </ItemGroup>
 
   <ItemGroup>
