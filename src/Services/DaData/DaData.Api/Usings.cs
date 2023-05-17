@@ -10,5 +10,6 @@ global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 global using Microsoft.Extensions.Diagnostics.HealthChecks;
 global using Microsoft.OpenApi.Models;
 global using ParusRx.DaData.Api;
+global using ParusRx.DaData.Api.Models;
 global using ParusRx.EventBus;
 global using ParusRx.EventBus.Abstractions;
