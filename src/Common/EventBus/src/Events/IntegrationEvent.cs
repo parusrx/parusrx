@@ -16,7 +16,7 @@ public record IntegrationEvent
     /// <summary>
     /// The unique identifier of the tenant.
     /// </summary>
-    public string TenantId { get; init; } = null!;
+    public string TenantId { get; init; } = "Default";
 
     /// <summary>
     /// The creation date of the event.

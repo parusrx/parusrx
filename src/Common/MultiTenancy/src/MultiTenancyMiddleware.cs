@@ -37,13 +37,7 @@ public class MultiTenancyMiddleware : IMiddleware
         if (context.Request.Method == "POST" && context.Request.Body.CanRead)
         {
             var @event = await context.Request.ReadFromJsonAsync<IntegrationEvent>();
-            var tenant = _options.Value?.Tenants?.FirstOrDefault(t => t.Name == @event?.TenantId);
-
-            // If tenant not found throw exception
-            if (tenant is null)
-            {
-                throw new Exception($"Tenant {@event?.TenantId} not found.");
-            }
+            var tenant = (_options.Value?.Tenants?.FirstOrDefault(t => t.Name == @event?.TenantId)) ?? throw new Exception($"Tenant {@event?.TenantId} not found.");
 
             // Set tenant for current thread
             _tenantService.SetTenant(tenant);
