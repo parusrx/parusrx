@@ -9,9 +9,9 @@ namespace ParusRx.DaData.Api.Services;
 public interface ISuggestPartyService
 {
     /// <summary>
-    /// Serialize the suggestion patry content to a byte array as an asynchronous operation.
+    /// Serialize the suggestion party content to a byte array as an asynchronous operation.
     /// </summary>
-    /// <param name="request">The request.</param>
+    /// <param name="suggestionsRequest">The suggestion request.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
-    Task<byte[]> FindByIdAsync(DaDataSuggestPartyRequest request, CancellationToken cancellationToken = default);
+    Task<byte[]> FindByIdAsync(DaDataSuggestPartyRequest suggestionsRequest, CancellationToken cancellationToken = default);
 }

@@ -55,6 +55,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DaData", "DaData", "{EE8DCB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParusRx.DaData.Api", "Services\DaData\DaData.Api\ParusRx.DaData.Api.csproj", "{291B412E-263C-4361-8607-19A5180D1119}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParusRx.DaData.Api.UnitTests", "Services\DaData\DaData.Api.UnitTests\ParusRx.DaData.Api.UnitTests.csproj", "{AC30A38B-A268-487A-9442-B131CDC0C4F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,10 @@ Global
 		{291B412E-263C-4361-8607-19A5180D1119}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{291B412E-263C-4361-8607-19A5180D1119}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{291B412E-263C-4361-8607-19A5180D1119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC30A38B-A268-487A-9442-B131CDC0C4F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC30A38B-A268-487A-9442-B131CDC0C4F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC30A38B-A268-487A-9442-B131CDC0C4F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC30A38B-A268-487A-9442-B131CDC0C4F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +146,7 @@ Global
 		{5E20A151-A023-4124-97DD-FAD45BC846DA} = {6D83689F-74A3-4FB2-AFCB-F90FDC0E56F4}
 		{EE8DCB73-0F59-463C-8932-E721D90597DF} = {0E93DF04-3130-43AB-8F12-ED23AB12B29A}
 		{291B412E-263C-4361-8607-19A5180D1119} = {EE8DCB73-0F59-463C-8932-E721D90597DF}
+		{AC30A38B-A268-487A-9442-B131CDC0C4F0} = {EE8DCB73-0F59-463C-8932-E721D90597DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {641A00EC-0E84-42C7-A30E-A6D8AFF7C984}
