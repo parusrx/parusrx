@@ -15,7 +15,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">The services available in the application.</param>
     /// <returns>A reference to this instance after the operation has completed.</returns>
-    public static IServiceCollection AddParusRxStore(this IServiceCollection services)
+    public static IServiceCollection AddPostgresParusRxStore(this IServiceCollection services)
     {
         services.AddScoped<IParusRxStore, PostgresParusRxStore>();
 

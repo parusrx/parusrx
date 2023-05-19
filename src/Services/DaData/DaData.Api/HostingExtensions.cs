@@ -1,6 +1,12 @@
 // Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using Evolve.Data.Oracle;
+using Evolve.Data.PostgreSQL;
+
+using ParusRx.DaData.Api.Integration;
+using ParusRx.DaData.Api.Integration.Handlers;
+
 namespace ParusRx.DaData.Api;
 
 /// <summary>
@@ -12,6 +18,8 @@ internal static class HostingExtensions
     /// Application name.
     /// </summary>
     public const string AppName = "DaData.Api";
+
+    private const string CORS_POLICY = "CorsPolicy";
 
     /// <summary>
     /// Configure services.
@@ -25,6 +33,47 @@ internal static class HostingExtensions
 
         // Event bus
         builder.Services.AddScoped<IEventBus, DaprEventBus>();
+
+        // Application specified services
+        builder.Services.AddHttpClient<ISuggestPartyService, SuggestPartyService>();
+        builder.Services.AddScoped<ISuggestPartyIntegrationEventService, SuggestPartyIntegrationEventService>();
+        builder.Services.AddTransient<SuggestPartyIntegrationEventHandler>();
+
+        // Data access
+        var provider = builder.Configuration["Database:Provider"];
+
+        switch (provider)
+        {
+            case "Oracle":
+#pragma warning disable CS8604 // Possible null reference argument.
+                builder.Services
+                    .AddEvolveDataAccess(options => options.UseOracle(builder.Configuration["Database:ConnectionString"]))
+                    .AddOracleParusRxStores();
+#pragma warning restore CS8604 // Possible null reference argument.
+                break;
+            case "PostgreSQL":
+#pragma warning disable CS8604 // Possible null reference argument.
+                builder.Services
+                    .AddEvolveDataAccess(options => options.UsePostgreSql(builder.Configuration["Database:ConnectionString"]))
+                    .AddPostgresParusRxStore();
+#pragma warning restore CS8604 // Possible null reference argument.
+                break;
+            default:
+                throw new NotSupportedException($"Database provider {provider} is not supported.");
+        }
+
+        // CORS
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy(name: CORS_POLICY,
+                corsPolicyBuilder =>
+                {
+                    corsPolicyBuilder.SetIsOriginAllowed((host) => true);
+                    corsPolicyBuilder.AllowAnyMethod();
+                    corsPolicyBuilder.AllowAnyHeader();
+                    corsPolicyBuilder.AllowCredentials();
+                });
+        });
 
         // Swagger
         builder.Services.AddSwaggerGen(options =>
@@ -60,6 +109,9 @@ internal static class HostingExtensions
 
         app.UseRouting();
 
+        // CORS
+        app.UseCors(CORS_POLICY);
+
         // Swagger
         app.UseSwagger();
         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{AppName} v1"));
@@ -68,26 +120,22 @@ internal static class HostingExtensions
 
         app.MapSubscribeHandler();
 
-        app.UseEndpoints(endpoints =>
+        // Redirect to swagger
+        app.MapGet("/", () => Results.LocalRedirect("~/swagger")).ExcludeFromDescription();
+
+        // Health checks
+        app.MapHealthChecks("/health", new HealthCheckOptions
         {
-            // Redirect to swagger
-            endpoints.MapGet("/", () => Results.LocalRedirect("~/swagger")).ExcludeFromDescription();
+            Predicate = _ => true
+        })
+        .WithOpenApi();
 
-            // Health checks
-            endpoints.MapHealthChecks("/health", new HealthCheckOptions
-            {
-                Predicate = _ => true,
-                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-            })
-            .WithOpenApi();
-
-            // Liveness probe
-            endpoints.MapHealthChecks("/liveness", new HealthCheckOptions
-            {
-                Predicate = r => r.Name.Contains("self")
-            })
-            .WithOpenApi();
-        });
+        // Liveness probe
+        app.MapHealthChecks("/liveness", new HealthCheckOptions
+        {
+            Predicate = r => r.Name.Contains("self")
+        })
+        .WithOpenApi();
 
         return app;
     }
