@@ -14,7 +14,7 @@ public class HealthCheckEndpointsTests : EndpointsTestBase
     public async Task HealthCheckEndpoints_ReturnsOk()
     {
         // Act
-        var response = await Client.GetAsync("/hc");
+        var response = await Client.GetAsync("/health");
 
         // Assert
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);

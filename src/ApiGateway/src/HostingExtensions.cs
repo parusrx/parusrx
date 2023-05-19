@@ -72,10 +72,9 @@ internal static class HostingExtensions
         app.MapGet("/", () => Results.LocalRedirect("~/swagger")).ExcludeFromDescription();
 
         // Health checks
-        app.MapHealthChecks("/hc", new HealthCheckOptions
+        app.MapHealthChecks("/health", new HealthCheckOptions
         {
-            Predicate = _ => true,
-            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            Predicate = _ => true
         });
 
         // Liveness probe
