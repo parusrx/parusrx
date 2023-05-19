@@ -37,13 +37,11 @@ public class SuggestPartyIntegrationEventService : ISuggestPartyIntegrationEvent
             var data = await _store.ReadDataRequestAsync(id);
 
             var suggestPartyRequest = XmlSerializerUtility.Deserialize<DaDataSuggestPartyRequest>(data);
-            if (suggestPartyRequest is null)
+            if (suggestPartyRequest is not null)
             {
-                throw new ArgumentNullException(nameof(suggestPartyRequest));
+                var response = await _suggestPartyService.FindByIdAsync(suggestPartyRequest, cancellationToken);
+                await _store.SaveDataResponseAsync(id, response);
             }
-
-            var response = await _suggestPartyService.FindByIdAsync(suggestPartyRequest, cancellationToken);
-            await _store.SaveDataResponseAsync(id, response);
         }
         catch (Exception ex)
         {

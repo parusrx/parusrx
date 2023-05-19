@@ -72,4 +72,26 @@ public class SuggestPartyIntegrationEventServiceTests
         // Assert
         _storeMock.Verify(x => x.SaveDataResponseAsync("123", Encoding.UTF8.GetBytes(response)), Times.Once);
     }
+
+    [Fact]
+    public async Task FindPartyByIdAsync_ShouldCallStoreErrorAsync_WhenExceptionThrown()
+    {
+        // Arrange
+        var integrationEvent = new IntegrationEvent { Payload = "123" };
+        var cancellationToken = new CancellationToken();
+        var exception = new Exception("Test exception");
+        _storeMock.Setup(x => x.ReadDataRequestAsync("123")).ThrowsAsync(exception);
+
+        // Act
+        await _service.FindPartyByIdAsync(integrationEvent, cancellationToken);
+
+        // Assert
+        _storeMock.Verify(x => x.ErrorAsync("123", "Test exception"), Times.Once);
+        _loggerMock.Verify(x => x.Log(
+            It.Is<LogLevel>(l => l == LogLevel.Information),
+            It.IsAny<EventId>(),
+            It.Is<It.IsAnyType>((v, t) => v.ToString() == "Test exception"),
+            It.IsAny<Exception>(),
+            It.Is<Func<It.IsAnyType, Exception?, string>>((v, t) => true)), Times.Never);
+    }
 }
