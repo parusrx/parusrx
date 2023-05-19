@@ -53,9 +53,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{0E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DaData", "DaData", "{EE8DCB73-0F59-463C-8932-E721D90597DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParusRx.DaData.Api", "Services\DaData\DaData.Api\ParusRx.DaData.Api.csproj", "{291B412E-263C-4361-8607-19A5180D1119}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParusRx.DaData.Api", "Services\DaData\DaData.Api\ParusRx.DaData.Api.csproj", "{291B412E-263C-4361-8607-19A5180D1119}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParusRx.DaData.Api.UnitTests", "Services\DaData\DaData.Api.UnitTests\ParusRx.DaData.Api.UnitTests.csproj", "{AC30A38B-A268-487A-9442-B131CDC0C4F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParusRx.DaData.Api.UnitTests", "Services\DaData\DaData.Api.UnitTests\ParusRx.DaData.Api.UnitTests.csproj", "{AC30A38B-A268-487A-9442-B131CDC0C4F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
