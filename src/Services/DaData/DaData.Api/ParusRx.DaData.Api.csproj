@@ -21,6 +21,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\EventBus\src\ParusRx.EventBus.csproj" />
+    <ProjectReference Include="..\..\..\Common\Storage\Oracle\src\ParusRx.Storage.Oracle.csproj" />
+    <ProjectReference Include="..\..\..\Common\Storage\Postgres\src\ParusRx.Storage.Postgres.csproj" />
+    <ProjectReference Include="..\..\..\Common\Xml\src\ParusRx.Xml.csproj" />
   </ItemGroup>
 
 </Project>

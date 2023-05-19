@@ -62,10 +62,7 @@ internal static class HostingExtensions
 
         // Swagger
         app.UseSwagger();
-        app.UseSwaggerUI(c =>
-        {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{AppName} v1");
-        });
+        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{AppName} v1"));
 
         app.UseCloudEvents();
 

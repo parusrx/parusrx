@@ -13,5 +13,8 @@ global using Microsoft.Extensions.Options;
 global using Microsoft.OpenApi.Models;
 global using ParusRx.DaData.Api;
 global using ParusRx.DaData.Api.Models;
+global using ParusRx.DaData.Api.Services;
 global using ParusRx.EventBus;
 global using ParusRx.EventBus.Abstractions;
+global using ParusRx.EventBus.Events;
+global using ParusRx.Storage.Abstractions;
