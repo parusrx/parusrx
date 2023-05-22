@@ -11,20 +11,31 @@ public record IntegrationEvent
     /// <summary>
     /// The unique identifier of the event.
     /// </summary>
-    public Guid Id { get; init; } = Guid.NewGuid();
+    public Guid Id { get; private init; } = Guid.NewGuid();
 
     /// <summary>
     /// The unique identifier of the tenant.
     /// </summary>
-    public string TenantId { get; init; } = "Default";
+    //public required string TenantId { get; init; }
 
     /// <summary>
     /// The creation date of the event.
     /// </summary>
-    public DateTime CreationDate { get; init; } = DateTime.UtcNow;
+    public DateTime CreationDate { get; private init; } = DateTime.UtcNow;
 
     /// <summary>
     /// The payload of the event.
     /// </summary>
-    public object Payload { get; init; } = null!;
+    public required object Payload { get; init; }
+}
+
+/// <summary>
+/// Represents an integration event with a tenant identifier.
+/// </summary>
+public record MultitenantIntegrationEvent : IntegrationEvent
+{
+    /// <summary>
+    /// The unique identifier of the tenant.
+    /// </summary>
+    public required string TenantId { get; init; }
 }

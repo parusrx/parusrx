@@ -28,7 +28,7 @@ public class MultiTenancyMiddlewareTests
         var context = new DefaultHttpContext();
         context.Request.Method = "POST";
         context.Request.ContentType = "application/json";
-        context.Request.Body = new MemoryStream(Encoding.UTF8.GetBytes("{\"TenantId\":\"Test1\"}"));
+        context.Request.Body = new MemoryStream(Encoding.UTF8.GetBytes("{\"TenantId\":\"Test1\", \"Payload\":\"\"}"));
 
         // Act
         var exception = await Assert.ThrowsAsync<Exception>(() => middleware.InvokeAsync(context, _ => Task.CompletedTask));
@@ -56,7 +56,7 @@ public class MultiTenancyMiddlewareTests
         var context = new DefaultHttpContext();
         context.Request.Method = "POST";
         context.Request.ContentType = "application/json";
-        context.Request.Body = new MemoryStream(Encoding.UTF8.GetBytes("{\"TenantId\":\"Test\"}"));
+        context.Request.Body = new MemoryStream(Encoding.UTF8.GetBytes("{\"TenantId\":\"Test\", \"Payload\":\"\"}"));
 
         // Act
         await middleware.InvokeAsync(context, _ => Task.CompletedTask);

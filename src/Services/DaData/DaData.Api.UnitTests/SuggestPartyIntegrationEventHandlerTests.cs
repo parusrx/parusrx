@@ -27,7 +27,7 @@ public class SuggestPartyIntegrationEventHandlerTests
     public async Task HandleAsync_ShouldCallFindPartyByIdAsync()
     {
         // Arrange
-        IntegrationEvent integrationEvent = new() { Id = Guid.NewGuid() };
+        IntegrationEvent integrationEvent = new() { Payload = new() };
         var cancellationToken = new CancellationToken();
 
         // Act
@@ -41,7 +41,7 @@ public class SuggestPartyIntegrationEventHandlerTests
     public async Task HandleAsync_ShouldLogInformation()
     {
         // Arrange
-        var integrationEvent = new IntegrationEvent { Id = Guid.NewGuid() };
+        var integrationEvent = new IntegrationEvent { Payload = new() };
         var cancellationToken = new CancellationToken();
 
         // Act

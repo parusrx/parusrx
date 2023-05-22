@@ -93,7 +93,7 @@ public static class MqEndpoint
 
         var @event = new IntegrationEvent
         {
-            TenantId = tenantId,
+            //TenantId = tenantId,
             Payload = message.Payload
         };
 
