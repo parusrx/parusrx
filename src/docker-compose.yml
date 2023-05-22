@@ -1,8 +1,35 @@
 version: '3.7'
 
 services:
-  api-gateway:
-    image: ${REGISTRY:-parusrx}/api-gateway:${TAG:-latest}
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
+  zipkin:
+    image: openzipkin/zipkin-slim
+
+  dapr-placement:
+    image: "daprio/dapr:1.10.0"
+
+  apigateway:
+    image: ${REGISTRY:-parusrx}/apigateway:${TAG:-latest}
     build:
       context: .
       dockerfile: ApiGateway/src/Dockerfile
+
+  apigateway-dapr:
+    image: "daprio/daprd:1.10.0"
+    network_mode: "service:apigateway"
+    depends_on:
+      - apigateway
+
+  dadata-api:
+    image: ${REGISTRY:-parusrx}/dadata-api:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Services/DaData/DaData.Api/Dockerfile
+
+  dadata-api-dapr:
+    image: "daprio/daprd:1.10.0"
+    network_mode: "service:dadata-api"
+    depends_on:
+      - dadata-api

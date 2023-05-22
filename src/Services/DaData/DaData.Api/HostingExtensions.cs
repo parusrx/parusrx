@@ -1,9 +1,9 @@
 // Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using Dapr;
 using Evolve.Data.Oracle;
 using Evolve.Data.PostgreSQL;
-
 using ParusRx.DaData.Api.Integration;
 using ParusRx.DaData.Api.Integration.Handlers;
 
@@ -136,6 +136,14 @@ internal static class HostingExtensions
             Predicate = r => r.Name.Contains("self")
         })
         .WithOpenApi();
+
+
+        app.MapPost("/api/v1/suggestions", [Topic("pubsub", "DaDataSuggestionsFindByIdPartyIntegrationEvent")] async (IntegrationEvent @event, IServiceProvider serviceProvider) =>
+        {
+            var handler = serviceProvider.GetRequiredService<SuggestPartyIntegrationEventHandler>();
+            await handler.HandleAsync(@event);
+            return Results.Ok();
+        });
 
         return app;
     }

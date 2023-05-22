@@ -1,13 +1,62 @@
 version: '3.7'
 
 services:
-  api-gateway:
+  rabbitmq:
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  zipkin:
+    ports:
+      - "5411:9411"
+
+  apigateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=https://+:443;http://+:8080
+      - PATH_BASE=/apigateway
     ports:
-      - "80"
-      - "443"
+      - "8001:8080"
+      - "8443:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  apigateway-dapr:
+    command: ["./daprd",
+      "-app-id", "apigateway",
+      "-app-port", "8080",
+      "-components-path", "/components",
+      "-config", "/configuration/parusrx-config.yaml"
+      ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
+
+  dadata-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:8080
+      - TZ=${ORACLE_TZ:-Europe/Moscow}
+      - Database__Provider=${DB_PROVIDER:-Oracle}
+      - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
+      - Urls__Suggestions=${SUGGESTIONS_URL:-https://suggestions.dadata.ru/suggestions/api/4_1/rs}
+      - PATH_BASE=/dadata-api
+    ports:
+      - "8005:8080"
+
+  dadata-api-dapr:
+    command: ["./daprd",
+      "-app-id", "dadata-api",
+      "-app-port", "8080",
+      "-components-path", "/components",
+      "-config", "/configuration/parusrx-config.yaml"
+      ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
+
+  dapr-placement:
+    command: ["./placement", "-port", "50000", "-log-level", "debug"]
+    ports:
+      - "50000:50000"

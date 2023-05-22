@@ -1,3 +1,5 @@
+#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview AS base
 WORKDIR /app
 EXPOSE 8080
@@ -21,14 +23,14 @@ COPY ["Services/DaData/DaData.Api.UnitTests/ParusRx.DaData.Api.UnitTests.csproj"
 COPY ["docker-compose.dcproj", "./"]
 COPY ["ParusRx.sln", "./"]
 RUN dotnet restore "ParusRx.sln"
-
 COPY . .
-WORKDIR "/src/ApiGateway/src"
+WORKDIR "/src/Services/DaData/DaData.Api"
+RUN dotnet build "ParusRx.DaData.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish --no-restore "ParusRx.ApiGateway.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "ParusRx.DaData.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ParusRx.ApiGateway.dll"]
+ENTRYPOINT ["dotnet", "ParusRx.DaData.Api.dll"]

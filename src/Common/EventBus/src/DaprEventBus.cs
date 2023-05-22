@@ -11,7 +11,7 @@ public class DaprEventBus : IEventBus
     /// <summary>
     /// The Dapr pub/sub name.
     /// </summary>
-    public const string DAPR_PUBSUB_NAME = "parusrx-pubsub";
+    public const string DAPR_PUBSUB_NAME = "pubsub";
 
     private readonly DaprClient _dapr;
     private readonly ILogger<DaprEventBus> _logger;
