@@ -11,5 +11,5 @@ public class DaDataSettings
     /// <summary>
     /// Gets or sets the URL of the DaData Suggestions API.
     /// </summary>
-    public required string SuggestionsUrl { get; set; }
+    public required string Suggestions { get; set; }
 }

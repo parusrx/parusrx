@@ -31,6 +31,9 @@ internal static class HostingExtensions
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddDaprClient();
 
+        // Application settings
+        builder.Services.Configure<DaDataSettings>(builder.Configuration.GetSection("Urls"));
+
         // Event bus
         builder.Services.AddScoped<IEventBus, DaprEventBus>();
 

@@ -28,7 +28,7 @@ public class SuggestPartyServiceTests
         var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK) { Content = new ByteArrayContent(expected) };
         _httpClientMock.Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>(), It.IsAny<CancellationToken>())).ReturnsAsync(response);
 
-        var service = new SuggestPartyService(_httpClientMock.Object, Options.Create(new DaDataSettings { SuggestionsUrl = "" }));
+        var service = new SuggestPartyService(_httpClientMock.Object, Options.Create(new DaDataSettings { Suggestions = "" }));
 
         // Act
         var actual = await service.FindByIdAsync(_suggestionsRequest);
@@ -44,7 +44,7 @@ public class SuggestPartyServiceTests
         var response = new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest);
         _httpClientMock.Setup(x => x.SendAsync(It.IsAny<HttpRequestMessage>(), It.IsAny<CancellationToken>())).ReturnsAsync(response);
 
-        var service = new SuggestPartyService(_httpClientMock.Object, Options.Create(new DaDataSettings { SuggestionsUrl = "" }));
+        var service = new SuggestPartyService(_httpClientMock.Object, Options.Create(new DaDataSettings { Suggestions = "" }));
 
         // Act
         var exception = await Assert.ThrowsAsync<HttpRequestException>(() => service.FindByIdAsync(_suggestionsRequest));

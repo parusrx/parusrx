@@ -30,7 +30,7 @@ public class SuggestPartyIntegrationEventService : ISuggestPartyIntegrationEvent
     /// <inheritdoc/>
     public async Task FindPartyByIdAsync(IntegrationEvent integrationEvent, CancellationToken cancellationToken = default)
     {
-        var id = (string)integrationEvent.Payload;
+        var id = integrationEvent.Payload.ToString();
 
         try
         {

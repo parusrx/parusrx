@@ -28,7 +28,7 @@ public class SuggestPartyService : ISuggestPartyService
     /// <inheritdoc />
     public async Task<byte[]> FindByIdAsync(DaDataSuggestPartyRequest suggestionsRequest, CancellationToken cancellationToken = default)
     {
-        var request = new HttpRequestMessage(HttpMethod.Post, $"{_settings.SuggestionsUrl}/findById/party");
+        var request = new HttpRequestMessage(HttpMethod.Post, $"{_settings.Suggestions}/findById/party");
         request.Headers.Authorization = new AuthenticationHeaderValue("Token", suggestionsRequest.Authorization.AccessToken);
         request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml"));
 
