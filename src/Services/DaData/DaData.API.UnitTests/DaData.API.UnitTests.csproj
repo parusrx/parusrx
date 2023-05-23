@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DaData.Api\DaData.API.csproj" />
+    <ProjectReference Include="..\DaData.API\DaData.API.csproj" />
   </ItemGroup>
 
 </Project>
