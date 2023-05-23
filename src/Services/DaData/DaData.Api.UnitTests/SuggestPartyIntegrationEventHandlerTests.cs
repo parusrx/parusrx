@@ -3,8 +3,8 @@
 
 using Microsoft.Extensions.Logging;
 
-using ParusRx.DaData.Api.Integration;
-using ParusRx.DaData.Api.Integration.Handlers;
+using ParusRx.DaData.API.Integration;
+using ParusRx.DaData.API.Integration.Handlers;
 using ParusRx.EventBus.Events;
 
 namespace ParusRx.DaData.Api.UnitTests;
@@ -27,31 +27,31 @@ public class SuggestPartyIntegrationEventHandlerTests
     public async Task HandleAsync_ShouldCallFindPartyByIdAsync()
     {
         // Arrange
-        IntegrationEvent integrationEvent = new() { Payload = new() };
+        var @event = new IntegrationEvent { Payload = Guid.NewGuid().ToString() };
         var cancellationToken = new CancellationToken();
 
         // Act
-        await _handler.HandleAsync(integrationEvent, cancellationToken);
+        await _handler.HandleAsync(@event, cancellationToken);
 
         // Assert
-        _serviceMock.Verify(x => x.FindPartyByIdAsync(integrationEvent, cancellationToken), Times.Once);
+        _serviceMock.Verify(x => x.FindPartyByIdAsync(@event, cancellationToken), Times.Once);
     }
 
     [Fact]
     public async Task HandleAsync_ShouldLogInformation()
     {
         // Arrange
-        var integrationEvent = new IntegrationEvent { Payload = new() };
+        var @event = new IntegrationEvent { Payload = Guid.NewGuid().ToString() };
         var cancellationToken = new CancellationToken();
 
         // Act
-        await _handler.HandleAsync(integrationEvent, cancellationToken);
+        await _handler.HandleAsync(@event, cancellationToken);
 
         // Assert
         _loggerMock.Verify(x => x.Log(
             It.Is<LogLevel>(l => l == LogLevel.Information),
             It.IsAny<EventId>(),
-            It.Is<It.IsAnyType>((v, t) => v.ToString() == $"Handling integration event: {integrationEvent.Id} - ({integrationEvent})"),
+            It.Is<It.IsAnyType>((v, t) => v.ToString() == $"Handling integration event: {@event.Id} - ({@event})"),
             It.IsAny<Exception>(),
             It.Is<Func<It.IsAnyType, Exception?, string>>((v, t) => true)));
     }

@@ -3,5 +3,6 @@
 
 global using Moq;
 global using Xunit;
-global using ParusRx.DaData.API.Models;
-global using ParusRx.DaData.API.Services;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Http.HttpResults;
+global using ParusRx.Gateway.API.MqEndpoints;

@@ -10,21 +10,21 @@ services:
     ports:
       - "5411:9411"
 
-  apigateway:
+  dapr-placement:
+    command: ["./placement", "-port", "50000", "-log-level", "debug"]
+    ports:
+      - "50000:50000"
+
+  gateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:8080
-      - PATH_BASE=/apigateway
+      - PATH_BASE=/gateway
     ports:
-      - "8001:8080"
-      - "8443:443"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - "8080:8080"
 
-  apigateway-dapr:
+  gateway-dapr:
     command: ["./daprd",
-      "-app-id", "apigateway",
+      "-app-id", "gateway",
       "-app-port", "8080",
       "-components-path", "/components",
       "-config", "/configuration/parusrx-config.yaml"
@@ -55,8 +55,3 @@ services:
     volumes:
       - "./dapr/components/:/components"
       - "./dapr/configuration/:/configuration"
-
-  dapr-placement:
-    command: ["./placement", "-port", "50000", "-log-level", "debug"]
-    ports:
-      - "50000:50000"

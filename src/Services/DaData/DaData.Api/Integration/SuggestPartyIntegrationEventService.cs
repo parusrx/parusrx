@@ -3,7 +3,7 @@
 
 using ParusRx.Xml;
 
-namespace ParusRx.DaData.Api.Integration;
+namespace ParusRx.DaData.API.Integration;
 
 /// <summary>
 /// An implementation of <see cref="ISuggestPartyIntegrationEventService"/> for integration events with DaData.ru suggestions.
@@ -30,16 +30,16 @@ public class SuggestPartyIntegrationEventService : ISuggestPartyIntegrationEvent
     /// <inheritdoc/>
     public async Task FindPartyByIdAsync(IntegrationEvent integrationEvent, CancellationToken cancellationToken = default)
     {
-        var id = integrationEvent.Payload.ToString();
+        string id = integrationEvent.Payload;
 
         try
         {
-            var data = await _store.ReadDataRequestAsync(id);
+            byte[] data = await _store.ReadDataRequestAsync(id);
 
             var suggestPartyRequest = XmlSerializerUtility.Deserialize<DaDataSuggestPartyRequest>(data);
             if (suggestPartyRequest is not null)
             {
-                var response = await _suggestPartyService.FindByIdAsync(suggestPartyRequest, cancellationToken);
+                byte[] response = await _suggestPartyService.FindByIdAsync(suggestPartyRequest, cancellationToken);
                 await _store.SaveDataResponseAsync(id, response);
             }
         }

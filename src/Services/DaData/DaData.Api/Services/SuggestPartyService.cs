@@ -4,7 +4,7 @@
 using System.Net.Http.Headers;
 using System.Text;
 
-namespace ParusRx.DaData.Api.Services;
+namespace ParusRx.DaData.API.Services;
 
 /// <summary>
 /// The default implementation of the <see cref="ISuggestPartyService"/> interface.

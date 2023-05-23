@@ -2,12 +2,14 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using Dapr;
+
 using Evolve.Data.Oracle;
 using Evolve.Data.PostgreSQL;
-using ParusRx.DaData.Api.Integration;
-using ParusRx.DaData.Api.Integration.Handlers;
 
-namespace ParusRx.DaData.Api;
+using ParusRx.DaData.API.Integration;
+using ParusRx.DaData.API.Integration.Handlers;
+
+namespace ParusRx.DaData.API;
 
 /// <summary>
 /// Represents hosting extensions.
@@ -32,7 +34,7 @@ internal static class HostingExtensions
         builder.Services.AddDaprClient();
 
         // Application settings
-        builder.Services.Configure<DaDataSettings>(builder.Configuration.GetSection("Urls"));
+        builder.Services.Configure<DaDataSettings>(builder.Configuration.GetSection("URLs"));
 
         // Event bus
         builder.Services.AddScoped<IEventBus, DaprEventBus>();
@@ -54,7 +56,7 @@ internal static class HostingExtensions
                     .AddOracleParusRxStores();
 #pragma warning restore CS8604 // Possible null reference argument.
                 break;
-            case "PostgreSQL":
+            case "Postgres":
 #pragma warning disable CS8604 // Possible null reference argument.
                 builder.Services
                     .AddEvolveDataAccess(options => options.UsePostgreSql(builder.Configuration["Database:ConnectionString"]))
@@ -67,7 +69,6 @@ internal static class HostingExtensions
 
         // CORS
         builder.Services.AddCors(options =>
-        {
             options.AddPolicy(name: CORS_POLICY,
                 corsPolicyBuilder =>
                 {
@@ -75,8 +76,7 @@ internal static class HostingExtensions
                     corsPolicyBuilder.AllowAnyMethod();
                     corsPolicyBuilder.AllowAnyHeader();
                     corsPolicyBuilder.AllowCredentials();
-                });
-        });
+                }));
 
         // Swagger
         builder.Services.AddSwaggerGen(options =>

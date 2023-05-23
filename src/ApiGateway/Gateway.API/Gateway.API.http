@@ -1,0 +1,20 @@
+@Gateway_HostAddress = http://localhost:5058
+
+GET {{Gateway_HostAddress}}/health
+Accept: application/json
+
+###
+
+GET {{Gateway_HostAddress}}/liveness
+Accept: application/json
+
+###
+
+POST {{Gateway_HostAddress}}/api/v1/mq
+Content-Type: application/json
+X-Tenant-Id: "Default"
+
+{
+    "Topic": "topic",
+    "Payload": "payload"
+}

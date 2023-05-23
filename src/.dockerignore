@@ -13,7 +13,7 @@
 **/*.jfm
 **/bin
 **/charts
-**/docker-compose*
+**/docker-compose*.yml
 **/compose*
 **/Dockerfile*
 **/node_modules

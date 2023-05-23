@@ -1,7 +1,7 @@
 // Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRx.DaData.Api.Services;
+namespace ParusRx.DaData.API.Services;
 
 /// <summary>
 /// Defines methods for the suggestion party service.

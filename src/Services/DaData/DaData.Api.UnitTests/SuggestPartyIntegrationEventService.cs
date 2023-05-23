@@ -3,11 +3,11 @@
 
 using System.Text;
 using Microsoft.Extensions.Logging;
-using ParusRx.DaData.Api.Integration;
+using ParusRx.DaData.API.Integration;
 using ParusRx.EventBus.Events;
-using ParusRx.Storage.Abstractions;
+using ParusRx.Storage;
 
-namespace ParusRx.DaData.Api.UnitTests;
+namespace ParusRx.DaData.API.UnitTests;
 
 public class SuggestPartyIntegrationEventServiceTests
 {

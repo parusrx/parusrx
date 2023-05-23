@@ -3,7 +3,7 @@
 
 using Microsoft.Extensions.Options;
 
-namespace ParusRx.DaData.Api.UnitTests;
+namespace ParusRx.DaData.API.UnitTests;
 
 public class SuggestPartyServiceTests
 {
