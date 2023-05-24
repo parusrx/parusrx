@@ -19,29 +19,10 @@ public class MqEndpointTests
         var message = new Message("test", "test");
 
         // Act
-        var okResult = (Ok)await MqEndpoint.PublishMessage("tenant", message, mock.Object);
+        var result = (Created)await MqEndpoint.PublishMessage(message, mock.Object);
 
         // Assert
-        Assert.Equal(StatusCodes.Status200OK, okResult.StatusCode);
-    }
-
-    [Fact]
-    public async Task PublishMessage_IfTenantIdIsNull_ReturnsBadRequest()
-    {
-        // Arrange
-        var mock = new Mock<IEventBus>();
-        mock.Setup(x => x.PublishAsync(It.IsAny<string>(), It.IsAny<IntegrationEvent>(), CancellationToken.None))
-            .Returns(Task.CompletedTask);
-
-        var message = new Message("test", "test");
-
-        // Act
-        #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-        var okResult = (BadRequest)await MqEndpoint.PublishMessage(null, message, mock.Object);
-        #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
-        
-        // Assert
-        Assert.Equal(StatusCodes.Status400BadRequest, okResult.StatusCode);
+        Assert.Equal(StatusCodes.Status201Created, result.StatusCode);
     }
 
     [Fact]
@@ -53,11 +34,11 @@ public class MqEndpointTests
             .Returns(Task.CompletedTask);
 
         // Act
-        #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-        var okResult = (BadRequest)await MqEndpoint.PublishMessage("tenant", null, mock.Object);
-        #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
-        
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+        var result = (BadRequest)await MqEndpoint.PublishMessage(null, mock.Object);
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+
         // Assert
-        Assert.Equal(StatusCodes.Status400BadRequest, okResult.StatusCode);
+        Assert.Equal(StatusCodes.Status400BadRequest, result.StatusCode);
     }
 }

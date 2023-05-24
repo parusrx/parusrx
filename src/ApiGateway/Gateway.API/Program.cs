@@ -1,93 +1,34 @@
 // Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-Log.Logger = new LoggerConfiguration()
-    .WriteTo.Console()
-    .CreateLogger();
+using System.Text.Json.Serialization;
 
-Log.Information("Starting up...");
+var builder = WebApplication.CreateSlimBuilder(args);
 
-try
-{
-    const string AppName = "Gateway";
+builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default));
 
-    var builder = WebApplication.CreateSlimBuilder(args);
+builder.Services.AddDaprClient();
 
-    builder.Host.UseSerilog((ctx, lc) => lc
-        .ReadFrom.Configuration(ctx.Configuration)
-        .Enrich.FromLogContext()
-        .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}"));
+builder.Services.AddScoped<IEventBus, DaprEventBus>();
 
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddDaprClient();
+builder.Services.AddHealthChecks()
+    .AddCheck("self", () => HealthCheckResult.Healthy());
 
-    // Event bus
-    builder.Services.AddScoped<IEventBus, DaprEventBus>();
+var app = builder.Build();
 
-    // Swagger
-    builder.Services.AddSwaggerGen(options =>
-    {
-        options.SwaggerDoc("v1", new OpenApiInfo { Title = $"Parus RX - {AppName}", Version = "v1" });
+app.UseCloudEvents();
+app.MapSubscribeHandler();
 
-        var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-        options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
-    });
+app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true });
+app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Name.Contains("self") });
 
-    // Health checks
-    builder.Services.AddHealthChecks()
-        .AddCheck("self", () => HealthCheckResult.Healthy());
+app.MapMq();
 
-    var app = builder.Build();
+app.Run();
 
-    app.UseSerilogRequestLogging();
-
-    // This middleware displays detailed error information in the browser when an exception occurs during development, 
-    // making it easier for developers to debug their applications.
-    if (app.Environment.IsDevelopment())
-    {
-        app.UseDeveloperExceptionPage();
-    }
-
-    app.UseRouting();
-
-    // Swagger
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", $"Parus RX - {AppName} v1"));
-
-    app.UseCloudEvents();
-
-    app.MapSubscribeHandler();
-
-    // Redirect to swagger
-    app.MapGet("/", () => Results.LocalRedirect("~/swagger")).ExcludeFromDescription();
-
-    // Health checks
-    app.MapHealthChecks("/health", new HealthCheckOptions
-    {
-        Predicate = _ => true
-    });
-
-    // Liveness probe
-    app.MapHealthChecks("/liveness", new HealthCheckOptions
-    {
-        Predicate = r => r.Name.Contains("self")
-    });
-
-    // Publish integration event
-    app.MapGroup("/api/v1/mq")
-        .MapMqEndpoint()
-        .WithTags("Message queue endpoints");
-
-    app.Run();
-}
-catch (Exception ex)
-{
-    Log.Fatal(ex, "Host terminated unexpectedly.");
-}
-finally
-{
-    Log.Information("Shutting down.");
-    Log.CloseAndFlush();
-}
+[JsonSerializable(typeof(Message[]))]
+[JsonSerializable(typeof(IntegrationEvent[]))]
+[JsonSerializable(typeof(IntegrationEvent))]
+internal partial class AppJsonSerializerContext : JsonSerializerContext { }
 
 public partial class Program { }

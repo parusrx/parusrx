@@ -16,34 +16,16 @@ public class MqEndpointTests : EndpointsTestBase
         // Arrange
         var message = new Message(Topic: "test", Payload: "test");
         
-        Client.DefaultRequestHeaders.Add("X-Tenant-Id", "tenant");
-
         // Act
         var response = await Client.PostAsJsonAsync("api/v1/mq", message);
 
         // Assert
-        Assert.Equal(StatusCodes.Status200OK, (int)response.StatusCode);
-    }
-
-    [Fact]
-    public async Task PublishMessage_IfTenantIdIsNull_ShouldBeReturnBadRequest()
-    {
-        // Arrange
-        var message = new Message(Topic: "test", Payload: "test");
-
-        // Act
-        var response = await Client.PostAsJsonAsync("api/v1/mq", message);
-
-        // Assert
-        Assert.Equal(StatusCodes.Status400BadRequest, (int)response.StatusCode);
+        Assert.Equal(StatusCodes.Status201Created, (int)response.StatusCode);
     }
 
     [Fact]
     public async Task PublishMessage_IfMessageIsNull_ShouldBeReturnBadRequest()
     {
-        // Arrange
-        Client.DefaultRequestHeaders.Add("X-Tenant-Id", "tenant");
-
         // Act
         #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
         var response = await Client.PostAsJsonAsync("api/v1/mq", (Message)null);

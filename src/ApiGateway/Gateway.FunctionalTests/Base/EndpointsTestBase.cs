@@ -5,11 +5,8 @@ namespace ParusRx.Gateway.API.FunctionalTests.Base;
 
 public class EndpointsTestBase : IClassFixture<TestWebApplicationFactory<Program>>
 {
-    private readonly TestWebApplicationFactory<Program> _factory;
-
     public EndpointsTestBase(TestWebApplicationFactory<Program> factory)
     {
-        _factory = factory;
         Client = factory.CreateClient();
     }
 

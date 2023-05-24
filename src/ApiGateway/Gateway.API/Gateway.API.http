@@ -12,7 +12,6 @@ Accept: application/json
 
 POST {{Gateway_HostAddress}}/api/v1/mq
 Content-Type: application/json
-X-Tenant-Id: "Default"
 
 {
     "Topic": "topic",
