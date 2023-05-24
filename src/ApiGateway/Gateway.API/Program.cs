@@ -26,9 +26,7 @@ app.MapMq();
 
 app.Run();
 
-[JsonSerializable(typeof(Message[]))]
-[JsonSerializable(typeof(IntegrationEvent[]))]
-[JsonSerializable(typeof(IntegrationEvent))]
+[JsonSerializable(typeof(Message))]
 internal partial class AppJsonSerializerContext : JsonSerializerContext { }
 
 public partial class Program { }
