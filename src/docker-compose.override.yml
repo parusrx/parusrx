@@ -36,18 +36,35 @@ services:
   dadata:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://0.0.0.0:8080
       - TZ=${ORACLE_TZ:-Europe/Moscow}
       - Database__Provider=${DB_PROVIDER:-Oracle}
       - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
       - Urls__Suggestions=${SUGGESTIONS_URL:-https://suggestions.dadata.ru/suggestions/api/4_1/rs}
       - PATH_BASE=/dadata
     ports:
-      - "8005:8080"
+      - "8081:8080"
 
   dadata-dapr:
     command: ["./daprd",
       "-app-id", "dadata",
+      "-app-port", "8080",
+      "-components-path", "/components",
+      "-config", "/configuration/parusrx-config.yaml"
+      ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
+
+  hrlink:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PATH_BASE=/hrlink
+    ports:
+      - "8082:8080"
+
+  hrlink-dapr:
+    command: ["./daprd",
+      "-app-id", "hrlink",
       "-app-port", "8080",
       "-components-path", "/components",
       "-config", "/configuration/parusrx-config.yaml"

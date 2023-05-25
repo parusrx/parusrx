@@ -33,3 +33,15 @@ services:
     network_mode: "service:dadata"
     depends_on:
       - dadata
+
+  hrlink:
+    image: ${REGISTRY:-parusrx}/hrlink:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Services/HrLink/HrLink.API/Dockerfile
+
+  hrlink-dapr:
+    image: "daprio/daprd:1.10.0"
+    network_mode: "service:hrlink"
+    depends_on:
+      - hrlink

@@ -1,0 +1,11 @@
+@HRlink.API_HostAddress = http://localhost:5083
+
+Get {{HRlink.API_HostAddress}}/health
+Accept: application/json
+
+###
+
+GET {{HRlink.API_HostAddress}}/liveness
+Accept: application/json
+
+###
