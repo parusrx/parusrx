@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview-alpine AS base
+FROM mcr.microsoft.com/dotnet/runtime-deps:8.0-preview-alpine AS base
 WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0-preview-alpine AS build
@@ -11,10 +11,10 @@ WORKDIR /src
 COPY . .
 RUN dotnet publish "/src/Services/HRlink/HRlink.API/HRlink.API.csproj" -o /app/publish
 
-FROM base AS publish
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview-alpine AS publish
 WORKDIR /app
 COPY --from=build /app/publish .
-RUN rm *.pdb
+RUN rm *.dbg
 
 FROM base AS final
 WORKDIR /app
