@@ -33,7 +33,7 @@ services:
       - "./dapr/components/:/components"
       - "./dapr/configuration/:/configuration"
 
-  dadata-api:
+  dadata:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:8080
@@ -41,13 +41,13 @@ services:
       - Database__Provider=${DB_PROVIDER:-Oracle}
       - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
       - Urls__Suggestions=${SUGGESTIONS_URL:-https://suggestions.dadata.ru/suggestions/api/4_1/rs}
-      - PATH_BASE=/dadata-api
+      - PATH_BASE=/dadata
     ports:
       - "8005:8080"
 
-  dadata-api-dapr:
+  dadata-dapr:
     command: ["./daprd",
-      "-app-id", "dadata-api",
+      "-app-id", "dadata",
       "-app-port", "8080",
       "-components-path", "/components",
       "-config", "/configuration/parusrx-config.yaml"

@@ -11,7 +11,7 @@ services:
     image: "daprio/dapr:1.10.0"
 
   gateway:
-    image: ${REGISTRY:-parusrx}/parusrx-gateway:${TAG:-latest}
+    image: ${REGISTRY:-parusrx}/gateway:${TAG:-latest}
     build:
       context: .
       dockerfile: ApiGateway/Gateway.API/Dockerfile
@@ -22,14 +22,14 @@ services:
     depends_on:
       - gateway
 
-  dadata-api:
-    image: ${REGISTRY:-parusrx}/dadata-api:${TAG:-latest}
+  dadata:
+    image: ${REGISTRY:-parusrx}/dadata:${TAG:-latest}
     build:
       context: .
       dockerfile: Services/DaData/DaData.API/Dockerfile
 
-  dadata-api-dapr:
+  dadata-dapr:
     image: "daprio/daprd:1.10.0"
-    network_mode: "service:dadata-api"
+    network_mode: "service:dadata"
     depends_on:
-      - dadata-api
+      - dadata
