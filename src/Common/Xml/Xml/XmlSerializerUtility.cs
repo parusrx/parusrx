@@ -45,7 +45,7 @@ public static class XmlSerializerUtility
     public static T? Deserialize<T>(byte[] content)
         where T : class
     {
-        if (!content.Any())
+        if (content.Length == 0)
         {
             return null;
         }
