@@ -6,15 +6,27 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ServerGarbageCollection>false</ServerGarbageCollection>
     <InvariantGlobalization>true</InvariantGlobalization>
-    <PublishAot>true</PublishAot>
-    <RootNamespace>ParusRx.HRlink.API</RootNamespace>
+    <PublishAot>false</PublishAot>
+    <RootNamespace>ParusRx.HRLink.API</RootNamespace>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
     <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapr.AspNetCore" Version="1.11.0-rc01" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="HRLink.UnitTests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\EventBus\EventBus.csproj" />
+    <ProjectReference Include="..\..\..\Common\Storage\Storage.Oracle\Storage.Oracle.csproj" />
+    <ProjectReference Include="..\..\..\Common\Storage\Storage.Postgres\Storage.Postgres.csproj" />
+    <ProjectReference Include="..\..\..\Common\Xml\Xml\Xml.csproj" />
   </ItemGroup>
 
 </Project>

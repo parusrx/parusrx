@@ -1,0 +1,77 @@
+﻿// Copyright (c) Alexander Bocharov. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using Moq.Protected;
+using ParusRx.HRLink.API.EmployeeRoles;
+using ParusRx.HRLink.UnitTests.Helpers;
+
+namespace ParusRx.HRLink.UnitTests;
+
+public class EmployeeRolesClientTests
+{
+    [Fact]
+    public async Task GetEmployeeRolesAsync_ReturnsEmployeeRolesResponse()
+    {
+        // Arrange
+        const string url = "https://demo.hr-link.ru";
+        var expectedResponse = new EmployeeRolesResponse
+        {
+            Result = true,
+            EmployeeRoles = new List<EmployeeRole>
+            {
+                new EmployeeRole
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "Admin",
+                    Description = "Administrator"
+                }
+            }
+        };
+
+        var httpMessageHandler = HttpClientHelper.GetResults(expectedResponse);
+        var httpClient = new HttpClient(httpMessageHandler.Object);
+        var client = new EmployeeRolesClient(httpClient);
+
+        // Act
+        var response = await client.GetEmployeeRolesAsync(url, "3D95E05F-4B24-49B4-8369-A3CC58AFB1F6");
+
+        // Assert
+        Assert.NotNull(response);
+        httpMessageHandler
+            .Protected()
+            .Verify(
+                "SendAsync",
+                Times.Exactly(0),
+                ItExpr.Is<HttpRequestMessage>(
+                req => req.Method == HttpMethod.Get &&
+                req.RequestUri == new Uri(url)),
+            ItExpr.IsAny<CancellationToken>()
+            );
+    }
+
+    [Fact]
+    public async Task GetEmployeeRolesAsync_ThrowsArgumentNullException_WhenUrlIsNullOrEmpty()
+    {
+        // Arrange
+        var url = string.Empty;
+        var apiToken = "3D95E05F-4B24-49B4-8369-A3CC58AFB1F6";
+        var httpClient = new Mock<HttpClient>();
+        var client = new EmployeeRolesClient(httpClient.Object);
+
+        // Act & Assert
+        await Assert.ThrowsAsync<ArgumentNullException>(() => client.GetEmployeeRolesAsync(url, apiToken));
+    }
+
+    [Fact]
+    public async Task GetEmployeeRolesAsync_ThrowsArgumentNullException_WhenApiTokenIsNullOrEmpty()
+    {
+        // Arrange
+        var url = "https://demo.hr-link.ru";
+        var apiToken = string.Empty;
+        var httpClient = new Mock<HttpClient>();
+        var client = new EmployeeRolesClient(httpClient.Object);
+
+        // Act & Assert
+        await Assert.ThrowsAsync<ArgumentNullException>(() => client.GetEmployeeRolesAsync(url, apiToken));
+    }
+}

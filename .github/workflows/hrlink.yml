@@ -21,8 +21,8 @@ on:
 env:
   DOTNET_VERSION: '8.0.x'
   DOTNET_QUALITY: 'preview'
-  PROJECT_PATH: 'src/Services/HRlink'
-  TESTS_PATH: 'src/Services/HRlink'
+  PROJECT_PATH: 'src/Services/HRLink'
+  TESTS_PATH: 'src/Services/HRLink'
 
 jobs:
   ci:

@@ -38,7 +38,7 @@ services:
     image: ${REGISTRY:-parusrx}/hrlink:${TAG:-latest}
     build:
       context: .
-      dockerfile: Services/HrLink/HrLink.API/Dockerfile
+      dockerfile: Services/HRLink/HRLink.API/Dockerfile
 
   hrlink-dapr:
     image: "daprio/daprd:1.10.0"
