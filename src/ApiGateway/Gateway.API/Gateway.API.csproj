@@ -18,11 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="Gateway.UnitTests"/>
+    <InternalsVisibleTo Include="Gateway.FunctionalTests"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\EventBus\EventBus.csproj" />
+    <ProjectReference Include="..\..\Common\EventBus\EventBus.Dapr\EventBus.Dapr.csproj" />
+    <ProjectReference Include="..\..\Common\EventBus\EventBus\EventBus.csproj" />
   </ItemGroup>
 
 </Project>

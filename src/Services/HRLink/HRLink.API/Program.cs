@@ -8,6 +8,9 @@ var builder = WebApplication.CreateSlimBuilder(args);
 
 builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.TypeInfoResolverChain.Insert(0, EmployeeRolesJsonSerializerContext.Default));
 
+builder.Services.AddDaprClient();
+builder.Services.AddDaprEventBus();
+
 builder.Services.AddEmployeeRoles();
 
 // Data access

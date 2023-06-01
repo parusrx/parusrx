@@ -1,4 +1,4 @@
-// Copyright (c) Alexander Bocharov. All rights reserved.
+﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using ParusRx.EventBus.Events;
@@ -36,7 +36,7 @@ public class MultiTenancyMiddleware : IMiddleware
 
         if (context.Request.Method == "POST" && context.Request.Body.CanRead)
         {
-            var @event = await context.Request.ReadFromJsonAsync<MultitenantIntegrationEvent>();
+            var @event = await context.Request.ReadFromJsonAsync<MultiTenantIntegrationEvent>();
             var tenant = (_options.Value?.Tenants?.FirstOrDefault(t => t.Name == @event?.TenantId)) ?? throw new Exception($"Tenant {@event?.TenantId} not found.");
 
             // Set tenant for current thread

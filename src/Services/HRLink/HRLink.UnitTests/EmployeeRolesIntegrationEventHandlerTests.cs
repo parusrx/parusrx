@@ -11,7 +11,7 @@ public class EmployeeRolesIntegrationEventHandlerTests
     private readonly Mock<IEmployeeRolesClient> _mockClient;
     private readonly Mock<ILogger<EmployeeRolesIntegrationEventHandler>> _mockLogger;
     private readonly EmployeeRolesIntegrationEventHandler _handler;
-    private readonly IntegrationEvent _event;
+    private readonly MqIntegrationEvent _event;
     private readonly EmployeeRolesRequest _request;
     private readonly EmployeeRolesResponse _response;
 
@@ -23,7 +23,7 @@ public class EmployeeRolesIntegrationEventHandlerTests
 
         _handler = new EmployeeRolesIntegrationEventHandler(_mockStore.Object, _mockClient.Object, _mockLogger.Object);
 
-        _event = new IntegrationEvent { Payload = "1000" };
+        _event = new MqIntegrationEvent("1000");
 
         _request = new EmployeeRolesRequest
         {
@@ -56,7 +56,7 @@ public class EmployeeRolesIntegrationEventHandlerTests
         await _handler.HandleAsync(_event, cancellationToken);
 
         // Assert
-        _mockStore.Verify(x => x.ReadDataRequestAsync(_event.Payload), Times.Once);
+        _mockStore.Verify(x => x.ReadDataRequestAsync(_event.Body), Times.Once);
     }
 
     [Fact]
@@ -66,7 +66,7 @@ public class EmployeeRolesIntegrationEventHandlerTests
         var cancellationToken = CancellationToken.None;
         var data = XmlSerializerUtility.Serialize(_request);
 #pragma warning disable CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
-        _mockStore.Setup(x => x.ReadDataRequestAsync(_event.Payload)).ReturnsAsync(data);
+        _mockStore.Setup(x => x.ReadDataRequestAsync(_event.Body)).ReturnsAsync(data);
 #pragma warning restore CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
         _mockClient.Setup(x => x.GetEmployeeRolesAsync(_request.Url, _request.ApiToken, cancellationToken)).ReturnsAsync(_response);
 
@@ -84,18 +84,18 @@ public class EmployeeRolesIntegrationEventHandlerTests
         var cancellationToken = CancellationToken.None;
         var data = XmlSerializerUtility.Serialize(_request);
 #pragma warning disable CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
-        _mockStore.Setup(x => x.ReadDataRequestAsync(_event.Payload)).ReturnsAsync(data);
+        _mockStore.Setup(x => x.ReadDataRequestAsync(_event.Body)).ReturnsAsync(data);
 #pragma warning restore CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
         _mockClient.Setup(x => x.GetEmployeeRolesAsync(_request.Url, _request.ApiToken, cancellationToken)).ReturnsAsync(_response);
         var employeeRoleItems = _response.EmployeeRoles?.AsEmployeeRoleItems() ?? new();
         var response = XmlSerializerUtility.Serialize(employeeRoleItems) ?? Array.Empty<byte>();
-        _mockStore.Setup(x => x.SaveDataResponseAsync(_event.Payload, response)).Returns(Task.CompletedTask);
+        _mockStore.Setup(x => x.SaveDataResponseAsync(_event.Body, response)).Returns(Task.CompletedTask);
 
         // Act
         await _handler.HandleAsync(_event, cancellationToken);
 
         // Assert
-        _mockStore.Verify(x => x.SaveDataResponseAsync(_event.Payload, response), Times.Once);
+        _mockStore.Verify(x => x.SaveDataResponseAsync(_event.Body, response), Times.Once);
     }
 
     [Fact]
@@ -104,13 +104,13 @@ public class EmployeeRolesIntegrationEventHandlerTests
         // Arrange
         var cancellationToken = CancellationToken.None;
         var expectedException = new Exception("Test exception");
-        _mockStore.Setup(x => x.ReadDataRequestAsync(_event.Payload)).ThrowsAsync(expectedException);
+        _mockStore.Setup(x => x.ReadDataRequestAsync(_event.Body)).ThrowsAsync(expectedException);
 
         // Act
         await _handler.HandleAsync(_event, cancellationToken);
 
         // Act & Assert
-        _mockStore.Verify(x => x.ErrorAsync(_event.Payload, expectedException.Message), Times.Once);
+        _mockStore.Verify(x => x.ErrorAsync(_event.Body, expectedException.Message), Times.Once);
         _mockLogger.Verify(x => x.Log(
             It.Is<LogLevel>(l => l == LogLevel.Error),
             It.IsAny<EventId>(),

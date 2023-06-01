@@ -1,15 +1,19 @@
-// Copyright (c) Alexander Bocharov. All rights reserved.
+﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using ParusRx.EventBus.Abstractions;
+using ParusRx.EventBus.Events;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
 builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default));
 
 builder.Services.AddDaprClient();
-
-builder.Services.AddScoped<IEventBus, DaprEventBus>();
+builder.Services.AddDaprEventBus();
 
 builder.Services.AddHealthChecks()
     .AddCheck("self", () => HealthCheckResult.Healthy());
@@ -22,11 +26,19 @@ app.MapSubscribeHandler();
 app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true });
 app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Name.Contains("self") });
 
-app.MapMq();
+app.MapPost("api/v1/mq", async (MessageQueue message, [FromServices] IEventBus eventBus) =>
+{
+    var @event = new MqIntegrationEvent(message.Message);
+    await eventBus.PublishAsync(message.Topic, @event);
+
+    return TypedResults.Created();
+});
 
 app.Run();
 
-[JsonSerializable(typeof(Message))]
+internal sealed record MessageQueue(string Topic, string Message);
+
+[JsonSerializable(typeof(MessageQueue))]
 internal partial class AppJsonSerializerContext : JsonSerializerContext { }
 
 public partial class Program { }

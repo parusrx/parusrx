@@ -1,9 +1,9 @@
-// Copyright (c) Alexander Bocharov. All rights reserved.
+﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace ParusRx.DaData.API.Integration.Handlers;
 
-public class SuggestPartyIntegrationEventHandler : IIntegrationEventHandler
+public class SuggestPartyIntegrationEventHandler : IIntegrationEventHandler<MqIntegrationEvent>
 {
     private readonly ISuggestPartyIntegrationEventService _service;
     private readonly ILogger<SuggestPartyIntegrationEventHandler> _logger;
@@ -21,13 +21,13 @@ public class SuggestPartyIntegrationEventHandler : IIntegrationEventHandler
     }
 
     /// <inheritdoc />
-    public async Task HandleAsync(IntegrationEvent integrationEvent, CancellationToken cancellationToken = default)
+    public async Task HandleAsync(MqIntegrationEvent @event, CancellationToken cancellationToken = default)
     {
         using var scope = _logger.BeginScope("Handling integration event {IntegrationEventId} of type {IntegrationEventType}",
-            integrationEvent.Id, integrationEvent.GetType().Name);
+            @event.Id, @event.GetType().Name);
 
-        _logger.LogInformation("Handling integration event: {IntegrationEventId} - ({@IntegrationEvent})", integrationEvent.Id, integrationEvent);
+        _logger.LogInformation("Handling integration event: {IntegrationEventId} - ({@IntegrationEvent})", @event.Id, @event);
 
-        await _service.FindPartyByIdAsync(integrationEvent, cancellationToken); 
+        await _service.FindPartyByIdAsync(@event, cancellationToken); 
     }
 }

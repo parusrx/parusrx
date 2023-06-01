@@ -1,4 +1,4 @@
-// Copyright (c) Alexander Bocharov. All rights reserved.
+﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace ParusRx.Gateway.API.FunctionalTests;
@@ -14,7 +14,7 @@ public class MqEndpointTests : EndpointsTestBase
     public async Task PublishMessage_PostMethod_ShouldBeReturnOk()
     {
         // Arrange
-        var message = new Message(Topic: "test", Payload: "test");
+        var message = new MessageQueue(Topic: "test", Message: "test");
         
         // Act
         var response = await Client.PostAsJsonAsync("api/v1/mq", message);
@@ -28,7 +28,7 @@ public class MqEndpointTests : EndpointsTestBase
     {
         // Act
         #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-        var response = await Client.PostAsJsonAsync("api/v1/mq", (Message)null);
+        var response = await Client.PostAsJsonAsync("api/v1/mq", (MessageQueue)null);
         #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
         // Assert

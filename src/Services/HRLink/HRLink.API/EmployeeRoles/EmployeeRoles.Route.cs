@@ -19,7 +19,7 @@ internal static class EmployeeRolesApi
     {
         var group = routes.MapGroup("api/v1/employeeRoles");
 
-        group.MapPost("/", [Topic("pubsub", "EmployeeRolesIntegrationEvent")] async (IntegrationEvent @event, [FromServices] EmployeeRolesIntegrationEventHandler handler, CancellationToken cancellationToken) =>
+        group.MapPost("/", [Topic("pubsub", "EmployeeRolesIntegrationEvent")] async (MqIntegrationEvent @event, [FromServices] EmployeeRolesIntegrationEventHandler handler, CancellationToken cancellationToken) =>
         {
             await handler.HandleAsync(@event, cancellationToken);
 
@@ -30,7 +30,7 @@ internal static class EmployeeRolesApi
     }
 }
 
-[JsonSerializable(typeof(IntegrationEvent))]
+[JsonSerializable(typeof(MqIntegrationEvent))]
 internal partial class EmployeeRolesJsonSerializerContext : JsonSerializerContext
 {
 }

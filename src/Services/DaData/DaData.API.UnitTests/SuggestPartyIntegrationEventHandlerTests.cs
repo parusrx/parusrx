@@ -27,7 +27,7 @@ public class SuggestPartyIntegrationEventHandlerTests
     public async Task HandleAsync_ShouldCallFindPartyByIdAsync()
     {
         // Arrange
-        var @event = new IntegrationEvent { Payload = Guid.NewGuid().ToString() };
+        var @event = new MqIntegrationEvent(Guid.NewGuid().ToString());
         var cancellationToken = new CancellationToken();
 
         // Act
@@ -41,7 +41,7 @@ public class SuggestPartyIntegrationEventHandlerTests
     public async Task HandleAsync_ShouldLogInformation()
     {
         // Arrange
-        var @event = new IntegrationEvent { Payload = Guid.NewGuid().ToString() };
+        var @event = new MqIntegrationEvent(Guid.NewGuid().ToString());
         var cancellationToken = new CancellationToken();
 
         // Act

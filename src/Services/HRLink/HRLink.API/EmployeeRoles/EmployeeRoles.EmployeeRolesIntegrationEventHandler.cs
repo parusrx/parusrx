@@ -10,7 +10,7 @@ namespace ParusRx.HRLink.API.EmployeeRoles;
 /// <summary>
 /// The employee roles integration event handler.
 /// </summary>
-internal sealed class EmployeeRolesIntegrationEventHandler : IIntegrationEventHandler<IntegrationEvent>
+internal sealed class EmployeeRolesIntegrationEventHandler : IIntegrationEventHandler<MqIntegrationEvent>
 {
     private readonly IParusRxStore _store;
     private readonly IEmployeeRolesClient _client;
@@ -32,14 +32,14 @@ internal sealed class EmployeeRolesIntegrationEventHandler : IIntegrationEventHa
     }
 
     /// <inheritdoc/>
-    public async Task HandleAsync(IntegrationEvent @event, CancellationToken cancellationToken = default)
+    public async Task HandleAsync(MqIntegrationEvent @event, CancellationToken cancellationToken = default)
     {
         using var scope = _logger.BeginScope("Handling integration event {IntegrationEventId} of type {IntegrationEventType}", 
             @event.Id, @event.GetType().Name);
 
         _logger.LogInformation("Handling integration event: {IntegrationEventId} - ({@IntegrationEvent})", @event.Id, @event);
 
-        string id = @event.Payload;
+        string id = @event.Body;
 
         try
         {

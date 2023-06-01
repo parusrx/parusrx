@@ -9,9 +9,9 @@ using Evolve.Data.PostgreSQL;
 var builder = WebApplication.CreateSlimBuilder(args);
 
 builder.Services.AddDaprClient();
+builder.Services.AddDaprEventBus();
 
 builder.Services.Configure<DaDataSettings>(builder.Configuration.GetSection("URLs"));
-builder.Services.AddScoped<IEventBus, DaprEventBus>();
 
 // Application specified services
 builder.Services.AddHttpClient<ISuggestPartyService, SuggestPartyService>();
@@ -40,18 +40,6 @@ switch (provider)
         throw new NotSupportedException($"Database provider {provider} is not supported.");
 }
 
-// CORS
-const string corsPolicy = "CorsPolicy";
-builder.Services.AddCors(options =>
-            options.AddPolicy(name: corsPolicy,
-                corsPolicyBuilder =>
-                {
-                    corsPolicyBuilder.SetIsOriginAllowed((host) => true);
-                    corsPolicyBuilder.AllowAnyMethod();
-                    corsPolicyBuilder.AllowAnyHeader();
-                    corsPolicyBuilder.AllowCredentials();
-                }));
-
 // Health Checks
 builder.Services.AddHealthChecks()
     .AddCheck("self", () => HealthCheckResult.Healthy());
@@ -64,11 +52,10 @@ app.MapSubscribeHandler();
 app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true });
 app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Name.Contains("self") });
 
-app.MapPost("/api/v1/suggestions", [Topic("pubsub", "DaDataSuggestionsFindByIdPartyIntegrationEvent")] async (IntegrationEvent @event, IServiceProvider serviceProvider) =>
+app.MapPost("/api/v1/suggestions", [Topic("pubsub", "DaDataSuggestionsFindByIdPartyIntegrationEvent")] async (MqIntegrationEvent @event, SuggestPartyIntegrationEventHandler handler) =>
 {
-    var handler = serviceProvider.GetRequiredService<SuggestPartyIntegrationEventHandler>();
     await handler.HandleAsync(@event);
-    return Results.Ok();
+    return Results.Created();
 });
 
 app.Run();

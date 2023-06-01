@@ -1,7 +1,13 @@
-// Copyright (c) Alexander Bocharov. All rights reserved.
+﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRx.EventBus;
+using Dapr.Client;
+
+using Microsoft.Extensions.Logging;
+using ParusRx.EventBus.Abstractions;
+using ParusRx.EventBus.Events;
+
+namespace ParusRx.EventBus.Dapr;
 
 /// <summary>
 /// Defines the implementation of the event bus that uses Dapr pub/sub.

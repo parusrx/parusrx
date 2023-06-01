@@ -4,12 +4,10 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PublishTrimmed>true</PublishTrimmed>
-    <RootNamespace>ParusRx.EventBus</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapr.Client" Version="1.10.0" />
+    <ProjectReference Include="..\EventBus.Abstractions\EventBus.Abstraction.csproj" />
   </ItemGroup>
 
 </Project>

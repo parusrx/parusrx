@@ -1,4 +1,4 @@
-// Copyright (c) Alexander Bocharov. All rights reserved.
+﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using ParusRx.Xml;
@@ -28,9 +28,9 @@ public class SuggestPartyIntegrationEventService : ISuggestPartyIntegrationEvent
     }
 
     /// <inheritdoc/>
-    public async Task FindPartyByIdAsync(IntegrationEvent integrationEvent, CancellationToken cancellationToken = default)
+    public async Task FindPartyByIdAsync(MqIntegrationEvent @event, CancellationToken cancellationToken = default)
     {
-        string id = integrationEvent.Payload;
+        string id = @event.Body;
 
         try
         {
@@ -46,7 +46,7 @@ public class SuggestPartyIntegrationEventService : ISuggestPartyIntegrationEvent
         catch (Exception ex)
         {
             await _store.ErrorAsync(id, ex.Message);
-            _logger.LogError(ex, "Error while processing integration event {IntegrationEventId} of type {IntegrationEventType}: {message}", integrationEvent.Id, integrationEvent.GetType().Name, ex.Message);
+            _logger.LogError(ex, "Error while processing integration event {IntegrationEventId} of type {IntegrationEventType}: {message}", @event.Id, @event.GetType().Name, ex.Message);
         }
     }
 }
