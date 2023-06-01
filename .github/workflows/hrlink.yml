@@ -4,19 +4,19 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - 'src/Common/**'
-    #   - 'src/Services/HRlink/**'
-    #   - '.github/workflows/composite/**'
-    #   - '.github/workflows/hrlink.yml'
+    paths:
+      - 'src/Common/**'
+      - 'src/Services/HRlink/**'
+      - '.github/workflows/composite/**'
+      - '.github/workflows/hrlink.yml'
   pull_request:
     branches:
       - main
-    # paths:
-    #   - 'src/Common/**'
-    #   - 'src/Services/HRlink/**'
-    #   - '.github/workflows/composite/**'
-    #   - '.github/workflows/hrlink.yml'
+    paths:
+      - 'src/Common/**'
+      - 'src/Services/HRlink/**'
+      - '.github/workflows/composite/**'
+      - '.github/workflows/hrlink.yml'
 
 env:
   DOTNET_VERSION: '8.0.x'
