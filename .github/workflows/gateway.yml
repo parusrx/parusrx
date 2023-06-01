@@ -4,19 +4,19 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'src/Common/**'
-      - 'src/ApiGateway/**'
-      - '.github/workflows/composite/**'
-      - '.github/workflows/gateway.yml'
+    # paths:
+    #   - 'src/Common/**'
+    #   - 'src/ApiGateway/**'
+    #   - '.github/workflows/composite/**'
+    #   - '.github/workflows/gateway.yml'
   pull_request:
     branches:
       - main
-    paths:
-      - 'src/Common/**'
-      - 'src/ApiGateway/**'
-      - '.github/workflows/composite/**'
-      - '.github/workflows/gateway.yml'
+    # paths:
+    #   - 'src/Common/**'
+    #   - 'src/ApiGateway/**'
+    #   - '.github/workflows/composite/**'
+    #   - '.github/workflows/gateway.yml'
 
 env:
   DOTNET_VERSION: '8.0.x'

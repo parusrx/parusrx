@@ -4,17 +4,17 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'src/Common/MultiTenancy/**'
-      - '.github/workflows/composite/**'
-      - '.github/workflows/multitenancy.yml'
+    # paths:
+    #   - 'src/Common/MultiTenancy/**'
+    #   - '.github/workflows/composite/**'
+    #   - '.github/workflows/multitenancy.yml'
   pull_request:
     branches:
       - main
-    paths:
-      - 'src/Common/MultiTenancy/**'
-      - '.github/workflows/composite/**'
-      - '.github/workflows/multitenancy.yml'
+    # paths:
+    #   - 'src/Common/MultiTenancy/**'
+    #   - '.github/workflows/composite/**'
+    #   - '.github/workflows/multitenancy.yml'
 
 env:
   DOTNET_VERSION: '8.0.x'
