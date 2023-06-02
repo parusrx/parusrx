@@ -20,7 +20,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - PATH_BASE=/gateway
     ports:
-      - "8001:8080"
+      - "51001:8080"
 
   gateway-dapr:
     command: ["./daprd",
@@ -42,7 +42,7 @@ services:
       - Urls__Suggestions=${SUGGESTIONS_URL:-https://suggestions.dadata.ru/suggestions/api/4_1/rs}
       - PATH_BASE=/dadata
     ports:
-      - "8002:8080"
+      - "51002:8080"
 
   dadata-dapr:
     command: ["./daprd",
@@ -63,7 +63,7 @@ services:
       - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
       - PATH_BASE=/hrlink
     ports:
-      - "8003:8080"
+      - "51003:8080"
 
   hrlink-dapr:
     command: ["./daprd",
