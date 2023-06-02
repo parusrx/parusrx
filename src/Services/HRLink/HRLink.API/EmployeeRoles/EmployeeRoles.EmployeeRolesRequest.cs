@@ -6,6 +6,7 @@ namespace ParusRx.HRLink.API.EmployeeRoles;
 /// <summary>
 /// The employee roles request.
 /// </summary>
+[XmlRoot("employeeRolesRequest")]
 public sealed class EmployeeRolesRequest : BaseRequest
 {
 }
