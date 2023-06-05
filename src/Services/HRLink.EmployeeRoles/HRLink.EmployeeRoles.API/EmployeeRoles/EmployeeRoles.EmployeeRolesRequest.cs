@@ -7,6 +7,17 @@ namespace ParusRx.HRLink.EmployeeRoles.API;
 /// The employee roles request.
 /// </summary>
 [XmlRoot("employeeRolesRequest")]
-public sealed class EmployeeRolesRequest : BaseRequest
+public sealed class EmployeeRolesRequest
 {
+    /// <summary>
+    /// Gets or sets the URL.
+    /// </summary>
+    [XmlElement(ElementName = "url")]
+    public required string Url { get; set; }
+
+    /// <summary>
+    /// Gets or sets the API token.
+    /// </summary>
+    [XmlElement(ElementName = "apiToken")]
+    public required string ApiToken { get; set; }
 }
