@@ -4,14 +4,16 @@
 using Evolve.Data.Oracle;
 using Evolve.Data.PostgreSQL;
 
+using ParusRx.HRLink.EmployeeRole.API;
+
 var builder = WebApplication.CreateSlimBuilder(args);
 
-builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.TypeInfoResolverChain.Insert(0, EmployeeRolesJsonSerializerContext.Default));
+builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.TypeInfoResolverChain.Insert(0, EmployeeRoleJsonSerializerContext.Default));
 
 builder.Services.AddDaprClient();
 builder.Services.AddDaprEventBus();
 
-builder.Services.AddEmployeeRoles();
+builder.Services.AddEmployeeRoleServices();
 
 // Data access
 var provider = builder.Configuration["Database:Provider"];

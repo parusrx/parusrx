@@ -55,7 +55,7 @@ services:
       - "./dapr/components/:/components"
       - "./dapr/configuration/:/configuration"
 
-  hrlink-employee-roles:
+  hrlink-employee-role:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - TZ=${ORACLE_TZ:-Europe/Moscow}
@@ -65,9 +65,9 @@ services:
     ports:
       - "51003:8080"
 
-  hrlink-employee-roles-dapr:
+  hrlink-employee-role-dapr:
     command: ["./daprd",
-      "-app-id", "hrlink-employee-roles",
+      "-app-id", "hrlink-employee-role",
       "-app-port", "8080",
       "-components-path", "/components",
       "-config", "/configuration/parusrx-config.yaml"

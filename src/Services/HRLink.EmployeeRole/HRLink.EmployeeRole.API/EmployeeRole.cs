@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRx.HRLink.EmployeeRoles.API;
+namespace ParusRx.HRLink.EmployeeRole.API;
 
 /// <summary>
 /// The employee role.
 /// </summary>
-public class EmployeeRole
+public class EmployeeRoleItem
 {
     /// <summary>
     /// Gets or sets the employee role identifier.
@@ -21,13 +21,13 @@ public class EmployeeRole
     /// <summary>
     /// Gets or sets the employee role description.
     /// </summary>
-    public string Description { get; set; } = default!; 
+    public string Description { get; set; } = default!;
 }
 
 /// <summary>
 /// The employee role DTO.
 /// </summary>
-public class EmployeeRoleItem
+public class EmployeeRoleDto
 {
     /// <summary>
     /// Gets or sets the employee role identifier.
@@ -52,13 +52,13 @@ public class EmployeeRoleItem
 /// The employee roles DTO.
 /// </summary>
 [XmlRoot("employeeRoles")]
-public class EmployeeRoleItems
+public class EmployeeRolesDto
 {
     /// <summary>
     /// Gets or sets the employee roles.
     /// </summary>
     [XmlElement("employeeRole")]
-    public List<EmployeeRoleItem> EmployeeRoles { get; set; } = new();
+    public List<EmployeeRoleDto> EmployeeRoles { get; set; } = new();
 }
 
 /// <summary>
@@ -67,11 +67,11 @@ public class EmployeeRoleItems
 internal static class EmployeeRoleItemExtensions
 {
     /// <summary>
-    /// Convert <see cref="EmployeeRole"/> to <see cref="EmployeeRoleItem"/>.
+    /// Convert <see cref="EmployeeRoleItem"/> to <see cref="EmployeeRoleDto"/>.
     /// </summary>
-    /// <param name="employeeRole">The <see cref="EmployeeRole"/>.</param>
-    /// <returns>The <see cref="EmployeeRoleItem"/>.</returns>
-    public static EmployeeRoleItem AsEmployeeRoleItem(this EmployeeRole employeeRole)
+    /// <param name="employeeRole">The <see cref="EmployeeRoleItem"/>.</param>
+    /// <returns>The <see cref="EmployeeRoleDto"/>.</returns>
+    public static EmployeeRoleDto AsEmployeeRoleItem(this EmployeeRoleItem employeeRole)
         => new()
         {
             Id = employeeRole.Id,
@@ -86,13 +86,13 @@ internal static class EmployeeRoleItemExtensions
 internal static class EmployeeRoleItemsExtensions
 {
     /// <summary>
-    /// Convert <see cref="IEnumerable{EmployeeRole}"/> to <see cref="EmployeeRoleItems"/>.
+    /// Convert <see cref="IEnumerable{EmployeeRole}"/> to <see cref="EmployeeRolesDto"/>.
     /// </summary>
     /// <param name="employeeRoles">The <see cref="IEnumerable{EmployeeRole}"/>.</param>
-    /// <returns>The <see cref="EmployeeRoleItems"/>.</returns>
-    public static EmployeeRoleItems AsEmployeeRoleItems(this IEnumerable<EmployeeRole> employeeRoles)
+    /// <returns>The <see cref="EmployeeRolesDto"/>.</returns>
+    public static EmployeeRolesDto AsEmployeeRolesDto(this IEnumerable<EmployeeRoleItem> employeeRoles)
     {
-        var employeeRoleItems = new EmployeeRoleItems();
+        var employeeRoleItems = new EmployeeRolesDto();
         employeeRoleItems.EmployeeRoles.AddRange(employeeRoles.Select(x => x.AsEmployeeRoleItem()));
         return employeeRoleItems;
     }

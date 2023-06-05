@@ -5,26 +5,26 @@ using ParusRx.EventBus.Abstractions;
 using ParusRx.Storage;
 using ParusRx.Xml;
 
-namespace ParusRx.HRLink.EmployeeRoles.API;
+namespace ParusRx.HRLink.EmployeeRole.API;
 
 /// <summary>
-/// The employee roles integration event handler.
+/// The employee role integration event handler.
 /// </summary>
-internal sealed class EmployeeRolesIntegrationEventHandler : IIntegrationEventHandler<MqIntegrationEvent>
+internal sealed class EmployeeRoleIntegrationEventHandler : IIntegrationEventHandler<MqIntegrationEvent>
 {
     private readonly IParusRxStore _store;
-    private readonly IEmployeeRolesClient _client;
-    private readonly ILogger<EmployeeRolesIntegrationEventHandler> _logger;
+    private readonly IEmployeeRoleClient _client;
+    private readonly ILogger<EmployeeRoleIntegrationEventHandler> _logger;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EmployeeRolesIntegrationEventHandler"/> class.
+    /// Initializes a new instance of the <see cref="EmployeeRoleIntegrationEventHandler"/> class.
     /// </summary>
     /// <param name="store">The <see cref="IParusRxStore"/>.</param>
-    /// <param name="client">The <see cref="IEmployeeRolesClient"/>.</param>
+    /// <param name="client">The <see cref="IEmployeeRoleClient"/>.</param>
     /// <param name="logger">The logger to use.</param>
-    public EmployeeRolesIntegrationEventHandler(IParusRxStore store,
-        IEmployeeRolesClient client,
-        ILogger<EmployeeRolesIntegrationEventHandler> logger)
+    public EmployeeRoleIntegrationEventHandler(IParusRxStore store,
+        IEmployeeRoleClient client,
+        ILogger<EmployeeRoleIntegrationEventHandler> logger)
     {
         _store = store;
         _client = client;
@@ -34,7 +34,7 @@ internal sealed class EmployeeRolesIntegrationEventHandler : IIntegrationEventHa
     /// <inheritdoc/>
     public async Task HandleAsync(MqIntegrationEvent @event, CancellationToken cancellationToken = default)
     {
-        using var scope = _logger.BeginScope("Handling integration event {IntegrationEventId} of type {IntegrationEventType}", 
+        using var scope = _logger.BeginScope("Handling integration event {IntegrationEventId} of type {IntegrationEventType}",
             @event.Id, @event.GetType().Name);
 
         _logger.LogInformation("Handling integration event: {IntegrationEventId} - ({@IntegrationEvent})", @event.Id, @event);
@@ -49,7 +49,7 @@ internal sealed class EmployeeRolesIntegrationEventHandler : IIntegrationEventHa
             if (employeeRolesRequest is not null)
             {
                 var employeeRolesResponse = await _client.GetEmployeeRolesAsync(employeeRolesRequest.Url, employeeRolesRequest.ApiToken, cancellationToken);
-                var employeeRoleItems = employeeRolesResponse?.EmployeeRoles?.AsEmployeeRoleItems();
+                var employeeRoleItems = employeeRolesResponse?.EmployeeRoles?.AsEmployeeRolesDto();
                 if (employeeRoleItems is not null)
                 {
                     byte[]? response = XmlSerializerUtility.Serialize(employeeRoleItems);

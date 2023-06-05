@@ -1,16 +1,16 @@
 ﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using ParusRx.HRLink.EmployeeRoles.API;
+using ParusRx.HRLink.EmployeeRole.API;
 
-namespace ParusRx.HRLink.EmployeeRoles.UnitTests;
+namespace ParusRx.HRLink.EmployeeRole.UnitTests;
 
 public class EmployeeRolesIntegrationEventHandlerTests
 {
     private readonly Mock<IParusRxStore> _mockStore;
-    private readonly Mock<IEmployeeRolesClient> _mockClient;
-    private readonly Mock<ILogger<EmployeeRolesIntegrationEventHandler>> _mockLogger;
-    private readonly EmployeeRolesIntegrationEventHandler _handler;
+    private readonly Mock<IEmployeeRoleClient> _mockClient;
+    private readonly Mock<ILogger<EmployeeRoleIntegrationEventHandler>> _mockLogger;
+    private readonly EmployeeRoleIntegrationEventHandler _handler;
     private readonly MqIntegrationEvent _event;
     private readonly EmployeeRolesRequest _request;
     private readonly EmployeeRolesResponse _response;
@@ -18,10 +18,10 @@ public class EmployeeRolesIntegrationEventHandlerTests
     public EmployeeRolesIntegrationEventHandlerTests()
     {
         _mockStore = new Mock<IParusRxStore>();
-        _mockClient = new Mock<IEmployeeRolesClient>();
-        _mockLogger = new Mock<ILogger<EmployeeRolesIntegrationEventHandler>>();
+        _mockClient = new Mock<IEmployeeRoleClient>();
+        _mockLogger = new Mock<ILogger<EmployeeRoleIntegrationEventHandler>>();
 
-        _handler = new EmployeeRolesIntegrationEventHandler(_mockStore.Object, _mockClient.Object, _mockLogger.Object);
+        _handler = new EmployeeRoleIntegrationEventHandler(_mockStore.Object, _mockClient.Object, _mockLogger.Object);
 
         _event = new MqIntegrationEvent("1000");
 
@@ -34,9 +34,9 @@ public class EmployeeRolesIntegrationEventHandlerTests
         _response = new EmployeeRolesResponse
         {
             Result = true,
-            EmployeeRoles = new List<EmployeeRole>
+            EmployeeRoles = new List<EmployeeRoleItem>
             {
-                new EmployeeRole
+                new EmployeeRoleItem
                 {
                     Id = Guid.NewGuid().ToString(),
                     Name = "Admin",
@@ -87,7 +87,7 @@ public class EmployeeRolesIntegrationEventHandlerTests
         _mockStore.Setup(x => x.ReadDataRequestAsync(_event.Body)).ReturnsAsync(data);
 #pragma warning restore CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
         _mockClient.Setup(x => x.GetEmployeeRolesAsync(_request.Url, _request.ApiToken, cancellationToken)).ReturnsAsync(_response);
-        var employeeRoleItems = _response.EmployeeRoles?.AsEmployeeRoleItems() ?? new();
+        var employeeRoleItems = _response.EmployeeRoles?.AsEmployeeRolesDto() ?? new();
         var response = XmlSerializerUtility.Serialize(employeeRoleItems) ?? Array.Empty<byte>();
         _mockStore.Setup(x => x.SaveDataResponseAsync(_event.Body, response)).Returns(Task.CompletedTask);
 

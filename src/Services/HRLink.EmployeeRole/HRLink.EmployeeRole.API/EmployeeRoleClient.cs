@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRx.HRLink.EmployeeRoles.API;
+namespace ParusRx.HRLink.EmployeeRole.API;
 
 /// <summary>
 /// The employee role client.
 /// </summary>
-public interface IEmployeeRolesClient
+public interface IEmployeeRoleClient
 {
     /// <summary>
     /// Gets the employee roles from the HRLink API.
@@ -24,15 +24,15 @@ public interface IEmployeeRolesClient
 /// This implementation uses <see cref="HttpClient"/> to retrieve the employee roles from the HRLink API.
 /// </para>
 /// </summary>
-internal sealed class EmployeeRolesClient : IEmployeeRolesClient
+internal sealed class EmployeeRoleClient : IEmployeeRoleClient
 {
     private readonly HttpClient _httpClient;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EmployeeRolesClient"/> class.
+    /// Initializes a new instance of the <see cref="EmployeeRoleClient"/> class.
     /// </summary>
     /// <param name="httpClient">The HTTP client.</param>
-    public EmployeeRolesClient(HttpClient httpClient)
+    public EmployeeRoleClient(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="HRLink.EmployeeRoles.UnitTests" />
+    <InternalsVisibleTo Include="HRLink.EmployeeRole.UnitTests" />
   </ItemGroup>
 
   <ItemGroup>

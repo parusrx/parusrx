@@ -3,12 +3,12 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace ParusRx.HRLink.EmployeeRoles.API;
+namespace ParusRx.HRLink.EmployeeRole.API;
 
 /// <summary>
-/// The employee roles API route.
+/// The employee role API routes.
 /// </summary>
-internal static class EmployeeRolesApi
+internal static class EmployeeRoleRoutes
 {
     /// <summary>
     /// Creates a <see cref="RouteGroupBuilder"/> for the employee roles API.
@@ -19,7 +19,7 @@ internal static class EmployeeRolesApi
     {
         var group = routes.MapGroup("api/v1/employeeRoles");
 
-        group.MapPost("/", [Topic("pubsub", "EmployeeRolesIntegrationEvent")] async (MqIntegrationEvent @event, [FromServices] EmployeeRolesIntegrationEventHandler handler, CancellationToken cancellationToken) =>
+        group.MapPost("/", [Topic("pubsub", "EmployeeRolesIntegrationEvent")] async (MqIntegrationEvent @event, [FromServices] EmployeeRoleIntegrationEventHandler handler, CancellationToken cancellationToken) =>
         {
             await handler.HandleAsync(@event, cancellationToken);
 
@@ -31,6 +31,6 @@ internal static class EmployeeRolesApi
 }
 
 [JsonSerializable(typeof(MqIntegrationEvent))]
-internal partial class EmployeeRolesJsonSerializerContext : JsonSerializerContext
+internal partial class EmployeeRoleJsonSerializerContext : JsonSerializerContext
 {
 }

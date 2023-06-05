@@ -9,7 +9,7 @@ RUN apk add clang build-base zlib-dev
 WORKDIR /src
 
 COPY . .
-RUN dotnet publish "/src/Services/HRLink.EmployeeRoles/HRLink.EmployeeRoles.API/HRLink.EmployeeRoles.API.csproj" -o /app/publish
+RUN dotnet publish "/src/Services/HRLink.EmployeeRole/HRLink.EmployeeRole.API/HRLink.EmployeeRole.API.csproj" -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview-alpine AS publish
 WORKDIR /app
@@ -21,4 +21,4 @@ WORKDIR /app
 COPY --from=publish /app .
 USER $APP_UID
 HEALTHCHECK CMD wget -q0- -t1 http://localhost:8080/health || exit 1
-ENTRYPOINT ["./HRLink.EmployeeRoles.API"]
+ENTRYPOINT ["./HRLink.EmployeeRole.API"]

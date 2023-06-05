@@ -3,12 +3,12 @@
 
 using Moq.Protected;
 
-using ParusRx.HRLink.EmployeeRoles.API;
-using ParusRx.HRLink.EmployeeRoles.UnitTests.Helpers;
+using ParusRx.HRLink.EmployeeRole.API;
+using ParusRx.HRLink.EmployeeRole.UnitTests.Helpers;
 
-namespace ParusRx.HRLink.UnitTests;
+namespace ParusRx.HRLink.EmployeeRole.UnitTests;
 
-public class EmployeeRolesClientTests
+public class EmployeeRoleClientTests
 {
     [Fact]
     public async Task GetEmployeeRolesAsync_ReturnsEmployeeRolesResponse()
@@ -18,9 +18,9 @@ public class EmployeeRolesClientTests
         var expectedResponse = new EmployeeRolesResponse
         {
             Result = true,
-            EmployeeRoles = new List<EmployeeRole>
+            EmployeeRoles = new List<EmployeeRoleItem>
             {
-                new EmployeeRole
+                new EmployeeRoleItem
                 {
                     Id = Guid.NewGuid().ToString(),
                     Name = "Admin",
@@ -31,7 +31,7 @@ public class EmployeeRolesClientTests
 
         var httpMessageHandler = HttpClientHelper.GetResults(expectedResponse);
         var httpClient = new HttpClient(httpMessageHandler.Object);
-        var client = new EmployeeRolesClient(httpClient);
+        var client = new EmployeeRoleClient(httpClient);
 
         // Act
         var response = await client.GetEmployeeRolesAsync(url, "3D95E05F-4B24-49B4-8369-A3CC58AFB1F6");
@@ -57,7 +57,7 @@ public class EmployeeRolesClientTests
         var url = string.Empty;
         var apiToken = "3D95E05F-4B24-49B4-8369-A3CC58AFB1F6";
         var httpClient = new Mock<HttpClient>();
-        var client = new EmployeeRolesClient(httpClient.Object);
+        var client = new EmployeeRoleClient(httpClient.Object);
 
         // Act & Assert
         await Assert.ThrowsAsync<ArgumentNullException>(() => client.GetEmployeeRolesAsync(url, apiToken));
@@ -70,7 +70,7 @@ public class EmployeeRolesClientTests
         var url = "https://demo.hr-link.ru";
         var apiToken = string.Empty;
         var httpClient = new Mock<HttpClient>();
-        var client = new EmployeeRolesClient(httpClient.Object);
+        var client = new EmployeeRoleClient(httpClient.Object);
 
         // Act & Assert
         await Assert.ThrowsAsync<ArgumentNullException>(() => client.GetEmployeeRolesAsync(url, apiToken));

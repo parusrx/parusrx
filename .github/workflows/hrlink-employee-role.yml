@@ -6,23 +6,23 @@ on:
       - main
     paths:
       - 'src/Common/**'
-      - 'src/Services/HRlink.EmployeeRoles/**'
+      - 'src/Services/HRlink.EmployeeRole/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/hrlink-employee-roles.yml'
+      - '.github/workflows/hrlink-employee-role.yml'
   pull_request:
     branches:
       - main
     paths:
       - 'src/Common/**'
-      - 'src/Services/HRlink.EmployeeRoles/**'
+      - 'src/Services/HRlink.EmployeeRole/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/hrlink-employee-roles.yml'
+      - '.github/workflows/hrlink-employee-role.yml'
 
 env:
   DOTNET_VERSION: '8.0.x'
   DOTNET_QUALITY: 'preview'
-  PROJECT_PATH: 'src/Services/HRLink.EmployeeRoles'
-  TESTS_PATH: 'src/Services/HRLink.EmployeeRoles'
+  PROJECT_PATH: 'src/Services/HRLink.EmployeeRole'
+  TESTS_PATH: 'src/Services/HRLink.EmployeeRole'
 
 jobs:
   ci:
