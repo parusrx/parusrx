@@ -7,7 +7,6 @@
     <ServerGarbageCollection>false</ServerGarbageCollection>
     <InvariantGlobalization>true</InvariantGlobalization>
     <PublishAot>false</PublishAot>
-    <RootNamespace>ParusRx.HRLink.API</RootNamespace>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
     <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
@@ -19,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="HRLink.UnitTests" />
+    <InternalsVisibleTo Include="HRLink.EmployeeRoles.UnitTests" />
   </ItemGroup>
 
   <ItemGroup>

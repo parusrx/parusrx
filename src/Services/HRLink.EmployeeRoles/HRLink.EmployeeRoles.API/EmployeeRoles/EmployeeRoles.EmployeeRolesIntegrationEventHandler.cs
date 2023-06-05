@@ -5,7 +5,7 @@ using ParusRx.EventBus.Abstractions;
 using ParusRx.Storage;
 using ParusRx.Xml;
 
-namespace ParusRx.HRLink.API.EmployeeRoles;
+namespace ParusRx.HRLink.EmployeeRoles.API;
 
 /// <summary>
 /// The employee roles integration event handler.

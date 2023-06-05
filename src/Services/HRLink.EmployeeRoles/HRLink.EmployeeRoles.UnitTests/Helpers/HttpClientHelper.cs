@@ -8,7 +8,7 @@ using Moq.Protected;
 
 using Newtonsoft.Json;
 
-namespace ParusRx.HRLink.UnitTests.Helpers;
+namespace ParusRx.HRLink.EmployeeRoles.UnitTests.Helpers;
 
 public class HttpClientHelper
 {

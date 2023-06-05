@@ -56,11 +56,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Dapr", "Common\Eve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Abstraction", "Common\EventBus\EventBus.Abstractions\EventBus.Abstraction.csproj", "{F30DB50A-D8A8-4995-B031-3B179D8DF613}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HRLink", "HRLink", "{A23DF9FA-430A-430A-9BE9-89066AEFB896}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HRLink.EmployeeRoles", "HRLink.EmployeeRoles", "{A23DF9FA-430A-430A-9BE9-89066AEFB896}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRLink.API", "Services\HRLink\HRLink.API\HRLink.API.csproj", "{1AE3B659-1F59-4282-A36B-BCF1CEB99411}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRLink.EmployeeRoles.API", "Services\HRLink.EmployeeRoles\HRLink.EmployeeRoles.API\HRLink.EmployeeRoles.API.csproj", "{1AE3B659-1F59-4282-A36B-BCF1CEB99411}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRLink.UnitTests", "Services\HRLink\HRLink.UnitTests\HRLink.UnitTests.csproj", "{11C36FE0-BB6E-439B-844A-AF5E710A97B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRLink.EmployeeRoles.UnitTests", "Services\HRLink.EmployeeRoles\HRLink.EmployeeRoles.UnitTests\HRLink.EmployeeRoles.UnitTests.csproj", "{11C36FE0-BB6E-439B-844A-AF5E710A97B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

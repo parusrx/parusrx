@@ -1,0 +1,22 @@
+@HRLink.EmployeeRoles.API_HostAddress = http://localhost:8003
+
+Get {{HRLink.EmployeeRoles.API_HostAddress}}/health
+Accept: application/json
+
+###
+
+GET {{HRLink.EmployeeRoles.API_HostAddress}}/liveness
+Accept: application/json
+
+###
+
+POST {{HRLink.EmployeeRoles.API_HostAddress}}/api/v1/employeeRoles
+Content-Type: application/json
+
+{
+  "Id": "15AF3953-0775-48B1-A482-EB11986C3828",
+  "CreationDate": "2023-05-31T00:00:00.1192234Z",
+  "Payload": "123"
+}
+
+###

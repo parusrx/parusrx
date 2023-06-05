@@ -34,14 +34,14 @@ services:
     depends_on:
       - dadata
 
-  hrlink:
-    image: ${REGISTRY:-parusrx}/hrlink:${TAG:-latest}
+  hrlink-employee-roles:
+    image: ${REGISTRY:-parusrx}/hrlink-employee-roles:${TAG:-latest}
     build:
       context: .
-      dockerfile: Services/HRLink/HRLink.API/Dockerfile
+      dockerfile: Services/HRLink.EmployeeRoles/HRLink.EmployeeRoles.API/Dockerfile
 
-  hrlink-dapr:
+  hrlink-employee-roles-dapr:
     image: "daprio/daprd:1.10.0"
-    network_mode: "service:hrlink"
+    network_mode: "service:hrlink-employee-roles"
     depends_on:
-      - hrlink
+      - hrlink-employee-roles

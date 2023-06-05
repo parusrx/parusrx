@@ -10,4 +10,4 @@ global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 global using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 global using ParusRx.EventBus.Events;
-global using ParusRx.HRLink.API.EmployeeRoles;
+global using ParusRx.HRLink.EmployeeRoles.API;

@@ -3,7 +3,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace ParusRx.HRLink.API.EmployeeRoles;
+namespace ParusRx.HRLink.EmployeeRoles.API;
 
 /// <summary>
 /// The employee roles API route.

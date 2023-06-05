@@ -6,7 +6,6 @@
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <RootNamespace>ParusRx.HRLink.UnitTests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HRLink.API\HRLink.API.csproj" />
+    <ProjectReference Include="..\HRLink.EmployeeRoles.API\HRLink.EmployeeRoles.API.csproj" />
   </ItemGroup>
 
 </Project>

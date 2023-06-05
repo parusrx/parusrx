@@ -2,8 +2,9 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using Moq.Protected;
-using ParusRx.HRLink.API.EmployeeRoles;
-using ParusRx.HRLink.UnitTests.Helpers;
+
+using ParusRx.HRLink.EmployeeRoles.API;
+using ParusRx.HRLink.EmployeeRoles.UnitTests.Helpers;
 
 namespace ParusRx.HRLink.UnitTests;
 

@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using ParusRx.HRLink.API.EmployeeRoles;
+using ParusRx.HRLink.EmployeeRoles.API;
 
-namespace ParusRx.HRLink.UnitTests;
+namespace ParusRx.HRLink.EmployeeRoles.UnitTests;
 
 public class EmployeeRolesIntegrationEventHandlerTests
 {

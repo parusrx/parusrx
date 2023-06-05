@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRx.HRLink.API.EmployeeRoles;
+namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
 /// Extension methods for setting up employee roles services in an <see cref="IServiceCollection"/>.
