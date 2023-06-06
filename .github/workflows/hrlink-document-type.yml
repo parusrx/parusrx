@@ -1,0 +1,39 @@
+name: 'hrlink-document-type'
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/Common/**'
+      - 'src/Services/HRlink.DocumentType/**'
+      - '.github/workflows/composite/**'
+      - '.github/workflows/hrlink-document-type.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/Common/**'
+      - 'src/Services/HRlink.DocumentType/**'
+      - '.github/workflows/composite/**'
+      - '.github/workflows/hrlink-document-type.yml'
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  DOTNET_QUALITY: 'preview'
+  PROJECT_PATH: 'src/Services/HRLink.DocumentType'
+  TESTS_PATH: 'src/Services/HRLink.DocumentType'
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build and Test
+        uses: ./.github/workflows/composite/build-test
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-quality: ${{ env.DOTNET_QUALITY }}
+          project_path: ${{ env.PROJECT_PATH }}
+          tests_path: ${{ env.TESTS_PATH }}

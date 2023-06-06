@@ -75,3 +75,24 @@ services:
     volumes:
       - "./dapr/components/:/components"
       - "./dapr/configuration/:/configuration"
+
+  hrlink-document-type:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TZ=${ORACLE_TZ:-Europe/Moscow}
+      - Database__Provider=${DB_PROVIDER:-Oracle}
+      - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
+      - PATH_BASE=/hrlink-document-types
+    ports:
+      - "51004:8080"
+
+  hrlink-document-type-dapr:
+    command: ["./daprd",
+      "-app-id", "hrlink-document-type",
+      "-app-port", "8080",
+      "-components-path", "/components",
+      "-config", "/configuration/parusrx-config.yaml"
+      ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"

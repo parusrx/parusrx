@@ -62,6 +62,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRLink.EmployeeRole.API", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRLink.EmployeeRole.UnitTests", "Services\HRLink.EmployeeRole\HRLink.EmployeeRole.UnitTests\HRLink.EmployeeRole.UnitTests.csproj", "{11C36FE0-BB6E-439B-844A-AF5E710A97B9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HRLink.DocumentType", "HRLink.DocumentType", "{E9CD9462-AF11-47DB-B48E-3FE538189A1A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRLink.DocumentType.API", "Services\HRLink.DocumentType\HRLink.DocumentType.API\HRLink.DocumentType.API.csproj", "{F3666299-3CFA-4F91-88FA-A3B69B47BCD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRLink.DocumentType.FunctionalTests", "Services\HRLink.DocumentType\HRLink.DocumentType.FunctionalTests\HRLink.DocumentType.FunctionalTests.csproj", "{196628C7-F185-4763-8688-B2B3D9EF9FDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -140,6 +146,14 @@ Global
 		{11C36FE0-BB6E-439B-844A-AF5E710A97B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11C36FE0-BB6E-439B-844A-AF5E710A97B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11C36FE0-BB6E-439B-844A-AF5E710A97B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3666299-3CFA-4F91-88FA-A3B69B47BCD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3666299-3CFA-4F91-88FA-A3B69B47BCD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3666299-3CFA-4F91-88FA-A3B69B47BCD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3666299-3CFA-4F91-88FA-A3B69B47BCD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{196628C7-F185-4763-8688-B2B3D9EF9FDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{196628C7-F185-4763-8688-B2B3D9EF9FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{196628C7-F185-4763-8688-B2B3D9EF9FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{196628C7-F185-4763-8688-B2B3D9EF9FDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -168,6 +182,9 @@ Global
 		{A23DF9FA-430A-430A-9BE9-89066AEFB896} = {0E93DF04-3130-43AB-8F12-ED23AB12B29A}
 		{1AE3B659-1F59-4282-A36B-BCF1CEB99411} = {A23DF9FA-430A-430A-9BE9-89066AEFB896}
 		{11C36FE0-BB6E-439B-844A-AF5E710A97B9} = {A23DF9FA-430A-430A-9BE9-89066AEFB896}
+		{E9CD9462-AF11-47DB-B48E-3FE538189A1A} = {0E93DF04-3130-43AB-8F12-ED23AB12B29A}
+		{F3666299-3CFA-4F91-88FA-A3B69B47BCD6} = {E9CD9462-AF11-47DB-B48E-3FE538189A1A}
+		{196628C7-F185-4763-8688-B2B3D9EF9FDE} = {E9CD9462-AF11-47DB-B48E-3FE538189A1A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {641A00EC-0E84-42C7-A30E-A6D8AFF7C984}
