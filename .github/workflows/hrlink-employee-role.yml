@@ -1,4 +1,4 @@
-name: 'hrlink'
+name: 'hrlink-employee-role'
 
 on:
   push:
