@@ -1,10 +1,13 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview-alpine AS base
-WORKDIR /app
+# FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview-alpine AS base
+# WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0-preview-alpine AS build
 
 # Install Native AOT build prerequisites
 RUN apk add clang build-base zlib-dev
+
+ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 \
+    SuppressNETCoreSdkPreviewMessage=true
 
 WORKDIR /src
 
@@ -14,9 +17,11 @@ RUN dotnet publish "/src/Services/HRLink.DocumentType/HRLink.DocumentType.API/HR
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview-alpine AS publish
 WORKDIR /app
 COPY --from=build /app/publish .
-RUN rm *.pdb
+RUN rm *.dbg
+# RUN rm *.pdb
 
-FROM base AS final
+# FRM base AS final
+FROM mcr.microsoft.com/dotnet/runtime-deps:8.0-preview-alpine
 WORKDIR /app
 COPY --from=publish /app .
 USER $APP_UID

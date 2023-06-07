@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ServerGarbageCollection>false</ServerGarbageCollection>
     <InvariantGlobalization>true</InvariantGlobalization>
-    <!--<PublishAot>true</PublishAot>-->
+    <PublishAot>true</PublishAot>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
     <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
@@ -15,10 +15,6 @@
   <ItemGroup>
     <PackageReference Include="Dapr.AspNetCore" Version="1.11.0-rc01" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <InternalsVisibleTo Include="HRLink.DocumentType.Tests" />
   </ItemGroup>
 
   <ItemGroup>
