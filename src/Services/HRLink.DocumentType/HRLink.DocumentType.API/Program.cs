@@ -1,20 +1,29 @@
 ﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
+
+using Dapr;
 
 using Evolve.Data.Oracle;
 using Evolve.Data.PostgreSQL;
 
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 using ParusRx.EventBus.Events;
 using ParusRx.Storage;
+using ParusRx.Storage.Oracle;
+using ParusRx.Storage.Postgres;
 using ParusRx.Xml;
 
 var builder = WebApplication.CreateSlimBuilder(args);
+
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default);
+});
 
 builder.Services.AddDaprClient();
 builder.Services.AddDaprEventBus();
@@ -28,9 +37,11 @@ switch (provider)
 {
     case "Oracle":
         builder.Services.AddEvolveDataAccess(options => options.UseOracle(connectionString));
+        builder.Services.AddScoped<IParusRxStore, OracleParusRxStore>();
         break;
     case "Postgres":
         builder.Services.AddEvolveDataAccess(options => options.UsePostgreSql(connectionString));
+        builder.Services.AddScoped<IParusRxStore, PostgresParusRxStore>();
         break;
     default:
         throw new NotSupportedException($"Database provider \"{provider}\" is not supported.");
@@ -47,10 +58,10 @@ app.MapSubscribeHandler();
 app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true });
 app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Name.Contains("self") });
 
-app.MapPost("api/v1/documentTypes", async (MqIntegrationEvent @event, IHttpClientFactory httpClientFactory, [FromServices] IParusRxStore store) =>
+app.MapPost("api/v1/documentTypes", [Topic("pubsub", "DocumentTypesIntegrationEvent")] async (MqIntegrationEvent @event, IHttpClientFactory httpClientFactory, IParusRxStore store) =>
 {
     app.Logger.LogInformation("Handling integration event: {IntegrationEventId} - {IntegrationEvent}", @event.Id, @event);
-
+    
     string id = @event.Body;
     try
     {
@@ -85,10 +96,10 @@ app.MapPost("api/v1/documentTypes", async (MqIntegrationEvent @event, IHttpClien
 
 app.Run();
 
-internal sealed record DocumentTypeItem(string Id, string Name, bool Visible, bool System, string? ExternalId, int Version);
+public sealed record DocumentTypeItem(string Id, string Name, bool Visible, bool System, string? ExternalId, int Version);
 
 [XmlRoot("documentTypesRequest")]
-internal sealed record DocumentTypesRequest
+public sealed record DocumentTypesRequest
 {
     [XmlElement("url")]
     public required string Url { get; set; }
@@ -96,13 +107,13 @@ internal sealed record DocumentTypesRequest
     public required string ApiToken { get; set; }
 }
 
-internal sealed record DocumentTypesResponse
+public sealed record DocumentTypesResponse
 {
     public required bool Result { get; set; }
     public required IEnumerable<DocumentTypeItem> DocumentTypes { get; set; } = Enumerable.Empty<DocumentTypeItem>();
 }
 
-internal class DocumentTypeDto
+public class DocumentTypeDto
 {
     [XmlAttribute("id")]
     public string Id { get; set; } = default!;
@@ -119,7 +130,7 @@ internal class DocumentTypeDto
 }
 
 [XmlRoot("documentTypes")]
-internal class DocumentTypesDto
+public class DocumentTypesDto
 {
     [XmlElement("documentType")]
     public List<DocumentTypeDto> DocumentTypes { get; set; } = new();
@@ -148,5 +159,11 @@ internal static class DocumentTypeItemsExtensions
         return documentTypesDto;
     }
 }
+
+[JsonSerializable(typeof(MqIntegrationEvent))]
+[JsonSerializable(typeof(DocumentTypeItem))]
+[JsonSerializable(typeof(DocumentTypeItem[]))]
+[JsonSerializable(typeof(DocumentTypesResponse))]
+internal partial class AppJsonSerializerContext : JsonSerializerContext { }
 
 public partial class Program { }

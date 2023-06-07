@@ -16,7 +16,7 @@ Content-Type: application/json
 {
   "Id": "15AF3953-0775-48B1-A482-EB11986C3828",
   "CreationDate": "2023-05-31T00:00:00.1192234Z",
-  "Payload": "123"
+  "Body": "123"
 }
 
 ###
