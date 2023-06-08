@@ -73,7 +73,7 @@ app.MapPost("api/v1/documentTypes", [Topic("pubsub", "DocumentTypesIntegrationEv
             httpClient.BaseAddress = new Uri(documentTypesRequest.Url);
             httpClient.DefaultRequestHeaders.Add("User-Api-Token", documentTypesRequest.ApiToken);
 
-            var documentTypesResponse = await httpClient.GetFromJsonAsync<DocumentTypesResponse>("api/v1/documentTypes");
+            var documentTypesResponse = await httpClient.GetFromJsonAsync("api/v1/documentTypes", AppJsonSerializerContext.Default.DocumentTypesResponse);
             var documentTypesDto = documentTypesResponse?.DocumentTypes?.AsDocumentTypesDto();
             if (documentTypesDto is not null)
             {
@@ -102,15 +102,15 @@ public sealed record DocumentTypeItem(string Id, string Name, bool Visible, bool
 public sealed record DocumentTypesRequest
 {
     [XmlElement("url")]
-    public required string Url { get; set; }
+    public required string Url { get; init; }
     [XmlElement("apiToken")]
-    public required string ApiToken { get; set; }
+    public required string ApiToken { get; init; }
 }
 
 public sealed record DocumentTypesResponse
 {
-    public required bool Result { get; set; }
-    public required IEnumerable<DocumentTypeItem> DocumentTypes { get; set; } = Enumerable.Empty<DocumentTypeItem>();
+    public required bool Result { get; init; }
+    public required IEnumerable<DocumentTypeItem>? DocumentTypes { get; init; }
 }
 
 public class DocumentTypeDto
@@ -160,9 +160,12 @@ internal static class DocumentTypeItemsExtensions
     }
 }
 
+[JsonSourceGenerationOptions(
+    GenerationMode = JsonSourceGenerationMode.Metadata, 
+    PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase, 
+    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull)]
 [JsonSerializable(typeof(MqIntegrationEvent))]
 [JsonSerializable(typeof(DocumentTypeItem))]
-[JsonSerializable(typeof(DocumentTypeItem[]))]
 [JsonSerializable(typeof(DocumentTypesResponse))]
 internal partial class AppJsonSerializerContext : JsonSerializerContext { }
 

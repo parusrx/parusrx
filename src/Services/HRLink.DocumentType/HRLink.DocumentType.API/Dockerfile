@@ -1,6 +1,3 @@
-# FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview-alpine AS base
-# WORKDIR /app
-
 FROM mcr.microsoft.com/dotnet/sdk:8.0-preview-alpine AS build
 
 # Install Native AOT build prerequisites
@@ -17,10 +14,9 @@ RUN dotnet publish "/src/Services/HRLink.DocumentType/HRLink.DocumentType.API/HR
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview-alpine AS publish
 WORKDIR /app
 COPY --from=build /app/publish .
+RUN rm *.pdb
 RUN rm *.dbg
-# RUN rm *.pdb
 
-# FRM base AS final
 FROM mcr.microsoft.com/dotnet/runtime-deps:8.0-preview-alpine
 WORKDIR /app
 COPY --from=publish /app .
