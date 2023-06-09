@@ -23,7 +23,7 @@ namespace ParusRx.HRLink.DocumentType.FunctionalTests;
 public class DocumentTypeEndpointsTests
 {
     [Fact]
-    public async void GetHealthCheck_ReturnsOk()
+    public async void GetHealthChecks_ReturnsOk()
     {
         // Arrange
         await using var application = new DocumentTypeApplication();
@@ -37,7 +37,7 @@ public class DocumentTypeEndpointsTests
     }
 
     [Fact]
-    public async void GetLiveCheck_ReturnsOk()
+    public async void GetLiveness_ReturnsOk()
     {
         // Arrange
         await using var application = new DocumentTypeApplication();
@@ -83,7 +83,7 @@ public class DocumentTypeEndpointsTests
                     new DocumentTypeItem("D2B76838-8DAE-4D22-ABD9-52AB0B056DE7", "Document type 2", true, true, null, 1),
                     new DocumentTypeItem("9340FC1A-1C04-4E13-A1E4-FCF326E45333", "Document type 3", true, true, null, 1),
                     new DocumentTypeItem("A9303F9E-4E2D-487D-80C5-44BD1E408ECE", "Document type 4", true, true, null, 1)
-            }
+                }
             };
 
             var mockResponse = new HttpResponseMessage()
@@ -101,7 +101,8 @@ public class DocumentTypeEndpointsTests
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
                     ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(mockResponse);
+                .ReturnsAsync(mockResponse)
+                .Verifiable();
 
             var httpClient = new HttpClient(httpMessageHandler.Object);
 
@@ -110,10 +111,9 @@ public class DocumentTypeEndpointsTests
 
             var store = new Mock<IParusRxStore>();
 #pragma warning disable CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
-            store.Setup(x => x.ReadDataRequestAsync(It.IsAny<string>())).ReturnsAsync(XmlSerializerUtility.Serialize(documentTypeRequest));
+            store.Setup(_ => _.ReadDataRequestAsync(It.IsAny<string>())).ReturnsAsync(XmlSerializerUtility.Serialize(documentTypeRequest));
 #pragma warning restore CS8620 // Argument cannot be used for parameter due to differences in the nullability of reference types.
-            store.Setup(x => x.SaveDataResponseAsync(It.IsAny<string>(), It.IsAny<byte[]>())).Returns(Task.CompletedTask);
-
+            store.Setup(_ => _.SaveDataResponseAsync(It.IsAny<string>(), It.IsAny<byte[]>())).Returns(Task.CompletedTask);
 
             builder.ConfigureServices(services =>
             {

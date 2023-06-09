@@ -1,3 +1,6 @@
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview-alpine AS base
+WORKDIR /app
+
 FROM mcr.microsoft.com/dotnet/sdk:8.0-preview-alpine AS build
 
 # Install Native AOT build prerequisites
@@ -15,9 +18,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview-alpine AS publish
 WORKDIR /app
 COPY --from=build /app/publish .
 RUN rm *.pdb
-RUN rm *.dbg
 
-FROM mcr.microsoft.com/dotnet/runtime-deps:8.0-preview-alpine
+FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
 USER $APP_UID

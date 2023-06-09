@@ -96,62 +96,118 @@ app.MapPost("api/v1/documentTypes", [Topic("pubsub", "DocumentTypesIntegrationEv
 
 app.Run();
 
+/// <summary>
+/// The document type item.
+/// </summary>
+/// <param name="Id">The document type identifier.</param>
+/// <param name="Name">The document type name.</param>
+/// <param name="Visible">The document type visibility.</param>
+/// <param name="System">The document type system.</param>
+/// <param name="ExternalId">The document type external identifier.</param>
+/// <param name="Version">The document type version.</param>
 public sealed record DocumentTypeItem(string Id, string Name, bool Visible, bool System, string? ExternalId, int Version);
 
+/// <summary>
+/// The document types request.
+/// </summary>
 [XmlRoot("documentTypesRequest")]
 public sealed record DocumentTypesRequest
 {
+    /// <summary>
+    /// Gets or sets the URL.
+    /// </summary>
     [XmlElement("url")]
     public required string Url { get; init; }
+
+    /// <summary>
+    /// Gets or sets the API token.
+    /// </summary>
     [XmlElement("apiToken")]
     public required string ApiToken { get; init; }
 }
 
+/// <summary>
+/// The document types response.
+/// </summary>
 public sealed record DocumentTypesResponse
 {
-    public required bool Result { get; init; }
-    public required IEnumerable<DocumentTypeItem>? DocumentTypes { get; init; }
+    /// <summary>
+    /// Gets or sets the result.
+    /// </summary>
+    public bool Result { get; init; }
+
+    /// <summary>
+    /// Gets or sets the document types.
+    /// </summary>
+    public IEnumerable<DocumentTypeItem>? DocumentTypes { get; init; }
 }
 
-public class DocumentTypeDto
+/// <summary>
+/// The document type DTO.
+/// </summary>
+public sealed record DocumentTypeDto
 {
+    /// <summary>
+    /// Gets or sets the document type identifier.
+    /// </summary>
     [XmlAttribute("id")]
-    public string Id { get; set; } = default!;
+    public string Id { get; init; } = default!;
+
+    /// <summary>
+    /// Gets or sets the document type name.
+    /// </summary>
     [XmlAttribute("name")]
-    public string Name { get; set; } = default!;
+    public string Name { get; init; } = default!;
+
+    /// <summary>
+    /// Gets or sets the document type visibility.
+    /// </summary>
     [XmlAttribute("visible")]
-    public bool Visible { get; set; }
-    [XmlAttribute("system")]
-    public bool System { get; set; }
-    [XmlAttribute("externalId")]
-    public string? ExternalId { get; set; }
-    [XmlAttribute("version")]
-    public int Version { get; set; }
+    public bool Visible { get; init; }
 }
 
+/// <summary>
+/// The document types DTO.
+/// </summary>
 [XmlRoot("documentTypes")]
-public class DocumentTypesDto
+public sealed record DocumentTypesDto
 {
+    /// <summary>
+    /// Gets or sets the document types.
+    /// </summary>
     [XmlElement("documentType")]
-    public List<DocumentTypeDto> DocumentTypes { get; set; } = new();
+    public List<DocumentTypeDto> DocumentTypes { get; init; } = new();
 }
 
+/// <summary>
+/// The document type item extensions.
+/// </summary>
 internal static class DocumentTypeItemExtensions
 {
+    /// <summary>
+    /// Converts the document type item to document type DTO.
+    /// </summary>
+    /// <param name="documentTypeItem">The document type item.</param>
+    /// <returns>The document type DTO.</returns>
     public static DocumentTypeDto AsDocumentTypeDto(this DocumentTypeItem documentTypeItem)
         => new()
         {
             Id = documentTypeItem.Id,
             Name = documentTypeItem.Name,
-            Visible = documentTypeItem.Visible,
-            System = documentTypeItem.System,
-            ExternalId = documentTypeItem.ExternalId,
-            Version = documentTypeItem.Version
+            Visible = documentTypeItem.Visible
         };
 }
 
+/// <summary>
+/// The document type items extensions.
+/// </summary>
 internal static class DocumentTypeItemsExtensions
 {
+    /// <summary>
+    /// Converts the document type items to document types DTO.
+    /// </summary>
+    /// <param name="documentTypeItems">The document type items.</param>
+    /// <returns>The document types DTO.</returns>
     public static DocumentTypesDto AsDocumentTypesDto(this IEnumerable<DocumentTypeItem> documentTypeItems)
     {
         var documentTypesDto = new DocumentTypesDto();
