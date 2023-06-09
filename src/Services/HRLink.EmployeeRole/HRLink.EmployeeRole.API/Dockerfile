@@ -6,6 +6,9 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0-preview-alpine AS build
 # Install Native AOT build prerequisites
 RUN apk add clang build-base zlib-dev
 
+ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 \
+    SuppressNETCoreSdkPreviewMessage=true
+
 WORKDIR /src
 
 COPY . .
