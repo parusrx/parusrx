@@ -56,17 +56,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Dapr", "Common\Eve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Abstraction", "Common\EventBus\EventBus.Abstractions\EventBus.Abstraction.csproj", "{F30DB50A-D8A8-4995-B031-3B179D8DF613}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HRLink.EmployeeRole", "HRLink.EmployeeRole", "{A23DF9FA-430A-430A-9BE9-89066AEFB896}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HRLink.EmployeeRoles", "HRLink.EmployeeRoles", "{A23DF9FA-430A-430A-9BE9-89066AEFB896}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRLink.EmployeeRole.API", "Services\HRLink.EmployeeRole\HRLink.EmployeeRole.API\HRLink.EmployeeRole.API.csproj", "{1AE3B659-1F59-4282-A36B-BCF1CEB99411}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRLink.EmployeeRoles.API", "Services\HRLink.EmployeeRoles\HRLink.EmployeeRoles.API\HRLink.EmployeeRoles.API.csproj", "{1AE3B659-1F59-4282-A36B-BCF1CEB99411}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HRLink.DocumentType", "HRLink.DocumentType", "{E9CD9462-AF11-47DB-B48E-3FE538189A1A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HRLink.DocumentTypes", "HRLink.DocumentTypes", "{E9CD9462-AF11-47DB-B48E-3FE538189A1A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRLink.DocumentType.API", "Services\HRLink.DocumentType\HRLink.DocumentType.API\HRLink.DocumentType.API.csproj", "{F3666299-3CFA-4F91-88FA-A3B69B47BCD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRLink.DocumentTypes.API", "Services\HRLink.DocumentTypes\HRLink.DocumentTypes.API\HRLink.DocumentTypes.API.csproj", "{F3666299-3CFA-4F91-88FA-A3B69B47BCD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRLink.DocumentType.FunctionalTests", "Services\HRLink.DocumentType\HRLink.DocumentType.FunctionalTests\HRLink.DocumentType.FunctionalTests.csproj", "{196628C7-F185-4763-8688-B2B3D9EF9FDE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRLink.DocumentTypes.FunctionalTests", "Services\HRLink.DocumentTypes\HRLink.DocumentTypes.FunctionalTests\HRLink.DocumentTypes.FunctionalTests.csproj", "{196628C7-F185-4763-8688-B2B3D9EF9FDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRLink.EmployeeRole.FunctionalTests", "Services\HRLink.EmployeeRole\HRLink.EmployeeRole.FunctionalTests\HRLink.EmployeeRole.FunctionalTests.csproj", "{F4ED00D0-C908-46AA-812B-3D2969BBFC65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRLink.EmployeeRoles.FunctionalTests", "Services\HRLink.EmployeeRoles\HRLink.EmployeeRoles.FunctionalTests\HRLink.EmployeeRoles.FunctionalTests.csproj", "{F4ED00D0-C908-46AA-812B-3D2969BBFC65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

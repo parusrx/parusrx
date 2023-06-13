@@ -34,26 +34,26 @@ services:
     depends_on:
       - prx-dadata
 
-  prx-hrlink-employee-role:
-    image: ${REGISTRY:-parusrx}/prx-hrlink-employee-role:${TAG:-latest}
+  prx-hrlink-employee-roles:
+    image: ${REGISTRY:-parusrx}/prx-hrlink-employee-roles:${TAG:-latest}
     build:
       context: .
-      dockerfile: Services/HRLink.EmployeeRole/HRLink.EmployeeRole.API/Dockerfile
+      dockerfile: Services/HRLink.EmployeeRoles/HRLink.EmployeeRoles.API/Dockerfile
 
-  prx-hrlink-employee-role-dapr:
+  prx-hrlink-employee-roles-dapr:
     image: "daprio/daprd:1.10.0"
-    network_mode: "service:prx-hrlink-employee-role"
+    network_mode: "service:prx-hrlink-employee-roles"
     depends_on:
-      - prx-hrlink-employee-role
+      - prx-hrlink-employee-roles
 
-  prx-hrlink-document-type:
-    image: ${REGISTRY:-parusrx}/prx-hrlink-document-type:${TAG:-latest}
+  prx-hrlink-document-types:
+    image: ${REGISTRY:-parusrx}/prx-hrlink-document-types:${TAG:-latest}
     build:
       context: .
-      dockerfile: Services/HRLink.DocumentType/HRLink.DocumentType.API/Dockerfile
+      dockerfile: Services/HRLink.DocumentTypes/HRLink.DocumentTypes.API/Dockerfile
 
-  prx-hrlink-document-type-dapr:
+  prx-hrlink-document-types-dapr:
     image: "daprio/daprd:1.10.0"
-    network_mode: "service:prx-hrlink-document-type"
+    network_mode: "service:prx-hrlink-document-types"
     depends_on:
-      - prx-hrlink-document-type
+      - prx-hrlink-document-types

@@ -1,0 +1,22 @@
+@HRLink.DocumentTypes.API_HostAddress = http://localhost:51004
+
+GET {{HRLink.DocumentTypes.API_HostAddress}}/health
+Accept: application/json
+
+###
+
+GET {{HRLink.DocumentTypes.API_HostAddress}}/liveness
+Accept: application/json
+
+###
+
+POST {{HRLink.DocumentTypes.API_HostAddress}}/api/v1/documentTypes
+Content-Type: application/json
+
+{
+  "Id": "15AF3953-0775-48B1-A482-EB11986C3828",
+  "CreationDate": "2023-05-31T00:00:00.1192234Z",
+  "Body": "123"
+}
+
+###

@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HRLink.DocumentType.API\HRLink.DocumentType.API.csproj" />
+    <ProjectReference Include="..\HRLink.DocumentTypes.API\HRLink.DocumentTypes.API.csproj" />
   </ItemGroup>
 
 </Project>

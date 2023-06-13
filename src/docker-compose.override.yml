@@ -27,7 +27,7 @@ services:
       "-app-id", "prx-gateway",
       "-app-port", "8080",
       "-components-path", "/components",
-      "-config", "/configuration/parusrx-config.yaml"
+      "-config", "/configuration/prx-config.yaml"
       ]
     volumes:
       - "./dapr/components/:/components"
@@ -49,13 +49,13 @@ services:
       "-app-id", "prx-dadata",
       "-app-port", "8080",
       "-components-path", "/components",
-      "-config", "/configuration/parusrx-config.yaml"
+      "-config", "/configuration/prx-config.yaml"
       ]
     volumes:
       - "./dapr/components/:/components"
       - "./dapr/configuration/:/configuration"
 
-  prx-hrlink-employee-role:
+  prx-hrlink-employee-roles:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - TZ=${ORACLE_TZ:-Europe/Moscow}
@@ -65,18 +65,18 @@ services:
     ports:
       - "51003:8080"
 
-  prx-hrlink-employee-role-dapr:
+  prx-hrlink-employee-roles-dapr:
     command: ["./daprd",
-      "-app-id", "prx-hrlink-employee-role",
+      "-app-id", "prx-hrlink-employee-roles",
       "-app-port", "8080",
       "-components-path", "/components",
-      "-config", "/configuration/parusrx-config.yaml"
+      "-config", "/configuration/prx-config.yaml"
       ]
     volumes:
       - "./dapr/components/:/components"
       - "./dapr/configuration/:/configuration"
 
-  prx-hrlink-document-type:
+  prx-hrlink-document-types:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - TZ=${ORACLE_TZ:-Europe/Moscow}
@@ -86,12 +86,12 @@ services:
     ports:
       - "51004:8080"
 
-  prx-hrlink-document-type-dapr:
+  prx-hrlink-document-types-dapr:
     command: ["./daprd",
-      "-app-id", "prx-hrlink-document-type",
+      "-app-id", "prx-hrlink-document-types",
       "-app-port", "8080",
       "-components-path", "/components",
-      "-config", "/configuration/parusrx-config.yaml"
+      "-config", "/configuration/prx-config.yaml"
       ]
     volumes:
       - "./dapr/components/:/components"
