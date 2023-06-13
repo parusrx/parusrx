@@ -10,50 +10,50 @@ services:
   dapr-placement:
     image: "daprio/dapr:1.10.0"
 
-  gateway:
-    image: ${REGISTRY:-parusrx}/gateway:${TAG:-latest}
+  prx-gateway:
+    image: ${REGISTRY:-parusrx}/prx-gateway:${TAG:-latest}
     build:
       context: .
       dockerfile: ApiGateway/Gateway.API/Dockerfile
 
-  gateway-dapr:
+  prx-gateway-dapr:
     image: "daprio/daprd:1.10.0"
-    network_mode: "service:gateway"
+    network_mode: "service:prx-gateway"
     depends_on:
-      - gateway
+      - prx-gateway
 
-  dadata:
-    image: ${REGISTRY:-parusrx}/dadata:${TAG:-latest}
+  prx-dadata:
+    image: ${REGISTRY:-parusrx}/prx-dadata:${TAG:-latest}
     build:
       context: .
       dockerfile: Services/DaData/DaData.API/Dockerfile
 
-  dadata-dapr:
+  prx-dadata-dapr:
     image: "daprio/daprd:1.10.0"
-    network_mode: "service:dadata"
+    network_mode: "service:prx-dadata"
     depends_on:
-      - dadata
+      - prx-dadata
 
-  hrlink-employee-role:
-    image: ${REGISTRY:-parusrx}/hrlink-employee-role:${TAG:-latest}
+  prx-hrlink-employee-role:
+    image: ${REGISTRY:-parusrx}/prx-hrlink-employee-role:${TAG:-latest}
     build:
       context: .
       dockerfile: Services/HRLink.EmployeeRole/HRLink.EmployeeRole.API/Dockerfile
 
-  hrlink-employee-role-dapr:
+  prx-hrlink-employee-role-dapr:
     image: "daprio/daprd:1.10.0"
-    network_mode: "service:hrlink-employee-role"
+    network_mode: "service:prx-hrlink-employee-role"
     depends_on:
-      - hrlink-employee-role
+      - prx-hrlink-employee-role
 
-  hrlink-document-type:
-    image: ${REGISTRY:-parusrx}/hrlink-document-type:${TAG:-latest}
+  prx-hrlink-document-type:
+    image: ${REGISTRY:-parusrx}/prx-hrlink-document-type:${TAG:-latest}
     build:
       context: .
       dockerfile: Services/HRLink.DocumentType/HRLink.DocumentType.API/Dockerfile
 
-  hrlink-document-type-dapr:
+  prx-hrlink-document-type-dapr:
     image: "daprio/daprd:1.10.0"
-    network_mode: "service:hrlink-document-type"
+    network_mode: "service:prx-hrlink-document-type"
     depends_on:
-      - hrlink-document-type
+      - prx-hrlink-document-type

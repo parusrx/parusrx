@@ -15,16 +15,16 @@ services:
     ports:
       - "50000:50000"
 
-  gateway:
+  prx-gateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - PATH_BASE=/gateway
+      - PATH_BASE=/prx-gateway
     ports:
       - "51001:8080"
 
-  gateway-dapr:
+  prx-gateway-dapr:
     command: ["./daprd",
-      "-app-id", "gateway",
+      "-app-id", "prx-gateway",
       "-app-port", "8080",
       "-components-path", "/components",
       "-config", "/configuration/parusrx-config.yaml"
@@ -33,20 +33,20 @@ services:
       - "./dapr/components/:/components"
       - "./dapr/configuration/:/configuration"
 
-  dadata:
+  prx-dadata:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - TZ=${ORACLE_TZ:-Europe/Moscow}
       - Database__Provider=${DB_PROVIDER:-Oracle}
       - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
       - Urls__Suggestions=${SUGGESTIONS_URL:-https://suggestions.dadata.ru/suggestions/api/4_1/rs}
-      - PATH_BASE=/dadata
+      - PATH_BASE=/prx-dadata
     ports:
       - "51002:8080"
 
-  dadata-dapr:
+  prx-dadata-dapr:
     command: ["./daprd",
-      "-app-id", "dadata",
+      "-app-id", "prx-dadata",
       "-app-port", "8080",
       "-components-path", "/components",
       "-config", "/configuration/parusrx-config.yaml"
@@ -55,19 +55,19 @@ services:
       - "./dapr/components/:/components"
       - "./dapr/configuration/:/configuration"
 
-  hrlink-employee-role:
+  prx-hrlink-employee-role:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - TZ=${ORACLE_TZ:-Europe/Moscow}
       - Database__Provider=${DB_PROVIDER:-Oracle}
       - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
-      - PATH_BASE=/hrlink-employee-roles
+      - PATH_BASE=/prx-hrlink-employee-roles
     ports:
       - "51003:8080"
 
-  hrlink-employee-role-dapr:
+  prx-hrlink-employee-role-dapr:
     command: ["./daprd",
-      "-app-id", "hrlink-employee-role",
+      "-app-id", "prx-hrlink-employee-role",
       "-app-port", "8080",
       "-components-path", "/components",
       "-config", "/configuration/parusrx-config.yaml"
@@ -76,19 +76,19 @@ services:
       - "./dapr/components/:/components"
       - "./dapr/configuration/:/configuration"
 
-  hrlink-document-type:
+  prx-hrlink-document-type:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - TZ=${ORACLE_TZ:-Europe/Moscow}
       - Database__Provider=${DB_PROVIDER:-Oracle}
       - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
-      - PATH_BASE=/hrlink-document-types
+      - PATH_BASE=/prx-hrlink-document-types
     ports:
       - "51004:8080"
 
-  hrlink-document-type-dapr:
+  prx-hrlink-document-type-dapr:
     command: ["./daprd",
-      "-app-id", "hrlink-document-type",
+      "-app-id", "prx-hrlink-document-type",
       "-app-port", "8080",
       "-components-path", "/components",
       "-config", "/configuration/parusrx-config.yaml"
