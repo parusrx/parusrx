@@ -19,8 +19,8 @@ on:
       - '.github/workflows/hrlink-employee-roles.yml'
 
 env:
-  SERVICE: 'hrlink-employee-roles'
-  IMAGE_NAME: 'hrlink-employee-roles'
+  SERVICE: 'prx-hrlink-employee-roles'
+  IMAGE_NAME: 'prx-hrlink-employee-roles'
 
 jobs:
   BuildLinux:

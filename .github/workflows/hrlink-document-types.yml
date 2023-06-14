@@ -19,8 +19,8 @@ on:
       - '.github/workflows/hrlink-document-types.yml'
 
 env:
-  SERVICE: 'hrlink-document-types'
-  IMAGE_NAME: 'hrlink-document-types'
+  SERVICE: 'prx-hrlink-document-types'
+  IMAGE_NAME: 'prx-hrlink-document-types'
 
 jobs:
   BuildLinux:
