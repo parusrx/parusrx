@@ -8,7 +8,7 @@ services:
     image: openzipkin/zipkin-slim
 
   dapr-placement:
-    image: "daprio/dapr:1.10.0"
+    image: "daprio/dapr:1.11.0"
 
   prx-gateway:
     image: ${REGISTRY:-parusrx}/prx-gateway:${TAG:-latest}
@@ -17,7 +17,7 @@ services:
       dockerfile: ApiGateway/Gateway.API/Dockerfile
 
   prx-gateway-dapr:
-    image: "daprio/daprd:1.10.0"
+    image: "daprio/daprd:1.11.0"
     network_mode: "service:prx-gateway"
     depends_on:
       - prx-gateway
@@ -29,7 +29,7 @@ services:
       dockerfile: Services/DaData/DaData.API/Dockerfile
 
   prx-dadata-dapr:
-    image: "daprio/daprd:1.10.0"
+    image: "daprio/daprd:1.11.0"
     network_mode: "service:prx-dadata"
     depends_on:
       - prx-dadata
@@ -41,7 +41,7 @@ services:
       dockerfile: Services/HRLink.EmployeeRoles/HRLink.EmployeeRoles.API/Dockerfile
 
   prx-hrlink-employee-roles-dapr:
-    image: "daprio/daprd:1.10.0"
+    image: "daprio/daprd:1.11.0"
     network_mode: "service:prx-hrlink-employee-roles"
     depends_on:
       - prx-hrlink-employee-roles
@@ -53,7 +53,7 @@ services:
       dockerfile: Services/HRLink.DocumentTypes/HRLink.DocumentTypes.API/Dockerfile
 
   prx-hrlink-document-types-dapr:
-    image: "daprio/daprd:1.10.0"
+    image: "daprio/daprd:1.11.0"
     network_mode: "service:prx-hrlink-document-types"
     depends_on:
       - prx-hrlink-document-types

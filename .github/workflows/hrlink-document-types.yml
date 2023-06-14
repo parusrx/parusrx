@@ -1,4 +1,4 @@
-name: 'hrlink-employee-role'
+name: 'hrlink-document-types'
 
 on:
   push:
@@ -6,23 +6,23 @@ on:
       - main
     paths:
       - 'src/Common/**'
-      - 'src/Services/HRlink.EmployeeRole/**'
+      - 'src/Services/HRlink.DocumentTypes/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/hrlink-employee-role.yml'
+      - '.github/workflows/hrlink-document-types.yml'
   pull_request:
     branches:
       - main
     paths:
       - 'src/Common/**'
-      - 'src/Services/HRlink.EmployeeRole/**'
+      - 'src/Services/HRlink.DocumentTypes/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/hrlink-employee-role.yml'
+      - '.github/workflows/hrlink-document-types.yml'
 
 env:
   DOTNET_VERSION: '8.0.x'
   DOTNET_QUALITY: 'preview'
-  PROJECT_PATH: 'src/Services/HRLink.EmployeeRole'
-  TESTS_PATH: 'src/Services/HRLink.EmployeeRole'
+  PROJECT_PATH: 'src/Services/HRLink.DocumentTypes'
+  TESTS_PATH: 'src/Services/HRLink.DocumentTypes'
 
 jobs:
   ci:
