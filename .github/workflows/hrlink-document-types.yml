@@ -19,21 +19,18 @@ on:
       - '.github/workflows/hrlink-document-types.yml'
 
 env:
-  DOTNET_VERSION: '8.0.x'
-  DOTNET_QUALITY: 'preview'
-  PROJECT_PATH: 'src/Services/HRLink.DocumentTypes'
-  TESTS_PATH: 'src/Services/HRLink.DocumentTypes'
+  SERVICE: 'hrlink-document-types'
+  IMAGE_NAME: 'hrlink-document-types'
 
 jobs:
-  ci:
+  BuildLinux:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Build and Test
-        uses: ./.github/workflows/composite/build-test
+      - uses: ./.github/workflows/composite/build-push
         with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-          dotnet-quality: ${{ env.DOTNET_QUALITY }}
-          project_path: ${{ env.PROJECT_PATH }}
-          tests_path: ${{ env.TESTS_PATH }}
+          service: ${{ env.SERVICE }}
+          image_name: ${{ env.IMAGE_NAME }}
+          registry_username: ${{ secrets.REGISTRY_USERNAME }}
+          registry_password: ${{ secrets.REGISTRY_PASSWORD }}

@@ -1,25 +1,25 @@
-name: 'storage'
+name: 'sdk-eventbus'
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'src/Common/Storage/**'
+      - 'src/Common/EventBus/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/storage.yml'
+      - '.github/workflows/sdk-eventbus.yml'
   pull_request:
     branches:
       - main
     paths:
-      - 'src/Common/Storage/**'
+      - 'src/Common/EventBus/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/storage.yml'
+      - '.github/workflows/sdk-eventbus.yml'
 
 env:
   DOTNET_VERSION: '8.0.x'
   DOTNET_QUALITY: 'preview'
-  PROJECT_PATH: 'src/Common/Storage'
+  PROJECT_PATH: 'src/Common/EventBus'
 
 jobs:
   ci:
