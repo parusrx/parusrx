@@ -1,4 +1,4 @@
-name: 'dadata'
+name: 'prx-hrlink-employee-roles'
 
 on:
   push:
@@ -6,21 +6,21 @@ on:
       - main
     paths:
       - 'src/Common/**'
-      - 'src/Services/DaData/**'
+      - 'src/Services/HRlink/HRlink.EmployeeRoles/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/dadata.yml'
+      - '.github/workflows/prx-hrlink-employee-roles.yml'
   pull_request:
     branches:
       - main
     paths:
       - 'src/Common/**'
-      - 'src/Services/DaData/**'
+      - 'src/Services/HRlink/HRlink.EmployeeRoles/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/dadata.yml'
+      - '.github/workflows/prx-hrlink-employee-roles.yml'
 
 env:
-  SERVICE: 'prx-dadata'
-  IMAGE_NAME: 'prx-dadata'
+  SERVICE: 'prx-hrlink-employee-roles'
+  IMAGE_NAME: 'prx-hrlink-employee-roles'
 
 jobs:
   BuildLinux:

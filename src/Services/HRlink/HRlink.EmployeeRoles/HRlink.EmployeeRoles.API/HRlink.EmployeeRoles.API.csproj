@@ -8,8 +8,8 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <PublishAot>false</PublishAot>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
-    <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerfileContext>..\..\..</DockerfileContext>
+    <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,11 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\EventBus\EventBus.Dapr\EventBus.Dapr.csproj" />
-    <ProjectReference Include="..\..\..\Common\EventBus\EventBus\EventBus.csproj" />
-    <ProjectReference Include="..\..\..\Common\Storage\Storage.Oracle\Storage.Oracle.csproj" />
-    <ProjectReference Include="..\..\..\Common\Storage\Storage.Postgres\Storage.Postgres.csproj" />
-    <ProjectReference Include="..\..\..\Common\Xml\Xml\Xml.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\EventBus\EventBus.Dapr\EventBus.Dapr.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\EventBus\EventBus\EventBus.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\Storage\Storage.Oracle\Storage.Oracle.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\Storage\Storage.Postgres\Storage.Postgres.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\Xml\Xml\Xml.csproj" />
   </ItemGroup>
 
 </Project>

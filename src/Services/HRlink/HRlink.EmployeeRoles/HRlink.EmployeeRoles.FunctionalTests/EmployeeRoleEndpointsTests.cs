@@ -18,7 +18,7 @@ using ParusRx.EventBus.Events;
 using ParusRx.Storage;
 using ParusRx.Xml;
 
-namespace ParusRx.HRLink.EmployeeRoles.FunctionalTests;
+namespace ParusRx.HRlink.EmployeeRoles.FunctionalTests;
 
 public class EmployeeRoleEndpointsTests
 {

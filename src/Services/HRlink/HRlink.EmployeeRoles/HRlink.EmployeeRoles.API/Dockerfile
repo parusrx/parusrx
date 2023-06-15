@@ -12,7 +12,7 @@ ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 \
 WORKDIR /src
 
 COPY . .
-RUN dotnet publish "/src/Services/HRLink.DocumentTypes/HRLink.DocumentTypes.API/HRLink.DocumentTypes.API.csproj" -o /app/publish
+RUN dotnet publish "/src/Services/HRlink/HRlink.EmployeeRoles/HRlink.EmployeeRoles.API/HRlink.EmployeeRoles.API.csproj" -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview-alpine AS publish
 WORKDIR /app
@@ -24,4 +24,4 @@ WORKDIR /app
 COPY --from=publish /app .
 USER $APP_UID
 HEALTHCHECK CMD wget -q0- -t1 http://localhost:8080/health || exit 1
-ENTRYPOINT ["./HRLink.DocumentTypes.API"]
+ENTRYPOINT ["./HRlink.EmployeeRoles.API"]

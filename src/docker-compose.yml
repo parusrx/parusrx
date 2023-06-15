@@ -38,7 +38,7 @@ services:
     image: ${REGISTRY:-parusrx}/prx-hrlink-employee-roles:${TAG:-latest}
     build:
       context: .
-      dockerfile: Services/HRLink.EmployeeRoles/HRLink.EmployeeRoles.API/Dockerfile
+      dockerfile: Services/HRlink/HRlink.EmployeeRoles/HRlink.EmployeeRoles.API/Dockerfile
 
   prx-hrlink-employee-roles-dapr:
     image: "daprio/daprd:1.11.0"
@@ -50,7 +50,7 @@ services:
     image: ${REGISTRY:-parusrx}/prx-hrlink-document-types:${TAG:-latest}
     build:
       context: .
-      dockerfile: Services/HRLink.DocumentTypes/HRLink.DocumentTypes.API/Dockerfile
+      dockerfile: Services/HRlink/HRlink.DocumentTypes/HRlink.DocumentTypes.API/Dockerfile
 
   prx-hrlink-document-types-dapr:
     image: "daprio/daprd:1.11.0"

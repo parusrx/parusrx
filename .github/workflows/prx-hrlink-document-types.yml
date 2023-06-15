@@ -1,4 +1,4 @@
-name: 'hrlink-document-types'
+name: 'prx-hrlink-document-types'
 
 on:
   push:
@@ -6,17 +6,17 @@ on:
       - main
     paths:
       - 'src/Common/**'
-      - 'src/Services/HRlink.DocumentTypes/**'
+      - 'src/Services/HRlink/HRlink.DocumentTypes/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/hrlink-document-types.yml'
+      - '.github/workflows/prx-hrlink-document-types.yml'
   pull_request:
     branches:
       - main
     paths:
       - 'src/Common/**'
-      - 'src/Services/HRlink.DocumentTypes/**'
+      - 'src/Services/HRlink/HRlink.DocumentTypes/**'
       - '.github/workflows/composite/**'
-      - '.github/workflows/hrlink-document-types.yml'
+      - '.github/workflows/prx-hrlink-document-types.yml'
 
 env:
   SERVICE: 'prx-hrlink-document-types'

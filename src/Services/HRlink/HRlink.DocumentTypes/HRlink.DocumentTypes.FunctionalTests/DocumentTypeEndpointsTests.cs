@@ -18,7 +18,7 @@ using ParusRx.EventBus.Events;
 using ParusRx.Storage;
 using ParusRx.Xml;
 
-namespace ParusRx.HRLink.DocumentTypes.FunctionalTests;
+namespace ParusRx.HRlink.DocumentTypes.FunctionalTests;
 
 public class DocumentTypeEndpointsTests
 {
