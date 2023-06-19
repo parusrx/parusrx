@@ -1,0 +1,8 @@
+﻿// Copyright (c) Alexander Bocharov. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using ParusRx.HRlink.BulkDataSync;
+
+namespace ParusRx.HRlink.EmployeePositions.API;
+
+public record BulkDataSyncTaskResponse(bool Result, BulkDataSyncTask BulkDataSyncTask);
