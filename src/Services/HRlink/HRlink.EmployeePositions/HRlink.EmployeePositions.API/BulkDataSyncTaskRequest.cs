@@ -3,7 +3,7 @@
 
 using ParusRx.HRlink.BulkDataSync;
 
-namespace HRlink.EmployeePositions.API;
+namespace ParusRx.HRlink.EmployeePositions.API;
 
 public record BulkDataSyncTaskRequest
 {
