@@ -3,4 +3,8 @@
 
 namespace ParusRx.HRlink.Internal;
 
+/// <summary>
+/// Represents a data item in a bulk data sync task.
+/// </summary>
+/// <param name="Id">The the bulk data sync task identifier.</param>
 internal sealed record BulkDataSyncTaskItem(string Id);
