@@ -4,16 +4,28 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ServerGarbageCollection>false</ServerGarbageCollection>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <PublishAot>false</PublishAot>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapr.AspNetCore" Version="1.11.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\HRlink.BulkDataSync\HRlink.BulkDataSync.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\EventBus\EventBus.Dapr\EventBus.Dapr.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\EventBus\EventBus\EventBus.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\Storage\Storage.Oracle\Storage.Oracle.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\Storage\Storage.Postgres\Storage.Postgres.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\Xml\Xml\Xml.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Shared\*.cs" LinkBase="Shared" />
   </ItemGroup>
 
 </Project>

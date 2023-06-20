@@ -3,7 +3,10 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>0ab44e35-b19a-4b34-8d2a-afda89ef3085</ProjectGuid>
+    <ProjectGuid>7710ea13-b173-4b45-923f-f0a9ba695d9b</ProjectGuid>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/health</DockerServiceUrl>
+    <DockerServiceName>gateway.api</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

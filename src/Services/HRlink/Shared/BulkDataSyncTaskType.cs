@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRx.HRlink.BulkDataSync;
+namespace ParusRx.HRlink.Internal;
 
 /// <summary>
 /// Bulk data sync task type.
 /// </summary>
-public enum BulkDataSyncTaskType
+internal enum BulkDataSyncTaskType
 {
     /// <summary>
     /// The employee positions.

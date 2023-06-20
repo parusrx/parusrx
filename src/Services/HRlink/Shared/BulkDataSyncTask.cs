@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRx.HRlink.BulkDataSync;
+namespace ParusRx.HRlink.Internal;
 
-public sealed record BulkDataSyncTask
+internal sealed record BulkDataSyncTask
 {
     public required string Id { get; init; }
     public BulkDataSyncTaskType? Type { get; init; }
