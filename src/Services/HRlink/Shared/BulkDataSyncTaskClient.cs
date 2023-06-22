@@ -3,11 +3,11 @@
 
 namespace ParusRx.HRlink.Internal;
 
-internal sealed class BulkDataSyncClient : IBulkDataSyncClient
+internal sealed class BulkDataSyncTaskClient : IBulkDataSyncTaskClient
 {
     private readonly HttpClient _httpClient;
 
-    public BulkDataSyncClient(HttpClient httpClient)
+    public BulkDataSyncTaskClient(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

@@ -6,20 +6,15 @@ using Evolve.Data.PostgreSQL;
 
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using ParusRx.Storage.Oracle;
 
-using ParusRx.Storage.Postgres;
-
-using ParusRx.Storage;
-using ParusRx.HRlink.EmployeePositions.API;
-using ParusRx.HRlink.Internal;
+using ParusRx.HRlink.EmployeePositions.API.BulkDataSync;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
 builder.Services.AddDaprClient();
 builder.Services.AddDaprEventBus();
 
-builder.Services.AddHttpClient<IBulkDataSyncClient, BulkDataSyncClient>();
+builder.Services.AddHttpClient<IBulkDataSyncTaskClient, BulkDataSyncTaskClient>();
 
 // Data access
 string provider = builder.Configuration["Database:Provider"] ?? string.Empty;
@@ -49,6 +44,6 @@ app.MapSubscribeHandler();
 app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true });
 app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = _ => _.Name.Contains("self") });
 
-app.MapEmployeePositionApi();
+app.MapBulkDataSyncApi();
 
 app.Run();
