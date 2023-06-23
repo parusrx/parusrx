@@ -1,4 +1,4 @@
-// Copyright (c) Alexander Bocharov. All rights reserved.
+﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace ParusRx.HRlink.Internal;
@@ -11,15 +11,18 @@ internal enum BulkDataSyncTaskDataItemResult
     /// <summary>
     /// The data item is not modified.
     /// </summary>
+    [XmlEnum("NOT_MODIFIED")]
     NOT_MODIFIED,
 
     /// <summary>
     /// The data item is created.
     /// </summary>
+    [XmlEnum("CREATED")]
     CREATED,
 
     /// <summary>
     /// The data item is updated.
     /// </summary>
+    [XmlEnum("UPDATED")]
     UPDATED
 }

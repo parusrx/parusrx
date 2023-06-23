@@ -11,10 +11,12 @@ internal enum BulkDataSyncTaskDataItemState
     /// <summary>
     /// The data item is synced.
     /// </summary>
+    [XmlEnum("SYNCED")]
     SYNCED,
 
     /// <summary>
     /// The data item sync failed.
     /// </summary>
+    [XmlEnum("FAILED")]
     FAILED
 }

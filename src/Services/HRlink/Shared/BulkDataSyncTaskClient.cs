@@ -22,7 +22,7 @@ internal sealed class BulkDataSyncTaskClient : IBulkDataSyncTaskClient
         return await response.Content.ReadFromJsonAsync<CreateBulkDataSyncTaskResponse>(cancellationToken);
     }
 
-    public async Task<BulkDataSyncTaskResponse?> GetFullStatusBulkDataSyncTaskById(string baseUri, string clientId, string apiToken, string id, CancellationToken cancellationToken = default)
+    public async Task<BulkDataSyncTaskResponse?> GetFullStatusBulkDataSyncTaskByIdAsync(string baseUri, string clientId, string apiToken, string id, CancellationToken cancellationToken = default)
     {
         string requestUri = $"{baseUri}/api/v1/clients/{clientId}/bulkDataSyncTasks/{id}";
         return await _httpClient.GetFromJsonAsync<BulkDataSyncTaskResponse>(requestUri, cancellationToken);

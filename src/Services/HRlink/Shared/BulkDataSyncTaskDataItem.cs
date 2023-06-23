@@ -1,4 +1,4 @@
-// Copyright (c) Alexander Bocharov. All rights reserved.
+﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace ParusRx.HRlink.Internal;
@@ -21,9 +21,6 @@ internal sealed record BulkDataSyncTaskDataItem
     /// <summary>
     /// Gets or sets the data item state.
     /// </summary>
-    /// <remarks>
-    /// The state is <see cref="BulkDataSyncTaskDataItemState.SYNCED"/> by default.
-    /// </remarks>
     public required BulkDataSyncTaskDataItemState State { get; init; }
 
     /// <summary>

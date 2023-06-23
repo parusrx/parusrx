@@ -32,6 +32,19 @@ internal static class BulkDataSyncApi
                         authorization.ClientId, 
                         authorization.ApiToken, 
                         createBulkDataSyncTaskRequest);
+
+                    if (createBulkDataSyncTaskResponse is not null && createBulkDataSyncTaskResponse.Result) 
+                    {
+                        await Task.Delay(5000);
+
+                        var response = await bulkDataSyncClient.GetFullStatusBulkDataSyncTaskByIdAsync(
+                            authorization.Url,
+                            authorization.ClientId,
+                            authorization.ApiToken,
+                            createBulkDataSyncTaskResponse.BulkDataSyncTask.Id);
+
+                        response.BulkDataSyncTask.Data
+                    }
                 }
             }
             catch (Exception ex)
