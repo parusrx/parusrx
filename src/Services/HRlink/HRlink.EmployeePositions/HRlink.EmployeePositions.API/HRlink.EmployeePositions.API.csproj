@@ -8,6 +8,7 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <PublishAot>false</PublishAot>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,15 +17,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="HRLink.EmployeeRole.UnitTests" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\Common\EventBus\EventBus.Dapr\EventBus.Dapr.csproj" />
     <ProjectReference Include="..\..\..\..\Common\EventBus\EventBus\EventBus.csproj" />
     <ProjectReference Include="..\..\..\..\Common\Storage\Storage.Oracle\Storage.Oracle.csproj" />
     <ProjectReference Include="..\..\..\..\Common\Storage\Storage.Postgres\Storage.Postgres.csproj" />
     <ProjectReference Include="..\..\..\..\Common\Xml\Xml\Xml.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Shared\*.cs" LinkBase="Shared" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="..\..\Shared\BulkDataSyncTaskDataItemDto.cs" />
   </ItemGroup>
 
 </Project>

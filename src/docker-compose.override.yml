@@ -96,3 +96,24 @@ services:
     volumes:
       - "./dapr/components/:/components"
       - "./dapr/configuration/:/configuration"
+
+  prx-hrlink-employee-positions:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TZ=${ORACLE_TZ:-Europe/Moscow}
+      - Database__Provider=${DB_PROVIDER:-Oracle}
+      - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
+      - PATH_BASE=/prx-hrlink-employee-positions
+    ports:
+      - "51005:8080"
+
+  prx-hrlink-employee-positions-dapr:
+    command: ["./daprd",
+      "-app-id", "prx-hrlink-employee-positions",
+      "-app-port", "8080",
+      "-components-path", "/components",
+      "-config", "/configuration/prx-config.yaml"
+      ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"

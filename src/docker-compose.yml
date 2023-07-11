@@ -57,3 +57,15 @@ services:
     network_mode: "service:prx-hrlink-document-types"
     depends_on:
       - prx-hrlink-document-types
+
+  prx-hrlink-employee-positions:
+    image: ${REGISTRY:-parusrx}/prx-hrlink-employee-positions:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Services/HRlink/HRlink.EmployeePositions/HRlink.EmployeePositions.API/Dockerfile
+
+  prx-hrlink-employee-positions-dapr:
+    image: "daprio/daprd:1.11.0"
+    network_mode: "service:prx-hrlink-employee-positions"
+    depends_on:
+      - prx-hrlink-employee-positions
