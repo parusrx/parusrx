@@ -72,8 +72,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HRlink.EmployeePositions", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRlink.EmployeePositions.API", "Services\HRlink\HRlink.EmployeePositions\HRlink.EmployeePositions.API\HRlink.EmployeePositions.API.csproj", "{3C99292D-4737-46B5-8CFD-E26A802326C9}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{7710EA13-B173-4B45-923F-F0A9BA695D9B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{419D7799-41F9-49A7-ABA7-DD95F6B1EEF6}"
 	ProjectSection(SolutionItems) = preProject
 		Services\HRlink\Shared\BulkDataSyncTask.cs = Services\HRlink\Shared\BulkDataSyncTask.cs
@@ -90,6 +88,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{419D77
 		Services\HRlink\Shared\CreateBulkDataSyncTaskResponse.cs = Services\HRlink\Shared\CreateBulkDataSyncTaskResponse.cs
 		Services\HRlink\Shared\IBulkDataSyncTaskClient.cs = Services\HRlink\Shared\IBulkDataSyncTaskClient.cs
 	EndProjectSection
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{07B31FDC-17D5-42BE-BBE5-62FF882672A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -177,10 +177,10 @@ Global
 		{3C99292D-4737-46B5-8CFD-E26A802326C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C99292D-4737-46B5-8CFD-E26A802326C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C99292D-4737-46B5-8CFD-E26A802326C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7710EA13-B173-4B45-923F-F0A9BA695D9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7710EA13-B173-4B45-923F-F0A9BA695D9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7710EA13-B173-4B45-923F-F0A9BA695D9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7710EA13-B173-4B45-923F-F0A9BA695D9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07B31FDC-17D5-42BE-BBE5-62FF882672A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07B31FDC-17D5-42BE-BBE5-62FF882672A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07B31FDC-17D5-42BE-BBE5-62FF882672A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07B31FDC-17D5-42BE-BBE5-62FF882672A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

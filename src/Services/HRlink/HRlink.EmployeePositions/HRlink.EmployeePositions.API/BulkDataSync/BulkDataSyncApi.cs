@@ -42,8 +42,6 @@ internal static class BulkDataSyncApi
                             authorization.ClientId,
                             authorization.ApiToken,
                             createBulkDataSyncTaskResponse.BulkDataSyncTask.Id);
-
-                        response.BulkDataSyncTask.Data
                     }
                 }
             }

@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>7710ea13-b173-4b45-923f-f0a9ba695d9b</ProjectGuid>
+    <ProjectGuid>07b31fdc-17d5-42be-bbe5-62ff882672a1</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/health</DockerServiceUrl>
     <DockerServiceName>gateway.api</DockerServiceName>
