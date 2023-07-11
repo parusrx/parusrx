@@ -1,4 +1,4 @@
-// Copyright (c) Alexander Bocharov. All rights reserved.
+﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace ParusRx.HRlink.Internal;
@@ -10,4 +10,4 @@ namespace ParusRx.HRlink.Internal;
 /// <param name="Processed">The processed count.</param>
 /// <param name="Succeeded">The succeeded count.</param>
 /// <param name="Failed">The failed count.</param>
-internal sealed record BulkDataSyncTaskCounts(int? Total, int? Processed, int? Succeeded, int? Failed);
+public sealed record BulkDataSyncTaskCounts(int? Total, int? Processed, int? Succeeded, int? Failed);

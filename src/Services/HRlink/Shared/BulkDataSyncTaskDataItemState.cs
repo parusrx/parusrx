@@ -6,7 +6,7 @@ namespace ParusRx.HRlink.Internal;
 /// <summary>
 /// Represents the state of a data item in a bulk data sync task.
 /// </summary>
-internal enum BulkDataSyncTaskDataItemState
+public enum BulkDataSyncTaskDataItemState
 {
     /// <summary>
     /// The data item is synced.

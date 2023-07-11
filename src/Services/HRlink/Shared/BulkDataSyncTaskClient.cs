@@ -5,17 +5,19 @@ namespace ParusRx.HRlink.Internal;
 
 internal sealed class BulkDataSyncTaskClient : IBulkDataSyncTaskClient
 {
-    private readonly HttpClient _httpClient;
+    private readonly IHttpClientFactory _httpClientFactory;
 
-    public BulkDataSyncTaskClient(HttpClient httpClient)
+    public BulkDataSyncTaskClient(IHttpClientFactory httpClientFactory)
     {
-        _httpClient = httpClient;
+        _httpClientFactory = httpClientFactory;
     }
 
     public async Task<CreateBulkDataSyncTaskResponse?> CreateBulkDataSyncTaskAsync<TValue>(string baseUri, string clientId, string apiToken, CreateBulkDataSyncTaskRequest<TValue> request, CancellationToken cancellationToken = default)
     {
-        string requestUri = $"{baseUri}/api/v1/clients/{clientId}/bulkDataSyncTasks";
-        var response = await _httpClient.PostAsJsonAsync(requestUri, request, cancellationToken);
+        var httpClient = CreateHttpClient(baseUri, apiToken);
+
+        string requestUri = $"api/v1/clients/{clientId}/bulkDataSyncTasks";
+        var response = await httpClient.PostAsJsonAsync(requestUri, request, cancellationToken);
 
         response.EnsureSuccessStatusCode();
 
@@ -24,7 +26,18 @@ internal sealed class BulkDataSyncTaskClient : IBulkDataSyncTaskClient
 
     public async Task<BulkDataSyncTaskResponse?> GetFullStatusBulkDataSyncTaskByIdAsync(string baseUri, string clientId, string apiToken, string id, CancellationToken cancellationToken = default)
     {
-        string requestUri = $"{baseUri}/api/v1/clients/{clientId}/bulkDataSyncTasks/{id}";
-        return await _httpClient.GetFromJsonAsync<BulkDataSyncTaskResponse>(requestUri, cancellationToken);
+        var httpClient = CreateHttpClient(baseUri, apiToken);
+
+        string requestUri = $"api/v1/clients/{clientId}/bulkDataSyncTasks/{id}";
+        return await httpClient.GetFromJsonAsync<BulkDataSyncTaskResponse>(requestUri, cancellationToken);
+    }
+
+    private HttpClient CreateHttpClient(string baseUri, string apiToken)
+    {
+        var httpClient = _httpClientFactory.CreateClient();
+        httpClient.BaseAddress = new Uri(baseUri);
+        httpClient.DefaultRequestHeaders.Add("User-Api-Token", apiToken);
+
+        return httpClient;
     }
 }

@@ -6,7 +6,7 @@ namespace ParusRx.HRlink.Internal;
 /// <summary>
 /// Bulk data sync task type.
 /// </summary>
-internal enum BulkDataSyncTaskType
+public enum BulkDataSyncTaskType
 {
     /// <summary>
     /// The employee positions.

@@ -18,6 +18,6 @@ public sealed record Authorization
     public required string Url { get; init; }
     [XmlElement("clientId")]
     public required string ClientId { get; init; }
-    [XmlElement("clientSecret")]
+    [XmlElement("apiToken")]
     public required string ApiToken { get; init; }
 }

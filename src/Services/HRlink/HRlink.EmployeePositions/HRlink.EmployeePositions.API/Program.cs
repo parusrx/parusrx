@@ -14,7 +14,8 @@ var builder = WebApplication.CreateSlimBuilder(args);
 builder.Services.AddDaprClient();
 builder.Services.AddDaprEventBus();
 
-builder.Services.AddHttpClient<IBulkDataSyncTaskClient, BulkDataSyncTaskClient>();
+builder.Services.AddHttpClient();
+builder.Services.AddTransient<IBulkDataSyncTaskClient, BulkDataSyncTaskClient>();
 
 // Data access
 string provider = builder.Configuration["Database:Provider"] ?? string.Empty;

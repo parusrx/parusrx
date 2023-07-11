@@ -22,18 +22,19 @@ internal static class BulkDataSyncApi
                 var taskRequest = XmlSerializerUtility.Deserialize<CreateEmployeePositionsBulkDataSyncTaskRequest>(data);
                 if (taskRequest is not null)
                 {
+
                     var employeePositions = taskRequest.EmployeePositions.ToEmployeePositionItems();
                     var createBulkDataSyncTaskRequest = new CreateBulkDataSyncTaskRequest<EmployeePositionItem>(BulkDataSyncTaskType.EMPLOYEE_POSITIONS, employeePositions);
-
+                    
                     var authorization = taskRequest.Authorization;
-
+                    
                     var createBulkDataSyncTaskResponse = await bulkDataSyncClient.CreateBulkDataSyncTaskAsync(
                         authorization.Url, 
                         authorization.ClientId, 
                         authorization.ApiToken, 
                         createBulkDataSyncTaskRequest);
-
-                    if (createBulkDataSyncTaskResponse is not null && createBulkDataSyncTaskResponse.Result) 
+                    
+                    if (createBulkDataSyncTaskResponse is not null && createBulkDataSyncTaskResponse.Result)
                     {
                         await Task.Delay(5000);
 
@@ -42,6 +43,21 @@ internal static class BulkDataSyncApi
                             authorization.ClientId,
                             authorization.ApiToken,
                             createBulkDataSyncTaskResponse.BulkDataSyncTask.Id);
+
+                        if (response is not null && response.Result && response.BulkDataSyncTask.Data is not null)
+                        {
+                            var bulkDataSyncTaskDataItems = new BulkDataSyncTaskDataItems
+                            {
+                                Data = response.BulkDataSyncTask.Data.ToList()
+                            };
+
+                            var bulkDataSyncTaskDataItemsXml = XmlSerializerUtility.Serialize(bulkDataSyncTaskDataItems);
+
+                            if (bulkDataSyncTaskDataItemsXml is not null)
+                            {
+                                await store.SaveDataResponseAsync(id, bulkDataSyncTaskDataItemsXml);
+                            }
+                        }
                     }
                 }
             }

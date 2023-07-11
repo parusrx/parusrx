@@ -1,4 +1,4 @@
-// Copyright (c) Alexander Bocharov. All rights reserved.
+﻿// Copyright (c) Alexander Bocharov. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 namespace ParusRx.HRlink.Internal;
@@ -6,7 +6,7 @@ namespace ParusRx.HRlink.Internal;
 /// <summary>
 /// Bulk data sync task state.
 /// </summary>
-internal enum BulkDataSyncTaskState
+public enum BulkDataSyncTaskState
 {
     /// <summary>
     /// The task is queued.

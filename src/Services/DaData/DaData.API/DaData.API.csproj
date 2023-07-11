@@ -8,7 +8,6 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <RootNamespace>ParusRx.DaData.API</RootNamespace>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>

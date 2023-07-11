@@ -8,7 +8,6 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <PublishAot>false</PublishAot>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
