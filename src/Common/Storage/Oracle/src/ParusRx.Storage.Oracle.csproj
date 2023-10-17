@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Abstractions\src\ParusRx.Storage.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Data\Oracle\src\ParusRx.Data.Oracle.csproj" />
+  </ItemGroup>
+
+</Project>
