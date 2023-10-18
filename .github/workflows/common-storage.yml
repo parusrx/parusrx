@@ -1,0 +1,37 @@
+name: common-storage
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/Common/Storage/**
+      - .github/workflows/common-storage.yml
+      - .github/workflows/composite/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/Common/Storage/**
+      - .github/workflows/common-storage.yml
+      - .github/workflows/composite/**
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  DOTNET_QUALITY: 'preview'
+  PROJECTS_PATH: 'src/Common/Storage'
+
+jobs:
+  BuildLinux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+      - name: Build
+        uses: ./.github/workflows/composite/build
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-quality: ${{ env.DOTNET_QUALITY }}
+          projects-path: ${{ env.PROJECTS_PATH }}
