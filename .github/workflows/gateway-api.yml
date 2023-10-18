@@ -93,5 +93,6 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME  }}
           password: ${{ secrets.REGISTRY_PASSWORD  }}
       - name: Publish
+        working-directory: ${{ env.PROJECTS_PATH }}
         run: |
-          dotnet publish src/Gateway/Gateway.API/Gateway.API.csproj -r linux-x64 -c Release -p PublishProfile=DefaultContainer -p ContainerRegistry=docker.io -p ContainerImageTag=latest
+          dotnet publish Gateway.API/Gateway.API.csproj -r linux-x64 -c Release -p PublishProfile=DefaultContainer -p ContainerRegistry=docker.io -p ContainerImageTag=latest
