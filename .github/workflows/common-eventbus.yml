@@ -1,25 +1,25 @@
-name: common-data
+name: common-eventbus
 
 on:
   push:
     branches:
       - main
     paths:
-      - src/Common/Data/**
-      - .github/workflows/common-data.yml
+      - src/Common/EventBus/**
+      - .github/workflows/common-eventbus.yml
       - .github/workflows/composite/**
   pull_request:
     branches:
       - main
     paths:
-      - src/Common/Data/**
-      - .github/workflows/common-data.yml
+      - src/Common/EventBus/**
+      - .github/workflows/common-eventbus.yml
       - .github/workflows/composite/**
 
 env:
   DOTNET_VERSION: '8.0.x'
   DOTNET_QUALITY: 'preview'
-  PROJECTS_PATH: 'src/Common/Data'
+  PROJECTS_PATH: 'src/Common/EventBus'
 
 jobs:
   BuildLinux:
@@ -29,8 +29,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: 'recursive'
-      - name: Build and Test
-        uses: ./.github/workflows/composite/build-test
+      - name: Build
+        uses: ./.github/workflows/composite/build
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
           dotnet-quality: ${{ env.DOTNET_QUALITY }}
