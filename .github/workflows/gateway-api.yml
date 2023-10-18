@@ -94,4 +94,4 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD  }}
       - name: Publish
         run: |
-          dotnet publish src/Gateway/Gateway.API/Gateway.API.csproj -r linux-x64 /t:PublishContainer -c Release -p ContainerRegistry=registry.hub.docker.com -p ContainerImageTag=latest
+          dotnet publish src/Gateway/Gateway.API/Gateway.API.csproj -r linux-x64 /t:PublishContainer -c Release -p ContainerRegistry=hub.docker.com -p ContainerImageTag=latest
