@@ -94,4 +94,4 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD  }}
       - name: Publish Gateway API
         run: |
-          dotnet publish src/Gateway/Gateway.Api/Gateway.Api.csproj --runtime linux-x64 /t:PublishContainer --configuration Release --no-build --no-restore -p ContainerImageTag=latest
+          dotnet publish src/Gateway/Gateway.API/Gateway.API.csproj --runtime linux-x64 /t:PublishContainer --configuration Release --no-build --no-restore -p ContainerImageTag=latest
