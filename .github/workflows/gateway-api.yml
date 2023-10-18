@@ -1,0 +1,97 @@
+name: gateway-api
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/Common/**
+      - src/Gateway/**
+      - .github/workflows/gateway-api.yml
+      - .github/workflows/composite/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/Common/**
+      - src/Gateway/**
+      - .github/workflows/gateway-api.yml
+      - .github/workflows/composite/**
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  DOTNET_QUALITY: 'preview'
+  PROJECTS_PATH: 'src/Gateway'
+
+jobs:
+  BuildForPR_Linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-quality: ${{ env.DOTNET_QUALITY }}
+      - name: Restore dependencies
+        shell: bash
+        run: |
+          dotnet restore ParusRX.sln
+      - name: Build
+        shell: bash
+        working-directory: ${{ env.PROJECTS_PATH }}
+        run: |
+          for project in $(find . -name '*.csproj' -type f); do
+            dotnet build $project --configuration Release --no-restore
+          done
+      - name: Test
+        shell: bash
+        working-directory: ${{ env.PROJECTS_PATH }}
+        run: |
+          for project in $(find . -name '*.csproj' -type f); do
+            dotnet test $project --configuration Release --no-build --no-restore
+          done
+
+  BuildLinux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-quality: ${{ env.DOTNET_QUALITY }}
+      - name: Restore dependencies
+        shell: bash
+        run: |
+          dotnet restore ParusRX.sln
+      - name: Build
+        shell: bash
+        working-directory: ${{ env.PROJECTS_PATH }}
+        run: |
+          for project in $(find . -name '*.csproj' -type f); do
+            dotnet build $project --configuration Release --no-restore
+          done
+      - name: Test
+        shell: bash
+        working-directory: ${{ env.PROJECTS_PATH }}
+        run: |
+          for project in $(find . -name '*.csproj' -type f); do
+            dotnet test $project --configuration Release --no-build --no-restore
+          done
+      - name: Login to Container Registry
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.REGISTRY_USERNAME  }}
+          password: ${{ secrets.REGISTRY_PASSWORD  }}
+      - name: Publish Gateway API
+        run: |
+          dotnet publish src/Gateway/Gateway.Api/Gateway.Api.csproj --runtime linux-x64 /t:PublishContainer --configuration Release --no-build --no-restore -p ContainerImageTag=latest
