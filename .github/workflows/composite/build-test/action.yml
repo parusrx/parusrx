@@ -1,0 +1,33 @@
+name: Build and Test
+description: Builds and tests the composite action
+
+inputs:
+  dotnet-version:
+    description: The version of .NET to use
+    required: true
+  dotnet-quality:
+    description: The quality of .NET to use
+    required: true
+    default: stable
+  solution-path:
+    description: The path to the solution to build
+    required: true
+    default: ParusRX.sln
+  projects-path:
+    description: The path to the projects to build
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Build
+      uses: ./.github/workflows/composite/build
+      with:
+        dotnet-version: ${{ inputs.dotnet-version }}
+        dotnet-quality: ${{ inputs.dotnet-quality }}
+        solution-path: ${{ inputs.solution-path }}
+        projects-path: ${{ inputs.projects-path }}
+    - name: Test
+      uses: ./.github/workflows/composite/test
+      with:
+        tests-path: ${{ inputs.projects-path }}
