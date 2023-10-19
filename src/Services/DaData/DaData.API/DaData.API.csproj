@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <RootNamespace>ParusRx.DaData.API</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:8.0-alpine</ContainerBaseImage>
+    <ContainerRepository>parusrx/dadata-api</ContainerRepository>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapr.AspNetCore" Version="1.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\EventBus\Dapr\src\ParusRx.EventBus.Dapr.csproj" />
+    <ProjectReference Include="..\..\..\Common\Storage\Oracle\src\ParusRx.Storage.Oracle.csproj" />
+    <ProjectReference Include="..\..\..\Common\Storage\PostgreSQL\src\ParusRx.Storage.PostgreSQL.csproj" />
+    <ProjectReference Include="..\..\..\Common\Xml\src\ParusRx.Xml.csproj" />
+  </ItemGroup>
+
+</Project>

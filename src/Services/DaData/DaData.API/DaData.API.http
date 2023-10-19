@@ -1,0 +1,22 @@
+@DaData.API_HostAddress = http://localhost:5062
+
+GET {{DaData.API_HostAddress}}/health
+Accept: application/json
+
+###
+
+GET {{DaData.API_HostAddress}}/liveness
+Accept: application/json
+
+###
+
+POST {{DaData.API_HostAddress}}/api/v1/suggestions
+Content-Type: application/json
+
+{
+    "Id": "9E6B79A9-7544-4534-9F51-AE61A80D626C",
+    "CreationDate": "2023-05-25T00:00:00",
+    "Payload": "BD0D10F5-197C-4676-9D03-61E326B2BEE5"
+}
+
+###

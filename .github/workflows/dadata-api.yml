@@ -1,0 +1,62 @@
+name: dadata-api
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/Common/**
+      - src/Services/DaData/**
+      - .github/workflows/dadata-api.yml
+      - .github/workflows/composite/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/Common/**
+      - src/Services/DaData/**
+      - .github/workflows/dadata-api.yml
+      - .github/workflows/composite/**
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  DOTNET_QUALITY: 'preview'
+  PROJECTS_PATH: 'src/Services/DaData'
+  TESTS_PATH: 'src/Services/DaData'
+  PUBLISH_PATH: 'src/Services/DaData/DaData.API/DaData.API.csproj'
+
+jobs:
+  build-for-pr-linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+      - name: Build and run tests
+        uses: ./.github/workflows/composite/build-test
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-quality: ${{ env.DOTNET_QUALITY }}
+          projects-path: ${{ env.PROJECTS_PATH }}
+          tests-path: ${{ env.TESTS_PATH }}
+
+  build-linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+      - name: Build and publish
+        uses: ./.github/workflows/composite/build-publish
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-quality: ${{ env.DOTNET_QUALITY }}
+          projects-path: ${{ env.PROJECTS_PATH }}
+          tests-path: ${{ env.TESTS_PATH }}
+          publish-path: ${{ env.PUBLISH_PATH }}
+          registry-username: ${{ secrets.REGISTRY_USERNAME }}
+          registry-password: ${{ secrets.REGISTRY_PASSWORD }}
