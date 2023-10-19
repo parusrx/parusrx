@@ -1,0 +1,230 @@
+@url = http://localhost:51003
+
+### Health check
+
+GET {{url}}/health
+Content-Type: application/json
+
+### Liveness check
+
+GET {{url}}/liveness
+Content-Type: application/json
+
+### Get paged list of organizations
+
+GET {{url}}/api/v1/org?orgTypeId=1&offset=0&limit=10
+Content-Type: application/json
+
+### Get organization by oid
+
+GET {{url}}/api/v1/org/1.2.643.5.1.13.13.12.2.78.6258
+Content-Type: application/json
+
+### Update organization by oid
+
+PUT {{url}}/api/v1/org?oid=1.2.643.5.1.13.13.12.2.78.6258
+Content-Type: application/json
+
+{
+    "oid": "1.2.643.5.1.13.13.12.2.78.6258",
+    "headOid": null,
+    "nameFull": "Частное учреждение образовательная организация высшего образования «Медицинский университет «Реавиз»",
+    "nameShort": "Медицинский Университет «Реавиз»",
+    "inn": "6317006620",
+    "kpp": "631501001",
+    "ogrn": "1026301420716",
+    "ogrnDate": "2022-03-01T00:00:00Z",
+    "legalAddress": {
+      "id": 0,
+      "aoidArea": "a0548913-da5c-4732-a421-2251d9aed895",
+      "aoidStreet": "2fea8389-c6ff-4844-9ec1-67bd10061174",
+      "houseid": "9850bdeb-2009-4539-a8bf-97c5897547f6",
+      "houseguid": null,
+      "GARguid": "9850bdeb-2009-4539-a8bf-97c5897547f6",
+      "region": {
+        "id": 1,
+        "region": "Республика Адыгея (Адыгея)",
+        "territoryCode": 1,
+        "isFederalCity": false
+      },
+      "areaName": "Абадзехское",
+      "prefixArea": "с/п",
+      "streetName": "Песчаная",
+      "prefixStreet": "ул",
+      "house": "10",
+      "building": null,
+      "struct": null,
+      "flat": null
+    },
+    "orgType": {
+      "code": 1,
+      "name": "Государственное юридическое лицо"
+    },
+    "structure": [],
+    "lands": [],
+    "parkingArea": 0,
+    "certSeries": "12",
+    "certNumber": "123456789",
+    "certDate": "2022-03-01T00:00:00Z",
+    "regOrgName": "Налоговый орган",
+    "regDate": "2022-03-01T00:00:00Z",
+    "regOrg": "Налоговый орган",
+    "regOrgAddress": {
+      "id": 0,
+      "aoidArea": "bb035cc3-1dc2-4627-9d25-a1bf2d4b936b",
+      "aoidStreet": "8bb0d86a-b5d8-4387-ae1b-4a053a6d0760",
+      "houseid": "31d1a219-2f5f-4cb9-92e8-9dbace2a668f",
+      "houseguid": null,
+      "GARguid": "31d1a219-2f5f-4cb9-92e8-9dbace2a668f",
+      "region": {
+        "id": 63,
+        "region": "Самарская область",
+        "territoryCode": 63,
+        "isFederalCity": false
+      },
+      "areaName": "Самара",
+      "prefixArea": "г",
+      "streetName": "Садовая",
+      "prefixStreet": "ул",
+      "house": "5",
+      "building": null,
+      "struct": null,
+      "flat": null
+    },
+    "lawFormNameFull": null,
+    "moDeptId": {
+      "id": 1320705,
+      "parentId": 1320700,
+      "nameFull": "Федеральная служба по надзору в сфере здравоохранения",
+      "nameShort": "Росздравнадзор",
+      "isActive": true
+    },
+    "okopfId": null,
+    "founder": null,
+    "moAddress": {
+      "address": {
+        "id": 0,
+        "aoidArea": "a0548913-da5c-4732-a421-2251d9aed895",
+        "aoidStreet": "2fea8389-c6ff-4844-9ec1-67bd10061174",
+        "houseid": "9850bdeb-2009-4539-a8bf-97c5897547f6",
+        "houseguid": null,
+        "GARguid": "9850bdeb-2009-4539-a8bf-97c5897547f6",
+        "region": {
+          "id": 1,
+          "region": "Республика Адыгея (Адыгея)",
+          "territoryCode": 1,
+          "isFederalCity": false
+        },
+        "areaName": "Абадзехское",
+        "prefixArea": "с/п",
+        "streetName": "Песчаная",
+        "prefixStreet": "ул",
+        "house": "10",
+        "building": null,
+        "struct": null,
+        "flat": null
+      },
+      "addrRegion": {
+        "code": 1,
+        "name": "Республика Адыгея (Адыгея)"
+      },
+      "cadastralNumber": "12:31:2312312:31",
+      "latitude": 44.429867,
+      "longitude": 40.252975,
+      "postIndex": "123456"
+    },
+    "deleteDate": "2022-06-27T00:00:00Z",
+    "deleteReason": {
+      "id": 2,
+      "deleteReason": "Дубль карточки МО"
+    },
+    "regionId": {
+      "id": 63,
+      "region": "Самарская область",
+      "territoryCode": 63,
+      "isFederalCity": false
+    },
+    "medicalSubjectId": [
+      {
+        "id": 2,
+        "medicalSubject": "Медицинская организация"
+      }
+    ],
+    "oldOid": null,
+    "moAgencyKindId": {
+      "id": 1,
+      "parentId": 0,
+      "agencyKind": "Больница (в том числе детская)"
+    },
+    "moAgencyProfileId": null,
+    "moTerritoryId": {
+      "id": 6,
+      "parentId": null
+    },
+    "moLevelId": {
+      "id": 1,
+      "moLevel": "I уровень"
+    },
+    "eoOrganizationType": null,
+    "email": "test@test.1.test.ru",
+    "site": null,
+    "attachedPeople": 0,
+    "medicalInformationSystem": false,
+    "routingOKS": null,
+    "routingNumber": null,
+    "primaryVascular": false,
+    "medicalAidForm": [],
+    "medicalAidCondition": null,
+    "maxServiceDistance": 0,
+    "mark": null
+  }
+
+### Delete organization by oid with reason
+
+DELETE {{url}}/api/v1/org?oid=1.2.643.5.1.13.13.12.2.78.6258&deleteReason=1
+Content-Type: application/json
+
+### Get paged list of departments
+
+GET {{url}}/api/v1/org/depart?departTypeId=1&oid=1.2.643.5.1.13.13.12.2.13.10115&offset=0&limit=10
+Content-Type: application/json
+
+### Get department by oid
+
+GET {{url}}/api/v1/org/depart/1.2.643.5.1.13.13.12.2.77.7799?oid=1.2.643.5.1.13.13.12.2.77.7799
+Content-Type: application/json
+
+### Create department
+
+POST {{url}}/api/v1/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799
+Content-Type: application/json
+
+{
+  "departName": "Отделение №1",
+  "departStructure": {
+    "level": "1",
+    "headDepart": "",
+  },
+  "isPlaned": false
+}
+
+### Update department
+
+PUT {{url}}/api/v1/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
+Content-Type: application/json
+
+{
+  "departName": "Отделение №1",
+  "departStructure": {
+    "level": "1",
+    "headDepart": ""
+  },
+  "isPlaned": false
+}
+
+### Delete department
+
+DELETE {{url}}/api/v1/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
+Content-Type: application/json
+
+###
