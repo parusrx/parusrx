@@ -64,4 +64,4 @@ runs:
     - name: Publish
       shell: bash
       run: |
-        dotnet publish ${{ inputs.publish-path }} -r linux-x64 -p PublishProfile=DefaultContainer -p ContainerRegistry=${{ inputs.registry }} -p ContainerImageTag=latest
+        dotnet publish ${{ inputs.publish-path }} -r linux-x64 -p PublishProfile=DefaultContainer -p ContainerRegistry=${{ inputs.registry }} -p ContainerImageTag=${{ github.sha }}
