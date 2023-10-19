@@ -41,4 +41,5 @@ RUN dotnet publish "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvid
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+HEALTHCHECK CMD wget -q0- -t1 http://localhost:80/health || exit 1
 ENTRYPOINT ["dotnet", "IPS.IdentityProvider.API.dll"]
