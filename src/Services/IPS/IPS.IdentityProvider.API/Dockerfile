@@ -4,7 +4,7 @@ EXPOSE 80
 
 ENV ASPNETCORE_URLS=http://+:80
 
-ADD src/Services/IPS/tools /tmp/tools 
+ADD tools /tmp/tools 
 RUN cd /tmp/tools && \
     tar -xzf linux-amd64_deb.tgz && \
     linux-amd64_deb/install.sh && \
@@ -23,7 +23,7 @@ RUN cd /tmp/tools && \
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG configuration=Release
 WORKDIR /src
-COPY "src/Services/IPS/.nuget/packages/LibCore.Linux.2023.8.9.1.nupkg" "src/Services/IPS/.nuget/packages/LibCore.Linux.2023.8.9.1.nupkg"
+COPY ".nuget/packages/LibCore.Linux.2023.8.9.1.nupkg" ".nuget/packages/LibCore.Linux.2023.8.9.1.nupkg"
 COPY "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj"
 
 COPY . .
