@@ -47,8 +47,8 @@ public record User
     /// <summary>
     /// Gets or sets the birth date of the user.
     /// </summary>
-    [XmlElement("birthDate")]
-    [JsonPropertyName("birthDate")]
+    [XmlElement("birthdate")]
+    [JsonPropertyName("birthdate")]
     public DateTime? BirthDate { get; init; }
 
     /// <summary>
