@@ -1,0 +1,64 @@
+name: ips-identity-provider-api
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/Services/IPS/**
+      - .github/workflows/ips-identity-provider-api.yml
+      - .github/workflows/composite/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/Common/**
+      - src/Services/IPS/**
+      - .github/workflows/ips-identity-provider-api.yml
+      - .github/workflows/composite/**
+
+env:
+  DOTNET_VERSION: '6.0.x'
+  PROJECTS_PATH: 'src/Services/IPS'
+
+jobs:
+  build-for-pr-linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+      - name: Build and run tests
+        uses: ./.github/workflows/composite/build-test
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-quality: ${{ env.DOTNET_QUALITY }}
+          projects-path: ${{ env.PROJECTS_PATH }}
+
+  build-linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+      - name: Build and run tests
+        uses: ./.github/workflows/composite/build-test
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-quality: ${{ env.DOTNET_QUALITY }}
+          projects-path: ${{ env.PROJECTS_PATH }}
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ inputs.registry }}
+          username: ${{ inputs.registry-username }}
+          password: ${{ inputs.registry-password }}
+      - name: Build and push
+        run: |
+          docker build -f src/Services/IPS/IPS.IndetityProvider.API/Dockerfile -t parusrx/ips-identity-provider-api:dev .
+          docker push parusrx/ips-identity-provider-api:dev
+      

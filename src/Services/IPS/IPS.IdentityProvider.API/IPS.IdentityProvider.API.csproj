@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ParusRx.IPS.IdentityProvider.API</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LibCore.Linux" Version="2023.8.9.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.3" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,44 @@
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
+EXPOSE 80
+
+ENV ASPNETCORE_URLS=http://+:80
+
+ADD src/Services/IPS/tools /tmp/tools 
+RUN cd /tmp/tools && \
+    tar -xzf linux-amd64_deb.tgz && \
+    linux-amd64_deb/install.sh && \
+    cd /bin && \
+    ln -s /opt/cprocsp/bin/amd64/certmgr && \
+    ln -s /opt/cprocsp/bin/amd64/cpverify && \
+    ln -s /opt/cprocsp/bin/amd64/cryptcp && \
+    ln -s /opt/cprocsp/bin/amd64/csptest && \
+    ln -s /opt/cprocsp/bin/amd64/csptestf && \
+    ln -s /opt/cprocsp/bin/amd64/der2xer && \
+    ln -s /opt/cprocsp/bin/amd64/inittst && \
+    ln -s /opt/cprocsp/bin/amd64/wipefile && \
+    ln -s /opt/cprocsp/sbin/amd64/cpconfig && \
+    rm -rf /tmp/tools
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+ARG configuration=Release
+WORKDIR /src
+COPY "src/Services/IPS/.nuget/packages/LibCore.Linux.2023.8.9.1.nupkg" "src/Services/IPS/.nuget/packages/LibCore.Linux.2023.8.9.1.nupkg"
+COPY "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj"
+
+COPY . .
+WORKDIR /src
+RUN dotnet restore "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj"
+
+WORKDIR /src
+RUN dotnet build "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" -c $configuration -o /app/build
+
+FROM build AS publish
+ARG configuration=Release
+WORKDIR /src
+RUN dotnet publish "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "IPS.IdentityProvider.API.dll"]
