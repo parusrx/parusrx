@@ -19,13 +19,13 @@ inputs:
   tests-path:
     description: The path to the tests to run
     required: true
-  registry-username:
-    description: The username for the registry
-    required: true
   registry:
     description: The registry to publish to e.g. docker.io
     required: true
     default: docker.io
+  registry-username:
+    description: The username for the registry
+    required: true
   registry-password:
     description: The password for the registry
     required: true
@@ -62,5 +62,6 @@ runs:
         username: ${{ inputs.registry-username }}
         password: ${{ inputs.registry-password }}
     - name: Publish
+      shell: bash
       run: |
         dotnet publish ${{ inputs.publish-path }} -r linux-x64 -p PublishProfile=DefaultContainer -p ContainerRegistry=${{ inputs.registry }} -p ContainerImageTag=latest
