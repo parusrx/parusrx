@@ -19,8 +19,8 @@ on:
 env:
   DOTNET_VERSION: '8.0.x'
   DOTNET_QUALITY: 'preview'
-  PROJECTS_PATH: 'Common'
-  TESTS_PATH: 'Common'
+  PROJECTS_PATH: 'src/Common'
+  TESTS_PATH: 'src/Common'
 
 jobs:
   BuildLinux:

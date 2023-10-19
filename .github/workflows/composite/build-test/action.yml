@@ -31,7 +31,6 @@ runs:
     - name: Build and run tests
       shell: bash
       run: |
-        cd src
         dotnet restore ${{ inputs.solution-path }}
         cd ${{ inputs.projects-path }}
         for project in $(find . -name '*.csproj' -type f); do

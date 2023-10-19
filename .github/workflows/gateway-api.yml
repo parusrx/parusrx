@@ -21,8 +21,8 @@ on:
 env:
   DOTNET_VERSION: '8.0.x'
   DOTNET_QUALITY: 'preview'
-  PROJECTS_PATH: 'Gateway'
-  PUBLISH_PATH: 'Gateway.API/Gateway.API.csproj'
+  PROJECTS_PATH: 'src/Gateway'
+  PUBLISH_PATH: 'src/Gateway/Gateway.API/Gateway.API.csproj'
 
 jobs:
   build-for-pr-linux:

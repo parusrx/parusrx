@@ -45,7 +45,6 @@ runs:
     - name: Build and run tests
       shell: bash
       run: |
-        cd src
         dotnet restore ${{ inputs.solution-path }}
         cd ${{ inputs.projects-path }}
         for project in $(find . -name '*.csproj' -type f); do
@@ -64,6 +63,5 @@ runs:
         username: ${{ inputs.registry-username }}
         password: ${{ inputs.registry-password }}
     - name: Publish
-      working-directory: ${{ inputs.project-path }}
       run: |
         dotnet publish ${{ inputs.publish-path }} -r linux-x64 -p PublishProfile=DefaultContainer -p ContainerRegistry=${{ inputs.registry }} -p ContainerImageTag=latest
