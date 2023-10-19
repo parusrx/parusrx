@@ -35,7 +35,7 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       - name: Build
         run: |
-          dotnet build src/Services/IPS/IPS.IndetityProvider.API/IPS.IndetityProvider.API.csproj -c Release
+          dotnet build src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj -c Release
 
   build-linux:
     runs-on: ubuntu-latest
