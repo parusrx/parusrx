@@ -1,0 +1,31 @@
+@HRlink_API_HostAddress = http://localhost:5206
+
+GET {{HRlink_API_HostAddress}}/health
+Accept: application/json
+
+###
+
+GET {{HRlink_API_HostAddress}}/liveness
+Accept: application/json
+
+###
+
+POST {{HRlink_API_HostAddress}}/api/v1/pubsub/files
+Accept: application/json
+Content-Type: application/json
+
+{
+    "body": "03693B95-D952-9B85-E063-910A14ACFEBF"
+}
+
+###
+
+POST {{HRlink_API_HostAddress}}/api/v1/pubsub/doument-groups
+Accept: application/json
+Content-Type: application/json
+
+{
+    "body": "03693B95-D933-9B85-E063-910A14ACFEBF"
+}
+
+###
