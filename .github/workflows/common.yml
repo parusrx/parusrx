@@ -23,7 +23,7 @@ env:
   TESTS_PATH: 'src/Common'
 
 jobs:
-  BuildLinux:
+  build-linux:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -36,3 +36,4 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
           dotnet-quality: ${{ env.DOTNET_QUALITY }}
           projects-path: ${{ env.PROJECTS_PATH }}
+          tests-path: ${{ env.TESTS_PATH }}

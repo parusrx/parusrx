@@ -38,7 +38,7 @@ runs:
         done
         cd -
         cd ${{ inputs.tests-path }}
-        for project in $(find . -name '*.csproj' -type f); do
+        for project in $(find . -name '*Tests.csproj' -type f); do
           dotnet build $project --no-restore
           dotnet test $project --no-build --no-restore --verbosity normal
         done
