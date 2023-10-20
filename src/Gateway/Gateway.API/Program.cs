@@ -2,14 +2,14 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using System.Text.Json.Serialization;
-
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-
 using ParusRx.EventBus;
 
 var builder = WebApplication.CreateSlimBuilder(args);
+
+builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonSerializerContext.Default));
 
 builder.Services.AddDaprClient();
 builder.Services.AddDaprEventBus();
@@ -28,7 +28,7 @@ app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Nam
 app.MapPost("api/v1/mq", async (MessageQueue message, [FromServices] IEventBus eventBus) =>
 {
     var @event = new MqIntegrationEvent(message.Message);
-    await eventBus.PublishAsync(@event);
+    await eventBus.PublishAsync(message.Topic, @event);
 
     return TypedResults.Created();
 });
