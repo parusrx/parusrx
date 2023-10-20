@@ -1,16 +1,16 @@
-@DaData.API_HostAddress = http://localhost:5062
+@url = http://localhost:51002
 
-GET {{DaData.API_HostAddress}}/health
+GET {{url}}/health
 Accept: application/json
 
 ###
 
-GET {{DaData.API_HostAddress}}/liveness
+GET {{url}}/liveness
 Accept: application/json
 
 ###
 
-POST {{DaData.API_HostAddress}}/api/v1/suggestions
+POST {{url}}/api/v1/suggestions
 Content-Type: application/json
 
 {

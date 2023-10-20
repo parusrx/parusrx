@@ -18,7 +18,7 @@ To run the application you need:
 - For example, you can run the application with the following command: 
 ```
 $ docker run -d \ 
-        --name ips-identity-provider -p 8080:80 \ 
+        --name ips-identity-provider -p 80:80 \ 
         -e Jwt__Auth__Subject=mysubject \ 
         -e Jwt__Auth__Audience=https://ips.test.egisz.rosminzdrav.ru \ 
         -e Jwt__Auth__TokenLifetime=0.00:05:00 \ 
@@ -28,7 +28,7 @@ $ docker run -d \
         parusrx/ips-identity-provider
 ```
 
-- The application will be available at http://localhost:8080
+- The application will be available at http://localhost:80
 
 ### Configuration
 

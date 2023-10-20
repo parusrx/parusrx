@@ -1,16 +1,16 @@
-@HRlink_API_HostAddress = http://localhost:5206
+@url = http://localhost:51003
 
-GET {{HRlink_API_HostAddress}}/health
+GET {{url}}/health
 Accept: application/json
 
 ###
 
-GET {{HRlink_API_HostAddress}}/liveness
+GET {{url}}/liveness
 Accept: application/json
 
 ###
 
-POST {{HRlink_API_HostAddress}}/api/v1/pubsub/files
+POST {{url}}/api/v1/pubsub/files
 Accept: application/json
 Content-Type: application/json
 
@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ###
 
-POST {{HRlink_API_HostAddress}}/api/v1/pubsub/doument-groups
+POST {{url}}/api/v1/pubsub/doument-groups
 Accept: application/json
 Content-Type: application/json
 

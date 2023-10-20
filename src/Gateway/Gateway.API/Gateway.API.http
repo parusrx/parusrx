@@ -1,16 +1,16 @@
-@Gateway.API_HostAddress = http://localhost:5058
+@url = http://localhost:51001
 
-GET {{Gateway.API_HostAddress}}/health
+GET {{url}}/health
 Accept: application/json
 
 ###
 
-GET {{Gateway.API_HostAddress}}/liveness
+GET {{url}}/liveness
 Accept: application/json
 
 ###
 
-POST {{Gateway.API_HostAddress}}/api/v1/mq
+POST {{url}}/api/v1/mq
 Content-Type: application/json
 
 {

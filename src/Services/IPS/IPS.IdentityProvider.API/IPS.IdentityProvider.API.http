@@ -1,0 +1,16 @@
+@url = http://localurl:51004
+
+GET {{url}}/health
+Accept: application/json
+
+###
+
+GET {{url}}/liveness
+Accept: application/json
+
+###
+
+GET {{url}}/auth/token
+Accept: application/json
+
+###

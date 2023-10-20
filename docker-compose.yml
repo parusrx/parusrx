@@ -1,0 +1,153 @@
+version: '3.7'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  zipkin:
+    image: openzipkin/zipkin-slim
+    ports:
+      - "5411:9411"
+
+  dapr-placement:
+    image: "daprio/dapr:1.12.0"
+    command: ["./placement", "-port", "50000", "-log-level", "debug"]
+    ports:
+      - "50000:50000"
+
+  gateway:
+    image: parusrx/gateway:dev
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PATH_BASE=/gateway
+    ports:
+      - "51001:8080"
+
+  gateway-dapr:
+    image: "daprio/daprd:1.12.0"
+    command: ["./daprd",
+      "-app-id", "gateway",
+      "-app-port", "8080",
+      "-components-path", "/components",
+      "-config", "/configuration/config.yml"
+      ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
+    network_mode: "service:gateway"
+    depends_on:
+      - gateway
+
+  dadata-api:
+    image: parusrx/dadata-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TZ=${ORACLE_TZ:-Europe/Moscow}
+      - Database__Provider=${DB_PROVIDER:-Oracle}
+      - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
+      - Urls__Suggestions=${SUGGESTIONS_URL:-https://suggestions.dadata.ru/suggestions/api/4_1/rs}
+      - PATH_BASE=/dadata-api
+    ports:
+      - "51002:8080"
+  
+  dadata-api-dapr:
+    image: "daprio/daprd:1.12.0"
+    command: ["./daprd",
+      "-app-id", "dadata-api",
+      "-app-port", "8080",
+      "-components-path", "/components",
+      "-config", "/configuration/config.yaml"
+      ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
+    network_mode: "service:dadata-api"
+    depends_on:
+      - dadata-api
+
+  hrlink-api:
+    image: parusrx/hrlink-api:dev
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TZ=${ORACLE_TZ:-Europe/Moscow}
+      - Database__Provider=${DB_PROVIDER:-Oracle}
+      - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
+      - PATH_BASE=/hrlink-api
+    ports:
+      - "51003:8080"
+
+  hrlink-api-dapr:
+    image: "daprio/dapr:1.12.0"
+    command: ["./daprd",
+      "-app-id", "hrlink-api",
+      "-app-port", "8080",
+      "-components-path", "/components",
+      "-config", "/configuration/config.yml"
+      ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
+    network_mode: "service:hrlink-api"
+    depends_on:
+      - hrlink-api
+
+  ips-identity-provider-api:
+    image: parusrx/ips-identity-provider-api:dev
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - JWT__AUTH__SUBJECT=${JWT_AUTH_SUBJECT}
+      - JWT__AUTH__AUDIENCE=${JWT_AUTH_AUDIENCE}
+      - JWT__AUTH__TOKENLIFETIME=0.00:05:00
+      - JWT__CERTIFICATE__PATH=${JWT_CERTIFICATE_PATH}
+      - JWT__CERTIFICATE__PASSWORD=${JWT_CERTIFICATE_PASSWORD}
+      - PATH_BASE=/ips-identity-provider-api
+    ports:
+      - "51004:80"
+    volumes:
+      - ${JWT_CERTIFICATE_LOCAL_PATH}:${JWT_CERTIFICATE_PATH}:ro
+
+  ips-identity-provider-dapr:
+    image: "daprio/daprd:1.12.0"
+    command: ["./daprd",
+      "-app-id", "ips-identity-provider-api",
+      "-app-port", "80",
+      "-components-path", "/components",
+      "-config", "/configuration/config.yml"
+      ]
+    network_mode: "service:ips-identity-provider-api"
+    depends_on:
+      - ips-identity-provider-api
+    volumes:
+      - ./dapr/components:/components
+      - ./dapr/configuration:/configuration
+
+  frmo-api:
+    image: parusrx/frmo-api:dev
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IDENTITY__URL=http://ips-identity-provider-api
+      - FRMO__URL=${FRMO_URL}
+      - TZ=${ORACLE_TZ:-Europe/Moscow}
+      - Database__Provider=${DB_PROVIDER:-Oracle}
+      - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
+      - PATH_BASE=/frmo-api
+    ports:
+      - "51004:8080"
+
+  frmo-api-dapr:
+    image: "daprio/daprd:1.12.0"
+    command: ["./daprd",
+      "-app-id", "frmo-api",
+      "-app-port", "8080",
+      "-components-path", "/components",
+      "-config", "/configuration/config.yml"
+      ]
+    network_mode: "service:frmo-api"
+    depends_on:
+      - frmo
+    volumes:
+      - ./dapr/components:/components
+      - ./dapr/configuration:/configuration
