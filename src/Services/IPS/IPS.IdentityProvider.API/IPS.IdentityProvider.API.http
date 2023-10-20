@@ -1,4 +1,4 @@
-@url = http://localurl:51004
+@url = http://localhost:51004
 
 GET {{url}}/health
 Accept: application/json
