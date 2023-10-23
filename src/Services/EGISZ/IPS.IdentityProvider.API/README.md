@@ -1,8 +1,5 @@
 # IPS Identity Provider
 
-[![License](https://img.shields.io/github/license/parusrx/ips-identity-provider?logo=apache&style=flat-square&color=blue)](LICENSE)
-[![Build](https://github.com/parusrx/ips-identity-provider/actions/workflows/build.yml/badge.svg)](https://github.com/parusrx/ips-identity-provider/actions/workflows/build.yml)
-
 This is an identity provider service for the integration subsystem of application subsystem integration (IPS) used for connections to the Unified Public Health Information System (EGISZ).
 
 ## Getting started
@@ -41,8 +38,3 @@ The application can be configured using environment variables:
 | Jwt__Auth__TokenLifetime | The lifetime of the JWT token | 0.00:05:00 |
 | Jwt__Certificate__Path | The path to the certificate | |
 | Jwt__Certificate__Password | The password of the certificate | |
-
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
