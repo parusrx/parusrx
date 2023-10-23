@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 global using System.Text.Json.Serialization;
+global using System.Xml.Serialization;
 global using Microsoft.Extensions.Options;
 global using Dapr;
 global using ParusRx.Data.Oracle;
