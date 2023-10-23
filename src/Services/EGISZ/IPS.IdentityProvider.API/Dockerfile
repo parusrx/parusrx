@@ -24,19 +24,19 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG configuration=Release
 WORKDIR /src
 COPY ".nuget/packages/LibCore.Linux.2023.8.9.1.nupkg" ".nuget/packages/LibCore.Linux.2023.8.9.1.nupkg"
-COPY "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj"
+COPY "src/Services/EGISZ/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" "src/Services/EGISZ/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj"
 
 COPY . .
 WORKDIR /src
-RUN dotnet restore "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj"
+RUN dotnet restore "src/Services/EGISZ/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj"
 
 WORKDIR /src
-RUN dotnet build "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" -c $configuration -o /app/build
+RUN dotnet build "src/Services/EGISZ/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
 ARG configuration=Release
 WORKDIR /src
-RUN dotnet publish "src/Services/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "src/Services/EGISZ/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
