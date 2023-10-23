@@ -19,10 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\EventBus\Dapr\src\ParusRx.EventBus.Dapr.csproj" />
-    <ProjectReference Include="..\..\..\Common\Storage\Oracle\src\ParusRx.Storage.Oracle.csproj" />
-    <ProjectReference Include="..\..\..\Common\Storage\PostgreSQL\src\ParusRx.Storage.PostgreSQL.csproj" />
-    <ProjectReference Include="..\..\..\Common\Xml\src\ParusRx.Xml.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\EventBus\Dapr\src\ParusRx.EventBus.Dapr.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\Storage\Oracle\src\ParusRx.Storage.Oracle.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\Storage\PostgreSQL\src\ParusRx.Storage.PostgreSQL.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\Xml\src\ParusRx.Xml.csproj" />
   </ItemGroup>
 
 </Project>

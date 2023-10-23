@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - src/Common/**
-      - src/Services/Frmo/**
+      - src/Services/EGISZ/Frmo/**
       - .github/workflows/frmo-api.yml
       - .github/workflows/composite/**
   pull_request:
@@ -14,16 +14,16 @@ on:
       - main
     paths:
       - src/Common/**
-      - src/Services/Frmo/**
+      - src/Services/EGISZ/Frmo/**
       - .github/workflows/frmo-api.yml
       - .github/workflows/composite/**
 
 env:
   DOTNET_VERSION: '8.0.x'
   DOTNET_QUALITY: 'preview'
-  PROJECTS_PATH: 'src/Services/Frmo'
-  TESTS_PATH: 'src/Services/Frmo'
-  PUBLISH_PATH: 'src/Services/Frmo/Frmo.API/Frmo.API.csproj'
+  PROJECTS_PATH: 'src/Services/EGISZ/Frmo'
+  TESTS_PATH: 'src/Services/EGISZ/Frmo'
+  PUBLISH_PATH: 'src/Services/EGISZ/Frmo/Frmo.API/Frmo.API.csproj'
 
 jobs:
   build-for-pr-linux:
