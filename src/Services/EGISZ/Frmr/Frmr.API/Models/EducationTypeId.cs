@@ -5,11 +5,11 @@ namespace ParusRx.Frmr.API;
 
 public record EducationTypeId
 {
-    [JsonPropertyName("code")]
     [XmlElement("code")]
-    public required string Code { get; init; }
+    [JsonPropertyName("code")]
+    public int Code { get; init; }
 
-    [JsonPropertyName("name")]
     [XmlElement("name")]
+    [JsonPropertyName("name")]
     public string? Name { get; init; }
 }

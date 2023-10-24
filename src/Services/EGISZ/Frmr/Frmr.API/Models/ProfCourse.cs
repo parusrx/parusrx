@@ -5,15 +5,15 @@ namespace ParusRx.Frmr.API;
 
 public record ProfCourse
 {
-    [JsonPropertyName("docDate")]
     [XmlElement("docDate")]
-    public required DateTime DocDate { get; init; }
+    [JsonPropertyName("docDate")]
+    public DateTime DocDate { get; init; }
 
-    [JsonPropertyName("profCourseId")]
     [XmlElement("profCourseId")]
+    [JsonPropertyName("profCourseId")]
     public int ProfCourseId { get; init; }
 
-    [JsonPropertyName("profCourseName")]
     [XmlElement("profCourseName")]
+    [JsonPropertyName("profCourseName")]
     public string ProfCourseName { get; init; } = default!;
 }

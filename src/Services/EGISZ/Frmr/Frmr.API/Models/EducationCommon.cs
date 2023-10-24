@@ -5,27 +5,27 @@ namespace ParusRx.Frmr.API;
 
 public record EducationCommon
 {
-    [JsonPropertyName("commonId")]
     [XmlElement("commonId")]
+    [JsonPropertyName("commonId")]
     public string? CommonId { get; init; }
 
-    [JsonPropertyName("institution")]
     [XmlElement("institution")]
-    public required string Institution { get; init; }
+    [JsonPropertyName("institution")]
+    public string Institution { get; init; } = default!;
 
-    [JsonPropertyName("docSerial")]
     [XmlElement("docSerial")]
+    [JsonPropertyName("docSerial")]
     public string? DocSerial { get; init; }
 
-    [JsonPropertyName("docNumber")]
     [XmlElement("docNumber")]
-    public required string DocNumber { get; init; }
+    [JsonPropertyName("docNumber")]
+    public string DocNumber { get; init; } = default!;
 
-    [JsonPropertyName("docDate")]
     [XmlElement("docDate")]
-    public required DateTime DocDate { get; init; }
+    [JsonPropertyName("docDate")]
+    public DateTime DocDate { get; init; }
 
-    [JsonPropertyName("profCourseSet")]
     [XmlElement("profCourseSet")]
-    public List<ProfCourse>? ProfCourseSet { get; init; }
+    [JsonPropertyName("profCourseSet")]
+    public ProfCourse[]? ProfCourseSet { get; init; }
 }
