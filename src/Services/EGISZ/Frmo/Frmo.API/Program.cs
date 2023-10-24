@@ -15,6 +15,7 @@ builder.Services.AddDataAccess(builder.Configuration);
 builder.Services.AddIpsIdentityProvider();
 builder.Services.AddOrganization();
 builder.Services.AddDepartment();
+builder.Services.AddStaff();
 
 builder.Services.AddDaprClient();
 builder.Services.AddDaprEventBus();
@@ -33,9 +34,11 @@ app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Nam
 // REST API endpoints
 app.MapOrganizations();
 app.MapDepartments();
+app.MapStaffs();
 
 // Dapr pub/sub endpoints
 app.MapPubSubOrganizations();
 app.MapPubSubDepartments();
+app.MapPubSubStaffs();
 
 app.Run();
