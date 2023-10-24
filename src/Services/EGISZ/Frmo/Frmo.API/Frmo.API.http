@@ -227,4 +227,11 @@ Content-Type: application/json
 DELETE {{url}}/api/v1/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
 Content-Type: application/json
 
-###
+### Get Staff
+
+GET {{url}}/api/v1/org/staff?oid=1.2.643.5.1.13.13.12.2.77.7799
+Content-Type: application/json
+
+### Get Staff by entity
+GET {{url}}/api/v1/org/staff?oid=1.2.643.5.1.13.13.12.2.77.7799&entity=e50da88c-f7f0-4a8a-bde6-f491c2268abf
+Content-Type: application/json
