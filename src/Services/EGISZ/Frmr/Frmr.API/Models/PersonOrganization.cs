@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmr.API;
 
-public record Organization
+public record PersonOrganization
 {
     [XmlElement("organizationId")]
     [JsonPropertyName("organizationId")]
