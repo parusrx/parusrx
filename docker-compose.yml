@@ -151,3 +151,31 @@ services:
     volumes:
       - ./dapr/components:/components
       - ./dapr/configuration:/configuration
+
+  frmr-api:
+    image: parusrx/frmr-api:dev
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IDENTITY__URL=http://ips-identity-provider-api
+      - FRMR__URL=${FRMR_URL}
+      - TZ=${ORACLE_TZ:-Europe/Moscow}
+      - Database__Provider=${DB_PROVIDER:-Oracle}
+      - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
+      - PATH_BASE=/frmr-api
+    ports:
+      - "51006:8080"
+
+  frmr-api-dapr:
+    image: "daprio/daprd:1.12.0"
+    command: ["./daprd",
+      "-app-id", "frmo-api",
+      "-app-port", "8080",
+      "-components-path", "/components",
+      "-config", "/configuration/config.yml"
+      ]
+    network_mode: "service:frmr-api"
+    depends_on:
+      - frmr-api
+    volumes:
+      - ./dapr/components:/components
+      - ./dapr/configuration:/configuration
