@@ -99,6 +99,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frmr", "Frmr", "{DFDF10F3-6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frmr.API", "src\Services\EGISZ\Frmr\Frmr.API\Frmr.API.csproj", "{C132D540-A4E2-45C5-8C4C-99DFCC02B1FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frmr.Tests", "src\Services\EGISZ\Frmr\Frmr.Tests\Frmr.Tests.csproj", "{C35E2DD8-1AA8-476B-B07E-61ECA69BAD9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -209,6 +211,10 @@ Global
 		{C132D540-A4E2-45C5-8C4C-99DFCC02B1FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C132D540-A4E2-45C5-8C4C-99DFCC02B1FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C132D540-A4E2-45C5-8C4C-99DFCC02B1FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C35E2DD8-1AA8-476B-B07E-61ECA69BAD9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35E2DD8-1AA8-476B-B07E-61ECA69BAD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35E2DD8-1AA8-476B-B07E-61ECA69BAD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35E2DD8-1AA8-476B-B07E-61ECA69BAD9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -261,6 +267,7 @@ Global
 		{5CC1598B-0A01-417E-AB42-9F54687AF67E} = {711DCCEA-7970-4F31-A541-0DA4158802AC}
 		{DFDF10F3-610F-4C1C-99F9-8E21E72DE5D6} = {8C4E0057-00F7-48E9-984E-55AB24F02A3D}
 		{C132D540-A4E2-45C5-8C4C-99DFCC02B1FD} = {DFDF10F3-610F-4C1C-99F9-8E21E72DE5D6}
+		{C35E2DD8-1AA8-476B-B07E-61ECA69BAD9E} = {DFDF10F3-610F-4C1C-99F9-8E21E72DE5D6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E3B1AA8-DE08-4FE2-85A0-6BC3A39EC317}
