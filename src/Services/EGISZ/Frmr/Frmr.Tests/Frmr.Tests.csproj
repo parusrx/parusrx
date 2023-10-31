@@ -27,8 +27,4 @@
     <ProjectReference Include="..\Frmr.API\Frmr.API.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
