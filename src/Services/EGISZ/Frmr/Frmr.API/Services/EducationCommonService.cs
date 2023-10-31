@@ -1,8 +1,6 @@
 ﻿// Copyright (c) The Parus RX Authors. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using Microsoft.AspNetCore.WebUtilities;
-
 namespace ParusRx.Frmr.API.Services;
 
 public class EducationCommonService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)

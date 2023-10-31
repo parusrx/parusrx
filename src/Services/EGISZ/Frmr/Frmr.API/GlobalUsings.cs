@@ -3,6 +3,7 @@
 
 global using System.Text.Json.Serialization;
 global using System.Xml.Serialization;
+global using Microsoft.AspNetCore.WebUtilities;
 global using Microsoft.Extensions.Options;
 global using ParusRx.Data.Oracle;
 global using ParusRx.Data.PostgreSQL;
