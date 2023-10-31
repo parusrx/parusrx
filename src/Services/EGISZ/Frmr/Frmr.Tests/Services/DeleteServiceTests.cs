@@ -42,6 +42,27 @@ public class DeleteServiceTests
     }
 
     [Fact]
+    public async Task ListAsync_ShouldReturnListPagedPersonResponse_WhenRequestIsSuccessful()
+    {
+        var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
+        var expectedResponse = new ListPagedPersonResponse();
+
+        _httpMessageHandlerMock.Protected()
+            .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+            .ReturnsAsync(new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(JsonSerializer.Serialize(expectedResponse))
+            });
+
+        // Act
+        var response = await _service.ListAsync(queryParameters);
+
+        // Assert
+        Assert.Equal(expectedResponse, response);
+    }
+
+    [Fact]
     public async Task CreateAsync_ShouldReturnCreatePersonResponse_WhenRequestIsSuccessful()
     {
         // Arrange
