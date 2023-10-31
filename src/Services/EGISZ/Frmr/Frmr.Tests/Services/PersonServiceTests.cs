@@ -1,15 +1,15 @@
 ﻿// Copyright (c) The Parus RX Authors. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRx.Frmr.Tests;
+namespace ParusRx.Frmr.Tests.Services;
 
-public class DeleteServiceTests
+public class PersonServiceTests
 {
     private readonly Mock<IOptionsSnapshot<FrmrSettings>> _settingsMock;
     private readonly Mock<HttpMessageHandler> _httpMessageHandlerMock;
     private readonly PersonService _service;
 
-    public DeleteServiceTests()
+    public PersonServiceTests()
     {
         _settingsMock = new Mock<IOptionsSnapshot<FrmrSettings>>();
         _settingsMock.Setup(s => s.Value).Returns(new FrmrSettings { Url = "https://ips.test.egisz.rosminzdrav.ru/4f52d90e921a0" });
