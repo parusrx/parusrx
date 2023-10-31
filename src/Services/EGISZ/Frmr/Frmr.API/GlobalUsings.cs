@@ -3,10 +3,12 @@
 
 global using System.Text.Json.Serialization;
 global using System.Xml.Serialization;
+global using Microsoft.AspNetCore.Http.HttpResults;
 global using Microsoft.AspNetCore.WebUtilities;
 global using Microsoft.Extensions.Options;
 global using ParusRx.Data.Oracle;
 global using ParusRx.Data.PostgreSQL;
 global using ParusRx.Frmr.API;
 global using ParusRx.Frmr.API.Data;
+global using ParusRx.Frmr.API.Services; 
 global using ParusRx.Xml;

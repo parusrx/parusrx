@@ -1,0 +1,55 @@
+﻿// Copyright (c) The Parus RX Authors. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+namespace ParusRx.Frmr.API.Routes;
+
+internal static class PersonApi
+{
+    public static RouteGroupBuilder MapPersonApi(this RouteGroupBuilder group)
+    {
+        group.MapGet("/", GetPerson);
+        group.MapGet("/list", ListPerson);
+        group.MapPost("/", CreatePerson);
+        group.MapPut("/", UpdatePerson);
+        group.MapDelete("/", DeletePerson);
+
+        return group;
+    }
+
+    public static async ValueTask<Ok<GetPersonResponse>> GetPerson(HttpRequest request, PersonService service)
+    {
+        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var response = await service.GetAsync(queryParameters);
+        return TypedResults.Ok(response);
+    }
+
+    public static async ValueTask<Ok<ListPagedPersonResponse>> ListPerson(HttpRequest request, PersonService service)
+    {
+        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var response = await service.ListAsync(queryParameters);
+        return TypedResults.Ok(response);
+    }
+
+    public static async ValueTask<Ok<CreatePersonResponse>> CreatePerson(HttpRequest request, PersonService service)
+    {
+        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var person = await request.ReadFromJsonAsync<Person>();
+        var response = await service.CreateAsync(queryParameters, person!);
+        return TypedResults.Ok(response);
+    }
+
+    public static async ValueTask<Ok<UpdatePersonResponse>> UpdatePerson(HttpRequest request, PersonService service)
+    {
+        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var person = await request.ReadFromJsonAsync<Person>();
+        var response = await service.UpdateAsync(queryParameters, person!);
+        return TypedResults.Ok(response);
+    }
+
+    public static async ValueTask<Ok<DeletePersonResponse>> DeletePerson(HttpRequest request, PersonService service)
+    {
+        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var response = await service.DeleteAsync(queryParameters);
+        return TypedResults.Ok(response);
+    }
+}

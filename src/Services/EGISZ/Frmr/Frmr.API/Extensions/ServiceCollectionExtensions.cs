@@ -1,8 +1,6 @@
 ﻿// Copyright (c) The Parus RX Authors. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using System.Security.Policy;
-
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ServiceCollectionExtensions
@@ -18,6 +16,35 @@ public static class ServiceCollectionExtensions
     public static void AddAuthorizationHttpClient(this IServiceCollection services)
     {
         services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
+    }
+
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    {
+        services.AddHttpClient<PersonService>()
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
+            { 
+                ClientCertificateOptions = ClientCertificateOption.Manual,
+                ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true
+            })
+            .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+
+        services.AddHttpClient<EducationCommonService>()
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
+            { 
+                ClientCertificateOptions = ClientCertificateOption.Manual,
+                ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true
+            })
+            .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+
+        services.AddHttpClient<FullPersonService>()
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
+            { 
+                ClientCertificateOptions = ClientCertificateOption.Manual,
+                ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true
+            })
+            .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+
+        return services;
     }
 
     public static IServiceCollection AddDataAccess(this IServiceCollection services, IConfiguration configuration)
