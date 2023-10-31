@@ -40,7 +40,7 @@ public record EducationProf
 
     [XmlElement("hasDiploma")]
     [JsonPropertyName("hasDiploma")]
-    public bool HasDiploma { get; init; }
+    public bool? HasDiploma { get; init; }
 
     [XmlElement("docSerial")]
     [JsonPropertyName("docSerial")]
@@ -72,7 +72,7 @@ public record EducationProf
 
     [XmlElement("budget")]
     [JsonPropertyName("budget")]
-    public bool Budget { get; init; }
+    public bool? Budget { get; init; }
 
     [XmlElement("specId")]
     [JsonPropertyName("specId")]
@@ -108,7 +108,7 @@ public record EducationProf
 
     [XmlElement("isTargetTerminated")]
     [JsonPropertyName("isTargetTerminated")]
-    public bool IsTargetTerminated { get; init; }
+    public bool? IsTargetTerminated { get; init; }
 
     [XmlElement("terminationReasonId")]
     [JsonPropertyName("terminationReasonId")]

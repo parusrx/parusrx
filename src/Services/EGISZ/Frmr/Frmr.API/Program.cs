@@ -30,4 +30,7 @@ app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Nam
 app.MapGroup("/person")
     .MapPersonApi();
 
+app.MapGroup("/person/full")
+    .MapFullPersonApi();
+
 app.Run();

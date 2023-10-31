@@ -108,7 +108,7 @@ public record PersonCard
 
     [XmlElement("targeted")]
     [JsonPropertyName("targeted")]
-    public bool Targeted { get; init; }
+    public bool? Targeted { get; init; }
 
     [XmlArray("temporaryDerelictions")]
     [XmlArrayItem("temporaryDerelictionsItem")]

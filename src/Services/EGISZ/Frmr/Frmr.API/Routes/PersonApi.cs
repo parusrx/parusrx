@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmr.API.Routes;
 
-internal static class PersonApi
+public static class PersonApi
 {
     public static RouteGroupBuilder MapPersonApi(this RouteGroupBuilder group)
     {
