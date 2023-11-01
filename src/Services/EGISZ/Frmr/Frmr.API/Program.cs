@@ -36,6 +36,9 @@ app.MapGroup("/person/common")
 app.MapGroup("/person/prof")
     .MapEducationProfApi();
 
+app.MapGroup("/person/postgraduate")
+    .MapEducationPostgraduateApi();
+
 app.MapGroup("/person/full")
     .MapFullPersonApi();
 
