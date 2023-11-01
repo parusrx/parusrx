@@ -51,6 +51,9 @@ app.MapGroup("/person/accreditation")
 app.MapGroup("/person/qualification")
     .MapPersonQualificationApi();
 
+app.MapGroup("/person/card")
+    .MapPersonCardApi();
+
 app.MapGroup("/person/full")
     .MapFullPersonApi();
 
