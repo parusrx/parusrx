@@ -34,8 +34,10 @@ public class FullPersonServiceTests
                 Content = new StringContent(JsonSerializer.Serialize(expectedResponse))
             });
 
+        CancellationTokenSource cts = new();
+
         // Act
-        var response = await _service.GetAsync(queryParameters);
+        var response = await _service.GetAsync(queryParameters, cts.Token);
 
         // Assert
         Assert.Equal(expectedResponse, response);

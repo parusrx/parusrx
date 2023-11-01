@@ -22,8 +22,8 @@ public static class EducationExtApi
     public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationExt(HttpRequest request, EducationExtService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
-        
         var educationExt = await request.ReadFromJsonAsync<EducationExt>(cancellationToken: cancellationToken);
+        
         var response = await service.CreateAsync(queryParameters, educationExt!, cancellationToken);
 
         return TypedResults.Ok(response);
@@ -32,8 +32,8 @@ public static class EducationExtApi
     public static async ValueTask<Ok<DefaultResponse>> UpdateEducationExt(HttpRequest request, EducationExtService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
-        
         var educationExt = await request.ReadFromJsonAsync<EducationExt>(cancellationToken: cancellationToken);
+        
         var response = await service.UpdateAsync(queryParameters, educationExt!, cancellationToken);
 
         return TypedResults.Ok(response);

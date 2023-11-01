@@ -16,50 +16,50 @@ public static class PersonApi
         return group;
     }
 
-    public static async ValueTask<Ok<SingleResponse<Person>>> GetPerson(HttpRequest request, PersonService service)
+    public static async ValueTask<Ok<SingleResponse<Person>>> GetPerson(HttpRequest request, PersonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         
-        var response = await service.GetAsync(queryParameters);
+        var response = await service.GetAsync(queryParameters, cancellationToken);
 
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<ListPagedResponse<Person>>> ListPerson(HttpRequest request, PersonService service)
+    public static async ValueTask<Ok<ListPagedResponse<Person>>> ListPerson(HttpRequest request, PersonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         
-        var response = await service.ListAsync(queryParameters);
+        var response = await service.ListAsync(queryParameters, cancellationToken);
         
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePerson(HttpRequest request, PersonService service)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePerson(HttpRequest request, PersonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var person = await request.ReadFromJsonAsync<Person>(cancellationToken: cancellationToken);
         
-        var person = await request.ReadFromJsonAsync<Person>();
-        var response = await service.CreateAsync(queryParameters, person!);
-        
+        var response = await service.CreateAsync(queryParameters, person!, cancellationToken);
+
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdatePerson(HttpRequest request, PersonService service)
+    public static async ValueTask<Ok<DefaultResponse>> UpdatePerson(HttpRequest request, PersonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var person = await request.ReadFromJsonAsync<Person>(cancellationToken: cancellationToken);
         
-        var person = await request.ReadFromJsonAsync<Person>();
-        var response = await service.UpdateAsync(queryParameters, person!);
-        
+        var response = await service.UpdateAsync(queryParameters, person!, cancellationToken);
+
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeletePerson(HttpRequest request, PersonService service)
+    public static async ValueTask<Ok<DefaultResponse>> DeletePerson(HttpRequest request, PersonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         
-        var response = await service.DeleteAsync(queryParameters);
-        
+        var response = await service.DeleteAsync(queryParameters, cancellationToken);
+
         return TypedResults.Ok(response);
     }
 }

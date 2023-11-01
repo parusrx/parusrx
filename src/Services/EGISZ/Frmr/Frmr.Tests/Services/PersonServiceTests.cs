@@ -34,8 +34,10 @@ public class PersonServiceTests
                 Content = new StringContent(JsonSerializer.Serialize(expectedResponse))
             });
 
+        CancellationTokenSource cts = new();
+
         // Act
-        var response = await _service.GetAsync(queryParameters);
+        var response = await _service.GetAsync(queryParameters, cts.Token);
 
         // Assert
         Assert.Equal(expectedResponse, response);
@@ -55,8 +57,10 @@ public class PersonServiceTests
                 Content = new StringContent(JsonSerializer.Serialize(expectedResponse))
             });
 
+        CancellationTokenSource cts = new();
+
         // Act
-        var response = await _service.ListAsync(queryParameters);
+        var response = await _service.ListAsync(queryParameters, cts.Token);
 
         // Assert
         Assert.Equal(expectedResponse.RequestId, response.RequestId);
@@ -84,8 +88,10 @@ public class PersonServiceTests
                 Content = new StringContent(JsonSerializer.Serialize(expectedResponse))
             });
 
+        CancellationTokenSource cts = new();
+
         // Act
-        var response = await _service.CreateAsync(queryParameters, person);
+        var response = await _service.CreateAsync(queryParameters, person, cts.Token);
 
         // Assert
         Assert.Equal(expectedResponse, response);
@@ -110,8 +116,10 @@ public class PersonServiceTests
                 Content = new StringContent(JsonSerializer.Serialize(expectedResponse))
             });
 
+        CancellationTokenSource cts = new();
+
         // Act
-        var response = await _service.UpdateAsync(queryParameters, person);
+        var response = await _service.UpdateAsync(queryParameters, person, cts.Token);
 
         // Assert
         Assert.Equal(expectedResponse, response);
@@ -132,8 +140,10 @@ public class PersonServiceTests
                 Content = new StringContent(JsonSerializer.Serialize(expectedResponse))
             });
 
+        CancellationTokenSource cts = new();
+
         // Act
-        var response = await _service.DeleteAsync(queryParameters);
+        var response = await _service.DeleteAsync(queryParameters, cts.Token);
 
         // Assert
         Assert.Equal(expectedResponse, response);

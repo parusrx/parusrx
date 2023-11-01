@@ -15,40 +15,40 @@ public static class EducationCertApi
         return group;
     }
 
-    public static async ValueTask<Ok<ListResponse<EducationCert>>> GetAllEducationCert(HttpRequest request, EducationCertService certService, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListResponse<EducationCert>>> GetAllEducationCert(HttpRequest request, EducationCertService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
-        var response = await certService.GetAllAsync(queryParameters, cancellationToken);
+        var response = await service.GetAllAsync(queryParameters, cancellationToken);
 
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationCert(HttpRequest request, EducationCertService certService, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationCert(HttpRequest request, EducationCertService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
-
         var educationCert = await request.ReadFromJsonAsync<EducationCert>(cancellationToken: cancellationToken);
-        var response = await certService.CreateAsync(queryParameters, educationCert!, cancellationToken);
+        
+        var response = await service.CreateAsync(queryParameters, educationCert!, cancellationToken);
 
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationCert(HttpRequest request, EducationCertService certService, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationCert(HttpRequest request, EducationCertService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
-
         var educationCert = await request.ReadFromJsonAsync<EducationCert>(cancellationToken: cancellationToken);
-        var response = await certService.UpdateAsync(queryParameters, educationCert!, cancellationToken);
+
+        var response = await service.UpdateAsync(queryParameters, educationCert!, cancellationToken);
 
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationCert(HttpRequest request, EducationCertService certService, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationCert(HttpRequest request, EducationCertService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
-        var response = await certService.DeleteAsync(queryParameters, cancellationToken);
+        var response = await service.DeleteAsync(queryParameters, cancellationToken);
 
         return TypedResults.Ok(response);
     }

@@ -34,8 +34,10 @@ public class EducationCommonServiceTests
                 Content = new StringContent(JsonSerializer.Serialize(expectedResponse))
             });
 
+        CancellationTokenSource cts = new();
+
         // Act
-        var response = await _service.GetAsync(queryParameters);
+        var response = await _service.GetAsync(queryParameters, cts.Token);
 
         // Assert
         Assert.Equal(expectedResponse, response);
@@ -61,8 +63,10 @@ public class EducationCommonServiceTests
                 Content = new StringContent(JsonSerializer.Serialize(expectedResponse))
             });
 
+        CancellationTokenSource cts = new();
+
         // Act
-        var response = await _service.CreateAsync(queryParameters, educationCommon);
+        var response = await _service.CreateAsync(queryParameters, educationCommon, cts.Token);
 
         // Assert
         Assert.Equal(expectedResponse, response);
@@ -87,8 +91,10 @@ public class EducationCommonServiceTests
                 Content = new StringContent(JsonSerializer.Serialize(expectedResponse))
             });
 
+        CancellationTokenSource cts = new();
+
         // Act
-        var response = await _service.UpdateAsync(queryParameters, educationCommon);
+        var response = await _service.UpdateAsync(queryParameters, educationCommon, cts.Token);
 
         // Assert
         Assert.Equal(expectedResponse, response);
@@ -109,8 +115,10 @@ public class EducationCommonServiceTests
                 Content = new StringContent(JsonSerializer.Serialize(expectedResponse))
             });
 
+        CancellationTokenSource cts = new();
+
         // Act
-        var response = await _service.DeleteAsync(queryParameters);
+        var response = await _service.DeleteAsync(queryParameters, cts.Token);
 
         // Assert
         Assert.Equal(expectedResponse, response);

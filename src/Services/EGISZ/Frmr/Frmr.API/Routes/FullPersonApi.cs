@@ -8,14 +8,15 @@ public static class FullPersonApi
     public static RouteGroupBuilder MapFullPersonApi(this RouteGroupBuilder group)
     {
         group.MapGet("/", GetFullPerson);
+        
         return group;
     }
 
-    public static async ValueTask<Ok<SingleResponse<FullPerson>>> GetFullPerson(HttpRequest request, FullPersonService service)
+    public static async ValueTask<Ok<SingleResponse<FullPerson>>> GetFullPerson(HttpRequest request, FullPersonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         
-        var response = await service.GetAsync(queryParameters);
+        var response = await service.GetAsync(queryParameters, cancellationToken);
         
         return TypedResults.Ok(response);
     }
