@@ -42,6 +42,9 @@ app.MapGroup("/person/postgraduate")
 app.MapGroup("/person/ext")
     .MapEducationExtApi();
 
+app.MapGroup("/person/cert")
+    .MapEducationCertApi();
+
 app.MapGroup("/person/full")
     .MapFullPersonApi();
 

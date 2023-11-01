@@ -3,28 +3,28 @@
 
 namespace ParusRx.Frmr.Tests;
 
-public class EducationPostgraduateServiceTests
+public class EducationCertServiceTests
 {
     private readonly Mock<IOptionsSnapshot<FrmrSettings>> _settingsMock;
     private readonly Mock<HttpMessageHandler> _httpMessageHandlerMock;
-    private readonly EducationPostgraduateService _service;
+    private readonly EducationCertService _service;
 
-    public EducationPostgraduateServiceTests()
+    public EducationCertServiceTests()
     {
         _settingsMock = new Mock<IOptionsSnapshot<FrmrSettings>>();
         _settingsMock.Setup(s => s.Value).Returns(new FrmrSettings { Url = "https://ips.test.egisz.rosminzdrav.ru/4f52d90e921a0" });
 
         _httpMessageHandlerMock = new Mock<HttpMessageHandler>();
 
-        _service = new EducationPostgraduateService(new HttpClient(_httpMessageHandlerMock.Object), _settingsMock.Object);
+        _service = new EducationCertService(new HttpClient(_httpMessageHandlerMock.Object), _settingsMock.Object);
     }
 
     [Fact]
-    public async Task GetAllAsync_ShouldReturnGetAllEducationPostgraduateResponse_WhenRequestIsSuccessful()
+    public async Task GetAllAsync_ShouldReturnGetAllEducationCertResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new ListResponse<EducationPostgraduate>();
+        var expectedResponse = new ListResponse<EducationCert>();
 
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
@@ -44,11 +44,11 @@ public class EducationPostgraduateServiceTests
     }
 
     [Fact]
-    public async Task CreateAsync_ShouldReturnCreateEducationPostgraduateResponse_WhenRequestIsSuccessful()
+    public async Task CreateAsync_ShouldReturnCreateEducationCertResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var educationPostgraduate = new EducationPostgraduate();
+        var educationCert = new EducationCert();
         var expectedResponse = new SingleResponse<Entity>
         {
             RequestId = Guid.NewGuid().ToString(),
@@ -64,18 +64,18 @@ public class EducationPostgraduateServiceTests
             });
 
         // Act
-        var response = await _service.CreateAsync(queryParameters, educationPostgraduate, CancellationToken.None);
+        var response = await _service.CreateAsync(queryParameters, educationCert, CancellationToken.None);
 
         // Assert
         Assert.Equal(expectedResponse, response);
     }
 
     [Fact]
-    public async Task UpdateAsync_ShouldReturnUpdateEducationPostgraduateResponse_WhenRequestIsSuccessful()
+    public async Task UpdateAsync_ShouldReturnUpdateEducationCertResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var educationPostgraduate = new EducationPostgraduate();
+        var educationCert = new EducationCert();
         var expectedResponse = new DefaultResponse
         {
             RequestId = Guid.NewGuid().ToString()
@@ -90,14 +90,14 @@ public class EducationPostgraduateServiceTests
             });
 
         // Act
-        var response = await _service.UpdateAsync(queryParameters, educationPostgraduate, CancellationToken.None);
+        var response = await _service.UpdateAsync(queryParameters, educationCert, CancellationToken.None);
 
         // Assert
         Assert.Equal(expectedResponse, response);
     }
 
     [Fact]
-    public async Task DeleteAsync_ShouldReturnDeleteEducationPostgraduateResponse_WhenRequestIsSuccessful()
+    public async Task DeleteAsync_ShouldReturnDeleteEducationCertResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };

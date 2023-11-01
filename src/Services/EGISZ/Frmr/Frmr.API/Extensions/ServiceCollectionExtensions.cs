@@ -60,6 +60,14 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
+        services.AddHttpClient<EducationCertService>()
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
+            { 
+                ClientCertificateOptions = ClientCertificateOption.Manual,
+                ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true
+            })
+            .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+
         services.AddHttpClient<FullPersonService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
