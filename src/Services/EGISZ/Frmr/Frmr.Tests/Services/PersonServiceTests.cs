@@ -24,7 +24,7 @@ public class PersonServiceTests
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new GetPersonResponse();
+        var expectedResponse = new SingleResponse<Person>();
 
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
@@ -45,7 +45,7 @@ public class PersonServiceTests
     public async Task ListAsync_ShouldReturnListPagedPersonResponse_WhenRequestIsSuccessful()
     {
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new ListPagedPersonResponse();
+        var expectedResponse = new ListPagedResponse<Person>();
 
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
@@ -59,7 +59,9 @@ public class PersonServiceTests
         var response = await _service.ListAsync(queryParameters);
 
         // Assert
-        Assert.Equal(expectedResponse, response);
+        Assert.Equal(expectedResponse.RequestId, response.RequestId);
+        Assert.Equal(expectedResponse.Message, response.Message);
+        Assert.Equal(expectedResponse.Content, response.Content);
     }
 
     [Fact]
@@ -68,7 +70,7 @@ public class PersonServiceTests
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
         var person = new Person();
-        var expectedResponse = new CreatePersonResponse
+        var expectedResponse = new SingleResponse<Entity>()
         {
             RequestId = Guid.NewGuid().ToString(),
             Content = new Entity { EntityId = Guid.NewGuid().ToString() }
@@ -95,7 +97,7 @@ public class PersonServiceTests
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
         var person = new Person();
-        var expectedResponse = new UpdatePersonResponse
+        var expectedResponse = new DefaultResponse
         {
             RequestId = Guid.NewGuid().ToString()
         };
@@ -120,7 +122,7 @@ public class PersonServiceTests
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new DeletePersonResponse();
+        var expectedResponse = new DefaultResponse();
 
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())

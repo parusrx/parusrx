@@ -24,7 +24,7 @@ public class FullPersonServiceTests
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new GetFullPersonResponse();
+        var expectedResponse = new SingleResponse<FullPerson>();
 
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())

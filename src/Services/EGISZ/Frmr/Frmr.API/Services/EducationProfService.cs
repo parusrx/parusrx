@@ -5,43 +5,43 @@ namespace ParusRx.Frmr.API.Services;
 
 public sealed class EducationProfService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
 {
-    public async ValueTask<GetEducationProfResponse> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
+    public async ValueTask<SingleResponse<EducationProf>> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/prof", queryParameters);
         
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
         
-        return await response.Content.ReadFromJsonAsync<GetEducationProfResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<SingleResponse<EducationProf>>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<CreateEducationProfResponse> CreateAsync(Dictionary<string, string?> queryParameters, EducationProf educationProf, CancellationToken cancellationToken = default)
+    public async ValueTask<SingleResponse<Entity>> CreateAsync(Dictionary<string, string?> queryParameters, EducationProf educationProf, CancellationToken cancellationToken = default)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/prof", queryParameters);
         
         var response = await httpClient.PostAsJsonAsync(requestUri, educationProf, cancellationToken);
         response.EnsureSuccessStatusCode();
         
-        return await response.Content.ReadFromJsonAsync<CreateEducationProfResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<SingleResponse<Entity>>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<UpdateEducationProfResponse> UpdateAsync(Dictionary<string, string?> queryParameters, EducationProf educationProf, CancellationToken cancellationToken = default)
+    public async ValueTask<DefaultResponse> UpdateAsync(Dictionary<string, string?> queryParameters, EducationProf educationProf, CancellationToken cancellationToken = default)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/prof", queryParameters);
         
         var response = await httpClient.PutAsJsonAsync(requestUri, educationProf, cancellationToken);
         response.EnsureSuccessStatusCode();
         
-        return await response.Content.ReadFromJsonAsync<UpdateEducationProfResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<DeleteEducationProfResponse> DeleteAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
+    public async ValueTask<DefaultResponse> DeleteAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/prof", queryParameters);
         
         var response = await httpClient.DeleteAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
         
-        return await response.Content.ReadFromJsonAsync<DeleteEducationProfResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
 }

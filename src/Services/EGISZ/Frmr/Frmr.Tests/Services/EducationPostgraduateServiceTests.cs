@@ -20,11 +20,11 @@ public class EducationPostgraduateServiceTests
     }
 
     [Fact]
-    public async Task GetAsync_ShouldReturnGetEducationPostgraduateResponse_WhenRequestIsSuccessful()
+    public async Task GetAsync_ShouldReturnGetAllEducationPostgraduateResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new GetEducationPostgraduateResponse();
+        var expectedResponse = new ListResponse<EducationPostgraduate>();
 
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
@@ -35,10 +35,12 @@ public class EducationPostgraduateServiceTests
             });
 
         // Act
-        var response = await _service.GetAsync(queryParameters, CancellationToken.None);
+        var response = await _service.GetAllAsync(queryParameters, CancellationToken.None);
 
         // Assert
-        Assert.Equal(expectedResponse, response);
+        Assert.Equal(expectedResponse.RequestId, response.RequestId);
+        Assert.Equal(expectedResponse.Message, response.Message);
+        Assert.Equal(expectedResponse.Content, response.Content);
     }
 
     [Fact]
@@ -47,7 +49,7 @@ public class EducationPostgraduateServiceTests
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
         var educationPostgraduate = new EducationPostgraduate();
-        var expectedResponse = new CreateEducationPostgraduateResponse
+        var expectedResponse = new SingleResponse<Entity>
         {
             RequestId = Guid.NewGuid().ToString(),
             Content = new Entity { EntityId = Guid.NewGuid().ToString() }
@@ -74,7 +76,7 @@ public class EducationPostgraduateServiceTests
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
         var educationPostgraduate = new EducationPostgraduate();
-        var expectedResponse = new UpdateEducationPostgraduateResponse
+        var expectedResponse = new DefaultResponse
         {
             RequestId = Guid.NewGuid().ToString()
         };
@@ -99,7 +101,7 @@ public class EducationPostgraduateServiceTests
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new DeleteEducationPostgraduateResponse();
+        var expectedResponse = new DefaultResponse();
 
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())

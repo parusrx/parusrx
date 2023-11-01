@@ -7,13 +7,13 @@ namespace ParusRx.Frmr.API.Services;
 
 public sealed class FullPersonService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
 {
-    public async ValueTask<GetFullPersonResponse> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
+    public async ValueTask<SingleResponse<FullPerson>> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/full", queryParameters);
         
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<GetFullPersonResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<SingleResponse<FullPerson>>(cancellationToken) ?? new();
     }
 }

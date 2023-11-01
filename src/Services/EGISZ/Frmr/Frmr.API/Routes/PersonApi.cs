@@ -16,40 +16,50 @@ public static class PersonApi
         return group;
     }
 
-    public static async ValueTask<Ok<GetPersonResponse>> GetPerson(HttpRequest request, PersonService service)
+    public static async ValueTask<Ok<SingleResponse<Person>>> GetPerson(HttpRequest request, PersonService service)
     {
-        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        
         var response = await service.GetAsync(queryParameters);
+
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<ListPagedPersonResponse>> ListPerson(HttpRequest request, PersonService service)
+    public static async ValueTask<Ok<ListPagedResponse<Person>>> ListPerson(HttpRequest request, PersonService service)
     {
-        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        
         var response = await service.ListAsync(queryParameters);
+        
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<CreatePersonResponse>> CreatePerson(HttpRequest request, PersonService service)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePerson(HttpRequest request, PersonService service)
     {
-        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        
         var person = await request.ReadFromJsonAsync<Person>();
         var response = await service.CreateAsync(queryParameters, person!);
+        
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<UpdatePersonResponse>> UpdatePerson(HttpRequest request, PersonService service)
+    public static async ValueTask<Ok<DefaultResponse>> UpdatePerson(HttpRequest request, PersonService service)
     {
-        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        
         var person = await request.ReadFromJsonAsync<Person>();
         var response = await service.UpdateAsync(queryParameters, person!);
+        
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DeletePersonResponse>> DeletePerson(HttpRequest request, PersonService service)
+    public static async ValueTask<Ok<DefaultResponse>> DeletePerson(HttpRequest request, PersonService service)
     {
-        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        
         var response = await service.DeleteAsync(queryParameters);
+        
         return TypedResults.Ok(response);
     }
 }

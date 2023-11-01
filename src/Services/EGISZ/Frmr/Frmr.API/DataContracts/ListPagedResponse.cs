@@ -3,8 +3,8 @@
 
 namespace ParusRx.Frmr.API.DataContracts;
 
-[XmlRoot("listPagedPersonResponse")]
-public record ListPagedPersonResponse : BaseResponse
+[XmlRoot("response")]
+public record ListPagedResponse<TContent> : DefaultResponse
 {
     [XmlElement("offset")]
     [JsonPropertyName("offset")]
@@ -18,7 +18,8 @@ public record ListPagedPersonResponse : BaseResponse
     [JsonPropertyName("total")]
     public int Total { get; init; }
 
-    [XmlElement("content")]
+    [XmlArray("content")]
+    [XmlArrayItem("contentItem")]
     [JsonPropertyName("content")]
-    public List<Person>? Content { get; init; }
+    public List<TContent> Content { get; init; } = [];
 }

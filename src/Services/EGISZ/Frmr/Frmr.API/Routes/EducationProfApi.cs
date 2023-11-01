@@ -15,33 +15,41 @@ public static class EducationProfApi
         return group;
     }
 
-    public static async ValueTask<Ok<GetEducationProfResponse>> GetEducationProf(HttpRequest request, EducationProfService service)
+    public static async ValueTask<Ok<SingleResponse<EducationProf>>> GetEducationProf(HttpRequest request, EducationProfService service)
     {
-        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        
         var response = await service.GetAsync(queryParameters);
+        
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<CreateEducationProfResponse>> CreateEducationProf(HttpRequest request, EducationProfService service)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationProf(HttpRequest request, EducationProfService service)
     {
-        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        
         var educationProf = await request.ReadFromJsonAsync<EducationProf>();
         var response = await service.CreateAsync(queryParameters, educationProf!);
+        
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<UpdateEducationProfResponse>> UpdateEducationProf(HttpRequest request, EducationProfService service)
+    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationProf(HttpRequest request, EducationProfService service)
     {
-        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        
         var educationProf = await request.ReadFromJsonAsync<EducationProf>();
         var response = await service.UpdateAsync(queryParameters, educationProf!);
+        
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DeleteEducationProfResponse>> DeleteEducationProf(HttpRequest request, EducationProfService service)
+    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationProf(HttpRequest request, EducationProfService service)
     {
-        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        
         var response = await service.DeleteAsync(queryParameters);
+
         return TypedResults.Ok(response);
     }
 }

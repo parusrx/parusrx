@@ -24,7 +24,7 @@ public class EducationCommonServiceTests
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new GetEducationCommonResponse();
+        var expectedResponse = new SingleResponse<EducationCommon>();
 
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
@@ -47,7 +47,7 @@ public class EducationCommonServiceTests
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
         var educationCommon = new EducationCommon();
-        var expectedResponse = new CreateEducationCommonResponse
+        var expectedResponse = new SingleResponse<Entity>
         {
             RequestId = Guid.NewGuid().ToString(),
             Content = new Entity { EntityId = Guid.NewGuid().ToString() }
@@ -74,7 +74,7 @@ public class EducationCommonServiceTests
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
         var educationCommon = new EducationCommon();
-        var expectedResponse = new UpdateEducationCommonResponse
+        var expectedResponse = new DefaultResponse
         {
             RequestId = Guid.NewGuid().ToString()
         };
@@ -99,7 +99,7 @@ public class EducationCommonServiceTests
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new DeleteEducationCommonResponse();
+        var expectedResponse = new DefaultResponse();
 
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())

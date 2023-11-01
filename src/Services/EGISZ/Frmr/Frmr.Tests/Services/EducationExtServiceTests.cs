@@ -3,28 +3,32 @@
 
 namespace ParusRx.Frmr.Tests;
 
-public class EducationProfServiceTests
+public class EducationExtServiceTests
 {
     private readonly Mock<IOptionsSnapshot<FrmrSettings>> _settingsMock;
     private readonly Mock<HttpMessageHandler> _httpMessageHandlerMock;
-    private readonly EducationProfService _service;
+    private readonly EducationExtService _service;
 
-    public EducationProfServiceTests()
+    public EducationExtServiceTests()
     {
         _settingsMock = new Mock<IOptionsSnapshot<FrmrSettings>>();
         _settingsMock.Setup(s => s.Value).Returns(new FrmrSettings { Url = "https://ips.test.egisz.rosminzdrav.ru/4f52d90e921a0" });
 
         _httpMessageHandlerMock = new Mock<HttpMessageHandler>();
 
-        _service = new EducationProfService(new HttpClient(_httpMessageHandlerMock.Object), _settingsMock.Object);
+        _service = new EducationExtService(new HttpClient(_httpMessageHandlerMock.Object), _settingsMock.Object);
     }
 
     [Fact]
-    public async Task GetAsync_ShouldReturnGetEducationProfResponse_WhenRequestIsSuccessful()
+    public async Task GetAsync_ShouldReturnGetEducationExtResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new SingleResponse<EducationProf>();
+        var expectedResponse = new ListPagedResponse<EducationExt>
+        {
+            RequestId = Guid.NewGuid().ToString(),
+            Content = [new()]
+        };
 
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
@@ -35,18 +39,20 @@ public class EducationProfServiceTests
             });
 
         // Act
-        var response = await _service.GetAsync(queryParameters);
+        var response = await _service.GetAsync(queryParameters, CancellationToken.None);
 
         // Assert
-        Assert.Equal(expectedResponse, response);
+        Assert.Equal(expectedResponse.RequestId, response.RequestId);
+        Assert.Equal(expectedResponse.Message, response.Message);
+        Assert.Equal(expectedResponse.Content, response.Content);
     }
 
     [Fact]
-    public async Task CreateAsync_ShouldReturnCreateEducationProfResponse_WhenRequestIsSuccessful()
+    public async Task CreateAsync_ShouldReturnCreateEducationExtResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var educationProf = new EducationProf();
+        var educationExt = new EducationExt();
         var expectedResponse = new SingleResponse<Entity>
         {
             RequestId = Guid.NewGuid().ToString(),
@@ -62,18 +68,18 @@ public class EducationProfServiceTests
             });
 
         // Act
-        var response = await _service.CreateAsync(queryParameters, educationProf);
+        var response = await _service.CreateAsync(queryParameters, educationExt, CancellationToken.None);
 
         // Assert
         Assert.Equal(expectedResponse, response);
     }
 
     [Fact]
-    public async Task UpdateAsync_ShouldReturnUpdateEducationProfResponse_WhenRequestIsSuccessful()
+    public async Task UpdateAsync_ShouldReturnUpdateEducationExtResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var educationProf = new EducationProf();
+        var educationExt= new EducationExt();
         var expectedResponse = new DefaultResponse
         {
             RequestId = Guid.NewGuid().ToString()
@@ -88,14 +94,14 @@ public class EducationProfServiceTests
             });
 
         // Act
-        var response = await _service.UpdateAsync(queryParameters, educationProf);
+        var response = await _service.UpdateAsync(queryParameters, educationExt, CancellationToken.None);
 
         // Assert
         Assert.Equal(expectedResponse, response);
     }
 
     [Fact]
-    public async Task DeleteAsync_ShouldReturnDeleteEducationProfResponse_WhenRequestIsSuccessful()
+    public async Task DeleteAsync_ShouldReturnDeleteEducationExtResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
@@ -110,7 +116,7 @@ public class EducationProfServiceTests
             });
 
         // Act
-        var response = await _service.DeleteAsync(queryParameters);
+        var response = await _service.DeleteAsync(queryParameters, CancellationToken.None);
 
         // Assert
         Assert.Equal(expectedResponse, response);

@@ -3,13 +3,16 @@
 
 namespace ParusRx.Frmr.API.DataContracts;
 
-public abstract record BaseResponse
+[XmlRoot("response")]
+public record DefaultResponse
 {
     [XmlElement("requestId")]
     [JsonPropertyName("requestId")]
+    [JsonPropertyOrder(-1)]
     public string RequestId { get; init; } = default!;
 
     [XmlElement("errorUserMessage")]
     [JsonPropertyName("errorUserMessage")]
+    [JsonPropertyOrder(-1)]
     public string? Message { get; init; }
 }

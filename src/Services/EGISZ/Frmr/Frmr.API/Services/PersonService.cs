@@ -5,53 +5,53 @@ namespace ParusRx.Frmr.API.Services;
 
 public class PersonService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
 {
-    public async ValueTask<GetPersonResponse> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
+    public async ValueTask<SingleResponse<Person>> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person", queryParameters);
         
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
         
-        return await response.Content.ReadFromJsonAsync<GetPersonResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<SingleResponse<Person>>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<ListPagedPersonResponse> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
+    public async ValueTask<ListPagedResponse<Person>> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/list", queryParameters);
         
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
         
-        return await response.Content.ReadFromJsonAsync<ListPagedPersonResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<ListPagedResponse<Person>>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<CreatePersonResponse> CreateAsync(Dictionary<string, string?> queryParameters, Person person, CancellationToken cancellationToken = default)
+    public async ValueTask<SingleResponse<Entity>> CreateAsync(Dictionary<string, string?> queryParameters, Person person, CancellationToken cancellationToken = default)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person", queryParameters);
         
         var response = await httpClient.PostAsJsonAsync(requestUri, person, cancellationToken);
         response.EnsureSuccessStatusCode();
         
-        return await response.Content.ReadFromJsonAsync<CreatePersonResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<SingleResponse<Entity>>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<UpdatePersonResponse> UpdateAsync(Dictionary<string, string?> queryParameters, Person person, CancellationToken cancellationToken = default)
+    public async ValueTask<DefaultResponse> UpdateAsync(Dictionary<string, string?> queryParameters, Person person, CancellationToken cancellationToken = default)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person", queryParameters);
         
         var response = await httpClient.PutAsJsonAsync(requestUri, person, cancellationToken);
         response.EnsureSuccessStatusCode();
         
-        return await response.Content.ReadFromJsonAsync<UpdatePersonResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<DeletePersonResponse> DeleteAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
+    public async ValueTask<DefaultResponse> DeleteAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person", queryParameters);
         
         var response = await httpClient.DeleteAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
         
-        return await response.Content.ReadFromJsonAsync<DeletePersonResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
 }

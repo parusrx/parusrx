@@ -3,8 +3,16 @@
 
 namespace ParusRx.Frmr.API.DataContracts;
 
-public abstract record BaseRequest
+[XmlRoot("request")]
+public record DefaultRequest
 {
     [XmlElement("parameters")]
     public required SerializableDictionary Parameters { get; init; }
+}
+
+[XmlRoot("request")]
+public record DefaultRequest<TContent> : DefaultRequest
+{
+    [XmlElement("content")]
+    public required TContent Content { get; init; }
 }

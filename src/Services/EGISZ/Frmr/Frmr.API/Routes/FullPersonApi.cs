@@ -11,10 +11,12 @@ public static class FullPersonApi
         return group;
     }
 
-    public static async ValueTask<Ok<GetFullPersonResponse>> GetFullPerson(HttpRequest request, FullPersonService service)
+    public static async ValueTask<Ok<SingleResponse<FullPerson>>> GetFullPerson(HttpRequest request, FullPersonService service)
     {
-        Dictionary<string, string?> queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+        
         var response = await service.GetAsync(queryParameters);
+        
         return TypedResults.Ok(response);
     }
 }

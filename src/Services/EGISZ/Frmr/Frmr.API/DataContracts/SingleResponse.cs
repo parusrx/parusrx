@@ -3,7 +3,10 @@
 
 namespace ParusRx.Frmr.API.DataContracts;
 
-[XmlRoot("listPagedPersonRequest")]
-public record ListPagedPersonRequest : BaseRequest
+[XmlRoot("response")]
+public record SingleResponse<TContent> : DefaultResponse
 {
+    [XmlElement("content")]
+    [JsonPropertyName("content")]
+    public TContent Content { get; init; } = default!;
 }

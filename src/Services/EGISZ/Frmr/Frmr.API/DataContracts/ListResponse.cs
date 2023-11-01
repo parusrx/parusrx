@@ -3,10 +3,11 @@
 
 namespace ParusRx.Frmr.API.DataContracts;
 
-[XmlRoot("createPersonResponse")]
-public record CreatePersonResponse : BaseResponse
+[XmlRoot("response")]
+public record ListResponse<TContent> : DefaultResponse
 {
-    [XmlElement("content")]
+    [XmlArray("content")]
+    [XmlArrayItem("contentItem")]
     [JsonPropertyName("content")]
-    public Entity? Content { get; init; }
+    public List<TContent> Content { get; init; } = [];
 }
