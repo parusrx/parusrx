@@ -9,6 +9,6 @@ global using Microsoft.Extensions.Options;
 global using ParusRx.Data.Oracle;
 global using ParusRx.Data.PostgreSQL;
 global using ParusRx.Frmr.API;
-global using ParusRx.Frmr.API.Data;
+global using ParusRx.Frmr.API.DataContracts;
 global using ParusRx.Frmr.API.Services; 
 global using ParusRx.Xml;

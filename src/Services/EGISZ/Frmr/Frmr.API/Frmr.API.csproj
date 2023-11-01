@@ -25,4 +25,8 @@
     <ProjectReference Include="..\..\..\..\Common\Xml\src\ParusRx.Xml.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DataContracts\" />
+  </ItemGroup>
+
 </Project>
