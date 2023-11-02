@@ -4,6 +4,8 @@
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
+using ParusRx.Frmo.API.Routes;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDistributedMemoryCache();
@@ -32,9 +34,18 @@ app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true })
 app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Name.Contains("self") });
 
 // REST API endpoints
-app.MapOrganizations();
-app.MapDepartments();
-app.MapStaffs();
+// app.MapOrganizations();
+// app.MapDepartments();
+// app.MapStaffs();
+
+app.MapGroup("/org")
+    .MapOrganizationApi();
+
+app.MapGroup("/org/depart")
+    .MapDepartmentApi();
+
+app.MapGroup("/org/staff")
+    .MapStaffApi();
 
 // Dapr pub/sub endpoints
 app.MapPubSubOrganizations();
