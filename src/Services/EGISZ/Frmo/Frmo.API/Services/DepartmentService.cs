@@ -1,7 +1,7 @@
 ﻿// Copyright (c) The Parus RX Authors. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRx.Frmo.API;
+namespace ParusRx.Frmo.API.Services;
 
 public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSettings> settings) : IDepartmentService
 {
@@ -18,7 +18,7 @@ public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSetti
     public async ValueTask<ListPagedDepartmentResponse> ListPagedAsync(int departTypeId, string oid, int offset = 0, int limit = 10, CancellationToken cancellationToken = default)
     {
         string url = $"{settings.Value.Url}/org/depart?departTypeId={departTypeId}&oid={oid}&offset={offset}&limit={limit}";
-        
+
         var response = await httpClient.GetAsync(url, cancellationToken);
         response.EnsureSuccessStatusCode();
 

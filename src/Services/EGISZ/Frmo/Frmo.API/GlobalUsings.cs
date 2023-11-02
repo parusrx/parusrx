@@ -13,5 +13,6 @@ global using ParusRx.Data.PostgreSQL;
 global using ParusRx.EventBus;
 global using ParusRx.Frmo.API;
 global using ParusRx.Frmo.API.DataContracts;
+global using ParusRx.Frmo.API.Services;
 global using ParusRx.Storage;
 global using ParusRx.Xml;
