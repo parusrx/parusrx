@@ -1,0 +1,163 @@
+@frmrapi_hostaddress = http://localhost:51006
+
+GET {{frmrapi_hostaddress}}/health
+Content-Type: text/plain
+
+###
+
+GET {{frmrapi_hostaddress}}/liveness
+Content-Type: text/plain
+
+###
+
+GET {{frmrapi_hostaddress}}/person?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2023.3475290&snils=13136014100&documentId=1&serial=1418&number=755464&passDate=2019-01-09T00:00:00Z
+Content-Type: application/json
+
+###
+
+GET {{frmrapi_hostaddress}}/person/list?mo=1.2.643.5.1.13.13.12.2.31.2855&offset=0&limit=30
+Content-Type: application/json
+
+###
+
+POST {{frmrapi_hostaddress}}/person?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true
+Content-Type: application/json
+
+{ 
+  "mr":true, 
+  "student":false, 
+  "oid":"2022.0055647", 
+  "lastName":"Иванова", 
+  "firstName":"Нина", 
+  "patronymic":"Ивановна", 
+  "gender":2, 
+  "birthDate":"2016-01-22T00:00:00.0000000Z", 
+  "snils":"99999999901", 
+  "inn":"500100732259", 
+  "citizenShipId":{ 
+    "code":1, 
+    "name":"Гражданин РФ" 
+  }, 
+  "oksmId":{ 
+    "code":1, 
+    "name":"string" 
+  }, 
+  "militaryRelationId":2, 
+  "phone":"9129290925", 
+  "email":"nina@gmail.com", 
+  "isDisabled":true, 
+  "disabledGroupId":1, 
+  "disabledGroupName":"I", 
+  "disabledDate":"2016-01-22T00:00:00.0000000Z", 
+  "covid19":false, 
+  "documents":[ 
+    { 
+      "serial":"7609", 
+      "number":"456987", 
+      "passDate":"2016-01-22T00:00:00.0000000Z", 
+      "passOrg":"УФМС", 
+      "codeOrg":"300-101", 
+      "documentId":1 
+    } 
+  ], 
+  "addresses":[ 
+    { 
+      "addressId":"d4e4cc1c-723e-4593-b596-d758685fd87d", 
+      "regDate":"2016-01-22T00:00:00.0000000Z", 
+      "addressTypeId":1, 
+      "address":{ 
+        "GARguid":"93b3df57-4c89-44df-ac42-96f05e9cd3b9", 
+        "aoidArea":"51c885c1-9750-4245-b25e-61673b776a10", 
+        "aoidStreet":"2cd6d76f-196c-4b25-a8dc-59517f6b8450", 
+        "houseid":"289648c2-5c75-45b5-a105-cd1ef93a506b", 
+        "region":75, 
+        "areaName":"Чита", 
+        "prefixArea":"г", 
+        "streetName":"Ленина", 
+        "prefixStreet":"ул", 
+        "house":"111", 
+        "building":"111", 
+        "struct":"111", 
+        "flat":"35" 
+      }
+    } 
+  ] 
+}
+
+###
+
+PUT {{frmrapi_hostaddress}}/person?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2022.0055647&snils=11122233340&documentId=1&serial=7609&number=456987&passDate=2016-01-22T00:00:00.0000000Z
+Content-Type: application/json
+
+{ 
+  "mr":true, 
+  "student":false, 
+  "oid":"2022.0055647", 
+  "lastName":"Иванова", 
+  "firstName":"Нина", 
+  "patronymic":"Ивановна", 
+  "gender":2, 
+  "birthDate":"2016-01-22T00:00:00.0000000Z", 
+  "snils":"99999999901", 
+  "inn":"500100732259", 
+  "citizenShipId":{ 
+    "code":1, 
+    "name":"Гражданин РФ" 
+  }, 
+  "oksmId":{ 
+    "code":1, 
+    "name":"string" 
+  }, 
+  "militaryRelationId":2, 
+  "phone":"9129290925", 
+  "email":"nina@gmail.com", 
+  "isDisabled":true, 
+  "disabledGroupId":1, 
+  "disabledGroupName":"I", 
+  "disabledDate":"2016-01-22T00:00:00.0000000Z", 
+  "covid19":false, 
+  "documents":[ 
+    { 
+      "serial":"7609", 
+      "number":"456987", 
+      "passDate":"2016-01-22T00:00:00.0000000Z", 
+      "passOrg":"УФМС", 
+      "codeOrg":"300-101", 
+      "documentId":1 
+    } 
+  ], 
+  "addresses":[ 
+    { 
+      "addressId":"d4e4cc1c-723e-4593-b596-d758685fd87d", 
+      "regDate":"2016-01-22T00:00:00.0000000Z", 
+      "addressTypeId":1, 
+      "address":{ 
+        "GARguid":"93b3df57-4c89-44df-ac42-96f05e9cd3b9", 
+        "aoidArea":"51c885c1-9750-4245-b25e-61673b776a10", 
+        "aoidStreet":"2cd6d76f-196c-4b25-a8dc-59517f6b8450", 
+        "houseid":"289648c2-5c75-45b5-a105-cd1ef93a506b", 
+        "region":75, 
+        "areaName":"Чита", 
+        "prefixArea":"г", 
+        "streetName":"Ленина", 
+        "prefixStreet":"ул", 
+        "house":"111", 
+        "building":"111", 
+        "struct":"111", 
+        "flat":"35" 
+      } 
+    } 
+  ] 
+} 
+
+###
+@entityId = 1
+DELETE {{frmrapi_hostaddress}}/person?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2022.0055647&snils=11122233340&documentId=1&serial=7609&number=456987&passDate=2016-01-22T00:00:00.0000000Z&entityId={{entityId}}
+Content-Type: application/json
+
+###
+
+GET {{frmrapi_hostaddress}}/person/full?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2023.3475290&snils=13136014100&documentId=1&serial=1418&number=755464&passDate=2019-01-09T00:00:00Z
+Content-Type: application/json
+
+###
