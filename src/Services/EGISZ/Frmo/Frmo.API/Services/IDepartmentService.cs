@@ -5,9 +5,9 @@ namespace ParusRx.Frmo.API.Services;
 
 public interface IDepartmentService
 {
-    ValueTask<GetByOidDepartmentResponse> GetByOidAsync(string departOid, string oid, CancellationToken cancellationToken = default);
-    ValueTask<ListPagedDepartmentResponse> ListPagedAsync(int departTypeId, string oid, int offset = 0, int limit = 10, CancellationToken cancellationToken = default);
-    ValueTask<CreateDepartmentResponse> CreateAsync(string oid, Department department, CancellationToken cancellationToken = default);
-    ValueTask<UpdateDepartmentResponse> UpdateAsync(string oid, string entityId, Department department, CancellationToken cancellationToken = default);
-    ValueTask<DeleteDepartmentResponse> DeleteAsync(string oid, string entityId, CancellationToken cancellationToken = default);
+    ValueTask<SingleResponse<Department>> GetAsync(string departOid, Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default);
+    ValueTask<ListPagedDepartmentResponse> ListPagedAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default);
+    ValueTask<SingleResponse<Entity>> CreateAsync(Dictionary<string, string?> queryParameters, Department department, CancellationToken cancellationToken = default);
+    ValueTask<DefaultResponse> UpdateAsync(Dictionary<string, string?> queryParameters, Department department, CancellationToken cancellationToken = default);
+    ValueTask<DefaultResponse> DeleteAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default);
 }

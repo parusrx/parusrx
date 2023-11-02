@@ -1,57 +1,58 @@
 ﻿// Copyright (c) The Parus RX Authors. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+
 namespace ParusRx.Frmo.API.Services;
 
 public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSettings> settings) : IDepartmentService
 {
-    public async ValueTask<GetByOidDepartmentResponse> GetByOidAsync(string departOid, string oid, CancellationToken cancellationToken = default)
+    public async ValueTask<SingleResponse<Department>> GetAsync(string departOid, Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
     {
-        string url = $"{settings.Value.Url}/org/depart/{departOid}?oid={oid}";
+        var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart/{departOid}", queryParameters);
 
-        var response = await httpClient.GetAsync(url, cancellationToken);
+        var response = await httpClient.GetAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<GetByOidDepartmentResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<SingleResponse<Department>>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<ListPagedDepartmentResponse> ListPagedAsync(int departTypeId, string oid, int offset = 0, int limit = 10, CancellationToken cancellationToken = default)
+    public async ValueTask<ListPagedDepartmentResponse> ListPagedAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
     {
-        string url = $"{settings.Value.Url}/org/depart?departTypeId={departTypeId}&oid={oid}&offset={offset}&limit={limit}";
+        var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
-        var response = await httpClient.GetAsync(url, cancellationToken);
+        var response = await httpClient.GetAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadFromJsonAsync<ListPagedDepartmentResponse>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<CreateDepartmentResponse> CreateAsync(string oid, Department department, CancellationToken cancellationToken = default)
+    public async ValueTask<SingleResponse<Entity>> CreateAsync(Dictionary<string, string?> queryParameters, Department department, CancellationToken cancellationToken = default)
     {
-        string url = $"{settings.Value.Url}/org/depart?oid={oid}";
+        var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
-        var response = await httpClient.PostAsJsonAsync(url, department, cancellationToken);
+        var response = await httpClient.PostAsJsonAsync(requestUri, department, cancellationToken);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<CreateDepartmentResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<SingleResponse<Entity>>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<UpdateDepartmentResponse> UpdateAsync(string oid, string entityId, Department department, CancellationToken cancellationToken = default)
+    public async ValueTask<DefaultResponse> UpdateAsync(Dictionary<string, string?> queryParameters, Department department, CancellationToken cancellationToken = default)
     {
-        string url = $"{settings.Value.Url}/org/depart?oid={oid}&entityId={entityId}";
+        var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
-        var response = await httpClient.PutAsJsonAsync(url, department, cancellationToken);
+        var response = await httpClient.PutAsJsonAsync(requestUri, department, cancellationToken);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<UpdateDepartmentResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<DeleteDepartmentResponse> DeleteAsync(string oid, string entityId, CancellationToken cancellationToken = default)
+    public async ValueTask<DefaultResponse> DeleteAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
     {
-        string url = $"{settings.Value.Url}/org/depart?oid={oid}&entityId={entityId}";
+        var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
-        var response = await httpClient.DeleteAsync(url, cancellationToken);
+        var response = await httpClient.DeleteAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<DeleteDepartmentResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
 }

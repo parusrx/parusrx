@@ -9,37 +9,49 @@ internal static class DepartmentEndpoint
     {
         var group = endpoints.MapGroup("api/v1/org/depart");
 
-        group.MapGet("/", async (IDepartmentService departmentService, int departTypeId, string oid, int offset = 0, int limit = 10) =>
+        group.MapGet("/", async (HttpRequest request, IDepartmentService service, CancellationToken cancellationToken) =>
         {
-            var departments = await departmentService.ListPagedAsync(departTypeId, oid, offset, limit);
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+
+            var departments = await service.ListPagedAsync(queryParameters, cancellationToken);
 
             return Results.Ok(departments);
         });
 
-        group.MapGet("/{departOid}", async (IDepartmentService departmentService, string departOid, string oid) =>
+        group.MapGet("/{departOid}", async (string departOid, HttpRequest request, IDepartmentService service, CancellationToken cancellationToken) =>
         {
-            var department = await departmentService.GetByOidAsync(departOid, oid);
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+
+            var department = await service.GetAsync(departOid, queryParameters, cancellationToken);
 
             return Results.Ok(department);
         });
 
-        group.MapPost("/", async (IDepartmentService departmentService, string oid, Department department) =>
+        group.MapPost("/", async (HttpRequest request, IDepartmentService service, CancellationToken cancellationToken) =>
         {
-            var response = await departmentService.CreateAsync(oid, department);
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+            var department = await request.ReadFromJsonAsync<Department>(cancellationToken: cancellationToken);
+            
+            var response = await service.CreateAsync(queryParameters, department!, cancellationToken);
 
             return Results.Ok(response);
         });
 
-        group.MapPut("/", async (IDepartmentService departmentService, string oid, string entityId, Department department) =>
+        group.MapPut("/", async (HttpRequest request, IDepartmentService service, CancellationToken cancellationToken) =>
         {
-            var response = await departmentService.UpdateAsync(oid, entityId, department);
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+            var department = await request.ReadFromJsonAsync<Department>(cancellationToken: cancellationToken);
+
+            var response = await service.UpdateAsync(queryParameters, department!, cancellationToken);
 
             return Results.Ok(response);
         });
 
-        group.MapDelete("/", async (IDepartmentService departmentService, string oid, string entityId) =>
+        group.MapDelete("/", async (HttpRequest request, IDepartmentService service, CancellationToken cancellationToken) =>
         {
-            var response = await departmentService.DeleteAsync(oid, entityId);
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+
+            var response = await service.DeleteAsync(queryParameters, cancellationToken);
 
             return Results.Ok(response);
         });        

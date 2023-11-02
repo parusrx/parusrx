@@ -16,15 +16,10 @@ public class ListPagedDepartmentIntegrationEventHandler(IParusRxStore store, IDe
         {
             byte[] data = await store.ReadDataRequestAsync(id);
 
-            var request = XmlSerializerUtility.Deserialize<ListPagedDepartmentRequest>(data)
+            var request = XmlSerializerUtility.Deserialize<DefaultRequest>(data)
                 ?? throw new InvalidOperationException($"Cannot deserialize request data for integration event: {@event.Id}");
 
-            var response = await service.ListPagedAsync(
-                request.Parameters.DepartTypeId, 
-                request.Parameters.Oid, 
-                request.Parameters.Offset, 
-                request.Parameters.Limit, 
-                cancellationToken);
+            var response = await service.ListPagedAsync(request.Parameters, cancellationToken);
 
             var responseBytes = XmlSerializerUtility.Serialize(response)
                 ?? throw new InvalidOperationException($"Cannot serialize response data for integration event: {@event.Id}");

@@ -16,10 +16,13 @@ public class GetByOidDepartmentIntegrationEventHandler(IParusRxStore store, IDep
         {
             byte[] data = await store.ReadDataRequestAsync(id);
 
-            var request = XmlSerializerUtility.Deserialize<GetByOidDepartmentRequest>(data)
+            var request = XmlSerializerUtility.Deserialize<DefaultRequest>(data)
                 ?? throw new InvalidOperationException($"Cannot deserialize request data for integration event: {@event.Id}");
 
-            var response = await service.GetByOidAsync(request.Parameters.DepartOid, request.Parameters.Oid, cancellationToken);
+            string departOid = request.Parameters["departOid"]!;
+            request.Parameters.Remove("departOid");
+            
+            var response = await service.GetAsync(departOid, request.Parameters, cancellationToken);
 
             var responseBytes = XmlSerializerUtility.Serialize(response)
                 ?? throw new InvalidOperationException($"Cannot serialize response data for integration event: {@event.Id}");

@@ -16,10 +16,10 @@ public class UpdateDepartmentIntegrationEventHandler(IParusRxStore store, IDepar
         {
             byte[] data = await store.ReadDataRequestAsync(id);
 
-            var request = XmlSerializerUtility.Deserialize<UpdateDepartmentRequest>(data)
+            var request = XmlSerializerUtility.Deserialize<DefaultRequest<Department>>(data)
                 ?? throw new InvalidOperationException($"Cannot deserialize request data for integration event: {@event.Id}");
 
-            var response = await service.UpdateAsync(request.Parameters.Oid, request.Parameters.EntityId, request.Content.Department, cancellationToken);
+            var response = await service.UpdateAsync(request.Parameters, request.Content, cancellationToken);
 
             var responseBytes = XmlSerializerUtility.Serialize(response)
                 ?? throw new InvalidOperationException($"Cannot serialize response data for integration event: {@event.Id}");

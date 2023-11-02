@@ -25,11 +25,12 @@ internal static class OrganizationEndpoint
             return Results.Ok(organization);
         });
 
-        group.MapPut("/", async (HttpRequest request, Organization organization, IOrganizationService service, CancellationToken cancellationToken) =>
+        group.MapPut("/", async (HttpRequest request, IOrganizationService service, CancellationToken cancellationToken) =>
         {
             var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+            var organization = await request.ReadFromJsonAsync<Organization>(cancellationToken: cancellationToken);
 
-            var response = await service.UpdateAsync(queryParameters, organization, cancellationToken);
+            var response = await service.UpdateAsync(queryParameters, organization!, cancellationToken);
 
             return Results.Ok(response);
         });
