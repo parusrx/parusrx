@@ -5,9 +5,9 @@ namespace ParusRx.Frmo.API;
 
 public record EducationalOrganizationType
 {
-    [XmlElement("code")]
-    [JsonPropertyName("code")]
-    public int Code { get; init; }
+    [XmlElement("id")]
+    [JsonPropertyName("id")]
+    public int Id { get; init; }
 
     [XmlElement("organizationType")]
     [JsonPropertyName("organizationType")]

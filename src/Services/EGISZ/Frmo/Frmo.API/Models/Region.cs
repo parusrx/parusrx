@@ -7,11 +7,11 @@ public record Region
 {
     [XmlElement("id")]
     [JsonPropertyName("id")]
-    public int Id { get; init; } = default!;
+    public int? Id { get; init; }
 
     [XmlElement("region")]
     [JsonPropertyName("region")]
-    public string Subject { get; init; } = default!;
+    public string? Subject { get; init; }
 
     [XmlElement("territoryCode")]
     [JsonPropertyName("territoryCode")]
@@ -19,5 +19,5 @@ public record Region
 
     [XmlElement("isFederalCity")]
     [JsonPropertyName("isFederalCity")]
-    public required bool IsFederalCity { get; init; }
+    public bool IsFederalCity { get; init; }
 }
