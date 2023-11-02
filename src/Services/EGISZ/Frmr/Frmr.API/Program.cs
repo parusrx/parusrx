@@ -57,6 +57,9 @@ app.MapGroup("/person/card")
 app.MapGroup("/person/nomination")
     .MapPersonNominationApi();
 
+app.MapGroup("/person/organization")
+    .MapPersonOrganizationApi();
+
 app.MapGroup("/person/full")
     .MapFullPersonApi();
 

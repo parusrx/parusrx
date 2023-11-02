@@ -100,6 +100,14 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
+        services.AddHttpClient<PersonOrganizationService>()
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
+            { 
+                ClientCertificateOptions = ClientCertificateOption.Manual,
+                ServerCertificateCustomValidationCallback = (message, cert, cetChain, policyErrors) => true
+            })
+            .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+
         services.AddHttpClient<FullPersonService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
