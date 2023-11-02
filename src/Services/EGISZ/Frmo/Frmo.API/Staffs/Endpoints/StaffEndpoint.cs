@@ -9,35 +9,49 @@ internal static class StaffEndpoint
     {
         var group = endpoints.MapGroup("api/v1/org/staff");
 
-        group.MapGet("/", async (IStaffService staffService, string oid, string? entity) =>
+        group.MapGet("/", async (HttpRequest request, IStaffService service, CancellationToken cancellationToken) =>
         {
-            if (entity is null)
-            {
-                var staffs = await staffService.GetAsync(oid);
-                return Results.Ok(staffs);
-            }
-            
-            var staff = await staffService.GetByEntityAsync(oid, entity);
-            return Results.Ok(staff);
-        });
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
-        group.MapPost("/", async (IStaffService staffService, string oid, Staff staff) =>
-        {
-            var response = await staffService.CreateAsync(oid, staff);
+            var response = await service.ListAsync(queryParameters, cancellationToken);
 
             return Results.Ok(response);
         });
 
-        group.MapPut("/", async (IStaffService staffService, string oid, string entityId, Staff staff) =>
+        group.MapGet("/get", async (HttpRequest request, IStaffService service, CancellationToken cancellationToken) =>
         {
-            var response = await staffService.UpdateAsync(oid, entityId, staff);
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+
+            var response = await service.GetAsync(queryParameters, cancellationToken);
 
             return Results.Ok(response);
         });
 
-        group.MapDelete("/", async (IStaffService staffService, string oid, string entityId) =>
+        group.MapPost("/", async (HttpRequest request, IStaffService service, CancellationToken cancellationToken) =>
         {
-            var response = await staffService.DeleteAsync(oid, entityId);
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+            var staff = await request.ReadFromJsonAsync<Staff>(cancellationToken: cancellationToken);
+
+            var response = await service.CreateAsync(queryParameters, staff!, cancellationToken);
+
+            return Results.Ok(response);
+        });
+
+        group.MapPut("/", async (HttpRequest request, IStaffService service, CancellationToken cancellationToken) =>
+        {
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+            var staff = await request.ReadFromJsonAsync<Staff>(cancellationToken: cancellationToken);
+
+            var response = await service.UpdateAsync(queryParameters, staff!, cancellationToken);
+
+            return Results.Ok(response);
+        });
+
+        group.MapDelete("/", async (HttpRequest request, IStaffService service, CancellationToken cancellationToken) =>
+        {
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+
+            var response = await service.DeleteAsync(queryParameters, cancellationToken);
 
             return Results.Ok(response);
         });

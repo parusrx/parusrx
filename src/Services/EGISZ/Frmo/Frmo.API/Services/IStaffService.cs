@@ -5,9 +5,9 @@ namespace ParusRx.Frmo.API.Services;
 
 public interface IStaffService
 {
-    ValueTask<StaffResponse> GetAsync(string oid, CancellationToken cancellationToken = default);
-    ValueTask<StaffByEntityResponse> GetByEntityAsync(string oid, string entity, CancellationToken cancellationToken = default);
-    ValueTask<CreateStaffResponse> CreateAsync(string oid, Staff staff, CancellationToken cancellationToken = default);
-    ValueTask<UpdateStaffResponse> UpdateAsync(string oid, string entityId, Staff staff, CancellationToken cancellationToken = default);
-    ValueTask<DeleteStaffResponse> DeleteAsync(string oid, string entityId, CancellationToken cancellationToken = default);
+    ValueTask<ListResponse<Staff>> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default);
+    ValueTask<SingleResponse<Staff>> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default);
+    ValueTask<SingleResponse<Entity>> CreateAsync(Dictionary<string, string?> queryParameters, Staff staff, CancellationToken cancellationToken = default);
+    ValueTask<DefaultResponse> UpdateAsync(Dictionary<string, string?> queryParameters, Staff staff, CancellationToken cancellationToken = default);
+    ValueTask<DefaultResponse> DeleteAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default);
 }

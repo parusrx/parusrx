@@ -16,10 +16,10 @@ public class GetByEntityStaffIntegrationEventHandler(IParusRxStore store, IStaff
         {
             byte[] data = await store.ReadDataRequestAsync(id);
 
-            var request = XmlSerializerUtility.Deserialize<StaffByEntityRequest>(data)
+            var request = XmlSerializerUtility.Deserialize<DefaultRequest>(data)
                 ?? throw new InvalidOperationException($"Cannot deserialize request data for integration event: {@event.Id}");
 
-            var response = await service.GetByEntityAsync(request.Parameters.Oid, request.Parameters.Entity, cancellationToken);
+            var response = await service.GetAsync(request.Parameters, cancellationToken);
 
             var responseBytes = XmlSerializerUtility.Serialize(response)
                 ?? throw new InvalidOperationException($"Cannot serialize response data for integration event: {@event.Id}");
