@@ -18,7 +18,7 @@ public static class ServiceCollectionExtensions
         services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
     }
 
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    public static IServiceCollection AddApplicationHttpClients(this IServiceCollection services)
     {
         services.AddHttpClient<PersonService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
@@ -84,7 +84,7 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-        services.AddHttpClient<PersonNominationService>()
+        services.AddHttpClient<PersonCardService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,

@@ -14,7 +14,7 @@ builder.Services.AddAuthorizationHttpClient();
 builder.Services.AddApplicationOptions(builder.Configuration);
 builder.Services.AddDataAccess(builder.Configuration);
 builder.Services.AddIpsIdentityProvider();
-builder.Services.AddApplicationServices();
+builder.Services.AddApplicationHttpClients();
 
 builder.Services.AddHealthChecks()
     .AddCheck("self", () => HealthCheckResult.Healthy());
