@@ -16,14 +16,14 @@ public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSetti
         return await response.Content.ReadFromJsonAsync<SingleResponse<Department>>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<ListPagedDepartmentResponse> ListPagedAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
+    public async ValueTask<ListPagedResponse<Department>> ListPagedAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<ListPagedDepartmentResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<ListPagedResponse<Department>>(cancellationToken) ?? new();
     }
 
     public async ValueTask<SingleResponse<Entity>> CreateAsync(Dictionary<string, string?> queryParameters, Department department, CancellationToken cancellationToken = default)
