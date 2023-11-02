@@ -15,10 +15,10 @@ public sealed class DeleteOrganizationIntegrationEventHandler(IParusRxStore stor
         try
         {
             byte[] data = await store.ReadDataRequestAsync(id);
-            var request = XmlSerializerUtility.Deserialize<DeleteOrganizationRequest>(data)
+            var request = XmlSerializerUtility.Deserialize<DefaultRequest>(data)
                 ?? throw new InvalidOperationException($"Cannot deserialize request data for integration event: {@event.Id}");
 
-            var response = await service.DeleteAsync(request.Parameters.Oid, request.Parameters.DeleteReason, cancellationToken);
+            var response = await service.DeleteAsync(request.Parameters, cancellationToken);
 
             var responseBytes = XmlSerializerUtility.Serialize(response)
                 ?? throw new InvalidOperationException($"Cannot serialize response data for integration event: {@event.Id}");

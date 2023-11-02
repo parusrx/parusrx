@@ -17,7 +17,7 @@ Content-Type: application/json
 
 ### Get organization by oid
 
-GET {{url}}/api/v1/org/1.2.643.5.1.13.13.12.2.78.6258
+GET {{url}}/api/v1/org/1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 ### Update organization by oid

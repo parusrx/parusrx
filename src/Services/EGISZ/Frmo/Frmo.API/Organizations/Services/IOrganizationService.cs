@@ -5,8 +5,8 @@ namespace ParusRx.Frmo.API;
 
 public interface IOrganizationService
 {
-    ValueTask<GetByOidOrganizationResponse> GetByOidAsync(string oid, CancellationToken cancellationToken = default);
-    ValueTask<ListPagedOrganizationResponse> ListPagedAsync(int orgTypeId, int offset = 0, int limit = 10, CancellationToken cancellationToken = default);
-    ValueTask<UpdateOrganizationResponse> UpdateAsync(string oid, Organization organization, CancellationToken cancellationToken = default);
-    ValueTask<DeleteOrganizationResponse> DeleteAsync(string oid, int deleteReason, CancellationToken cancellationToken = default);
+    ValueTask<SingleResponse<Organization>> GetAsync(string oid, CancellationToken cancellationToken = default);
+    ValueTask<ListPagedResponse<Organization>> ListPagedAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default);
+    ValueTask<DefaultResponse> UpdateAsync(Dictionary<string, string?> queryParameters, Organization organization, CancellationToken cancellationToken = default);
+    ValueTask<DefaultResponse> DeleteAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default);
 }

@@ -15,10 +15,10 @@ public sealed class UpdateOrganizationIntegrationEventHandler(IParusRxStore stor
         try
         {
             byte[] data = await store.ReadDataRequestAsync(id);
-            var request = XmlSerializerUtility.Deserialize<UpdateOrganizationRequest>(data)
+            var request = XmlSerializerUtility.Deserialize<DefaultRequest<Organization>>(data)
                 ?? throw new InvalidOperationException($"Cannot deserialize request data for integration event: {@event.Id}");
 
-            var response = await service.UpdateAsync(request.Parameters.Oid, request.Content.Organization, cancellationToken);
+            var response = await service.UpdateAsync(request.Parameters, request.Content, cancellationToken);
             
             var responseBytes = XmlSerializerUtility.Serialize(response)
                 ?? throw new InvalidOperationException($"Cannot serialize response data for integration event: {@event.Id}");

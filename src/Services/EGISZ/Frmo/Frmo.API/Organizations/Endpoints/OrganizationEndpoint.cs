@@ -9,30 +9,36 @@ internal static class OrganizationEndpoint
     {
         var group = endpoints.MapGroup("api/v1/org");
         
-        group.MapGet("/", async (IOrganizationService organizationService, int orgTypeId, int offset = 0, int limit = 10) =>
+        group.MapGet("/", async (HttpRequest request, IOrganizationService service, CancellationToken cancellationToken) =>
         {
-            var organizations = await organizationService.ListPagedAsync(orgTypeId, offset, limit);
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+
+            var organizations = await service.ListPagedAsync(queryParameters, cancellationToken);
 
             return Results.Ok(organizations);
         });
 
-        group.MapGet("/{oid}", async (IOrganizationService organizationService, string oid) =>
+        group.MapGet("/{oid}", async (string oid, IOrganizationService service, CancellationToken cancellationToken) =>
         {
-            var organization = await organizationService.GetByOidAsync(oid);
+            var organization = await service.GetAsync(oid, cancellationToken);
 
             return Results.Ok(organization);
         });
 
-        group.MapPut("/", async (IOrganizationService organizationService, string oid, Organization organization) =>
+        group.MapPut("/", async (HttpRequest request, Organization organization, IOrganizationService service, CancellationToken cancellationToken) =>
         {
-            var response = await organizationService.UpdateAsync(oid, organization);
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+
+            var response = await service.UpdateAsync(queryParameters, organization, cancellationToken);
 
             return Results.Ok(response);
         });
 
-        group.MapDelete("/", async (IOrganizationService organizationService, string oid, int deleteReason) =>
+        group.MapDelete("/", async (HttpRequest request, IOrganizationService service, CancellationToken cancellationToken) =>
         {
-            var response = await organizationService.DeleteAsync(oid, deleteReason);
+            var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+
+            var response = await service.DeleteAsync(queryParameters, cancellationToken);
 
             return Results.Ok(response);
         });

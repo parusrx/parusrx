@@ -16,14 +16,10 @@ public sealed class ListPagedOrganizationIntegrationEventHandler(IParusRxStore s
         {
             byte[] data = await store.ReadDataRequestAsync(id);
 
-            var request = XmlSerializerUtility.Deserialize<ListPagedOrganizationRequest>(data)
+            var request = XmlSerializerUtility.Deserialize<DefaultRequest>(data)
                 ?? throw new InvalidOperationException($"Cannot deserialize request data for integration event: {@event.Id}");
 
-            var response = await organizationService.ListPagedAsync(
-                request.Parameters.OrgTypeId, 
-                request.Parameters.Offset, 
-                request.Parameters.Limit, 
-                cancellationToken);
+            var response = await organizationService.ListPagedAsync(request.Parameters, cancellationToken);
                 
             var responseBytes = XmlSerializerUtility.Serialize(response)
                 ?? throw new InvalidOperationException($"Cannot serialize response data for integration event: {@event.Id}");

@@ -5,43 +5,43 @@ namespace ParusRx.Frmo.API;
 
 public class OrganizationService(HttpClient httpClient, IOptionsSnapshot<FrmoSettings> settings) : IOrganizationService
 {
-    public async ValueTask<GetByOidOrganizationResponse> GetByOidAsync(string oid, CancellationToken cancellationToken = default)
+    public async ValueTask<SingleResponse<Organization>> GetAsync(string oid, CancellationToken cancellationToken = default)
     {
-        string url = $"{settings.Value.Url}/org/{oid}";
+        var requestUri = $"{settings.Value.Url}/org/{oid}";
 
-        var response = await httpClient.GetAsync(url, cancellationToken);
+        var response = await httpClient.GetAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<GetByOidOrganizationResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<SingleResponse<Organization>>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<ListPagedOrganizationResponse> ListPagedAsync(int orgTypeId, int offset = 0, int limit = 10, CancellationToken cancellationToken = default)
+    public async ValueTask<ListPagedResponse<Organization>> ListPagedAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
     {
-        string url = $"{settings.Value.Url}/org?orgTypeId={orgTypeId}&offset={offset}&limit={limit}";
+        var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org", queryParameters);
         
-        var response = await httpClient.GetAsync(url, cancellationToken);
+        var response = await httpClient.GetAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<ListPagedOrganizationResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<ListPagedResponse<Organization>>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<UpdateOrganizationResponse> UpdateAsync(string oid, Organization organization, CancellationToken cancellationToken = default)
+    public async ValueTask<DefaultResponse> UpdateAsync(Dictionary<string, string?> queryParameters, Organization organization, CancellationToken cancellationToken = default)
     {
-        string url = $"{settings.Value.Url}/org?oid={oid}";
+        var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org", queryParameters);
 
-        var response = await httpClient.PutAsJsonAsync(url, organization, cancellationToken);
+        var response = await httpClient.PutAsJsonAsync(requestUri, organization, cancellationToken);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<UpdateOrganizationResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
 
-    public async ValueTask<DeleteOrganizationResponse> DeleteAsync(string oid, int deleteReason, CancellationToken cancellationToken = default)
+    public async ValueTask<DefaultResponse> DeleteAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default)
     {
-        string url = $"{settings.Value.Url}/org?oid={oid}&deleteReason={deleteReason}";
+        var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org", queryParameters);
 
-        var response = await httpClient.DeleteAsync(url, cancellationToken);
+        var response = await httpClient.DeleteAsync(requestUri, cancellationToken);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<DeleteOrganizationResponse>(cancellationToken) ?? new();
+        return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
 }
