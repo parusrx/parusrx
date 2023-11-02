@@ -4,6 +4,7 @@
 global using System.Text.Json.Serialization;
 global using System.Net.Http.Json;
 global using System.Xml.Serialization;
+global using Microsoft.AspNetCore.Http.HttpResults;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.WebUtilities;
 global using Microsoft.Extensions.Options;
