@@ -8,7 +8,7 @@ public static class PersonApi
     public static RouteGroupBuilder MapPersonApi(this RouteGroupBuilder group)
     {
         group.MapGet("/", GetPerson);
-        group.MapGet("/list", ListPerson);
+        group.MapGet("/list", ListPagedPerson);
         group.MapPost("/", CreatePerson);
         group.MapPut("/", UpdatePerson);
         group.MapDelete("/", DeletePerson);
@@ -25,7 +25,7 @@ public static class PersonApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<ListPagedResponse<Person>>> ListPerson(HttpRequest request, PersonService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListPagedResponse<Person>>> ListPagedPerson(HttpRequest request, PersonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         

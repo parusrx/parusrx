@@ -7,7 +7,7 @@ public static class EducationPostgraduateApi
 {
     public static RouteGroupBuilder MapEducationPostgraduateApi(this RouteGroupBuilder group)
     {
-        group.MapGet("/", GetEducationPostgraduate);
+        group.MapGet("/", ListEducationPostgraduate);
         group.MapPost("/", CreateEducationPostgraduate);
         group.MapPut("/", UpdateEducationPostgraduate);
         group.MapDelete("/", DeleteEducationPostgraduate);
@@ -15,11 +15,11 @@ public static class EducationPostgraduateApi
         return group;
     }
 
-    public static async ValueTask<Ok<ListResponse<EducationPostgraduate>>> GetEducationPostgraduate(HttpRequest request, EducationPostgraduateService service, CancellationToken cancellationToken = default)
+    public static async ValueTask<Ok<ListResponse<EducationPostgraduate>>> ListEducationPostgraduate(HttpRequest request, EducationPostgraduateService service, CancellationToken cancellationToken = default)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         
-        var response = await service.GetAllAsync(queryParameters, cancellationToken);
+        var response = await service.ListAsync(queryParameters, cancellationToken);
         
         return TypedResults.Ok(response);
     }

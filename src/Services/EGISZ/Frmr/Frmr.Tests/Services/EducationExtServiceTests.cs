@@ -39,7 +39,7 @@ public class EducationExtServiceTests
             });
 
         // Act
-        var response = await _service.GetAsync(queryParameters, CancellationToken.None);
+        var response = await _service.ListPagedAsync(queryParameters, CancellationToken.None);
 
         // Assert
         Assert.Equal(expectedResponse.RequestId, response.RequestId);

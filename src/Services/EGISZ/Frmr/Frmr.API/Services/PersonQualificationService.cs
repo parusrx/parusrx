@@ -5,7 +5,7 @@ namespace ParusRx.Frmr.API.Services;
 
 public class PersonQualificationService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
 {
-    public async ValueTask<ListResponse<PersonQualification>> GetAllAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
+    public async ValueTask<ListResponse<PersonQualification>> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/qualification", queryParameters);
 

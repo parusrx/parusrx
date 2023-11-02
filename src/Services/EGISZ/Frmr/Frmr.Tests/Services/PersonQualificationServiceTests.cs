@@ -37,7 +37,7 @@ public class PersonQualificationServiceTests
         CancellationTokenSource cts = new();
 
         // Act
-        var response = await _service.GetAllAsync(queryParameters, cts.Token);
+        var response = await _service.ListAsync(queryParameters, cts.Token);
 
         // Assert
         Assert.Equal(expectedResponse.RequestId, response.RequestId);

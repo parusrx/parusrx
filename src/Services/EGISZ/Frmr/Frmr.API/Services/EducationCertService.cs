@@ -5,7 +5,7 @@ namespace ParusRx.Frmr.API.Services;
 
 public class EducationCertService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
 {
-    public async ValueTask<ListResponse<EducationCert>> GetAllAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
+    public async ValueTask<ListResponse<EducationCert>> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/cert", queryParameters);
 

@@ -35,7 +35,7 @@ public class EducationPostgraduateServiceTests
             });
 
         // Act
-        var response = await _service.GetAllAsync(queryParameters, CancellationToken.None);
+        var response = await _service.ListAsync(queryParameters, CancellationToken.None);
 
         // Assert
         Assert.Equal(expectedResponse.RequestId, response.RequestId);

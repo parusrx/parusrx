@@ -5,7 +5,7 @@ namespace ParusRx.Frmr.API.Services;
 
 public class EducationExtService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
 {
-    public async ValueTask<ListPagedResponse<EducationExt>> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
+    public async ValueTask<ListPagedResponse<EducationExt>> ListPagedAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/ext", queryParameters);
 

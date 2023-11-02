@@ -7,7 +7,7 @@ public static class PersonQualificationApi
 {
     public static RouteGroupBuilder MapPersonQualificationApi(this RouteGroupBuilder group)
     {
-        group.MapGet("/", GetAllPersonQualification);
+        group.MapGet("/", ListPersonQualification);
         group.MapPost("/", CreatePersonQualification);
         group.MapPut("/", UpdatePersonQualification);
         group.MapDelete("/", DeletePersonQualification);
@@ -15,11 +15,11 @@ public static class PersonQualificationApi
         return group;
     }
 
-    public static async ValueTask<Ok<ListResponse<PersonQualification>>> GetAllPersonQualification(HttpRequest request, PersonQualificationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListResponse<PersonQualification>>> ListPersonQualification(HttpRequest request, PersonQualificationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
-        var response = await service.GetAllAsync(queryParameters, cancellationToken);
+        var response = await service.ListAsync(queryParameters, cancellationToken);
 
         return TypedResults.Ok(response);
     }

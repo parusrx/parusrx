@@ -7,7 +7,7 @@ public static class EducationCertApi
 {
     public static RouteGroupBuilder MapEducationCertApi(this RouteGroupBuilder group)
     {
-        group.MapGet("/", GetAllEducationCert);
+        group.MapGet("/", ListEducationCert);
         group.MapPost("/", CreateEducationCert);
         group.MapPut("/", UpdateEducationCert);
         group.MapDelete("/", DeleteEducationCert);
@@ -15,11 +15,11 @@ public static class EducationCertApi
         return group;
     }
 
-    public static async ValueTask<Ok<ListResponse<EducationCert>>> GetAllEducationCert(HttpRequest request, EducationCertService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListResponse<EducationCert>>> ListEducationCert(HttpRequest request, EducationCertService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
-        var response = await service.GetAllAsync(queryParameters, cancellationToken);
+        var response = await service.ListAsync(queryParameters, cancellationToken);
 
         return TypedResults.Ok(response);
     }

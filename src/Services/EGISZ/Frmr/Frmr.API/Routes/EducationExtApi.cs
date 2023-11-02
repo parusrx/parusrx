@@ -7,14 +7,19 @@ public static class EducationExtApi
 {
     public static RouteGroupBuilder MapEducationExtApi(this RouteGroupBuilder group)
     {
+        group.MapGet("/", ListPagedEducationExt);
+        group.MapPost("/", CreateEducationExt);
+        group.MapPut("/", UpdateEducationExt);
+        group.MapDelete("/", DeleteEducationExt);
+
         return group;
     }
 
-    public static async ValueTask<Ok<ListPagedResponse<EducationExt>>> GetEducationExt(HttpRequest request, EducationExtService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListPagedResponse<EducationExt>>> ListPagedEducationExt(HttpRequest request, EducationExtService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         
-        var response = await service.GetAsync(queryParameters, cancellationToken);
+        var response = await service.ListPagedAsync(queryParameters, cancellationToken);
 
         return TypedResults.Ok(response);
     }
