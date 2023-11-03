@@ -12,17 +12,17 @@ Content-Type: application/json
 
 ### Get paged list of organizations
 
-GET {{url}}/api/v1/org?orgTypeId=1&offset=0&limit=10
+GET {{url}}/org?orgTypeId=1&offset=0&limit=10
 Content-Type: application/json
 
 ### Get organization by oid
 
-GET {{url}}/api/v1/org/1.2.643.5.1.13.13.12.2.31.2855
+GET {{url}}/org/1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 ### Update organization by oid
 
-PUT {{url}}/api/v1/org?oid=1.2.643.5.1.13.13.12.2.78.6258
+PUT {{url}}/org?oid=1.2.643.5.1.13.13.12.2.78.6258
 Content-Type: application/json
 
 {
@@ -181,22 +181,22 @@ Content-Type: application/json
 
 ### Delete organization by oid with reason
 
-DELETE {{url}}/api/v1/org?oid=1.2.643.5.1.13.13.12.2.78.6258&deleteReason=1
+DELETE {{url}}/org?oid=1.2.643.5.1.13.13.12.2.78.6258&deleteReason=1
 Content-Type: application/json
 
 ### Get paged list of departments
 
-GET {{url}}/api/v1/org/depart?departTypeId=1&oid=1.2.643.5.1.13.13.12.2.13.10115&offset=0&limit=10
+GET {{url}}/org/depart?departTypeId=1&oid=1.2.643.5.1.13.13.12.2.31.2855&offset=0&limit=10
 Content-Type: application/json
 
 ### Get department by oid
 
-GET {{url}}/api/v1/org/depart/1.2.643.5.1.13.13.12.2.77.7799?oid=1.2.643.5.1.13.13.12.2.77.7799
+GET {{url}}/org/depart/1.2.643.5.1.13.13.12.2.77.7799?oid=1.2.643.5.1.13.13.12.2.77.7799
 Content-Type: application/json
 
 ### Create department
 
-POST {{url}}/api/v1/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799
+POST {{url}}/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799
 Content-Type: application/json
 
 {
@@ -210,7 +210,7 @@ Content-Type: application/json
 
 ### Update department
 
-PUT {{url}}/api/v1/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
+PUT {{url}}/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
 Content-Type: application/json
 
 {
@@ -224,14 +224,14 @@ Content-Type: application/json
 
 ### Delete department
 
-DELETE {{url}}/api/v1/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
+DELETE {{url}}/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
 Content-Type: application/json
 
 ### Get Staff
 
-GET {{url}}/api/v1/org/staff?oid=1.2.643.5.1.13.13.12.2.77.7799
+GET {{url}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 ### Get Staff by entity
-GET {{url}}/api/v1/org/staff?oid=1.2.643.5.1.13.13.12.2.77.7799&entity=e50da88c-f7f0-4a8a-bde6-f491c2268abf
+GET {{url}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855&entity=365ee8b2-cf6f-4e0c-a949-f470f17678de
 Content-Type: application/json
