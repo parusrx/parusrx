@@ -16,7 +16,7 @@ public static class PersonApi
         return group;
     }
 
-    public static async ValueTask<Ok<SingleResponse<Person>>> GetPerson(HttpRequest request, PersonService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<Person>>> GetPerson(HttpRequest request, IPersonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         
@@ -25,7 +25,7 @@ public static class PersonApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<ListPagedResponse<Person>>> ListPagedPerson(HttpRequest request, PersonService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListPagedResponse<Person>>> ListPagedPerson(HttpRequest request, IPersonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         
@@ -34,7 +34,7 @@ public static class PersonApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePerson(HttpRequest request, PersonService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePerson(HttpRequest request, IPersonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var person = await request.ReadFromJsonAsync<Person>(cancellationToken: cancellationToken);
@@ -44,7 +44,7 @@ public static class PersonApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdatePerson(HttpRequest request, PersonService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> UpdatePerson(HttpRequest request, IPersonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var person = await request.ReadFromJsonAsync<Person>(cancellationToken: cancellationToken);
@@ -54,7 +54,7 @@ public static class PersonApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeletePerson(HttpRequest request, PersonService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> DeletePerson(HttpRequest request, IPersonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         

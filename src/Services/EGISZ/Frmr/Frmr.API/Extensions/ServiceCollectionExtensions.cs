@@ -20,7 +20,7 @@ public static class ServiceCollectionExtensions
 
     public static IServiceCollection AddApplicationHttpClients(this IServiceCollection services)
     {
-        services.AddHttpClient<PersonService>()
+        services.AddHttpClient<IPersonService, PersonService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,
@@ -115,6 +115,17 @@ public static class ServiceCollectionExtensions
                 ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+
+        return services;
+    }
+
+    public static IServiceCollection AddIntegrationEventHandlers(this IServiceCollection services)
+    {
+        services.AddTransient<GetPersonIntegrationEventHandler>();
+        services.AddTransient<ListPagedPersonIntegrationEventHandler>();
+        services.AddTransient<CreatePersonIntegrationEventHandler>();
+        services.AddTransient<UpdatePersonIntegrationEventHandler>();
+        services.AddTransient<DeletePersonIntegrationEventHandler>();
 
         return services;
     }

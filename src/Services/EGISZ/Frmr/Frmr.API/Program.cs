@@ -15,6 +15,7 @@ builder.Services.AddApplicationOptions(builder.Configuration);
 builder.Services.AddDataAccess(builder.Configuration);
 builder.Services.AddIpsIdentityProvider();
 builder.Services.AddApplicationHttpClients();
+builder.Services.AddIntegrationEventHandlers();
 
 builder.Services.AddHealthChecks()
     .AddCheck("self", () => HealthCheckResult.Healthy());
@@ -62,5 +63,7 @@ app.MapGroup("/person/organization")
 
 app.MapGroup("/person/full")
     .MapFullPersonApi();
+
+app.MapPersonSubscribeHandlers();
 
 app.Run();

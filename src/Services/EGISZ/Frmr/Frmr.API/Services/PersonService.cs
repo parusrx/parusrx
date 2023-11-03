@@ -3,18 +3,8 @@
 
 namespace ParusRx.Frmr.API.Services;
 
-public class PersonService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
+public class PersonService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings) : IPersonService
 {
-    public async ValueTask<SingleResponse<Person>> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
-    {
-        var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person", queryParameters);
-        
-        var response = await httpClient.GetAsync(requestUri, cancellationToken);
-        response.EnsureSuccessStatusCode();
-        
-        return await response.Content.ReadFromJsonAsync<SingleResponse<Person>>(cancellationToken) ?? new();
-    }
-
     public async ValueTask<ListPagedResponse<Person>> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
     {
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/list", queryParameters);
@@ -23,6 +13,16 @@ public class PersonService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings>
         response.EnsureSuccessStatusCode();
         
         return await response.Content.ReadFromJsonAsync<ListPagedResponse<Person>>(cancellationToken) ?? new();
+    }
+
+    public async ValueTask<SingleResponse<Person>> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
+    {
+        var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person", queryParameters);
+        
+        var response = await httpClient.GetAsync(requestUri, cancellationToken);
+        response.EnsureSuccessStatusCode();
+        
+        return await response.Content.ReadFromJsonAsync<SingleResponse<Person>>(cancellationToken) ?? new();
     }
 
     public async ValueTask<SingleResponse<Entity>> CreateAsync(Dictionary<string, string?> queryParameters, Person person, CancellationToken cancellationToken)
