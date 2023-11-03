@@ -179,3 +179,31 @@ services:
     volumes:
       - ./dapr/components:/components
       - ./dapr/configuration:/configuration
+
+  mis-api:
+    image: parusrx/mis-api:dev
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IDENTITY__URL=http://ips-identity-provider-api
+      - EGISZ__URL=${EGISZ_URL}
+      - TZ=${ORACLE_TZ:-Europe/Moscow}
+      - Database__Provider=${DB_PROVIDER:-Oracle}
+      - Database__ConnectionString=${DB_CONNECTION_STRING:-User Id=username;Password=password;Data Source=localhost:1521/meta8561}
+      - PATH_BASE=/mis-api
+    ports:
+      - "51007:8080"
+
+  mis-api-dapr:
+    image: "daprio/daprd:1.12.0"
+    command: ["./daprd",
+      "-app-id", "mis-api",
+      "-app-port", "8080",
+      "-components-path", "/components",
+      "-config", "/configuration/config.yml"
+      ]
+    network_mode: "service:mis-api"
+    depends_on:
+      - mis-api
+    volumes:
+      - ./dapr/components:/components
+      - ./dapr/configuration:/configuration
