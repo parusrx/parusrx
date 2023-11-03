@@ -3,6 +3,7 @@
 
 global using Dapr;
 global using Microsoft.AspNetCore.Http.HttpResults;
+global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.WebUtilities;
 global using Microsoft.Extensions.Options;
 global using ParusRx.Data.Oracle;

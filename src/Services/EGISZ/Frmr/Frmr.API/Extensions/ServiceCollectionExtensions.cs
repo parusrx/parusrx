@@ -108,7 +108,7 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-        services.AddHttpClient<FullPersonService>()
+        services.AddHttpClient<IFullPersonService, FullPersonService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,
@@ -126,6 +126,8 @@ public static class ServiceCollectionExtensions
         services.AddTransient<CreatePersonIntegrationEventHandler>();
         services.AddTransient<UpdatePersonIntegrationEventHandler>();
         services.AddTransient<DeletePersonIntegrationEventHandler>();
+
+        services.AddTransient<GetFullPersonIntegrationEventHandler>();
 
         return services;
     }

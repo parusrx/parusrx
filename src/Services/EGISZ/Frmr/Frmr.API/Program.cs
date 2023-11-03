@@ -65,5 +65,6 @@ app.MapGroup("/person/full")
     .MapFullPersonApi();
 
 app.MapPersonSubscribeHandlers();
+app.MapFullPersonSubscribeHandlers();
 
 app.Run();

@@ -1,8 +1,6 @@
 ﻿// Copyright (c) The Parus RX Authors. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using Microsoft.AspNetCore.Mvc;
-
 namespace ParusRx.Frmr.API.Routes;
 
 public static class PersonSubscribeApi
@@ -11,7 +9,7 @@ public static class PersonSubscribeApi
     {
         const string daprPubSubName = "pubsub";
 
-        var group = routes.MapGroup("subscribe/person");
+        var group = routes.MapGroup("/subscribe/person");
 
         group.MapPost("/list", [Topic(daprPubSubName, "ListPagedPersonIntegrationEvent")] async([FromBody] MqIntegrationEvent @event, ListPagedPersonIntegrationEventHandler handler) =>
         {
