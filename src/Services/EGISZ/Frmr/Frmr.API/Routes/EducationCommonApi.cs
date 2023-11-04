@@ -15,7 +15,7 @@ public static class EducationCommonApi
         return group;
     }
 
-    public static async ValueTask<Ok<SingleResponse<EducationCommon>>> GetEducationCommon(HttpRequest request, EducationCommonService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<EducationCommon>>> GetEducationCommon(HttpRequest request, IEducationCommonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
@@ -24,7 +24,7 @@ public static class EducationCommonApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationCommon(HttpRequest request, EducationCommonService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationCommon(HttpRequest request, IEducationCommonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var educationCommon = await request.ReadFromJsonAsync<EducationCommon>(cancellationToken: cancellationToken);
@@ -34,7 +34,7 @@ public static class EducationCommonApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationCommon(HttpRequest request, EducationCommonService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationCommon(HttpRequest request, IEducationCommonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var educationCommon = await request.ReadFromJsonAsync<EducationCommon>(cancellationToken: cancellationToken);
@@ -44,7 +44,7 @@ public static class EducationCommonApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationCommon(HttpRequest request, EducationCommonService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationCommon(HttpRequest request, IEducationCommonService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         

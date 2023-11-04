@@ -28,7 +28,7 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-        services.AddHttpClient<EducationCommonService>()
+        services.AddHttpClient<IEducationCommonService, EducationCommonService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,
@@ -126,6 +126,11 @@ public static class ServiceCollectionExtensions
         services.AddTransient<CreatePersonIntegrationEventHandler>();
         services.AddTransient<UpdatePersonIntegrationEventHandler>();
         services.AddTransient<DeletePersonIntegrationEventHandler>();
+
+        services.AddTransient<GetEducationCommonIntegrationEventHandler>();
+        services.AddTransient<CreateEducationCommonIntegrationEventHandler>();
+        services.AddTransient<UpdateEducationCommonIntegrationEventHandler>();
+        services.AddTransient<DeleteEducationCommonIntegrationEventHandler>();
 
         services.AddTransient<GetFullPersonIntegrationEventHandler>();
 
