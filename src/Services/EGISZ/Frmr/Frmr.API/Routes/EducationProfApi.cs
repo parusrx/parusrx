@@ -15,7 +15,7 @@ public static class EducationProfApi
         return group;
     }
 
-    public static async ValueTask<Ok<SingleResponse<EducationProf>>> GetEducationProf(HttpRequest request, EducationProfService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<EducationProf>>> GetEducationProf(HttpRequest request, IEducationProfService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         
@@ -24,7 +24,7 @@ public static class EducationProfApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationProf(HttpRequest request, EducationProfService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationProf(HttpRequest request, IEducationProfService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var educationProf = await request.ReadFromJsonAsync<EducationProf>(cancellationToken: cancellationToken);
@@ -34,7 +34,7 @@ public static class EducationProfApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationProf(HttpRequest request, EducationProfService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationProf(HttpRequest request, IEducationProfService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var educationProf = await request.ReadFromJsonAsync<EducationProf>(cancellationToken: cancellationToken);
@@ -44,7 +44,7 @@ public static class EducationProfApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationProf(HttpRequest request, EducationProfService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationProf(HttpRequest request, IEducationProfService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         

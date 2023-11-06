@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmr.API.Services;
 
-public class PersonAccreditationService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
+public class PersonAccreditationService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings) : IPersonAccreditationService
 {
     public async ValueTask<SingleResponse<PersonAccreditation>> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
     {

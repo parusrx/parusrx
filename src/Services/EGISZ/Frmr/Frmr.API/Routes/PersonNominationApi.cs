@@ -15,7 +15,7 @@ public static class PersonNominationApi
         return group;
     }
 
-    public static async ValueTask<Ok<ListResponse<PersonNomination>>> ListPersonNomination(HttpRequest request, PersonNominationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListResponse<PersonNomination>>> ListPersonNomination(HttpRequest request, IPersonNominationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
@@ -24,7 +24,7 @@ public static class PersonNominationApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePersonNomination(HttpRequest request, PersonNominationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePersonNomination(HttpRequest request, IPersonNominationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var personNomination = await request.ReadFromJsonAsync<PersonNomination>(cancellationToken: cancellationToken);
@@ -34,7 +34,7 @@ public static class PersonNominationApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdatePersonNomination(HttpRequest request, PersonNominationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> UpdatePersonNomination(HttpRequest request, IPersonNominationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var personNomination = await request.ReadFromJsonAsync<PersonNomination>(cancellationToken: cancellationToken);
@@ -44,7 +44,7 @@ public static class PersonNominationApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeletePersonNomination(HttpRequest request, PersonNominationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> DeletePersonNomination(HttpRequest request, IPersonNominationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 

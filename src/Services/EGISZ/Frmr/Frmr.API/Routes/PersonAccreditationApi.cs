@@ -15,7 +15,7 @@ public static class PersonAccreditationApi
         return group;
     }
 
-    public static async ValueTask<Ok<SingleResponse<PersonAccreditation>>> GetPersonAccreditation(HttpRequest request, PersonAccreditationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<PersonAccreditation>>> GetPersonAccreditation(HttpRequest request, IPersonAccreditationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
@@ -24,7 +24,7 @@ public static class PersonAccreditationApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePersonAccreditation(HttpRequest request, PersonAccreditationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePersonAccreditation(HttpRequest request, IPersonAccreditationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var personAccreditation = await request.ReadFromJsonAsync<PersonAccreditation>(cancellationToken: cancellationToken);
@@ -34,7 +34,7 @@ public static class PersonAccreditationApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdatePersonAccreditation(HttpRequest request, PersonAccreditationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> UpdatePersonAccreditation(HttpRequest request, IPersonAccreditationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var personAccreditation = await request.ReadFromJsonAsync<PersonAccreditation>(cancellationToken: cancellationToken);
@@ -44,7 +44,7 @@ public static class PersonAccreditationApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeletePersonAccreditation(HttpRequest request, PersonAccreditationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> DeletePersonAccreditation(HttpRequest request, IPersonAccreditationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 

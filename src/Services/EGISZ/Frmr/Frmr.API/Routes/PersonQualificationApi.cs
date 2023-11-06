@@ -15,7 +15,7 @@ public static class PersonQualificationApi
         return group;
     }
 
-    public static async ValueTask<Ok<ListResponse<PersonQualification>>> ListPersonQualification(HttpRequest request, PersonQualificationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListResponse<PersonQualification>>> ListPersonQualification(HttpRequest request, IPersonQualificationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
@@ -24,7 +24,7 @@ public static class PersonQualificationApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePersonQualification(HttpRequest request, PersonQualificationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePersonQualification(HttpRequest request, IPersonQualificationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var personQualification = await request.ReadFromJsonAsync<PersonQualification>(cancellationToken: cancellationToken);
@@ -34,7 +34,7 @@ public static class PersonQualificationApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdatePersonQualification(HttpRequest request, PersonQualificationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> UpdatePersonQualification(HttpRequest request, IPersonQualificationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var personQualification = await request.ReadFromJsonAsync<PersonQualification>(cancellationToken: cancellationToken);
@@ -44,7 +44,7 @@ public static class PersonQualificationApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeletePersonQualification(HttpRequest request, PersonQualificationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> DeletePersonQualification(HttpRequest request, IPersonQualificationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 

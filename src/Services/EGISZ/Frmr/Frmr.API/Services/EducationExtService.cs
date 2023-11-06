@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmr.API.Services;
 
-public class EducationExtService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
+public class EducationExtService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings) : IEducationExtService
 {
     public async ValueTask<ListPagedResponse<EducationExt>> ListPagedAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
     {

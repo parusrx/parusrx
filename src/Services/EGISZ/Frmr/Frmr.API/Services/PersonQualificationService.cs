@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmr.API.Services;
 
-public class PersonQualificationService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
+public class PersonQualificationService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings) : IPersonQualificationService
 {
     public async ValueTask<ListResponse<PersonQualification>> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
     {

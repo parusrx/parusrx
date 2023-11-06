@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmr.API.Services;
 
-public class PersonCardService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
+public class PersonCardService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings) : IPersonCardService
 {
     public async ValueTask<ListResponse<PersonCard>> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
     {

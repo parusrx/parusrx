@@ -15,7 +15,7 @@ public static class PersonOrganizationApi
         return group;
     }
 
-    public static async ValueTask<Ok<ListResponse<PersonOrganization>>> ListPersonOrganization(HttpRequest request, PersonOrganizationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListResponse<PersonOrganization>>> ListPersonOrganization(HttpRequest request, IPersonOrganizationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
@@ -24,7 +24,7 @@ public static class PersonOrganizationApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePersonOrganization(HttpRequest request, PersonOrganizationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePersonOrganization(HttpRequest request, IPersonOrganizationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var personOrganization = await request.ReadFromJsonAsync<PersonOrganization>(cancellationToken: cancellationToken);
@@ -34,7 +34,7 @@ public static class PersonOrganizationApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdatePersonOrganization(HttpRequest request, PersonOrganizationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> UpdatePersonOrganization(HttpRequest request, IPersonOrganizationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var personOrganization = await request.ReadFromJsonAsync<PersonOrganization>(cancellationToken: cancellationToken);
@@ -44,7 +44,7 @@ public static class PersonOrganizationApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeletePersonOrganization(HttpRequest request, PersonOrganizationService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> DeletePersonOrganization(HttpRequest request, IPersonOrganizationService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 

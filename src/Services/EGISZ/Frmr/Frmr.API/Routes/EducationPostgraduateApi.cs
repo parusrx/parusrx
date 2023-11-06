@@ -15,7 +15,7 @@ public static class EducationPostgraduateApi
         return group;
     }
 
-    public static async ValueTask<Ok<ListResponse<EducationPostgraduate>>> ListEducationPostgraduate(HttpRequest request, EducationPostgraduateService service, CancellationToken cancellationToken = default)
+    public static async ValueTask<Ok<ListResponse<EducationPostgraduate>>> ListEducationPostgraduate(HttpRequest request, IEducationPostgraduateService service, CancellationToken cancellationToken = default)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         
@@ -24,7 +24,7 @@ public static class EducationPostgraduateApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationPostgraduate(HttpRequest request, EducationPostgraduateService service, CancellationToken cancellationToken = default)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationPostgraduate(HttpRequest request, IEducationPostgraduateService service, CancellationToken cancellationToken = default)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var educationPostgraduate = await request.ReadFromJsonAsync<EducationPostgraduate>(cancellationToken: cancellationToken);
@@ -34,7 +34,7 @@ public static class EducationPostgraduateApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationPostgraduate(HttpRequest request, EducationPostgraduateService service, CancellationToken cancellationToken = default)
+    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationPostgraduate(HttpRequest request, IEducationPostgraduateService service, CancellationToken cancellationToken = default)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var educationPostgraduate = await request.ReadFromJsonAsync<EducationPostgraduate>(cancellationToken: cancellationToken);
@@ -44,7 +44,7 @@ public static class EducationPostgraduateApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationPostgraduate(HttpRequest request, EducationPostgraduateService service, CancellationToken cancellationToken = default)
+    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationPostgraduate(HttpRequest request, IEducationPostgraduateService service, CancellationToken cancellationToken = default)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         

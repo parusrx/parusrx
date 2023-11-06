@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmr.API.Services;
 
-public class PersonOrganizationService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
+public class PersonOrganizationService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings) : IPersonOrganizationService
 {
     public async ValueTask<ListResponse<PersonOrganization>> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
     {

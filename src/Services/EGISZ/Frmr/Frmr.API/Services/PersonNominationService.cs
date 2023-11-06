@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmr.API.Services;
 
-public class PersonNominationService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
+public class PersonNominationService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings) : IPersonNominationService
 {
     public async ValueTask<ListResponse<PersonNomination>> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
     {

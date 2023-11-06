@@ -15,7 +15,7 @@ public static class EducationExtApi
         return group;
     }
 
-    public static async ValueTask<Ok<ListPagedResponse<EducationExt>>> ListPagedEducationExt(HttpRequest request, EducationExtService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListPagedResponse<EducationExt>>> ListPagedEducationExt(HttpRequest request, IEducationExtService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         
@@ -24,7 +24,7 @@ public static class EducationExtApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationExt(HttpRequest request, EducationExtService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationExt(HttpRequest request, IEducationExtService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var educationExt = await request.ReadFromJsonAsync<EducationExt>(cancellationToken: cancellationToken);
@@ -34,7 +34,7 @@ public static class EducationExtApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationExt(HttpRequest request, EducationExtService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationExt(HttpRequest request, IEducationExtService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var educationExt = await request.ReadFromJsonAsync<EducationExt>(cancellationToken: cancellationToken);
@@ -44,7 +44,7 @@ public static class EducationExtApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationExt(HttpRequest request, EducationExtService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationExt(HttpRequest request, IEducationExtService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         

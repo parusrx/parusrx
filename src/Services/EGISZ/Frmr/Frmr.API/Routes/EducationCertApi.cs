@@ -15,7 +15,7 @@ public static class EducationCertApi
         return group;
     }
 
-    public static async ValueTask<Ok<ListResponse<EducationCert>>> ListEducationCert(HttpRequest request, EducationCertService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListResponse<EducationCert>>> ListEducationCert(HttpRequest request, IEducationCertService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
@@ -24,7 +24,7 @@ public static class EducationCertApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationCert(HttpRequest request, EducationCertService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreateEducationCert(HttpRequest request, IEducationCertService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var educationCert = await request.ReadFromJsonAsync<EducationCert>(cancellationToken: cancellationToken);
@@ -34,7 +34,7 @@ public static class EducationCertApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationCert(HttpRequest request, EducationCertService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> UpdateEducationCert(HttpRequest request, IEducationCertService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var educationCert = await request.ReadFromJsonAsync<EducationCert>(cancellationToken: cancellationToken);
@@ -44,7 +44,7 @@ public static class EducationCertApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationCert(HttpRequest request, EducationCertService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> DeleteEducationCert(HttpRequest request, IEducationCertService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 

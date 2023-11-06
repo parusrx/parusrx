@@ -15,7 +15,7 @@ public static class PersonCardApi
         return group;
     }
 
-    public static async ValueTask<Ok<ListResponse<PersonCard>>> ListPersonCard(HttpRequest request, PersonCardService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListResponse<PersonCard>>> ListPersonCard(HttpRequest request, IPersonCardService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
@@ -24,7 +24,7 @@ public static class PersonCardApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePersonCard(HttpRequest request, PersonCardService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<SingleResponse<Entity>>> CreatePersonCard(HttpRequest request, IPersonCardService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var personCard = await request.ReadFromJsonAsync<PersonCard>(cancellationToken: cancellationToken);
@@ -34,7 +34,7 @@ public static class PersonCardApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> UpdatePersonCard(HttpRequest request, PersonCardService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> UpdatePersonCard(HttpRequest request, IPersonCardService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         var personCard = await request.ReadFromJsonAsync<PersonCard>(cancellationToken: cancellationToken);
@@ -44,7 +44,7 @@ public static class PersonCardApi
         return TypedResults.Ok(response);
     }
 
-    public static async ValueTask<Ok<DefaultResponse>> DeletePersonCard(HttpRequest request, PersonCardService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<DefaultResponse>> DeletePersonCard(HttpRequest request, IPersonCardService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 

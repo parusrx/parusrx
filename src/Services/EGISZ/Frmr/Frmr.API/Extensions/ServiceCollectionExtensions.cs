@@ -36,7 +36,7 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-        services.AddHttpClient<EducationProfService>()
+        services.AddHttpClient<IEducationProfService, EducationProfService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,
@@ -44,7 +44,7 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-        services.AddHttpClient<EducationPostgraduateService>()
+        services.AddHttpClient<IEducationPostgraduateService, EducationPostgraduateService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,
@@ -52,7 +52,7 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-        services.AddHttpClient<EducationExtService>()
+        services.AddHttpClient<IEducationExtService, EducationExtService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,
@@ -60,7 +60,7 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-        services.AddHttpClient<EducationCertService>()
+        services.AddHttpClient<IEducationCertService, EducationCertService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,
@@ -68,7 +68,7 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-        services.AddHttpClient<PersonAccreditationService>()
+        services.AddHttpClient<IPersonAccreditationService, PersonAccreditationService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,
@@ -76,7 +76,7 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-        services.AddHttpClient<PersonQualificationService>()
+        services.AddHttpClient<IPersonQualificationService, PersonQualificationService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,
@@ -84,7 +84,7 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-        services.AddHttpClient<PersonCardService>()
+        services.AddHttpClient<IPersonCardService, PersonCardService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,
@@ -92,7 +92,7 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-        services.AddHttpClient<PersonNominationService>()
+        services.AddHttpClient<IPersonNominationService, PersonNominationService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,
@@ -100,7 +100,7 @@ public static class ServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
-        services.AddHttpClient<PersonOrganizationService>()
+        services.AddHttpClient<IPersonOrganizationService, PersonOrganizationService>()
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
             { 
                 ClientCertificateOptions = ClientCertificateOption.Manual,

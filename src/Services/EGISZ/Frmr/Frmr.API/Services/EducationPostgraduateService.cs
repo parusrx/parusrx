@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmr.API.Services;
 
-public class EducationPostgraduateService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings)
+public class EducationPostgraduateService(HttpClient httpClient, IOptionsSnapshot<FrmrSettings> settings) : IEducationPostgraduateService
 {
     public async ValueTask<ListResponse<EducationPostgraduate>> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
     {
