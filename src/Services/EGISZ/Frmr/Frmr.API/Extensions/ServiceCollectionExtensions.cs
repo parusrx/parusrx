@@ -132,6 +132,16 @@ public static class ServiceCollectionExtensions
         services.AddTransient<UpdateEducationCommonIntegrationEventHandler>();
         services.AddTransient<DeleteEducationCommonIntegrationEventHandler>();
 
+        services.AddTransient<ListPagedEducationExtIntegrationEventHandler>();
+        services.AddTransient<CreateEducationExtIntegrationEventHandler>();
+        services.AddTransient<UpdateEducationExtIntegrationEventHandler>();
+        services.AddTransient<DeleteEducationExtIntegrationEventHandler>();
+
+        services.AddTransient<ListEducationCertIntegrationEventHandler>();
+        services.AddTransient<CreateEducationCertIntegrationEventHandler>();
+        services.AddTransient<UpdateEducationCertIntegrationEventHandler>();
+        services.AddTransient<DeleteEducationCertIntegrationEventHandler>();
+
         services.AddTransient<GetFullPersonIntegrationEventHandler>();
 
         return services;
