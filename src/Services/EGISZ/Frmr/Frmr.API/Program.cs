@@ -66,6 +66,7 @@ app.MapGroup("/person/full")
 
 app.MapPersonSubscribeHandlers();
 app.MapEducationCommonSubscribeHandlers();
+app.MapEducationPostgraduateSubscribeHandlers();
 app.MapEducationExtSubscribeHandlers();
 app.MapEducationCertSubscribeHandlers();
 app.MapFullPersonSubscribeHandlers();
