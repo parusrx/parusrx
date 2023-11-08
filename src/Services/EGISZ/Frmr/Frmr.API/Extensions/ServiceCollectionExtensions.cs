@@ -172,6 +172,11 @@ public static class ServiceCollectionExtensions
         services.AddTransient<UpdatePersonNominationIntegrationEventHandler>();
         services.AddTransient<DeletePersonNominationIntegrationEventHandler>();
 
+        services.AddTransient<ListPersonOrganizationIntegrationEventHandler>();
+        services.AddTransient<CreatePersonOrganizationIntegrationEventHandler>();
+        services.AddTransient<UpdatePersonOrganizationIntegrationEventHandler>();
+        services.AddTransient<DeletePersonOrganizationIntegrationEventHandler>();
+
         services.AddTransient<GetFullPersonIntegrationEventHandler>();
 
         return services;

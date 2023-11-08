@@ -74,6 +74,7 @@ app.MapPersonAccreditationSubscribeHandlers();
 app.MapPersonQualificationSubscribeHandlers();
 app.MapPersonCardSubscribeHandlers();
 app.MapPersonNominationSubscribeHandlers();
+app.MapPersonOrganizationSubscribeHandlers();
 app.MapFullPersonSubscribeHandlers();
 
 app.Run();
