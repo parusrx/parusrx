@@ -71,6 +71,7 @@ app.MapEducationPostgraduateSubscribeHandlers();
 app.MapEducationExtSubscribeHandlers();
 app.MapEducationCertSubscribeHandlers();
 app.MapPersonAccreditationSubscribeHandlers();
+app.MapPersonQualificationSubscribeHandlers();
 app.MapPersonCardSubscribeHandlers();
 app.MapFullPersonSubscribeHandlers();
 
