@@ -70,6 +70,7 @@ app.MapEducationProfSubscribeHandlers();
 app.MapEducationPostgraduateSubscribeHandlers();
 app.MapEducationExtSubscribeHandlers();
 app.MapEducationCertSubscribeHandlers();
+app.MapPersonAccreditationSubscribeHandlers();
 app.MapFullPersonSubscribeHandlers();
 
 app.Run();

@@ -152,6 +152,11 @@ public static class ServiceCollectionExtensions
         services.AddTransient<UpdateEducationCertIntegrationEventHandler>();
         services.AddTransient<DeleteEducationCertIntegrationEventHandler>();
 
+        services.AddTransient<GetPersonAccreditationIntegrationEventHandler>();
+        services.AddTransient<CreatePersonAccreditationIntegrationEventHandler>();
+        services.AddTransient<UpdatePersonAccreditationIntegrationEventHandler>();
+        services.AddTransient<DeletePersonAccreditationIntegrationEventHandler>();
+
         services.AddTransient<GetFullPersonIntegrationEventHandler>();
 
         return services;
