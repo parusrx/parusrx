@@ -42,7 +42,7 @@ public record Department
 
     [XmlElement("isNewModel")]
     [JsonPropertyName("isNewModel")]
-    public bool IsNewModel { get; init; }
+    public bool? IsNewModel { get; init; }
 
     [XmlElement("pcCount")]
     [JsonPropertyName("pcCount")]
@@ -54,11 +54,11 @@ public record Department
 
     [XmlElement("isElectronicPrescription")]
     [JsonPropertyName("isElectronicPrescription")]
-    public bool IsElectronicPrescription { get; init; }
+    public bool? IsElectronicPrescription { get; init; }
 
     [XmlElement("isTelemedicine")]
     [JsonPropertyName("isTelemedicine")]
-    public bool IsTelemedicine { get; init; }
+    public bool? IsTelemedicine { get; init; }
 
     [XmlElement("departServiceArea")]
     [JsonPropertyName("departServiceArea")]
@@ -70,7 +70,7 @@ public record Department
 
     [XmlElement("isNorthArea")]
     [JsonPropertyName("isNorthArea")]
-    public bool IsNorthArea { get; init; }
+    public bool? IsNorthArea { get; init; }
 
     [XmlElement("moSecondLevelDistance")]
     [JsonPropertyName("moSecondLevelDistance")]
@@ -78,7 +78,7 @@ public record Department
 
     [XmlElement("smpId")]
     [JsonPropertyName("smpId")]
-    public bool SmpId { get; init; }
+    public bool? SmpId { get; init; }
 
     [XmlArray("services")]
     [XmlArrayItem("servicesItem")]
