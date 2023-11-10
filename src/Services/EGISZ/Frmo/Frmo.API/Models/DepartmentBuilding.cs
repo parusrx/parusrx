@@ -5,6 +5,10 @@ namespace ParusRx.Frmo.API;
 
 public record DepartmentBuilding
 {
+    [XmlElement("buildingId")]
+    [JsonPropertyName("buildingId")]
+    public string BuildingId { get; init; } = default!;
+
     [XmlElement("buildingName")]
     [JsonPropertyName("buildingName")]
     public string BuildingName { get; init; } = default!;
