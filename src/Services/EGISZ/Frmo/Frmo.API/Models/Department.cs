@@ -17,6 +17,10 @@ public record Department
     [JsonPropertyName("departStructure")]
     public DepartmentStructure DepartStructure { get; init; } = new();
 
+    [XmlElement("medicalSubjectId")]
+    [JsonPropertyName("medicalSubjectId")]
+    public int MedicalSubjectId { get; init; }
+
     [XmlElement("isPlanned")]
     [JsonPropertyName("isPlanned")]
     public bool IsPlanned { get; init; }
