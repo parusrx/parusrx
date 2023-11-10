@@ -11,7 +11,12 @@ public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSetti
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart/{departOid}", queryParameters);
 
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        //response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpRequestException($"{problemDetails?.Code} {problemDetails?.ReasonPhrase}: {problemDetails?.Message}", null, response.StatusCode);
+        }
 
         return await response.Content.ReadFromJsonAsync<SingleResponse<Department>>(cancellationToken) ?? new();
     }
@@ -21,7 +26,12 @@ public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSetti
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        //response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpRequestException($"{problemDetails?.Code} {problemDetails?.ReasonPhrase}: {problemDetails?.Message}", null, response.StatusCode);
+        }
 
         return await response.Content.ReadFromJsonAsync<ListPagedResponse<Department>>(cancellationToken) ?? new();
     }
@@ -31,7 +41,12 @@ public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSetti
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
         var response = await httpClient.PostAsJsonAsync(requestUri, department, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        //response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpRequestException($"{problemDetails?.Code} {problemDetails?.ReasonPhrase}: {problemDetails?.Message}", null, response.StatusCode);
+        }
 
         return await response.Content.ReadFromJsonAsync<SingleResponse<Entity>>(cancellationToken) ?? new();
     }
@@ -41,7 +56,12 @@ public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSetti
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
         var response = await httpClient.PutAsJsonAsync(requestUri, department, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        //response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpRequestException($"{problemDetails?.Code} {problemDetails?.ReasonPhrase}: {problemDetails?.Message}", null, response.StatusCode);
+        }
 
         return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
@@ -51,7 +71,12 @@ public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSetti
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
         var response = await httpClient.DeleteAsync(requestUri, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        //response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpRequestException($"{problemDetails?.Code} {problemDetails?.ReasonPhrase}: {problemDetails?.Message}", null, response.StatusCode);
+        }
 
         return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
