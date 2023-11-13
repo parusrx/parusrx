@@ -111,7 +111,7 @@ public record EducationPostgraduate
 
     [XmlElement("isTargetTerminated")]
     [JsonPropertyName("isTargetTerminated")]
-    public bool IsTargetTerminated { get; set; }
+    public bool? IsTargetTerminated { get; set; }
 
     [XmlElement("terminationReasonId")]
     [JsonPropertyName("terminationReasonId")]
