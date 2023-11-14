@@ -29,6 +29,8 @@ builder.Services.AddHealthChecks()
 
 var app = builder.Build();
 
+app.UseExceptionHandler(options => { });
+
 app.UseCloudEvents();
 app.MapSubscribeHandler();
 
