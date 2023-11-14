@@ -10,7 +10,11 @@ public sealed class FullPersonService(HttpClient httpClient, IOptionsSnapshot<Eg
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/full", queryParameters);
         
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<SingleResponse<FullPerson>>(cancellationToken) ?? new();
     }

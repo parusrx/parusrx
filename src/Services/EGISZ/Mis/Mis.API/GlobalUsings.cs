@@ -5,6 +5,7 @@ global using System.Text.Json.Serialization;
 global using System.Xml.Serialization;
 global using Microsoft.AspNetCore.WebUtilities;
 global using Microsoft.Extensions.Options;
+global using ParusRx.Extensions.Http;
 global using ParusRx.Mis.API;
 global using ParusRx.Mis.API.DataContracts;
 global using ParusRx.Mis.API.Organizations;
