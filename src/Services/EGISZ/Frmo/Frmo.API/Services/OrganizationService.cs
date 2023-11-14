@@ -12,7 +12,11 @@ public class OrganizationService(HttpClient httpClient, IOptionsSnapshot<FrmoSet
         var requestUri = $"{settings.Value.Url}/org/{oid}";
 
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<SingleResponse<Organization>>(cancellationToken) ?? new();
     }
@@ -22,7 +26,11 @@ public class OrganizationService(HttpClient httpClient, IOptionsSnapshot<FrmoSet
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org", queryParameters);
         
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<ListPagedResponse<Organization>>(cancellationToken) ?? new();
     }
@@ -32,7 +40,11 @@ public class OrganizationService(HttpClient httpClient, IOptionsSnapshot<FrmoSet
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org", queryParameters);
 
         var response = await httpClient.PutAsJsonAsync(requestUri, organization, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
@@ -42,7 +54,11 @@ public class OrganizationService(HttpClient httpClient, IOptionsSnapshot<FrmoSet
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org", queryParameters);
 
         var response = await httpClient.DeleteAsync(requestUri, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }

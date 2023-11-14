@@ -10,7 +10,11 @@ public class StaffService(HttpClient httpClient, IOptionsSnapshot<FrmoSettings> 
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/staff", queryParameters);
 
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<ListResponse<Staff>>(cancellationToken) ?? new();
     }
@@ -20,7 +24,11 @@ public class StaffService(HttpClient httpClient, IOptionsSnapshot<FrmoSettings> 
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/staff", queryParameters);
 
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<SingleResponse<Staff>>(cancellationToken) ?? new();
     }
@@ -30,7 +38,11 @@ public class StaffService(HttpClient httpClient, IOptionsSnapshot<FrmoSettings> 
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/staff", queryParameters);
 
         var response = await httpClient.PostAsJsonAsync(requestUri, staff, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<SingleResponse<Entity>>(cancellationToken) ?? new();
     }
@@ -40,7 +52,11 @@ public class StaffService(HttpClient httpClient, IOptionsSnapshot<FrmoSettings> 
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/staff", queryParameters);
 
         var response = await httpClient.PutAsJsonAsync(requestUri, staff, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
@@ -50,7 +66,11 @@ public class StaffService(HttpClient httpClient, IOptionsSnapshot<FrmoSettings> 
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/staff", queryParameters);
 
         var response = await httpClient.DeleteAsync(requestUri, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }

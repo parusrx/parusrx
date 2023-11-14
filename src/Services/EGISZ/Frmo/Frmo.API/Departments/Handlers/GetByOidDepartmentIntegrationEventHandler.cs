@@ -31,7 +31,11 @@ public class GetByOidDepartmentIntegrationEventHandler(IParusRxStore store, IDep
         }
         catch (Exception ex)
         {
-            await store.ErrorAsync(id, ex.Message);
+            string message = ex is HttpResponseException httpResponseException && httpResponseException.Value is ProblemDetails problemDetails 
+                    ? $"{problemDetails.Code} {problemDetails.ReasonPhrase}: {problemDetails.Message}"
+                    : ex.Message;
+
+            await store.ErrorAsync(id, message);
 
             logger.LogError(ex, "Error handling integration event: {IntegrationEventId} - {IntegrationEvent}", @event.Id, @event);
         }

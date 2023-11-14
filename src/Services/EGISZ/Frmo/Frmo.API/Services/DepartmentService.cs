@@ -1,7 +1,6 @@
 ﻿// Copyright (c) The Parus RX Authors. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-
 namespace ParusRx.Frmo.API.Services;
 
 public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSettings> settings) : IDepartmentService
@@ -11,11 +10,10 @@ public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSetti
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart/{departOid}", queryParameters);
 
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
-        //response.EnsureSuccessStatusCode();
         if (!response.IsSuccessStatusCode)
         {
             var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
-            throw new HttpRequestException($"{problemDetails?.Code} {problemDetails?.ReasonPhrase}: {problemDetails?.Message}", null, response.StatusCode);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
         }
 
         return await response.Content.ReadFromJsonAsync<SingleResponse<Department>>(cancellationToken) ?? new();
@@ -26,11 +24,10 @@ public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSetti
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
-        //response.EnsureSuccessStatusCode();
         if (!response.IsSuccessStatusCode)
         {
             var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
-            throw new HttpRequestException($"{problemDetails?.Code} {problemDetails?.ReasonPhrase}: {problemDetails?.Message}", null, response.StatusCode);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
         }
 
         return await response.Content.ReadFromJsonAsync<ListPagedResponse<Department>>(cancellationToken) ?? new();
@@ -41,11 +38,10 @@ public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSetti
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
         var response = await httpClient.PostAsJsonAsync(requestUri, department, cancellationToken);
-        //response.EnsureSuccessStatusCode();
         if (!response.IsSuccessStatusCode)
         {
             var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
-            throw new HttpRequestException($"{problemDetails?.Code} {problemDetails?.ReasonPhrase}: {problemDetails?.Message}", null, response.StatusCode);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
         }
 
         return await response.Content.ReadFromJsonAsync<SingleResponse<Entity>>(cancellationToken) ?? new();
@@ -56,11 +52,10 @@ public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSetti
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
         var response = await httpClient.PutAsJsonAsync(requestUri, department, cancellationToken);
-        //response.EnsureSuccessStatusCode();
         if (!response.IsSuccessStatusCode)
         {
             var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
-            throw new HttpRequestException($"{problemDetails?.Code} {problemDetails?.ReasonPhrase}: {problemDetails?.Message}", null, response.StatusCode);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
         }
 
         return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
@@ -71,11 +66,10 @@ public class DepartmentService(HttpClient httpClient, IOptionsSnapshot<FrmoSetti
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/org/depart", queryParameters);
 
         var response = await httpClient.DeleteAsync(requestUri, cancellationToken);
-        //response.EnsureSuccessStatusCode();
         if (!response.IsSuccessStatusCode)
         {
             var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
-            throw new HttpRequestException($"{problemDetails?.Code} {problemDetails?.ReasonPhrase}: {problemDetails?.Message}", null, response.StatusCode);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
         }
 
         return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();

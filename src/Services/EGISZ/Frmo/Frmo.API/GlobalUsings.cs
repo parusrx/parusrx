@@ -12,6 +12,7 @@ global using Dapr;
 global using ParusRx.Data.Oracle;
 global using ParusRx.Data.PostgreSQL;
 global using ParusRx.EventBus;
+global using ParusRx.Extensions.Http;
 global using ParusRx.Frmo.API;
 global using ParusRx.Frmo.API.DataContracts;
 global using ParusRx.Frmo.API.Services;

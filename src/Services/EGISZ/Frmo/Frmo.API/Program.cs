@@ -14,6 +14,8 @@ builder.Services.AddAuthorizationHttpClient();
 builder.Services.AddApplicationOptions(builder.Configuration);
 builder.Services.AddDataAccess(builder.Configuration);
 
+builder.Services.AddHttpResponseExceptionHandler();
+
 builder.Services.AddIpsIdentityProvider();
 builder.Services.AddOrganization();
 builder.Services.AddDepartment();
@@ -32,11 +34,6 @@ app.MapSubscribeHandler();
 
 app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true });
 app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Name.Contains("self") });
-
-// REST API endpoints
-// app.MapOrganizations();
-// app.MapDepartments();
-// app.MapStaffs();
 
 app.MapGroup("/org")
     .MapOrganizationApi();
