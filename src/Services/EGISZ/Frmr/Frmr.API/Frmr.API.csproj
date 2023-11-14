@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\..\..\Common\Storage\Oracle\src\ParusRx.Storage.Oracle.csproj" />
     <ProjectReference Include="..\..\..\..\Common\Storage\PostgreSQL\src\ParusRx.Storage.PostgreSQL.csproj" />
     <ProjectReference Include="..\..\..\..\Common\Xml\src\ParusRx.Xml.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\ParusRx.Extensons.Http\src\ParusRx.Extensions.Http.csproj" />
   </ItemGroup>
 
 </Project>

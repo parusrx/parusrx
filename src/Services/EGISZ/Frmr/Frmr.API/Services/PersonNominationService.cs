@@ -10,6 +10,11 @@ public class PersonNominationService(HttpClient httpClient, IOptionsSnapshot<Frm
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/nomination", queryParameters);
 
         var response = await httpClient.GetAsync(requestUri, cancellationToken);
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<ListResponse<PersonNomination>>(cancellationToken) ?? new();
     }
@@ -19,7 +24,11 @@ public class PersonNominationService(HttpClient httpClient, IOptionsSnapshot<Frm
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/nomination", queryParameters);
 
         var response = await httpClient.PostAsJsonAsync(requestUri, personNomination, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<SingleResponse<Entity>>(cancellationToken) ?? new();
     }
@@ -29,7 +38,11 @@ public class PersonNominationService(HttpClient httpClient, IOptionsSnapshot<Frm
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/nomination", queryParameters);
 
         var response = await httpClient.PutAsJsonAsync(requestUri, personNomination, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }
@@ -39,7 +52,11 @@ public class PersonNominationService(HttpClient httpClient, IOptionsSnapshot<Frm
         var requestUri = QueryHelpers.AddQueryString($"{settings.Value.Url}/person/nomination", queryParameters);
 
         var response = await httpClient.DeleteAsync(requestUri, cancellationToken);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
+            throw new HttpResponseException((int)response.StatusCode, problemDetails);
+        }
 
         return await response.Content.ReadFromJsonAsync<DefaultResponse>(cancellationToken) ?? new();
     }

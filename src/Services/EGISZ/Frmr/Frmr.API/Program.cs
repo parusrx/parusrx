@@ -13,6 +13,9 @@ builder.Services.AddAuthorizationHttpClient();
 
 builder.Services.AddApplicationOptions(builder.Configuration);
 builder.Services.AddDataAccess(builder.Configuration);
+
+builder.Services.AddHttpResponseExceptionHandler();
+
 builder.Services.AddIpsIdentityProvider();
 builder.Services.AddApplicationHttpClients();
 builder.Services.AddIntegrationEventHandlers();
@@ -21,6 +24,8 @@ builder.Services.AddHealthChecks()
     .AddCheck("self", () => HealthCheckResult.Healthy());
 
 var app = builder.Build();
+
+app.UseExceptionHandler(options => { });
 
 app.UseCloudEvents();
 app.MapSubscribeHandler();
