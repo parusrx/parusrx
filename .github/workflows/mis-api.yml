@@ -20,7 +20,6 @@ on:
 
 env:
   DOTNET_VERSION: '8.0.x'
-  DOTNET_QUALITY: 'preview'
   PROJECTS_PATH: 'src/Services/EGISZ/Mis'
   TESTS_PATH: 'src/Services/EGISZ/Mis'
   PUBLISH_PATH: 'src/Services/EGISZ/Mis/Mis.API/Mis.API.csproj'
@@ -38,7 +37,6 @@ jobs:
         uses: ./.github/workflows/composite/build-test
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-          dotnet-quality: ${{ env.DOTNET_QUALITY }}
           projects-path: ${{ env.PROJECTS_PATH }}
           tests-path: ${{ env.TESTS_PATH }}
 
@@ -54,7 +52,6 @@ jobs:
         uses: ./.github/workflows/composite/build-publish
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-          dotnet-quality: ${{ env.DOTNET_QUALITY }}
           projects-path: ${{ env.PROJECTS_PATH }}
           tests-path: ${{ env.TESTS_PATH }}
           publish-path: ${{ env.PUBLISH_PATH }}

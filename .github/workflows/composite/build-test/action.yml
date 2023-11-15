@@ -27,7 +27,6 @@ runs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ inputs.dotnet-version }}
-        dotnet-quality: ${{ inputs.dotnet-quality }}
     - name: Build and run tests
       shell: bash
       run: |
