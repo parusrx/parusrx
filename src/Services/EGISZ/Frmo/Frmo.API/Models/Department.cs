@@ -25,9 +25,9 @@ public record Department
     [JsonPropertyName("isPlanned")]
     public bool IsPlanned { get; init; }
 
-    [XmlElement("adminssionDepart")]
-    [JsonPropertyName("adminssionDepart")]
-    public AdmissionDepartment? AdminssionDepart { get; init; }
+    [XmlElement("admissionDepart")]
+    [JsonPropertyName("admissionDepart")]
+    public AdmissionDepartment? AdmissionDepart { get; init; }
 
     [XmlArray("healthCareProfile")]
     [XmlArrayItem("healthCareProfileItem")]
