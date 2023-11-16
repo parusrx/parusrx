@@ -191,7 +191,7 @@ Content-Type: application/json
 
 ### Get department by oid
 
-GET {{url}}/org/depart/1.2.643.5.1.13.13.12.2.31.2855.0.88186?oid=1.2.643.5.1.13.13.12.2.31.2855
+GET {{url}}/org/depart/1.2.643.5.1.13.13.12.2.31.2855.0.385565?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 ### Create department

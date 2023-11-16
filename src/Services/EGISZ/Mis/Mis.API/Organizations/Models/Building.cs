@@ -49,7 +49,7 @@ public record Building
 
     [XmlElement("regDate")]
     [JsonPropertyName("regDate")]
-    public DateTime RegDate { get; init; }
+    public DateTime? RegDate { get; init; }
 
     [XmlElement("regNumber")]
     [JsonPropertyName("regNumber")]
