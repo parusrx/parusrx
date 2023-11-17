@@ -63,4 +63,4 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Publish
-        dotnet publish src/Services/DaData/DaData.slnf -r linux-x64 -p PublishProfile=DefaultContainer -p ContainerRegistry=${{ ENV.REGISTRY_ENDPOINT }} -p ContainerImageTag=dev
+        run: dotnet publish src/Services/DaData/DaData.slnf -r linux-x64 -p PublishProfile=DefaultContainer -p ContainerRegistry=${{ ENV.REGISTRY_ENDPOINT }} -p ContainerImageTag=dev
