@@ -24,22 +24,22 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG configuration=Release
 WORKDIR /src
 COPY ".nuget/packages/LibCore.Linux.2023.8.9.1.nupkg" ".nuget/packages/LibCore.Linux.2023.8.9.1.nupkg"
-COPY "src/Services/EGISZ/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" "src/Services/EGISZ/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj"
+COPY "src/Services/Egisz/Ips/Ips.IdentityProvider.API/Ips.IdentityProvider.API.csproj" "src/Services/Egisz/Ips/Ips.IdentityProvider.API/Ips.IdentityProvider.API.csproj"
 
 COPY . .
 WORKDIR /src
-RUN dotnet restore "src/Services/EGISZ/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj"
+RUN dotnet restore "src/Services/Egisz/Ips/Ips.IdentityProvider.API/Ips.IdentityProvider.API.csproj"
 
 WORKDIR /src
-RUN dotnet build "src/Services/EGISZ/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" -c $configuration -o /app/build
+RUN dotnet build "src/Services/Egisz/Ips/Ips.IdentityProvider.API/Ips.IdentityProvider.API.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
 ARG configuration=Release
 WORKDIR /src
-RUN dotnet publish "src/Services/EGISZ/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "src/Services/Egisz/Ips/Ips.IdentityProvider.API/Ips.IdentityProvider.API.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 HEALTHCHECK CMD wget -q0- -t1 http://localhost:80/health || exit 1
-ENTRYPOINT ["dotnet", "IPS.IdentityProvider.API.dll"]
+ENTRYPOINT ["dotnet", "Ips.IdentityProvider.API.dll"]
