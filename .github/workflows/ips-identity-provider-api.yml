@@ -1,4 +1,4 @@
-name: Ips-identity-provider-api
+name: ips-identity-provider-api
 
 on:
   push:
@@ -6,14 +6,14 @@ on:
       - main
     paths:
       - src/Services/Egisz/Ips/**
-      - .github/workflows/Ips-identity-provider-api.yml
+      - .github/workflows/ips-identity-provider-api.yml
       - .github/workflows/composite/**
   pull_request:
     branches:
       - main
     paths:
       - src/Services/Egisz/Ips/**
-      - .github/workflows/Ips-identity-provider-api.yml
+      - .github/workflows/ips-identity-provider-api.yml
       - .github/workflows/composite/**
 
 env:
