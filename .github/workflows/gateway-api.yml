@@ -1,59 +1,66 @@
-# name: gateway-api
+name: gateway-api
 
-# on:
-#   push:
-#     branches:
-#       - main
-#     paths:
-#       - src/Common/**
-#       - src/Gateway/**
-#       - .github/workflows/gateway-api.yml
-#       - .github/workflows/composite/**
-#   pull_request:
-#     branches:
-#       - main
-#     paths:
-#       - src/Common/**
-#       - src/Gateway/**
-#       - .github/workflows/gateway-api.yml
-#       - .github/workflows/composite/**
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/Common/**
+      - src/Gateway/**
+      - .github/workflows/gateway-api.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/Common/**
+      - src/Gateway/**
+      - .github/workflows/gateway-api.yml
 
-# env:
-#   DOTNET_VERSION: '8.0.x'
-#   PROJECTS_PATH: 'src/Gateway'
-#   TESTS_PATH: 'src/Gateway'
-#   PUBLISH_PATH: 'src/Gateway/Gateway.API/Gateway.API.csproj'
+env:
+  DOTNET_VERSION: '8.0.x'
+  REGISTRY_ENDPOINT: docker.io
 
-# jobs:
-#   build-for-pr-linux:
-#     runs-on: ubuntu-latest
-#     if: ${{ github.event_name == 'pull_request' }}
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-#         with:
-#           submodules: 'recursive'
-#       - name: Build and run tests
-#         uses: ./.github/workflows/composite/build-test
-#         with:
-#           dotnet-version: ${{ env.DOTNET_VERSION }}
-#           projects-path: ${{ env.PROJECTS_PATH }}
-#           tests-path: ${{ env.TESTS_PATH }}
+jobs:
+  build-for-pr-linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v3
 
-#   build-linux:
-#     runs-on: ubuntu-latest
-#     if: ${{ github.event_name != 'pull_request' }}
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-#         with:
-#           submodules: 'recursive'
-#       - name: Build and publish
-#         uses: ./.github/workflows/composite/build-publish
-#         with:
-#           dotnet-version: ${{ env.DOTNET_VERSION }}
-#           projects-path: ${{ env.PROJECTS_PATH }}
-#           tests-path: ${{ env.TESTS_PATH }}
-#           publish-path: ${{ env.PUBLISH_PATH }}
-#           registry-username: ${{ secrets.REGISTRY_USERNAME }}
-#           registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Build
+        run: dotnet build -c Release src/Gateway/Gateway.slnf
+
+      - name: Test
+        run: dotnet test -c Release src/Gateway/Gateway.slnf
+
+  build-linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Login to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ ENV.REGISTRY_ENDPOINT }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Build
+        run: dotnet build -c Release src/Gateway/Gateway.slnf
+
+      - name: Test
+        run: dotnet test -c Release src/Gateway/Gateway.slnf
+
+      - name: Publish
+        run: dotnet publish src/Gateway/Gateway.slnf -r linux-x64 -p PublishProfile=DefaultContainer -p ContainerRegistry=${{ ENV.REGISTRY_ENDPOINT }} -p ContainerImageTag=dev

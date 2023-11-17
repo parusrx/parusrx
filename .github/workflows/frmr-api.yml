@@ -1,59 +1,66 @@
-# name: frmr-api
+name: frmr-api
 
-# on:
-#   push:
-#     branches:
-#       - main
-#     paths:
-#       - src/Common/**
-#       - src/Services/EGISZ/Frmr/**
-#       - .github/workflows/frmr-api.yml
-#       - .github/workflows/composite/**
-#   pull_request:
-#     branches:
-#       - main
-#     paths:
-#       - src/Common/**
-#       - src/Services/EGISZ/Frmr/**
-#       - .github/workflows/frmr-api.yml
-#       - .github/workflows/composite/**
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/Common/**
+      - src/Services/Egisz/Frmr/**
+      - .github/workflows/frmr-api.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/Common/**
+      - src/Services/Egisz/Frmr/**
+      - .github/workflows/frmr-api.yml
 
-# env:
-#   DOTNET_VERSION: '8.0.x'
-#   PROJECTS_PATH: 'src/Services/EGISZ/Frmr'
-#   TESTS_PATH: 'src/Services/EGISZ/Frmr'
-#   PUBLISH_PATH: 'src/Services/EGISZ/Frmr/Frmr.API/Frmr.API.csproj'
+env:
+  DOTNET_VERSION: '8.0.x'
+  REGISTRY_ENDPOINT: docker.io
 
-# jobs:
-#   build-for-pr-linux:
-#     runs-on: ubuntu-latest
-#     if: ${{ github.event_name == 'pull_request' }}
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-#         with:
-#           submodules: 'recursive'
-#       - name: Build and run tests
-#         uses: ./.github/workflows/composite/build-test
-#         with:
-#           dotnet-version: ${{ env.DOTNET_VERSION }}
-#           projects-path: ${{ env.PROJECTS_PATH }}
-#           tests-path: ${{ env.TESTS_PATH }}
+jobs:
+  build-for-pr-linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v3
 
-#   build-linux:
-#     runs-on: ubuntu-latest
-#     if: ${{ github.event_name != 'pull_request' }}
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-#         with:
-#           submodules: 'recursive'
-#       - name: Build and publish
-#         uses: ./.github/workflows/composite/build-publish
-#         with:
-#           dotnet-version: ${{ env.DOTNET_VERSION }}
-#           projects-path: ${{ env.PROJECTS_PATH }}
-#           tests-path: ${{ env.TESTS_PATH }}
-#           publish-path: ${{ env.PUBLISH_PATH }}
-#           registry-username: ${{ secrets.REGISTRY_USERNAME }}
-#           registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Build
+        run: dotnet build -c Release src/Services/Egisz/Frmr/Frmr.slnf
+
+      - name: Test
+        run: dotnet test -c Release src/Services/Egisz/Frmr/Frmr.slnf
+
+  build-linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Login to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ ENV.REGISTRY_ENDPOINT }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Build
+        run: dotnet build -c Release src/Services/Egisz/Frmr/Frmr.slnf
+
+      - name: Test
+        run: dotnet test -c Release src/Services/Egisz/Frmr/Frmr.slnf
+
+      - name: Publish
+        run: dotnet publish src/Services/Egisz/Frmr/Frmr.slnf -r linux-x64 -p PublishProfile=DefaultContainer -p ContainerRegistry=${{ ENV.REGISTRY_ENDPOINT }} -p ContainerImageTag=dev
