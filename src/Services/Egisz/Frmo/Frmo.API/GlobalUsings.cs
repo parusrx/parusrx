@@ -16,5 +16,6 @@ global using ParusRx.Extensions.Http;
 global using ParusRx.Frmo.API;
 global using ParusRx.Frmo.API.DataContracts;
 global using ParusRx.Frmo.API.Services;
+global using ParusRx.Frmo.Domain.Models;
 global using ParusRx.Storage;
 global using ParusRx.Xml;

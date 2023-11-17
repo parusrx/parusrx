@@ -2,6 +2,7 @@
   "solution": {
     "path": "..\\..\\..\\..\\ParusRX.sln",
     "projects": [
+      "src\\Services\\Egisz\\Frmo\\Frmo.Domain\\Frmo.Domain.csproj",
       "src\\Services\\Egisz\\Mis\\Mis.API\\Mis.API.csproj"
     ]
   }
