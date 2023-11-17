@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Common\Extensions\ParusRx.Extensons.Http\src\ParusRx.Extensions.Http.csproj" />
     <ProjectReference Include="..\..\Frmo\Frmo.Domain\Frmo.Domain.csproj" />
+    <ProjectReference Include="..\..\Frmr\Frmr.Domain\Frmr.Domain.csproj" />
   </ItemGroup>
     
 </Project>

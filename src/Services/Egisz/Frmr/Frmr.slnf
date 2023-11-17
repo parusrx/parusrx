@@ -3,6 +3,7 @@
     "path": "..\\..\\..\\..\\ParusRX.sln",
     "projects": [
       "src\\Services\\Egisz\\Frmr\\Frmr.API\\Frmr.API.csproj",
+      "src\\Services\\Egisz\\Frmr\\Frmr.Domain\\Frmr.Domain.csproj",
       "src\\Services\\Egisz\\Frmr\\Frmr.Tests\\Frmr.Tests.csproj"
     ]
   }

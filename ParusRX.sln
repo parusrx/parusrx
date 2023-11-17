@@ -109,7 +109,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mis", "Mis", "{5BD3BB85-812
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mis.API", "src\Services\Egisz\Mis\Mis.API\Mis.API.csproj", "{71A81F45-056C-4D16-9E57-32CF1A4D3760}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frmo.Domain", "src\Services\Egisz\Frmo\Frmo.Domain\Frmo.Domain.csproj", "{0D96A05A-B6E8-4290-9AB8-7BBA457430BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frmo.Domain", "src\Services\Egisz\Frmo\Frmo.Domain\Frmo.Domain.csproj", "{0D96A05A-B6E8-4290-9AB8-7BBA457430BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frmr.Domain", "src\Services\Egisz\Frmr\Frmr.Domain\Frmr.Domain.csproj", "{3B38BE8B-F63E-4EB9-9905-9A636518E87F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -233,6 +235,10 @@ Global
 		{0D96A05A-B6E8-4290-9AB8-7BBA457430BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D96A05A-B6E8-4290-9AB8-7BBA457430BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D96A05A-B6E8-4290-9AB8-7BBA457430BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B38BE8B-F63E-4EB9-9905-9A636518E87F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B38BE8B-F63E-4EB9-9905-9A636518E87F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B38BE8B-F63E-4EB9-9905-9A636518E87F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B38BE8B-F63E-4EB9-9905-9A636518E87F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -291,6 +297,7 @@ Global
 		{5BD3BB85-812A-4DED-95BE-78E007564896} = {C2227C4E-9E07-4C78-9627-8154A2840BE5}
 		{71A81F45-056C-4D16-9E57-32CF1A4D3760} = {5BD3BB85-812A-4DED-95BE-78E007564896}
 		{0D96A05A-B6E8-4290-9AB8-7BBA457430BC} = {FA114103-4BFC-4822-A6C2-6295BB0E4433}
+		{3B38BE8B-F63E-4EB9-9905-9A636518E87F} = {BF9CAF14-7B9E-447D-AF58-CBD2AF8232A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E3B1AA8-DE08-4FE2-85A0-6BC3A39EC317}
