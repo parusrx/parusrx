@@ -58,6 +58,6 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - name: Build and push
         run: |
-          docker build -f src/Services/Egisz/Ips/Ips.IdentityProvider.API/Dockerfile -t parusrx/Ips-identity-provider-api:dev .
+          docker build -f src/Services/Egisz/Ips/Ips.IdentityProvider.API/Dockerfile -t parusrx/ips-identity-provider-api:dev .
           docker push parusrx/Ips-identity-provider-api:dev
       
