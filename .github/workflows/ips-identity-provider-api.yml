@@ -1,63 +1,63 @@
-name: ips-identity-provider-api
+# name: ips-identity-provider-api
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - src/Services/EGISZ/IPS/**
-      - .github/workflows/ips-identity-provider-api.yml
-      - .github/workflows/composite/**
-  pull_request:
-    branches:
-      - main
-    paths:
-      - src/Services/EGISZ/IPS/**
-      - .github/workflows/ips-identity-provider-api.yml
-      - .github/workflows/composite/**
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - src/Services/EGISZ/IPS/**
+#       - .github/workflows/ips-identity-provider-api.yml
+#       - .github/workflows/composite/**
+#   pull_request:
+#     branches:
+#       - main
+#     paths:
+#       - src/Services/EGISZ/IPS/**
+#       - .github/workflows/ips-identity-provider-api.yml
+#       - .github/workflows/composite/**
 
-env:
-  DOTNET_VERSION: '6.0.x'
+# env:
+#   DOTNET_VERSION: '6.0.x'
 
-jobs:
-  build-for-pr-linux:
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          submodules: 'recursive'
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-      - name: Build
-        run: |
-          dotnet build src/Services/EGISZ/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj -c Release
+# jobs:
+#   build-for-pr-linux:
+#     runs-on: ubuntu-latest
+#     if: ${{ github.event_name == 'pull_request' }}
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#         with:
+#           submodules: 'recursive'
+#       - name: Setup .NET
+#         uses: actions/setup-dotnet@v3
+#         with:
+#           dotnet-version: ${{ env.DOTNET_VERSION }}
+#       - name: Build
+#         run: |
+#           dotnet build src/Services/EGISZ/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj -c Release
 
-  build-linux:
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          submodules: 'recursive'
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-      - name: Build
-        run: |
-          dotnet build src/Services/EGISZ/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj -c Release
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
-      - name: Build and push
-        run: |
-          docker build -f src/Services/EGISZ/IPS/IPS.IdentityProvider.API/Dockerfile -t parusrx/ips-identity-provider-api:dev .
-          docker push parusrx/ips-identity-provider-api:dev
+#   build-linux:
+#     runs-on: ubuntu-latest
+#     if: ${{ github.event_name != 'pull_request' }}
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#         with:
+#           submodules: 'recursive'
+#       - name: Setup .NET
+#         uses: actions/setup-dotnet@v3
+#         with:
+#           dotnet-version: ${{ env.DOTNET_VERSION }}
+#       - name: Build
+#         run: |
+#           dotnet build src/Services/EGISZ/IPS/IPS.IdentityProvider.API/IPS.IdentityProvider.API.csproj -c Release
+#       - name: Login to Docker Hub
+#         uses: docker/login-action@v3
+#         with:
+#           username: ${{ secrets.REGISTRY_USERNAME }}
+#           password: ${{ secrets.REGISTRY_PASSWORD }}
+#       - name: Build and push
+#         run: |
+#           docker build -f src/Services/EGISZ/IPS/IPS.IdentityProvider.API/Dockerfile -t parusrx/ips-identity-provider-api:dev .
+#           docker push parusrx/ips-identity-provider-api:dev
       

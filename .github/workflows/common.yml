@@ -7,31 +7,29 @@ on:
     paths:
       - Common/**
       - .github/workflows/common.yml
-      - .github/workflows/composite/**
   pull_request:
     branches:
       - main
     paths:
       - Common/**
       - .github/workflows/common.yml
-      - .github/workflows/composite/**
 
 env:
   DOTNET_VERSION: '8.0.x'
-  PROJECTS_PATH: 'src/Common'
-  TESTS_PATH: 'src/Common'
 
 jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          submodules: 'recursive'
-      - name: Build and run tests
-        uses: ./.github/workflows/composite/build-test
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-          projects-path: ${{ env.PROJECTS_PATH }}
-          tests-path: ${{ env.TESTS_PATH }}
+
+      - name: Build
+        run: dotnet build -c Release src/Common/Common.slnf
+
+      - name: Test
+        run: dotnet test -c Release src/Common/Common.slnf

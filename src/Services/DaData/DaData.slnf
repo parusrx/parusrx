@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "path": "..\\..\\..\\ParusRX.sln",
+    "projects": [
+      "src\\Services\\DaData\\DaData.API\\DaData.API.csproj",
+      "src\\Services\\DaData\\DaData.Tests\\DaData.Tests.csproj"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "path": "..\\..\\ParusRX.sln",
+    "projects": [
+      "src\\Gateway\\Gateway.API\\Gateway.API.csproj",
+      "src\\Gateway\\Gateway.FunctionalTests\\Gateway.FunctionalTests.csproj"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "..\\..\\..\\ParusRX.sln",
+    "projects": [
+      "src\\Services\\HRlink\\HRlink.API\\HRlink.API.csproj",
+      "src\\Services\\HRlink\\HRlink.Tests\\HRlink.Tests.csproj",
+      "src\\Services\\HRlink\\HRlink.FunctionalTests\\HRlink.FunctionalTests.csproj"
+    ]
+  }
+}

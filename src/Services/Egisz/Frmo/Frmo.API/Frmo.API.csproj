@@ -6,12 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
     <LangVersion>Preview</LangVersion>
-    <RootNamespace>ParusRx.Frmr.API</RootNamespace>
+    <RootNamespace>ParusRx.Frmo.API</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
     <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:8.0</ContainerBaseImage>
-    <ContainerRepository>parusrx/frmr-api</ContainerRepository>
+    <ContainerRepository>parusrx/frmo-api</ContainerRepository>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,10 +20,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Common\EventBus\Dapr\src\ParusRx.EventBus.Dapr.csproj" />
+    <ProjectReference Include="..\..\..\..\Common\Extensions\ParusRx.Extensons.Http\src\ParusRx.Extensions.Http.csproj" />
     <ProjectReference Include="..\..\..\..\Common\Storage\Oracle\src\ParusRx.Storage.Oracle.csproj" />
     <ProjectReference Include="..\..\..\..\Common\Storage\PostgreSQL\src\ParusRx.Storage.PostgreSQL.csproj" />
     <ProjectReference Include="..\..\..\..\Common\Xml\src\ParusRx.Xml.csproj" />
-    <ProjectReference Include="..\..\..\..\Common\ParusRx.Extensons.Http\src\ParusRx.Extensions.Http.csproj" />
   </ItemGroup>
 
 </Project>

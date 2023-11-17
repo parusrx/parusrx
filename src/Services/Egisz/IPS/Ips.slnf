@@ -1,0 +1,8 @@
+{
+  "solution": {
+    "path": "..\\..\\..\\..\\ParusRX.sln",
+    "projects": [
+      "src\\Services\\Egisz\\Ips\\Ips.IdentityProvider.API\\Ips.IdentityProvider.API.csproj"
+    ]
+  }
+}

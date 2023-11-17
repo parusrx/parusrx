@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>ParusRx.IPS.IdentityProvider.API</RootNamespace>
+    <RootNamespace>ParusRx.Ips.IdentityProvider.API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

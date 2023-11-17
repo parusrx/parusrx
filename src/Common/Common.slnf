@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "path": "..\\..\\ParusRX.sln",
+    "projects": [
+      "src\\Common\\Data\\Core\\src\\ParusRx.Data.Core.csproj",
+      "src\\Common\\Data\\Core\\test\\ParusRx.Data.Core.Tests.csproj"
+    ]
+  }
+}
