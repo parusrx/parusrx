@@ -2,7 +2,7 @@
   "solution": {
     "path": "..\\..\\..\\..\\ParusRX.sln",
     "projects": [
-      "src\\Services\\Egisz\\Mis\\Mis.API\\Mis.Api.csproj"
+      "src\\Services\\Egisz\\Mis\\Mis.API\\Mis.API.csproj"
     ]
   }
 }
