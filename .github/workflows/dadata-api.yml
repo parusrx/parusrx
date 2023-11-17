@@ -49,18 +49,18 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Build
-        run: dotnet build -c Release src/Services/DaData/DaData.slnf
-
-      - name: Test
-        run: dotnet test -c Release src/Services/DaData/DaData.slnf
-
-      - name: Login to Docker Hub
+      - name: Login to Container Registry
         uses: docker/login-action@v3
         with:
           registry: ${{ ENV.REGISTRY_ENDPOINT }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Build
+        run: dotnet build -c Release src/Services/DaData/DaData.slnf
+
+      - name: Test
+        run: dotnet test -c Release src/Services/DaData/DaData.slnf
 
       - name: Publish
         run: dotnet publish src/Services/DaData/DaData.slnf -r linux-x64 -p PublishProfile=DefaultContainer -p ContainerRegistry=${{ ENV.REGISTRY_ENDPOINT }} -p ContainerImageTag=dev
