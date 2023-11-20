@@ -1,20 +1,15 @@
 // Copyright (c) The Parus RX Authors. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-
 var builder = WebApplication.CreateSlimBuilder(args);
 
 builder.Services.AddDistributedMemoryCache();
-builder.Services.AddAuthorizationHttpClient();
-
-builder.Services.AddApplicationOptions(builder.Configuration);
 
 builder.Services.AddHttpResponseExceptionHandler();
 
-builder.Services.AddIpsIdentityProvider();
-builder.Services.AddApplicationHttpClients();
+builder.Services.AddIpsIdentityProvider(builder.Configuration);
+builder.Services.AddFrmo(builder.Configuration["Egisz:Url"] ?? string.Empty);
+builder.Services.AddFrmr(builder.Configuration["Egisz:Url"] ?? string.Empty);
 
 builder.Services.AddHealthChecks()
     .AddCheck("self", () => HealthCheckResult.Healthy());
@@ -26,7 +21,12 @@ app.UseExceptionHandler(options => { });
 app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true });
 app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Name.Contains("self") });
 
-app.MapPersons();
-app.MapOrganizations();
+app.MapGroup("/org")
+    .WithTags("Organization API")
+    .MapOrganizationApi();
+
+app.MapGroup("/person")
+    .WithTags("Person API")
+    .MapPersonApi();
 
 app.Run();

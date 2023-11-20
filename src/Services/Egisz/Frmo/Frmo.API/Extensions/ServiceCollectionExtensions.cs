@@ -1,23 +1,30 @@
 ﻿// Copyright (c) The Parus RX Authors. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using System.Security.Policy;
-
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddApplicationOptions(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddIntegrationEventHandlers(this IServiceCollection services)
     {
-        services.Configure<FrmoSettings>(configuration.GetSection(FrmoSettings.Frmo));
-        services.Configure<IdentitySettings>(configuration.GetSection(IdentitySettings.Identity));
+        services.AddTransient<ListPagedOrganizationIntegrationEventHandler>();
+        services.AddTransient<GetByOidOrganizationIntegrationEventHandler>();
+        services.AddTransient<UpdateOrganizationIntegrationEventHandler>();
+        services.AddTransient<DeleteOrganizationIntegrationEventHandler>();
+
+        services.AddTransient<GetStaffIntegrationEventHandler>();
+        services.AddTransient<GetByEntityStaffIntegrationEventHandler>();
+        services.AddTransient<CreateStaffIntegrationEventHandler>();
+        services.AddTransient<UpdateStaffIntegrationEventHandler>();
+        services.AddTransient<DeleteStaffIntegrationEventHandler>();
+
+        services.AddTransient<GetByOidDepartmentIntegrationEventHandler>();
+        services.AddTransient<ListPagedDepartmentIntegrationEventHandler>();
+        services.AddTransient<CreateDepartmentIntegrationEventHandler>();
+        services.AddTransient<UpdateDepartmentIntegrationEventHandler>();
+        services.AddTransient<DeleteDepartmentIntegrationEventHandler>();
 
         return services;
-    }
-
-    public static void AddAuthorizationHttpClient(this IServiceCollection services)
-    {
-        services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
     }
 
     public static IServiceCollection AddDataAccess(this IServiceCollection services, IConfiguration configuration)

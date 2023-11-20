@@ -2,6 +2,9 @@
   "solution": {
     "path": "..\\..\\..\\..\\ParusRX.sln",
     "projects": [
+      "src\\Services\\Egisz\\Ips\\Ips.IdentityProvider.Abstractions\\Ips.IdentityProvider.Abstractions.csproj",
+      "src\\Services\\Egisz\\Ips\\Ips.IdentityProvider\\Ips.IdentityProvider.csproj",
+      "src\\Services\\Egisz\\Ips\\Ips.IdentityProvider.Tests\\Ips.IdentityProvider.Tests.csproj",
       "src\\Services\\Egisz\\Ips\\Ips.IdentityProvider.API\\Ips.IdentityProvider.API.csproj"
     ]
   }

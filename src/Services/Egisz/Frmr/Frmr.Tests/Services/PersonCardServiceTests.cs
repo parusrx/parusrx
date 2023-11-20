@@ -5,18 +5,19 @@ namespace ParusRx.Frmr.Tests;
 
 public class PersonCardServiceTests
 {
-    private readonly Mock<IOptionsSnapshot<FrmrSettings>> _settingsMock;
     private readonly Mock<HttpMessageHandler> _httpMessageHandlerMock;
     private readonly PersonCardService _service;
 
     public PersonCardServiceTests()
     {
-        _settingsMock = new Mock<IOptionsSnapshot<FrmrSettings>>();
-        _settingsMock.Setup(s => s.Value).Returns(new FrmrSettings { Url = "https://ips.test.egisz.rosminzdrav.ru/4f52d90e921a0" });
-
         _httpMessageHandlerMock = new Mock<HttpMessageHandler>();
 
-        _service = new PersonCardService(new HttpClient(_httpMessageHandlerMock.Object), _settingsMock.Object);
+        var httpClient = new HttpClient(_httpMessageHandlerMock.Object)
+        {
+            BaseAddress = new Uri("https://ips.test.egisz.rosminzdrav.ru/4f52d90e921a0/")
+        };
+
+        _service = new PersonCardService(httpClient);
     }
 
     [Fact]

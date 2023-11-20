@@ -11,6 +11,7 @@ global using Microsoft.Extensions.Options;
 global using Xunit;
 global using Moq;
 global using Moq.Protected;
+global using ParusRx.Egisz.Common;
 global using ParusRx.EventBus;
 global using ParusRx.Frmo.API;
 global using ParusRx.Storage;

@@ -2,8 +2,13 @@
   "solution": {
     "path": "..\\..\\..\\..\\ParusRX.sln",
     "projects": [
-      "src\\Services\\Egisz\\Frmo\\Frmo.API\\Frmo.API.csproj",
+      "src\\Services\\Egisz\\Common\\ParusRx.Egisz.Common\\ParusRx.Egisz.Common.csproj",
+      "src\\Services\\Egisz\\Ips\\Ips.IdentityProvider.Abstractions\\Ips.IdentityProvider.Abstractions.csproj",
+      "src\\Services\\Egisz\\Ips\\Ips.IdentityProvider\\Ips.IdentityProvider.csproj",
+      "src\\Services\\Egisz\\Ips\\Ips.IdentityProvider.Tests\\Ips.IdentityProvider.Tests.csproj",
       "src\\Services\\Egisz\\Frmo\\Frmo.Domain\\Frmo.Domain.csproj",
+      "src\\Services\\Egisz\\Frmo\\Frmo\\Frmo.csproj",
+      "src\\Services\\Egisz\\Frmo\\Frmo.API\\Frmo.API.csproj",
       "src\\Services\\Egisz\\Frmo\\Frmo.Tests\\Frmo.Tests.csproj"
     ]
   }

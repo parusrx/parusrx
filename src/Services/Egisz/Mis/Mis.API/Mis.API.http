@@ -25,7 +25,7 @@ Content-Type: application/json
 
 ###
 
-GET {{misapi_host}}/org/depart/1.2.643.5.1.13.13.12.2.31.2855?oid=1.2.643.5.1.13.13.12.2.31.2855
+GET {{misapi_host}}/org/depart/1.2.643.5.1.13.13.12.2.31.2855.0.385565?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 ###

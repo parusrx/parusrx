@@ -15,9 +15,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Common\Extensions\ParusRx.Extensons.Http\src\ParusRx.Extensions.Http.csproj" />
-    <ProjectReference Include="..\..\Frmo\Frmo.Domain\Frmo.Domain.csproj" />
-    <ProjectReference Include="..\..\Frmr\Frmr.Domain\Frmr.Domain.csproj" />
+    <ProjectReference Include="..\..\Frmo\Frmo\Frmo.csproj" />
+    <ProjectReference Include="..\..\Frmr\Frmr\Frmr.csproj" />
+    <ProjectReference Include="..\..\Ips\Ips.IdentityProvider\Ips.IdentityProvider.csproj" />
   </ItemGroup>
-    
+
 </Project>
