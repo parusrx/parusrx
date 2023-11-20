@@ -7,6 +7,7 @@ global using Microsoft.Extensions.Options;
 global using Moq;
 global using Moq.Protected;
 global using ParusRx.EventBus;
+global using ParusRx.Frmr.Domain;
 global using ParusRx.Frmr.API;
 global using ParusRx.Frmr.API.DataContracts;
 global using ParusRx.Frmr.API.Handlers;
