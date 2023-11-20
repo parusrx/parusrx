@@ -11,7 +11,7 @@ public record Building
 
     [XmlElement("rent")]
     [JsonPropertyName("rent")]
-    public bool Rent { get; init; }
+    public bool? Rent { get; init; }
 
     [XmlArray("ownageDocuments")]
     [XmlArrayItem("ownageDocumentsItem")]
@@ -171,19 +171,19 @@ public record Building
 
     [XmlElement("isAdapted")]
     [JsonPropertyName("isAdapted")]
-    public bool IsAdapted { get; init; }
+    public bool? IsAdapted { get; init; }
 
     [XmlElement("isAccesibleEnv")]
     [JsonPropertyName("isAccesibleEnv")]
-    public bool IsAccesibleEnv { get; init; }
+    public bool? IsAccesibleEnv { get; init; }
 
     [XmlElement("isHistorical")]
     [JsonPropertyName("isHistorical")]
-    public bool IsHistorical { get; init; }
+    public bool? IsHistorical { get; init; }
 
     [XmlElement("isWeb")]
     [JsonPropertyName("isWeb")]
-    public bool IsWeb { get; init; }
+    public bool? IsWeb { get; init; }
 
     [XmlElement("buildingArea")]
     [JsonPropertyName("buildingArea")]
@@ -227,7 +227,7 @@ public record Building
 
     [XmlElement("needDestruction")]
     [JsonPropertyName("needDestruction")]
-    public bool NeedDestruction { get; init; }
+    public bool? NeedDestruction { get; init; }
 
     [XmlArray("destructionDocument")]
     [XmlArrayItem("destructionDocumentItem")]
@@ -244,7 +244,7 @@ public record Building
 
     [XmlElement("needReconstruction")]
     [JsonPropertyName("needReconstruction")]
-    public bool NeedReconstruction { get; init; }
+    public bool? NeedReconstruction { get; init; }
 
     [XmlElement("requiredReconstructionArea")]
     [JsonPropertyName("requiredReconstructionArea")]
@@ -252,7 +252,7 @@ public record Building
 
     [XmlElement("needRepair")]
     [JsonPropertyName("needRepair")]
-    public bool NeedRepair { get; init; }
+    public bool? NeedRepair { get; init; }
 
     [XmlArray("repairDocument")]
     [XmlArrayItem("repairDocumentItem")]
