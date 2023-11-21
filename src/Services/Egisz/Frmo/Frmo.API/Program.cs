@@ -41,6 +41,10 @@ app.MapGroup("/org/building")
     .WithTags("Building API")
     .MapBuildingApi();
 
+app.MapGroup("/org/equipment")
+    .WithTags("Equipment API")
+    .MapEquipmentApi();
+
 app.MapGroup("/org/staff")
     .WithTags("Staff API")
     .MapStaffApi();
@@ -57,6 +61,10 @@ app.MapGroup("/subscribe/org/depart")
 app.MapGroup("/subscribe/org/building")
     .WithTags("Building Subscribe API")
     .MapBuildingSubscribeApi();
+
+app.MapGroup("/subscribe/org/equipment")
+    .WithTags("Equipment Subscribe API")
+    .MapEquipmentSubscribeApi();
 
 app.MapGroup("/subscribe/org/staff")
     .WithTags("Staff Subscribe API")

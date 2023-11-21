@@ -59,7 +59,7 @@ public record Address
 
     [XmlElement("struct")]
     [JsonPropertyName("struct")]
-    public string? Structure { get; init; }
+    public string? Struct { get; init; }
 
     [XmlElement("flat")]
     [JsonPropertyName("flat")]
