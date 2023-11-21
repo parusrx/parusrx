@@ -5,7 +5,7 @@ namespace ParusRx.Frmo.API;
 
 internal static class DepartmentSubscribeApi
 {
-    public static IEndpointRouteBuilder MapPubSubDepartments(this IEndpointRouteBuilder app)
+    public static IEndpointRouteBuilder MapDepartmentSubscribeApi(this IEndpointRouteBuilder app)
     {
         const string daprPubSubName = "pubsub";
 

@@ -2,17 +2,16 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 global using System.Net;
-global using System.Net.Http.Json;
 global using System.Text.Json;
-global using Microsoft.Extensions.Caching.Distributed;
-global using Microsoft.Extensions.Caching.Memory;
 global using Microsoft.Extensions.Logging;
-global using Microsoft.Extensions.Options;
-global using Xunit;
 global using Moq;
 global using Moq.Protected;
 global using ParusRx.Egisz.Common;
 global using ParusRx.EventBus;
-global using ParusRx.Frmo.API;
+global using ParusRx.Extensions.Http;
+global using ParusRx.Frmo.API.Handlers;
+global using ParusRx.Frmo.Domain;
+global using ParusRx.Frmo.Services;
 global using ParusRx.Storage;
 global using ParusRx.Xml;
+global using Xunit;

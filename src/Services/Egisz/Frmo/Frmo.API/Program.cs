@@ -37,6 +37,10 @@ app.MapGroup("/org/depart")
     .WithTags("Department API")
     .MapDepartmentApi();
 
+app.MapGroup("/org/building")
+    .WithTags("Building API")
+    .MapBuildingApi();
+
 app.MapGroup("/org/staff")
     .WithTags("Staff API")
     .MapStaffApi();
@@ -44,14 +48,18 @@ app.MapGroup("/org/staff")
 // Dapr pub/sub endpoints
 app.MapGroup("/subscribe/org")
     .WithTags("Organization Subscribe API")
-    .MapPubSubOrganizations();
+    .MapOrganizationSubscribeApi();
 
 app.MapGroup("/subscribe/org/depart")
     .WithTags("Department Subscribe API")
-    .MapPubSubDepartments();
+    .MapDepartmentSubscribeApi();
+
+app.MapGroup("/subscribe/org/building")
+    .WithTags("Building Subscribe API")
+    .MapBuildingSubscribeApi();
 
 app.MapGroup("/subscribe/org/staff")
     .WithTags("Staff Subscribe API")
-    .MapPubSubStaffs();
+    .MapStaffSubscribeApi();
 
 app.Run();

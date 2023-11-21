@@ -1,26 +1,26 @@
 @url = http://localhost:51005
 
-### Health check
+###
 
 GET {{url}}/health
 Content-Type: application/json
 
-### Liveness check
+###
 
 GET {{url}}/liveness
 Content-Type: application/json
 
-### Get paged list of organizations
+###
 
 GET {{url}}/org?orgTypeId=1&offset=0&limit=10
 Content-Type: application/json
 
-### Get organization by oid
+###
 
 GET {{url}}/org/1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
-### Update organization by oid
+###
 
 PUT {{url}}/org?oid=1.2.643.5.1.13.13.12.2.78.6258
 Content-Type: application/json
@@ -179,22 +179,22 @@ Content-Type: application/json
     "mark": null
   }
 
-### Delete organization by oid with reason
+###
 
 DELETE {{url}}/org?oid=1.2.643.5.1.13.13.12.2.78.6258&deleteReason=1
 Content-Type: application/json
 
-### Get paged list of departments
+###
 
 GET {{url}}/org/depart?departTypeId=1&oid=1.2.643.5.1.13.13.12.2.31.2855&offset=0&limit=10
 Content-Type: application/json
 
-### Get department by oid
+###
 
 GET {{url}}/org/depart/1.2.643.5.1.13.13.12.2.31.2855.0.385565?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
-### Create department
+###
 
 POST {{url}}/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799
 Content-Type: application/json
@@ -208,7 +208,7 @@ Content-Type: application/json
   "isPlaned": false
 }
 
-### Update department
+###
 
 PUT {{url}}/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
 Content-Type: application/json
@@ -222,16 +222,323 @@ Content-Type: application/json
   "isPlaned": false
 }
 
-### Delete department
+###
 
 DELETE {{url}}/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
 Content-Type: application/json
 
-### Get Staff
+###
+
+GET {{url}}/org/building?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
+GET {{url}}/org/building/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=47120289-197c-4c8a-b6e4-3806c72bab75
+Content-Type: application/json
+
+###
+
+POST {{url}}/org/building?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "rent": false,
+  "ownageDocuments": null,
+  "lawSubject": null,
+  "lawType": null,
+  "lawObject": null,
+  "cadastralNumber": null,
+  "encumbrances": null,
+  "lawDescription": null,
+  "rentDocuments": null,
+  "regDate": null,
+  "regNumber": null,
+  "landlord": null,
+  "renter": null,
+  "tenancy": null,
+  "capacityVisitors": null,
+  "capacityBeds": null,
+  "capacityHospital": null,
+  "buildName": "Гараж",
+  "buildYear": 2023,
+  "beginDate": "2023-11-20T00:00:00Z",
+  "liquidationDate": null,
+  "liquidationReasonId": null,
+  "floorCount": 1,
+  "hasTrouble": false,
+  "troubleDocument": null,
+  "buildingPlan": null,
+  "cardiologicalDepartments": null,
+  "fundament": null,
+  "fundamentDescription": null,
+  "supportingStructures": null,
+  "roofCovering": null,
+  "roofCoveringDescription": null,
+  "wallsMaterial": null,
+  "wallsMaterialDescription": null,
+  "ceilingMaterial": null,
+  "ceilingMaterialDescription": null,
+  "buildingSize": null,
+  "rightToUse": null,
+  "rightToUseDescription": null,
+  "isAdapted": false,
+  "isAccesibleEnv": null,
+  "isHistorical": false,
+  "isWeb": false,
+  "buildingArea": 30,
+  "builtUpArea": 30,
+  "starCost": null,
+  "depreciationCost": null,
+  "deprecationFactor": null,
+  "lastTechnicalSurveyYear": null,
+  "lastTechnicalSurveyAct": null,
+  "reconstructionYear": null,
+  "reconstructionArea": null,
+  "troubleActDetails": null,
+  "needDestruction": false,
+  "destructionDocument": [],
+  "destructionDocumentDate": null,
+  "destructionDocumentNumber": null,
+  "needReconstruction": false,
+  "requiredReconstructionArea": null,
+  "needRepair": false,
+  "repairDocument": [],
+  "repairDocumentDate": null,
+  "repairDocumentNumber": null,
+  "objectTarget": null,
+  "objectType": null,
+  "floors": [],
+  "workPeriod": [],
+  "buildingAddress": {
+    "addrRegion": "Белгородская область",
+    "postIndex": "308007",
+    "address": {
+      "id": 0,
+      "aoidArea": null,
+      "aoidStreet": null,
+      "houseid": null,
+      "houseguid": null,
+      "GARguid": "287ef30b-4a63-47f8-be8a-0876c57ab354",
+      "region": {
+        "id": 31,
+        "region": "Белгородская область",
+        "territoryCode": 31,
+        "isFederalCity": false
+      },
+      "areaName": "Белгород",
+      "prefixArea": null,
+      "streetName": "Гагарина",
+      "prefixStreet": null,
+      "house": "гараж",
+      "building": null,
+      "struct": null,
+      "flat": null
+    },
+    "cadastralNumber": null,
+    "latitude": 50.618652,
+    "longitude": 36.580746
+  },
+  "moTerritorialDepartId": "d344c071-a8d1-4a1b-95b1-7be88dfff906",
+  "moTerritorialDepartName": "Кардиохирургический центр"
+}
+
+###
+
+PUT {{url}}/org/building?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=47120289-197c-4c8a-b6e4-3806c72bab75
+Content-Type: application/json
+
+{
+  "rent": false,
+  "ownageDocuments": null,
+  "lawSubject": null,
+  "lawType": null,
+  "lawObject": null,
+  "cadastralNumber": null,
+  "encumbrances": null,
+  "lawDescription": null,
+  "rentDocuments": null,
+  "regDate": null,
+  "regNumber": null,
+  "landlord": null,
+  "renter": null,
+  "tenancy": null,
+  "capacityVisitors": null,
+  "capacityBeds": null,
+  "capacityHospital": null,
+  "buildName": "Гараж",
+  "buildYear": 2023,
+  "beginDate": "2023-11-20T00:00:00Z",
+  "liquidationDate": null,
+  "liquidationReasonId": null,
+  "floorCount": 2,
+  "hasTrouble": false,
+  "troubleDocument": null,
+  "buildingPlan": null,
+  "cardiologicalDepartments": null,
+  "fundament": null,
+  "fundamentDescription": null,
+  "supportingStructures": null,
+  "roofCovering": null,
+  "roofCoveringDescription": null,
+  "wallsMaterial": null,
+  "wallsMaterialDescription": null,
+  "ceilingMaterial": null,
+  "ceilingMaterialDescription": null,
+  "buildingSize": null,
+  "rightToUse": null,
+  "rightToUseDescription": null,
+  "isAdapted": false,
+  "isAccesibleEnv": null,
+  "isHistorical": false,
+  "isWeb": false,
+  "buildingArea": 30,
+  "builtUpArea": 30,
+  "starCost": null,
+  "depreciationCost": null,
+  "deprecationFactor": null,
+  "lastTechnicalSurveyYear": null,
+  "lastTechnicalSurveyAct": null,
+  "reconstructionYear": null,
+  "reconstructionArea": null,
+  "troubleActDetails": null,
+  "needDestruction": false,
+  "destructionDocument": [],
+  "destructionDocumentDate": null,
+  "destructionDocumentNumber": null,
+  "needReconstruction": false,
+  "requiredReconstructionArea": null,
+  "needRepair": false,
+  "repairDocument": [],
+  "repairDocumentDate": null,
+  "repairDocumentNumber": null,
+  "objectTarget": null,
+  "objectType": null,
+  "floors": [],
+  "workPeriod": [],
+  "buildingAddress": {
+    "addrRegion": "Белгородская область",
+    "postIndex": "308007",
+    "address": {
+      "id": 0,
+      "aoidArea": null,
+      "aoidStreet": null,
+      "houseid": null,
+      "houseguid": null,
+      "GARguid": "287ef30b-4a63-47f8-be8a-0876c57ab354",
+      "region": {
+        "id": 31,
+        "region": "Белгородская область",
+        "territoryCode": 31,
+        "isFederalCity": false
+      },
+      "areaName": "Белгород",
+      "prefixArea": null,
+      "streetName": "Гагарина",
+      "prefixStreet": null,
+      "house": "гараж",
+      "building": null,
+      "struct": null,
+      "flat": null
+    },
+    "cadastralNumber": null,
+    "latitude": 50.618652,
+    "longitude": 36.580746
+  },
+  //"moTerritorialDepartId": "d344c071-a8d1-4a1b-95b1-7be88dfff906",
+  //"moTerritorialDepartName": "Кардиохирургический центр"
+}
+
+###
+
+DELETE {{url}}/org/building?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=47120289-197c-4c8a-b6e4-3806c72bab75
+Content-Type: application/json
+
+###
 
 GET {{url}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
-### Get Staff by entity
-GET {{url}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855&entity=365ee8b2-cf6f-4e0c-a949-f470f17678de
+###
+
+GET {{url}}/org/staff/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
 Content-Type: application/json
+
+###
+
+POST {{url}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "staffNum": "20231121",
+  "staffCreateDate": "2023-11-21T00:00:00Z",
+  "beginDate": "2023-11-21T00:00:00Z",
+  "endDate": "2023-11-22T00:00:00Z",
+  "staffDetails": [
+    {
+      "nrPmuDepartId": "1.2.643.5.1.13.13.12.2.31.2855.0.181337",
+      "departName": "Централизованная стерилизационная",
+      "nrPmuDepartHospitalSubdivisionId": null,
+      "hospitalName": null,
+      "postFedCode": {
+        "code": 173,
+        "name": "медицинская сестра стерилизационной "
+      },
+      "post": {
+        "code": 173,
+        "name": "медицинская сестра стерилизационной "
+      },
+      "flCount": 0,
+      "averageAge": null,
+      "rate": 22.5,
+      "busyRate": 0,
+      "busyRateMain": 0,
+      "externalRate": 0,
+      "vacancy": 22.5,
+      "staffNote": null
+    }
+  ]
+}
+
+###
+
+PUT {{url}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+{
+  "staffNum": "20231121",
+  "staffCreateDate": "2023-11-21T00:00:00Z",
+  "beginDate": "2023-11-21T00:00:00Z",
+  "endDate": "2023-11-22T00:00:00Z",
+  "staffDetails": [
+    {
+      "nrPmuDepartId": "1.2.643.5.1.13.13.12.2.31.2855.0.181337",
+      "departName": "Централизованная стерилизационная",
+      "nrPmuDepartHospitalSubdivisionId": null,
+      "hospitalName": null,
+      "postFedCode": {
+        "code": 173,
+        "name": "медицинская сестра стерилизационной "
+      },
+      "post": {
+        "code": 173,
+        "name": "медицинская сестра стерилизационной "
+      },
+      "flCount": 0,
+      "averageAge": null,
+      "rate": 22.5,
+      "busyRate": 2,
+      "busyRateMain": 0,
+      "externalRate": 0,
+      "vacancy": 22.5,
+      "staffNote": null
+    }
+  ]
+}
+
+###
+
+DELETE {{url}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+###

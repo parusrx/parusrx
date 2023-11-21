@@ -5,7 +5,7 @@ namespace ParusRx.Frmo.API;
 
 internal static class OrganizationSubscribeApi
 {
-    public static IEndpointRouteBuilder MapPubSubOrganizations(this IEndpointRouteBuilder app)
+    public static IEndpointRouteBuilder MapOrganizationSubscribeApi(this IEndpointRouteBuilder app)
     {
         const string daprPubSubName = "pubsub";
 

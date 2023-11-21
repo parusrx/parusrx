@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmo.API.Handlers;
 
-public class GetStaffIntegrationEventHandler(IParusRxStore store, IStaffService service, ILogger<GetStaffIntegrationEventHandler> logger)
+public class ListStaffIntegrationEventHandler(IParusRxStore store, IStaffService service, ILogger<ListStaffIntegrationEventHandler> logger)
     : IIntegrationEventHandler<MqIntegrationEvent>
 {
     public async Task HandleAsync(MqIntegrationEvent @event, CancellationToken cancellationToken = default)
@@ -19,7 +19,7 @@ public class GetStaffIntegrationEventHandler(IParusRxStore store, IStaffService 
             var request = XmlSerializerUtility.Deserialize<DefaultRequest>(data)
                 ?? throw new InvalidOperationException($"Cannot deserialize request data for integration event: {@event.Id}");
 
-            var response = await service.GetAsync(request.Parameters, cancellationToken);
+            var response = await service.ListAsync(request.Parameters, cancellationToken);
 
             var responseBytes = XmlSerializerUtility.Serialize(response)
                 ?? throw new InvalidOperationException($"Cannot serialize response data for integration event: {@event.Id}");

@@ -5,17 +5,17 @@ namespace ParusRx.Frmo.API;
 
 internal static class StaffSubscribeApi
 {
-    public static IEndpointRouteBuilder MapPubSubStaffs(this IEndpointRouteBuilder app)
+    public static IEndpointRouteBuilder MapStaffSubscribeApi(this IEndpointRouteBuilder app)
     {
         const string daprPubSubName = "pubsub";
 
-        app.MapPost("/", [Topic(daprPubSubName, "FrmoGetStaffIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] GetStaffIntegrationEventHandler handler) =>
+        app.MapPost("/", [Topic(daprPubSubName, "FrmoGetStaffIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] ListStaffIntegrationEventHandler handler) =>
         {
             await handler.HandleAsync(@event);
             return Results.Ok();
         });
 
-        app.MapPost("/get", [Topic(daprPubSubName, "FrmoGetStaffByEntityIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] GetByEntityStaffIntegrationEventHandler handler) =>
+        app.MapPost("/get", [Topic(daprPubSubName, "FrmoGetStaffByEntityIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] GetStaffIntegrationEventHandler handler) =>
         {
             await handler.HandleAsync(@event);
             return Results.Ok();

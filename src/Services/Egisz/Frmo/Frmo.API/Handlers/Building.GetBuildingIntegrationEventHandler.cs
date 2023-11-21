@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmo.API.Handlers;
 
-public class GetByEntityStaffIntegrationEventHandler(IParusRxStore store, IStaffService service, ILogger<GetByEntityStaffIntegrationEventHandler> logger)
+public sealed class GetBuildingIntegrationEventHandler(IParusRxStore store, IBuildingService service, ILogger<GetBuildingIntegrationEventHandler> logger)
     : IIntegrationEventHandler<MqIntegrationEvent>
 {
     public async Task HandleAsync(MqIntegrationEvent @event, CancellationToken cancellationToken = default)
@@ -28,7 +28,7 @@ public class GetByEntityStaffIntegrationEventHandler(IParusRxStore store, IStaff
         }
         catch (Exception ex)
         {
-            string message = ex is HttpResponseException httpResponseException && httpResponseException.Value is ProblemDetails problemDetails
+            string message = ex is HttpResponseException httpResponseException && httpResponseException.Value is ProblemDetails problemDetails 
                     ? $"{problemDetails.Code} {problemDetails.ReasonPhrase}: {problemDetails.Message}"
                     : ex.Message;
 

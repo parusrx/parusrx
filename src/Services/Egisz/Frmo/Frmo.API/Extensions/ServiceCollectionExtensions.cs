@@ -12,17 +12,23 @@ public static class ServiceCollectionExtensions
         services.AddTransient<UpdateOrganizationIntegrationEventHandler>();
         services.AddTransient<DeleteOrganizationIntegrationEventHandler>();
 
-        services.AddTransient<GetStaffIntegrationEventHandler>();
-        services.AddTransient<GetByEntityStaffIntegrationEventHandler>();
-        services.AddTransient<CreateStaffIntegrationEventHandler>();
-        services.AddTransient<UpdateStaffIntegrationEventHandler>();
-        services.AddTransient<DeleteStaffIntegrationEventHandler>();
-
         services.AddTransient<GetByOidDepartmentIntegrationEventHandler>();
         services.AddTransient<ListPagedDepartmentIntegrationEventHandler>();
         services.AddTransient<CreateDepartmentIntegrationEventHandler>();
         services.AddTransient<UpdateDepartmentIntegrationEventHandler>();
         services.AddTransient<DeleteDepartmentIntegrationEventHandler>();
+
+        services.AddTransient<ListBuildingIntegrationEventHandler>();
+        services.AddTransient<GetBuildingIntegrationEventHandler>();
+        services.AddTransient<CreateBuildingIntegrationEventHandler>();
+        services.AddTransient<UpdateBuildingIntegrationEventHandler>();
+        services.AddTransient<DeleteBuildingIntegrationEventHandler>();
+
+        services.AddTransient<ListStaffIntegrationEventHandler>();
+        services.AddTransient<GetStaffIntegrationEventHandler>();
+        services.AddTransient<CreateStaffIntegrationEventHandler>();
+        services.AddTransient<UpdateStaffIntegrationEventHandler>();
+        services.AddTransient<DeleteStaffIntegrationEventHandler>();
 
         return services;
     }
