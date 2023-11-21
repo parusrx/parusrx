@@ -10,6 +10,7 @@ public static class OrganizationApi
         app.MapGet("/{oid}", GetOrganization);
         app.MapGet("/depart", ListPagedDepartment);
         app.MapGet("/depart/{departOid}", GetDepartment);
+        app.MapGet("/equipment", ListEquipment);
 
         return app;
     }
@@ -45,6 +46,18 @@ public static class OrganizationApi
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
 
         var response = await service.GetAsync(departOid, queryParameters, cancellationToken);
+
+        return TypedResults.Ok(response);
+    }
+
+    public static async ValueTask<Ok<ListResponse<Equipment>>> ListEquipment(
+        HttpRequest request,
+        IEquipmentService service,
+        CancellationToken cancellationToken)
+    {
+        var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
+
+        var response = await service.ListAsync(queryParameters, cancellationToken);
 
         return TypedResults.Ok(response);
     }
