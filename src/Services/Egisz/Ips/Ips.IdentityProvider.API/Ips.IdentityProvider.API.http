@@ -1,16 +1,16 @@
-@url = http://localhost:51004
+@IdentityProviderAPI_HostAddress = http://localhost:51004
 
-GET {{url}}/health
+GET {{IdentityProviderAPI_HostAddress}}/health
 Accept: application/json
 
 ###
 
-GET {{url}}/liveness
+GET {{IdentityProviderAPI_HostAddress}}/liveness
 Accept: application/json
 
 ###
 
-GET {{url}}/auth/token
+GET {{IdentityProviderAPI_HostAddress}}/auth/token
 Accept: application/json
 
 ###

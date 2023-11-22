@@ -1,28 +1,28 @@
-@url = http://localhost:51005
+@FrmoAPI_HostAddress = http://localhost:51005
 
 ###
 
-GET {{url}}/health
+GET {{FrmoAPI_HostAddress}}/health
 Content-Type: application/json
 
 ###
 
-GET {{url}}/liveness
+GET {{FrmoAPI_HostAddress}}/liveness
 Content-Type: application/json
 
 ###
 
-GET {{url}}/org?orgTypeId=1&offset=0&limit=10
+GET {{FrmoAPI_HostAddress}}/org?orgTypeId=1&offset=0&limit=10
 Content-Type: application/json
 
 ###
 
-GET {{url}}/org/1.2.643.5.1.13.13.12.2.31.2855
+GET {{FrmoAPI_HostAddress}}/org/1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 ###
 
-PUT {{url}}/org?oid=1.2.643.5.1.13.13.12.2.78.6258
+PUT {{FrmoAPI_HostAddress}}/org?oid=1.2.643.5.1.13.13.12.2.78.6258
 Content-Type: application/json
 
 {
@@ -181,22 +181,22 @@ Content-Type: application/json
 
 ###
 
-DELETE {{url}}/org?oid=1.2.643.5.1.13.13.12.2.78.6258&deleteReason=1
+DELETE {{FrmoAPI_HostAddress}}/org?oid=1.2.643.5.1.13.13.12.2.78.6258&deleteReason=1
 Content-Type: application/json
 
 ###
 
-GET {{url}}/org/depart?departTypeId=1&oid=1.2.643.5.1.13.13.12.2.31.2855&offset=0&limit=10
+GET {{FrmoAPI_HostAddress}}/org/depart?departTypeId=1&oid=1.2.643.5.1.13.13.12.2.31.2855&offset=0&limit=10
 Content-Type: application/json
 
 ###
 
-GET {{url}}/org/depart/1.2.643.5.1.13.13.12.2.31.2855.0.385565?oid=1.2.643.5.1.13.13.12.2.31.2855
+GET {{FrmoAPI_HostAddress}}/org/depart/1.2.643.5.1.13.13.12.2.31.2855.0.385565?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 ###
 
-POST {{url}}/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799
+POST {{FrmoAPI_HostAddress}}/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799
 Content-Type: application/json
 
 {
@@ -210,7 +210,7 @@ Content-Type: application/json
 
 ###
 
-PUT {{url}}/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
+PUT {{FrmoAPI_HostAddress}}/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
 Content-Type: application/json
 
 {
@@ -224,22 +224,22 @@ Content-Type: application/json
 
 ###
 
-DELETE {{url}}/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
+DELETE {{FrmoAPI_HostAddress}}/org/depart?oid=1.2.643.5.1.13.13.12.2.77.7799&entityId=1.2.643.5.1.13.13.12.2.77.7799
 Content-Type: application/json
 
 ###
 
-GET {{url}}/org/building?oid=1.2.643.5.1.13.13.12.2.31.2855
+GET {{FrmoAPI_HostAddress}}/org/building?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 ###
 
-GET {{url}}/org/building/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=47120289-197c-4c8a-b6e4-3806c72bab75
+GET {{FrmoAPI_HostAddress}}/org/building/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=47120289-197c-4c8a-b6e4-3806c72bab75
 Content-Type: application/json
 
 ###
 
-POST {{url}}/org/building?oid=1.2.643.5.1.13.13.12.2.31.2855
+POST {{FrmoAPI_HostAddress}}/org/building?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 {
@@ -345,7 +345,7 @@ Content-Type: application/json
 
 ###
 
-PUT {{url}}/org/building?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=47120289-197c-4c8a-b6e4-3806c72bab75
+PUT {{FrmoAPI_HostAddress}}/org/building?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=47120289-197c-4c8a-b6e4-3806c72bab75
 Content-Type: application/json
 
 {
@@ -451,81 +451,22 @@ Content-Type: application/json
 
 ###
 
-DELETE {{url}}/org/building?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=47120289-197c-4c8a-b6e4-3806c72bab75
+DELETE {{FrmoAPI_HostAddress}}/org/building?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=47120289-197c-4c8a-b6e4-3806c72bab75
 Content-Type: application/json
 
 ###
 
-GET {{url}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855
+GET {{FrmoAPI_HostAddress}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 ###
 
-GET {{url}}/org/equipment/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=da897201-bfd0-46ba-b94c-b3a17ba78371
+GET {{FrmoAPI_HostAddress}}/org/equipment/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=da897201-bfd0-46ba-b94c-b3a17ba78371
 Content-Type: application/json
 
 ###
 
-POST {{url}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855
-Content-Type: application/json
-
-{
-  "building": {
-    "buildingId": "9c5ad425-a60f-440e-a43c-c78c0f4e711f",
-    "buildingName": "Кардиохирургический центр",
-    "floor": [
-      {
-        "floorId": "67c03e42-81f1-4737-95ff-1a71c55d9eea",
-        "floorName": "1 этаж",
-        "buildingRoom": [
-          {
-            "roomId": "5a282eb9-c1a7-4d97-913e-3443d161032d",
-            "roomName": "регистратура",
-            "roomArea": 0
-          }
-        ]
-      }
-    ]
-  },
-  "depart": {
-    "departId": "1.2.643.5.1.13.13.12.2.31.2855.0.276231",
-    "departName": "Региональный сосудистый центр для больных с острым коронарным синдромом",
-    "subdivision": [],
-    "room": []
-  },
-  "type": "Медицинское оборудование",
-  "anotherAddress": null,
-  "anotherAddressReason": null,
-  "equipmentSection": {
-    "code": 26,
-    "name": "Устройства систем искусственной вентиляции"
-  },
-  "equipmentType": {
-    "code": 390,
-    "name": "216540 Аппарат искусственной вентиляции легких пневматический автоматический, многоразового использования"
-  },
-  "equipmentName": "Аппарат искусственной вентиляции легких Vela",
-  "equipmentTypeId": 0,
-  "vendor": "\"Вяирэ Медикал Инк.\"",
-  "oksmId": "США",
-  "model": "Аппарат искусственной вентиляции легких Vela",
-  "registrationCertificate": "ФСЗ 2011/10425",
-  "registrationDate": "2020-05-18T00:00:00Z",
-  "serialNumber": "AНTO4754",
-  "inventoryNumber": "4240016304",
-  "productDate": "2020-05-18T00:00:00Z",
-  "beginDate": "2020-06-27T00:00:00Z",
-  "lifeTime": 7,
-  "needReplace": false,
-  "isShared": false,
-  "count": 1,
-  "endDate": null,
-  "endReason": null
-}
-
-###
-
-PUT {{url}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=da897201-bfd0-46ba-b94c-b3a17ba78371
+POST {{FrmoAPI_HostAddress}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 {
@@ -584,32 +525,91 @@ Content-Type: application/json
 
 ###
 
-DELETE {{url}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=da897201-bfd0-46ba-b94c-b3a17ba78371
+PUT {{FrmoAPI_HostAddress}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=da897201-bfd0-46ba-b94c-b3a17ba78371
+Content-Type: application/json
+
+{
+  "building": {
+    "buildingId": "9c5ad425-a60f-440e-a43c-c78c0f4e711f",
+    "buildingName": "Кардиохирургический центр",
+    "floor": [
+      {
+        "floorId": "67c03e42-81f1-4737-95ff-1a71c55d9eea",
+        "floorName": "1 этаж",
+        "buildingRoom": [
+          {
+            "roomId": "5a282eb9-c1a7-4d97-913e-3443d161032d",
+            "roomName": "регистратура",
+            "roomArea": 0
+          }
+        ]
+      }
+    ]
+  },
+  "depart": {
+    "departId": "1.2.643.5.1.13.13.12.2.31.2855.0.276231",
+    "departName": "Региональный сосудистый центр для больных с острым коронарным синдромом",
+    "subdivision": [],
+    "room": []
+  },
+  "type": "Медицинское оборудование",
+  "anotherAddress": null,
+  "anotherAddressReason": null,
+  "equipmentSection": {
+    "code": 26,
+    "name": "Устройства систем искусственной вентиляции"
+  },
+  "equipmentType": {
+    "code": 390,
+    "name": "216540 Аппарат искусственной вентиляции легких пневматический автоматический, многоразового использования"
+  },
+  "equipmentName": "Аппарат искусственной вентиляции легких Vela",
+  "equipmentTypeId": 0,
+  "vendor": "\"Вяирэ Медикал Инк.\"",
+  "oksmId": "США",
+  "model": "Аппарат искусственной вентиляции легких Vela",
+  "registrationCertificate": "ФСЗ 2011/10425",
+  "registrationDate": "2020-05-18T00:00:00Z",
+  "serialNumber": "AНTO4754",
+  "inventoryNumber": "4240016304",
+  "productDate": "2020-05-18T00:00:00Z",
+  "beginDate": "2020-06-27T00:00:00Z",
+  "lifeTime": 7,
+  "needReplace": false,
+  "isShared": false,
+  "count": 1,
+  "endDate": null,
+  "endReason": null
+}
+
+###
+
+DELETE {{FrmoAPI_HostAddress}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=da897201-bfd0-46ba-b94c-b3a17ba78371
 Content-Type: application/json
 
 ###
 
-PUT {{url}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+PUT {{FrmoAPI_HostAddress}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
 Content-Type: application/json
 
 ###
 
-DELETE {{url}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+DELETE {{FrmoAPI_HostAddress}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
 Content-Type: application/json
 
 ###
 
-GET {{url}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855
+GET {{FrmoAPI_HostAddress}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 ###
 
-GET {{url}}/org/staff/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+GET {{FrmoAPI_HostAddress}}/org/staff/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
 Content-Type: application/json
 
 ###
 
-POST {{url}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855
+POST {{FrmoAPI_HostAddress}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 {
@@ -645,7 +645,7 @@ Content-Type: application/json
 
 ###
 
-PUT {{url}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+PUT {{FrmoAPI_HostAddress}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
 Content-Type: application/json
 
 {
@@ -681,7 +681,7 @@ Content-Type: application/json
 
 ###
 
-DELETE {{url}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+DELETE {{FrmoAPI_HostAddress}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
 Content-Type: application/json
 
 ###

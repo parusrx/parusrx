@@ -1,26 +1,26 @@
-@frmrapi_hostaddress = http://localhost:51006
+@FrmrAPI_HostAddress = http://localhost:51006
 
-GET {{frmrapi_hostaddress}}/health
+GET {{FrmrAPI_HostAddress}}/health
 Content-Type: text/plain
 
 ###
 
-GET {{frmrapi_hostaddress}}/liveness
+GET {{FrmrAPI_HostAddress}}/liveness
 Content-Type: text/plain
 
 ###
 
-GET {{frmrapi_hostaddress}}/person?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2023.3475290&snils=13136014100&documentId=1&serial=1418&number=755464&passDate=2019-01-09T00:00:00Z
+GET {{FrmrAPI_HostAddress}}/person?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2023.3475290&snils=13136014100&documentId=1&serial=1418&number=755464&passDate=2019-01-09T00:00:00Z
 Content-Type: application/json
 
 ###
 
-GET {{frmrapi_hostaddress}}/person/list?mo=1.2.643.5.1.13.13.12.2.31.2855&offset=0&limit=30
+GET {{FrmrAPI_HostAddress}}/person/list?mo=1.2.643.5.1.13.13.12.2.31.2855&offset=0&limit=30
 Content-Type: application/json
 
 ###
 
-POST {{frmrapi_hostaddress}}/person?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true
+POST {{FrmrAPI_HostAddress}}/person?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true
 Content-Type: application/json
 
 { 
@@ -86,7 +86,7 @@ Content-Type: application/json
 
 ###
 
-PUT {{frmrapi_hostaddress}}/person?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2022.0055647&snils=11122233340&documentId=1&serial=7609&number=456987&passDate=2016-01-22T00:00:00.0000000Z
+PUT {{FrmrAPI_HostAddress}}/person?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2022.0055647&snils=11122233340&documentId=1&serial=7609&number=456987&passDate=2016-01-22T00:00:00.0000000Z
 Content-Type: application/json
 
 { 
@@ -152,12 +152,12 @@ Content-Type: application/json
 
 ###
 @entityId = 1
-DELETE {{frmrapi_hostaddress}}/person?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2022.0055647&snils=11122233340&documentId=1&serial=7609&number=456987&passDate=2016-01-22T00:00:00.0000000Z&entityId={{entityId}}
+DELETE {{FrmrAPI_HostAddress}}/person?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2022.0055647&snils=11122233340&documentId=1&serial=7609&number=456987&passDate=2016-01-22T00:00:00.0000000Z&entityId={{entityId}}
 Content-Type: application/json
 
 ###
 
-GET {{frmrapi_hostaddress}}/person/full?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2023.3475290&snils=13136014100&documentId=1&serial=1418&number=755464&passDate=2019-01-09T00:00:00Z
+GET {{FrmrAPI_HostAddress}}/person/full?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2023.3475290&snils=13136014100&documentId=1&serial=1418&number=755464&passDate=2019-01-09T00:00:00Z
 Content-Type: application/json
 
 ###

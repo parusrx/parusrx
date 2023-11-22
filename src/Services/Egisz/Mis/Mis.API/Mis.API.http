@@ -1,31 +1,36 @@
-@misapi_host = http://localhost:51007
+@MisAPI_HostAddress = http://localhost:51007
 
-GET {{misapi_host}}/health
+GET {{MisAPI_HostAddress}}/health
 Accept: application/json
 
 ###
 
-GET {{misapi_host}}/liveness
+GET {{MisAPI_HostAddress}}/liveness
 Accept: application/json
 
 ###
 
-GET {{misapi_host}}/person/full?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2023.3475290&snils=13136014100&documentId=1&serial=1418&number=755464&passDate=2019-01-09T00:00:00Z
+GET {{MisAPI_HostAddress}}/person/full?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2023.3475290&snils=13136014100&documentId=1&serial=1418&number=755464&passDate=2019-01-09T00:00:00Z
 Content-Type: application/json
 
 ###
 
-GET {{misapi_host}}/org/1.2.643.5.1.13.13.12.2.31.2855
+GET {{MisAPI_HostAddress}}/org/1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 ###
 
-GET {{misapi_host}}/org/depart?departTypeId=1&oid=1.2.643.5.1.13.13.12.2.31.2855&offset=0&limit=10
+GET {{MisAPI_HostAddress}}/org/depart?departTypeId=1&oid=1.2.643.5.1.13.13.12.2.31.2855&offset=0&limit=10
 Content-Type: application/json
 
 ###
 
-GET {{misapi_host}}/org/depart/1.2.643.5.1.13.13.12.2.31.2855.0.385565?oid=1.2.643.5.1.13.13.12.2.31.2855
+GET {{MisAPI_HostAddress}}/org/depart/1.2.643.5.1.13.13.12.2.31.2855.0.385565?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
+GET {{MisAPI_HostAddress}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
 ###
