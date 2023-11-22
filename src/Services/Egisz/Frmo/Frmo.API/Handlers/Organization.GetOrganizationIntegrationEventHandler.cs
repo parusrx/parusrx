@@ -3,8 +3,10 @@
 
 namespace ParusRx.Frmo.API.Handlers;
 
-public class GetByOidDepartmentIntegrationEventHandler(IParusRxStore store, IDepartmentService service, ILogger<GetByOidDepartmentIntegrationEventHandler> logger)
-    : IIntegrationEventHandler<MqIntegrationEvent>
+public sealed class GetOrganizationIntegrationEventHandler(
+    IParusRxStore store, 
+    IOrganizationService service, 
+    ILogger<GetOrganizationIntegrationEventHandler> logger) : IIntegrationEventHandler<MqIntegrationEvent>
 {
     public async Task HandleAsync(MqIntegrationEvent @event, CancellationToken cancellationToken = default)
     {
@@ -19,10 +21,7 @@ public class GetByOidDepartmentIntegrationEventHandler(IParusRxStore store, IDep
             var request = XmlSerializerUtility.Deserialize<DefaultRequest>(data)
                 ?? throw new InvalidOperationException($"Cannot deserialize request data for integration event: {@event.Id}");
 
-            string departOid = request.Parameters["departOid"]!;
-            request.Parameters.Remove("departOid");
-
-            var response = await service.GetAsync(departOid, request.Parameters, cancellationToken);
+            var response = await service.GetAsync(request.Parameters["oid"]!, cancellationToken);
 
             var responseBytes = XmlSerializerUtility.Serialize(response)
                 ?? throw new InvalidOperationException($"Cannot serialize response data for integration event: {@event.Id}");

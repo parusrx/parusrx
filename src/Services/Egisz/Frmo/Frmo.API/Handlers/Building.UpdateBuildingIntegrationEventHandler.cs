@@ -3,8 +3,10 @@
 
 namespace ParusRx.Frmo.API.Handlers;
 
-public sealed class UpdateBuildingIntegrationEventHandler(IParusRxStore store, IBuildingService service, ILogger<UpdateBuildingIntegrationEventHandler> logger)
-    : IIntegrationEventHandler<MqIntegrationEvent>
+public sealed class UpdateBuildingIntegrationEventHandler(
+    IParusRxStore store, 
+    IBuildingService service, 
+    ILogger<UpdateBuildingIntegrationEventHandler> logger) : IIntegrationEventHandler<MqIntegrationEvent>
 {
     public async Task HandleAsync(MqIntegrationEvent @event, CancellationToken cancellationToken = default)
     {

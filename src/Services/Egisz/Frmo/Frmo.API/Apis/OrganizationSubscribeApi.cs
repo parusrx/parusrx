@@ -9,7 +9,7 @@ internal static class OrganizationSubscribeApi
     {
         const string daprPubSubName = "pubsub";
 
-        app.MapPost("/get-by-oid", [Topic(daprPubSubName, "FrmoGetByOidOrganizationIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] GetByOidOrganizationIntegrationEventHandler handler) =>
+        app.MapPost("/get-by-oid", [Topic(daprPubSubName, "FrmoGetByOidOrganizationIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] GetOrganizationIntegrationEventHandler handler) =>
         {
             await handler.HandleAsync(@event);
             return Results.Ok();

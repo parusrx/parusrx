@@ -8,11 +8,11 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddIntegrationEventHandlers(this IServiceCollection services)
     {
         services.AddTransient<ListPagedOrganizationIntegrationEventHandler>();
-        services.AddTransient<GetByOidOrganizationIntegrationEventHandler>();
+        services.AddTransient<GetOrganizationIntegrationEventHandler>();
         services.AddTransient<UpdateOrganizationIntegrationEventHandler>();
         services.AddTransient<DeleteOrganizationIntegrationEventHandler>();
 
-        services.AddTransient<GetByOidDepartmentIntegrationEventHandler>();
+        services.AddTransient<GetDepartmentIntegrationEventHandler>();
         services.AddTransient<ListPagedDepartmentIntegrationEventHandler>();
         services.AddTransient<CreateDepartmentIntegrationEventHandler>();
         services.AddTransient<UpdateDepartmentIntegrationEventHandler>();

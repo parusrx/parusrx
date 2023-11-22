@@ -3,8 +3,10 @@
 
 namespace ParusRx.Frmo.API.Handlers;
 
-public sealed class DeleteOrganizationIntegrationEventHandler(IParusRxStore store, IOrganizationService service, ILogger<DeleteOrganizationIntegrationEventHandler> logger)
-    : IIntegrationEventHandler<MqIntegrationEvent>
+public sealed class DeleteOrganizationIntegrationEventHandler(
+    IParusRxStore store, 
+    IOrganizationService service, 
+    ILogger<DeleteOrganizationIntegrationEventHandler> logger) : IIntegrationEventHandler<MqIntegrationEvent>
 {
     public async Task HandleAsync(MqIntegrationEvent @event, CancellationToken cancellationToken = default)
     {
