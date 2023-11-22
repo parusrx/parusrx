@@ -461,12 +461,130 @@ Content-Type: application/json
 
 ###
 
-GET {{url}}/org/equipment/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+GET {{url}}/org/equipment/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=da897201-bfd0-46ba-b94c-b3a17ba78371
 Content-Type: application/json
 
 ###
 
 POST {{url}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "building": {
+    "buildingId": "9c5ad425-a60f-440e-a43c-c78c0f4e711f",
+    "buildingName": "Кардиохирургический центр",
+    "floor": [
+      {
+        "floorId": "67c03e42-81f1-4737-95ff-1a71c55d9eea",
+        "floorName": "1 этаж",
+        "buildingRoom": [
+          {
+            "roomId": "5a282eb9-c1a7-4d97-913e-3443d161032d",
+            "roomName": "регистратура",
+            "roomArea": 0
+          }
+        ]
+      }
+    ]
+  },
+  "depart": {
+    "departId": "1.2.643.5.1.13.13.12.2.31.2855.0.276231",
+    "departName": "Региональный сосудистый центр для больных с острым коронарным синдромом",
+    "subdivision": [],
+    "room": []
+  },
+  "type": "Медицинское оборудование",
+  "anotherAddress": null,
+  "anotherAddressReason": null,
+  "equipmentSection": {
+    "code": 26,
+    "name": "Устройства систем искусственной вентиляции"
+  },
+  "equipmentType": {
+    "code": 390,
+    "name": "216540 Аппарат искусственной вентиляции легких пневматический автоматический, многоразового использования"
+  },
+  "equipmentName": "Аппарат искусственной вентиляции легких Vela",
+  "equipmentTypeId": 0,
+  "vendor": "\"Вяирэ Медикал Инк.\"",
+  "oksmId": "США",
+  "model": "Аппарат искусственной вентиляции легких Vela",
+  "registrationCertificate": "ФСЗ 2011/10425",
+  "registrationDate": "2020-05-18T00:00:00Z",
+  "serialNumber": "AНTO4754",
+  "inventoryNumber": "4240016304",
+  "productDate": "2020-05-18T00:00:00Z",
+  "beginDate": "2020-06-27T00:00:00Z",
+  "lifeTime": 7,
+  "needReplace": false,
+  "isShared": false,
+  "count": 1,
+  "endDate": null,
+  "endReason": null
+}
+
+###
+
+PUT {{url}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=da897201-bfd0-46ba-b94c-b3a17ba78371
+Content-Type: application/json
+
+{
+  "building": {
+    "buildingId": "9c5ad425-a60f-440e-a43c-c78c0f4e711f",
+    "buildingName": "Кардиохирургический центр",
+    "floor": [
+      {
+        "floorId": "67c03e42-81f1-4737-95ff-1a71c55d9eea",
+        "floorName": "1 этаж",
+        "buildingRoom": [
+          {
+            "roomId": "5a282eb9-c1a7-4d97-913e-3443d161032d",
+            "roomName": "регистратура",
+            "roomArea": 0
+          }
+        ]
+      }
+    ]
+  },
+  "depart": {
+    "departId": "1.2.643.5.1.13.13.12.2.31.2855.0.276231",
+    "departName": "Региональный сосудистый центр для больных с острым коронарным синдромом",
+    "subdivision": [],
+    "room": []
+  },
+  "type": "Медицинское оборудование",
+  "anotherAddress": null,
+  "anotherAddressReason": null,
+  "equipmentSection": {
+    "code": 26,
+    "name": "Устройства систем искусственной вентиляции"
+  },
+  "equipmentType": {
+    "code": 390,
+    "name": "216540 Аппарат искусственной вентиляции легких пневматический автоматический, многоразового использования"
+  },
+  "equipmentName": "Аппарат искусственной вентиляции легких Vela",
+  "equipmentTypeId": 0,
+  "vendor": "\"Вяирэ Медикал Инк.\"",
+  "oksmId": "США",
+  "model": "Аппарат искусственной вентиляции легких Vela",
+  "registrationCertificate": "ФСЗ 2011/10425",
+  "registrationDate": "2020-05-18T00:00:00Z",
+  "serialNumber": "AНTO4754",
+  "inventoryNumber": "4240016304",
+  "productDate": "2020-05-18T00:00:00Z",
+  "beginDate": "2020-06-27T00:00:00Z",
+  "lifeTime": 7,
+  "needReplace": false,
+  "isShared": false,
+  "count": 1,
+  "endDate": null,
+  "endReason": null
+}
+
+###
+
+DELETE {{url}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=da897201-bfd0-46ba-b94c-b3a17ba78371
 Content-Type: application/json
 
 ###
