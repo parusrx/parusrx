@@ -10,7 +10,17 @@ Accept: application/json
 
 ###
 
-GET {{MisAPI_HostAddress}}/person/full?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2023.3475290&snils=13136014100&documentId=1&serial=1418&number=755464&passDate=2019-01-09T00:00:00Z
+GET {{MisAPI_HostAddress}}/person/full?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2023.3475834&snils=17849582137&documentId=1&serial=1400&number=000000&passDate=2000-01-01T00:00:00Z
+Content-Type: application/json
+
+###
+
+GET {{MisAPI_HostAddress}}/person/cert?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2023.3475834&snils=17849582137&documentId=1&serial=1400&number=000000&passDate=2000-01-01T00:00:00Z
+Content-Type: application/json
+
+###
+
+GET {{MisAPI_HostAddress}}/person/accreditation?mo=1.2.643.5.1.13.13.12.2.31.2855&mr=true&oid=2023.3475834&snils=17849582137&documentId=1&serial=1400&number=000000&passDate=2000-01-01T00:00:00Z
 Content-Type: application/json
 
 ###
