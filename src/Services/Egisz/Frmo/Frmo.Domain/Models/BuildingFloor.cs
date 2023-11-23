@@ -16,5 +16,5 @@ public record BuildingFloor
     [XmlArray("rooms")]
     [XmlArrayItem("roomsItem")]
     [JsonPropertyName("rooms")]
-    public BuildingRoom[]? Rooms { get; init; }
+    public BuildingFloorRoom[]? Rooms { get; init; }
 }

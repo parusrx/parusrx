@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record LiquidationReason
+public record LiquidationReasonId
 {
     [XmlElement("id")]
     [JsonPropertyName("id")]

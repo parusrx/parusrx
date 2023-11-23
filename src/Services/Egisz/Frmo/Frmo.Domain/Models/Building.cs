@@ -97,7 +97,7 @@ public record Building
 
     [XmlElement("liquidationReasonId")]
     [JsonPropertyName("liquidationReasonId")]
-    public LiquidationReason? LiquidationReasonId { get; init; }
+    public LiquidationReasonId? LiquidationReasonId { get; init; }
 
     [XmlElement("floorCount")]
     [JsonPropertyName("floorCount")]
@@ -143,7 +143,7 @@ public record Building
 
     [XmlElement("wallsMaterial")]
     [JsonPropertyName("wallsMaterial")]
-    public WallMaterial? WallsMaterial { get; init; }
+    public WallsMaterial? WallsMaterial { get; init; }
 
     [XmlElement("wallsMaterialDescription")]
     [JsonPropertyName("wallsMaterialDescription")]
@@ -296,4 +296,8 @@ public record Building
     [XmlElement("moTerritorialDepartName")]
     [JsonPropertyName("moTerritorialDepartName")]
     public string? MoTerritorialDepartName { get; init; }
+
+    [XmlElement("isNonUniqueAddress")]
+    [JsonPropertyName("isNonUniqueAddress")]
+    public bool? IsNonUniqueAddress { get; init; }
 }

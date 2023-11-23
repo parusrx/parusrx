@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record RoofCovering
+public record WallsMaterial
 {
     [XmlElement("code")]
     [JsonPropertyName("code")]
