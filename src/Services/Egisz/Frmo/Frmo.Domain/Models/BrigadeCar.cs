@@ -5,6 +5,10 @@ namespace ParusRx.Frmo.Domain;
 
 public record BrigadeCar
 {
+    [XmlElement("id")]
+    [JsonPropertyName("id")]
+    public string? Id { get; init; }
+
     [XmlElement("VIN")]
     [JsonPropertyName("VIN")]
     public string Vin { get; init; } = default!;
@@ -44,11 +48,11 @@ public record BrigadeCar
 
     [XmlElement("isForPacient")]
     [JsonPropertyName("isForPacient")]
-    public bool IsForPacient { get; init; }
+    public bool? IsForPacient { get; init; }
 
     [XmlElement("isParamedic")]
     [JsonPropertyName("isParamedic")]
-    public bool IsParamedic { get; init; }
+    public bool? IsParamedic { get; init; }
 
     [XmlElement("ownerOrg")]
     [JsonPropertyName("ownerOrg")]

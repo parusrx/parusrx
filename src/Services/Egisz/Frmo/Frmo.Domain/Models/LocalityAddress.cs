@@ -15,9 +15,9 @@ public record LocalityAddress
 
     [XmlElement("localityLongitude")]
     [JsonPropertyName("localityLongitude")]
-    public double? LocalityLongitude { get; init; }
+    public double LocalityLongitude { get; init; }
 
     [XmlElement("localityLatitude")]
     [JsonPropertyName("localityLatitude")]
-    public double? LocalityLatitude { get; init; }
+    public double LocalityLatitude { get; init; }
 }

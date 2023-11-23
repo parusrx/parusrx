@@ -3,11 +3,11 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record DepartmentAmbulatory
+public record DepartReg
 {
     [XmlElement("isCreatedOrReplacedPMSP")]
     [JsonPropertyName("isCreatedOrReplacedPMSP")]
-    public bool IsCreatedOrReplacedPMSP { get; init; }
+    public bool? IsCreatedOrReplacedPMSP { get; init; }
 
     [XmlElement("visitorsCount")]
     [JsonPropertyName("visitorsCount")]
@@ -19,10 +19,10 @@ public record DepartmentAmbulatory
 
     [XmlElement("isHomeVisitChild")]
     [JsonPropertyName("isHomeVisitChild")]
-    public bool IsHomeVisitChild { get; init; }
+    public bool? IsHomeVisitChild { get; init; }
 
     [XmlArray("room")]
     [XmlArrayItem("roomItem")]
     [JsonPropertyName("room")]
-    public DepartmentRoom[]? Room { get; init; }
+    public DepartRegRoom[]? Room { get; init; }
 }

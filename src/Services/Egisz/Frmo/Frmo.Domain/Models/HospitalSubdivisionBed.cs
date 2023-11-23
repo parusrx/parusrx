@@ -5,15 +5,11 @@ namespace ParusRx.Frmo.Domain;
 
 public record HospitalSubdivisionBed
 {
-    [XmlElement("id")]
-    [JsonPropertyName("id")]
-    public int Id { get; init; }
-
     [XmlElement("bedProfileId")]
     [JsonPropertyName("bedProfileId")]
-    public HospitalSubdivisionBedProfile BedProfileId { get; init; } = default!;
+    public HospitalSubdivisionBedProfileId BedProfileId { get; init; } = default!;
 
     [XmlElement("bedCount")]
     [JsonPropertyName("bedCount")]
-    public int? BedCount { get; init; }
+    public int BedCount { get; init; }
 }

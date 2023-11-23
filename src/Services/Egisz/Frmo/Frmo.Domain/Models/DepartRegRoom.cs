@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record DepartmentRoom
+public record DepartRegRoom
 {
     [XmlElement("oid")]
     [JsonPropertyName("oid")]
@@ -19,7 +19,7 @@ public record DepartmentRoom
     public Service[] Services { get; init; } = [];
 
     [XmlElement("subdivisionId")]
-    public DepartmentSubdivision SubdivisionId { get; init; } = default!;
+    public SubdivisionId SubdivisionId { get; init; } = default!;
 
     [XmlArray("buildings")]
     [XmlArrayItem("buildingsItem")]

@@ -3,6 +3,13 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record HealthCareProfile : BaseCodeNameItem
+public record HealthCareProfile
 {
+    [XmlElement("code")]
+    [JsonPropertyName("code")]
+    public int Code { get; init; }
+
+    [XmlElement("name")]
+    [JsonPropertyName("name")]
+    public string Name { get; init; } = default!;
 }

@@ -3,15 +3,15 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record DepartmentHospital
+public record DepartHospital
 {
     [XmlElement("hospitalModelId")]
     [JsonPropertyName("hospitalModelId")]
-    public int HospitalModelId { get; init; }
+    public HospitalModelId? HospitalModelId { get; init; }
 
     [XmlElement("ambulance")]
     [JsonPropertyName("ambulance")]
-    public bool Ambulance { get; init; }
+    public bool? Ambulance { get; init; }
 
     [XmlElement("homeBedCount")]
     [JsonPropertyName("homeBedCount")]

@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record DepartmentLabaratory
+public record DepartLab
 {
     [XmlElement("labOid")]
     [JsonPropertyName("labOid")]
@@ -25,7 +25,7 @@ public record DepartmentLabaratory
 
     [XmlElement("roomTypeId")]
     [JsonPropertyName("roomTypeId")]
-    public RoomType RoomTypeId { get; init; } = default!;
+    public RoomTypeId RoomTypeId { get; init; } = default!;
 
     [XmlElement("examPerShift")]
     [JsonPropertyName("examPerShift")]

@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record DepartmentStructure
+public record DepartStructure
 {
     [XmlElement("level")]
     [JsonPropertyName("level")]

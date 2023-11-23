@@ -11,7 +11,7 @@ public record HospitalSubdivision
 
     [XmlElement("subdivisionName")]
     [JsonPropertyName("subdivisionName")]
-    public string SubdivisionName { get; init; } = default!;
+    public string? SubdivisionName { get; init; }
 
     [XmlArray("healthCareProfile")]
     [XmlArrayItem("healthCareProfileItem")]
@@ -25,7 +25,7 @@ public record HospitalSubdivision
 
     [XmlElement("subdivisionId")]
     [JsonPropertyName("subdivisionId")]
-    public DepartmentSubdivision? SubdivisionId { get; init; }
+    public SubdivisionId? SubdivisionId { get; init; }
 
     [XmlElement("liquidationDate")]
     [JsonPropertyName("liquidationDate")]

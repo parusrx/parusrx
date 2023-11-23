@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record DepartmentBuilding
+public record DepartBuilding
 {
     [XmlElement("buildingId")]
     [JsonPropertyName("buildingId")]
@@ -64,5 +64,5 @@ public record DepartmentBuilding
     [XmlArray("floors")]
     [XmlArrayItem("floorsItem")]
     [JsonPropertyName("floors")]
-    public DepartmentBuildingFloor[]? Floors { get; init; }
+    public DepartBuildingFloor[]? Floors { get; init; }
 }

@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record AdmissionDepartment
+public record AdmissionDepart
 {
     [XmlElement("admissionDepartId")]
     [JsonPropertyName("admissionDepartId")]

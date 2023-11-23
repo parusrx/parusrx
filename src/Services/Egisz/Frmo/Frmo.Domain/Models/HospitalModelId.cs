@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record HealthCareCondition
+public record HospitalModelId
 {
     [XmlElement("code")]
     [JsonPropertyName("code")]

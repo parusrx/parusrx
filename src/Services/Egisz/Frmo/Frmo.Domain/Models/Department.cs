@@ -15,7 +15,7 @@ public record Department
 
     [XmlElement("departStructure")]
     [JsonPropertyName("departStructure")]
-    public DepartmentStructure DepartStructure { get; init; } = new();
+    public DepartStructure DepartStructure { get; init; } = new();
 
     [XmlElement("medicalSubjectId")]
     [JsonPropertyName("medicalSubjectId")]
@@ -27,7 +27,7 @@ public record Department
 
     [XmlElement("admissionDepart")]
     [JsonPropertyName("admissionDepart")]
-    public AdmissionDepartment? AdmissionDepart { get; init; }
+    public AdmissionDepart? AdmissionDepart { get; init; }
 
     [XmlArray("healthCareProfile")]
     [XmlArrayItem("healthCareProfileItem")]
@@ -101,11 +101,11 @@ public record Department
 
     [XmlElement("departKindId")]
     [JsonPropertyName("departKindId")]
-    public DepartmentKind DepartKindId { get; init; } = new();
+    public DepartmentKindId DepartKindId { get; init; } = new();
 
     [XmlElement("departTypeId")]
     [JsonPropertyName("departTypeId")]
-    public DepartmentType DepartTypeId { get; init; } = new();
+    public DepartTypeId DepartTypeId { get; init; } = new();
 
     [XmlElement("separateDepart")]
     [JsonPropertyName("separateDepart")]
@@ -118,7 +118,7 @@ public record Department
     [XmlArray("departBuildings")]
     [XmlArrayItem("departBuildingsItem")]
     [JsonPropertyName("departBuildings")]
-    public DepartmentBuilding[]? DepartBuildings { get; init; }
+    public DepartBuilding[]? DepartBuildings { get; init; }
 
     [XmlElement("liquidationDate")]
     [JsonPropertyName("liquidationDate")]
@@ -126,21 +126,21 @@ public record Department
 
     [XmlElement("departReg")]
     [JsonPropertyName("departReg")]
-    public DepartmentAmbulatory? DepartReg { get; init; }
+    public DepartReg? DepartReg { get; init; }
 
     [XmlElement("departHospital")]
     [JsonPropertyName("departHospital")]
-    public DepartmentHospital? DepartHospital { get; init; }
+    public DepartHospital? DepartHospital { get; init; }
 
     [XmlArray("departLabs")]
     [XmlArrayItem("departLabsItem")]
     [JsonPropertyName("departLabs")]
-    public DepartmentLabaratory[]? DepartLabs { get; init; }
+    public DepartLab[]? DepartLabs { get; init; }
 
     [XmlArray("departAmbulances")]
     [XmlArrayItem("departAmbulancesItem")]
     [JsonPropertyName("departAmbulances")]
-    public DepartmentAmbulances[]? DepartAmbulances { get; init; }
+    public DepartAmbulance[]? DepartAmbulances { get; init; }
 
     [XmlArray("brigadeCar")]
     [XmlArrayItem("brigadeCarItem")]

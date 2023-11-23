@@ -3,13 +3,13 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record RoomType
+public record DepartAmbulanceBrigadeProfileId
 {
     [XmlElement("id")]
     [JsonPropertyName("id")]
     public int Id { get; init; }
 
-    [XmlElement("subdivision")]
-    [JsonPropertyName("subdivision")]
-    public string? Subdivision { get; init; }
+    [XmlElement("brigadeProfile")]
+    [JsonPropertyName("brigadeProfile")]
+    public string? BrigadeProfile { get; init; }
 }

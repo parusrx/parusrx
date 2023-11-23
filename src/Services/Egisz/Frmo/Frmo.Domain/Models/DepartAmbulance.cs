@@ -3,7 +3,7 @@
 
 namespace ParusRx.Frmo.Domain;
 
-public record DepartmentAmbulances
+public record DepartAmbulance
 {
     [XmlElement("id")]
     [JsonPropertyName("id")]
@@ -39,15 +39,15 @@ public record DepartmentAmbulances
 
     [XmlElement("brigadeProfileId")]
     [JsonPropertyName("brigadeProfileId")]
-    public DepartmentAmbulanceBrigadeProfile BrigadeProfileId { get; init; } = default!;
+    public DepartAmbulanceBrigadeProfileId BrigadeProfileId { get; init; } = default!;
 
     [XmlElement("brigadeSpecId")]
     [JsonPropertyName("brigadeSpecId")]
-    public BrigadeSpecialization? BrigadeSpecId { get; init; }
+    public BrigadeSpecId? BrigadeSpecId { get; init; }
 
     [XmlElement("brigadeTypeId")]
     [JsonPropertyName("brigadeTypeId")]
-    public DepartmentAmbulancesBrigadeType BrigadeTypeId { get; init; } = default!;
+    public BrigadeTypeId BrigadeTypeId { get; init; } = default!;
 
     [XmlArray("buildings")]
     [XmlArrayItem("buildingsItem")]
