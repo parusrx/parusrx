@@ -34,15 +34,15 @@ public record Department
     [JsonPropertyName("healthCareProfile")]
     public HealthCareProfile[]? HealthCareProfile { get; init; }
 
-    [XmlArray("healthCareFrom")]
-    [XmlArrayItem("healthCareFromItem")]
-    [JsonPropertyName("healthCareFrom")]
-    public HealthCareFrom[]? HealthCareFrom { get; init; }
+    [XmlArray("healthCareForm")]
+    [XmlArrayItem("healthCareFormItem")]
+    [JsonPropertyName("healthCareForm")]
+    public HealthCareForm[]? HealthCareForm { get; init; }
 
-    [XmlArray("healthCareCondition")]
-    [XmlArrayItem("healthCareConditionItem")]
-    [JsonPropertyName("healthCareCondition")]
-    public HealthCareCondition[]? HealthCareCondition { get; init; }
+    [XmlArray("healthCareConditions")]
+    [XmlArrayItem("healthCareConditionsItem")]
+    [JsonPropertyName("healthCareConditions")]
+    public HealthCareCondition[]? HealthCareConditions { get; init; }
 
     [XmlElement("isNewModel")]
     [JsonPropertyName("isNewModel")]
