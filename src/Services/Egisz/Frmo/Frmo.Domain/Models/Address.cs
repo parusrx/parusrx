@@ -5,10 +5,6 @@ namespace ParusRx.Frmo.Domain;
 
 public record Address
 {
-    [XmlElement("id")]
-    [JsonPropertyName("id")]
-    public int Id { get; init; } = default!;
-
     [XmlElement("aoidArea")]
     [JsonPropertyName("aoidArea")]
     public string? AOidArea { get; init; }
