@@ -3,12 +3,12 @@
 
 namespace ParusRx.Egisz.Frmo.Tests.Services;
 
-public class EquipmentServiceTests
+public class TerritorialDepartServiceTests
 {
     private readonly Mock<HttpMessageHandler> _httpMessageHandlerMock;
-    private readonly EquipmentService _service;
+    private readonly TerritorialDepartService _service;
 
-    public EquipmentServiceTests()
+    public TerritorialDepartServiceTests()
     {
         _httpMessageHandlerMock = new Mock<HttpMessageHandler>();
 
@@ -17,15 +17,15 @@ public class EquipmentServiceTests
             BaseAddress = new Uri("https://ips.test.egisz.rosminzdrav.ru/4f52d90e921a0/")
         };
 
-        _service = new EquipmentService(httpClient);
+        _service = new TerritorialDepartService(httpClient);
     }
 
     [Fact]
-    public async Task ListAsync_ShouldReturnEquipmentResponse_WhenRequestIsSuccessful()
+    public async Task ListAsync_ShouldReturnTerritorialDepartResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new ListResponse<Equipment>();
+        var expectedResponse = new ListResponse<TerritorialDepart>();
         
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
@@ -73,11 +73,11 @@ public class EquipmentServiceTests
     }
 
     [Fact]
-    public async Task GetAsync_ShouldReturnEquipmentResponse_WhenRequestIsSuccessful()
+    public async Task GetAsync_ShouldReturnTerritorialDepartResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new SingleResponse<Equipment>();
+        var expectedResponse = new SingleResponse<TerritorialDepart>();
         
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
@@ -124,11 +124,11 @@ public class EquipmentServiceTests
     }
 
     [Fact]
-    public async Task CreateAsync_ShouldReturnCreateEquipmentResponse_WhenRequestIsSuccessful()
+    public async Task CreateAsync_ShouldReturnCreateTerritorialDepartResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var equipment = new Equipment();
+        var territorialDepart = new TerritorialDepart();
         var expectedResponse = new SingleResponse<Entity>
         {
             RequestId = Guid.NewGuid().ToString(),
@@ -144,7 +144,7 @@ public class EquipmentServiceTests
             });
 
         // Act
-        var response = await _service.CreateAsync(queryParameters, equipment, CancellationToken.None);
+        var response = await _service.CreateAsync(queryParameters, territorialDepart, CancellationToken.None);
 
         // Assert
         Assert.Equal(expectedResponse, response);
@@ -155,7 +155,7 @@ public class EquipmentServiceTests
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var equipment = new Equipment();
+        var territorialDepart = new TerritorialDepart();
         var expectedResponse = new ProblemDetails(
             DateTimeOffset.Parse("2023-11-20T12:00:00+03:00"),
             404,
@@ -171,7 +171,7 @@ public class EquipmentServiceTests
             });
 
         // Act
-        var exception = await Assert.ThrowsAsync<HttpResponseException>(async () => await _service.CreateAsync(queryParameters, equipment, CancellationToken.None));
+        var exception = await Assert.ThrowsAsync<HttpResponseException>(async () => await _service.CreateAsync(queryParameters, territorialDepart, CancellationToken.None));
 
         // Assert
         Assert.IsType<ProblemDetails>(exception.Value);
@@ -179,11 +179,11 @@ public class EquipmentServiceTests
     }
 
     [Fact]
-    public async Task UpdateAsync_ShouldReturnUpdateEquipmentResponse_WhenRequestIsSuccessful()
+    public async Task UpdateAsync_ShouldReturnUpdateTerritorialDepartResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var equipment = new Equipment();
+        var territorialDepart = new TerritorialDepart();
         var expectedResponse = new DefaultResponse
         {
             RequestId = Guid.NewGuid().ToString()
@@ -198,7 +198,7 @@ public class EquipmentServiceTests
             });
 
         // Act
-        var response = await _service.UpdateAsync(queryParameters, equipment, CancellationToken.None);
+        var response = await _service.UpdateAsync(queryParameters, territorialDepart, CancellationToken.None);
 
         // Assert
         Assert.Equal(expectedResponse, response);
@@ -209,7 +209,7 @@ public class EquipmentServiceTests
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var equipment = new Equipment();
+        var territorialDepart = new TerritorialDepart();
         var expectedResponse = new ProblemDetails(
             DateTimeOffset.Parse("2023-11-20T12:00:00+03:00"),
             404,
@@ -225,7 +225,7 @@ public class EquipmentServiceTests
             });
 
         // Act
-        var exception = await Assert.ThrowsAsync<HttpResponseException>(async () => await _service.UpdateAsync(queryParameters, equipment, CancellationToken.None));
+        var exception = await Assert.ThrowsAsync<HttpResponseException>(async () => await _service.UpdateAsync(queryParameters, territorialDepart, CancellationToken.None));
 
         // Assert
         Assert.IsType<ProblemDetails>(exception.Value);
@@ -233,7 +233,7 @@ public class EquipmentServiceTests
     }
 
     [Fact]
-    public async Task DeleteAsync_ShouldReturnDeleteEquipmentResponse_WhenRequestIsSuccessful()
+    public async Task DeleteAsync_ShouldReturnDeleteTerritorialDepartResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };

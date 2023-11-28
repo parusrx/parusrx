@@ -45,6 +45,10 @@ app.MapGroup("/org/tpgg")
     .WithTags("Tpgg API")
     .MapTpggApi();
 
+app.MapGroup("/org/territorialDepart")
+    .WithTags("Territorial Department API")
+    .MapTerritorialDepartApi();
+
 app.MapGroup("/org/equipment")
     .WithTags("Equipment API")
     .MapEquipmentApi();
@@ -69,6 +73,10 @@ app.MapGroup("/subscribe/org/building")
 app.MapGroup("/subscribe/org/tpgg")
     .WithTags("Tpgg Subscribe API")
     .MapTpggSubscribeApi();
+
+app.MapGroup("/subscribe/org/territorialDepart")
+    .WithTags("Territorial Department Subscribe API")
+    .MapTerritorialDepartSubscribeApi();
 
 app.MapGroup("/subscribe/org/equipment")
     .WithTags("Equipment Subscribe API")

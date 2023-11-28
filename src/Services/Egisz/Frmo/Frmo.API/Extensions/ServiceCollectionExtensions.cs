@@ -26,6 +26,12 @@ public static class ServiceCollectionExtensions
 
         services.AddTransient<ListTpggIntegrationEventHandler>();
 
+        services.AddTransient<ListTerritorialDepartIntegrationEventHandler>();
+        services.AddTransient<GetTerritorialDepartIntegrationEventHandler>();
+        services.AddTransient<CreateTerritorialDepartIntegrationEventHandler>();
+        services.AddTransient<UpdateTerritorialDepartIntegrationEventHandler>();
+        services.AddTransient<DeleteTerritorialDepartIntegrationEventHandler>();
+
         services.AddTransient<ListEquipmentIntegrationEventHandler>();
         services.AddTransient<GetEquipmentIntegrationEventHandler>();
         services.AddTransient<CreateEquipmentIntegrationEventHandler>();
