@@ -456,6 +456,11 @@ Content-Type: application/json
 
 ###
 
+GET {{FrmoAPI_HostAddress}}/org/tpgg?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
 GET {{FrmoAPI_HostAddress}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 

@@ -35,6 +35,14 @@ public static class FrmoServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
+        services.AddHttpClient<ITpggService, TpggService>(options => options.BaseAddress = new Uri(uri))
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+            {
+                ClientCertificateOptions = ClientCertificateOption.Manual,
+                ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true
+            })
+            .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+
         services.AddHttpClient<IEquipmentService, EquipmentService>(options => options.BaseAddress = new Uri(uri))
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
             {

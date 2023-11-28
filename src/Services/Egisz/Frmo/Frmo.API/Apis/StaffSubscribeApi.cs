@@ -3,7 +3,7 @@
 
 namespace ParusRx.Egisz.Frmo.API;
 
-internal static class StaffSubscribeApi
+public static class StaffSubscribeApi
 {
     public static IEndpointRouteBuilder MapStaffSubscribeApi(this IEndpointRouteBuilder app)
     {
