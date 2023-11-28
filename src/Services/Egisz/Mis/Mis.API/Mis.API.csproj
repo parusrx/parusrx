@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
     <LangVersion>Preview</LangVersion>
-    <RootNamespace>ParusRx.Mis.API</RootNamespace>
+    <RootNamespace>ParusRx.Egisz.Mis.API</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>

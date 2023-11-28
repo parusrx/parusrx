@@ -5,13 +5,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPublishable>false</IsPublishable>
-    <RootNamespace>ParusRx.Frmr</RootNamespace>
+    <RootNamespace>ParusRx.Egisz.Frmr</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Common\Extensions\ParusRx.Extensons.Http\src\ParusRx.Extensions.Http.csproj" />
     <ProjectReference Include="..\..\..\..\Common\Xml\src\ParusRx.Xml.csproj" />
-    <ProjectReference Include="..\..\Common\ParusRx.Egisz.Common\ParusRx.Egisz.Common.csproj" />
+    <ProjectReference Include="..\..\Common\ParusRx.Egisz.Common.csproj" />
     <ProjectReference Include="..\..\Ips\Ips.IdentityProvider.Abstractions\Ips.IdentityProvider.Abstractions.csproj" />
     <ProjectReference Include="..\Frmr.Domain\Frmr.Domain.csproj" />
   </ItemGroup>

@@ -1,7 +1,7 @@
 ﻿// Copyright (c) The Parus RX Authors. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace ParusRx.Frmr.API.Handlers;
+namespace ParusRx.Egisz.Frmr.API.Handlers;
 
 public class GetPersonIntegrationEventHandler(IParusRxStore store, IPersonService service, ILogger<GetPersonIntegrationEventHandler> logger)
     : IIntegrationEventHandler<MqIntegrationEvent>

@@ -89,6 +89,7 @@ public static class DistributedCacheExtensions
                     return Deserialize<T>(bytes);
                 }
             }
+#pragma warning disable CA2208 // Instantiate argument exceptions correctly
             var result = getMethod switch
             {
                 // we expect 4 use-cases; sync/async, with/without state
@@ -98,6 +99,7 @@ public static class DistributedCacheExtensions
                 Func<T> get => get(),
                 _ => throw new ArgumentException(nameof(getMethod)),
             };
+#pragma warning restore CA2208 // Instantiate argument exceptions correctly
             bytes = Serialize<T>(result);
             if (options is null)
             {   // not recommended; cache expiration should be considered

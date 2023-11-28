@@ -5,8 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
-    <LangVersion>Preview</LangVersion>
-    <RootNamespace>ParusRx.Frmr.API</RootNamespace>
+    <RootNamespace>ParusRx.Egisz.Frmr.API</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>

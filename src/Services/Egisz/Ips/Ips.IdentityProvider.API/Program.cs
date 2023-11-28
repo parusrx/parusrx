@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using ParusRx.Ips.IdentityProvider.API.Settings;
+using ParusRx.Egisz.Ips.IdentityProvider.API.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
     <LangVersion>Preview</LangVersion>
-    <RootNamespace>ParusRx.Frmo.API</RootNamespace>
+    <RootNamespace>ParusRx.Egisz.Frmo.API</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>

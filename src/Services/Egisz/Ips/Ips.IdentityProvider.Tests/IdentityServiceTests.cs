@@ -9,9 +9,9 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using Moq;
 using Moq.Protected;
-using ParusRx.Ips.IdentityProvider;
+using ParusRx.Egisz.Ips.IdentityProvider;
 
-namespace ParusRx.Ips.IdentityProvider.Tests;
+namespace ParusRx.Egisz.Ips.IdentityProvider.Tests;
 
 public class IdentityServiceTests
 {

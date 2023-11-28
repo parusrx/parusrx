@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using System.Net.Http.Headers;
-using ParusRx.Ips.IdentityProvider;
+using ParusRx.Egisz.Ips.IdentityProvider;
 
 namespace ParusRx.Egisz.Common;
 

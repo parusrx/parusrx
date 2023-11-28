@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Common\Xml\src\ParusRx.Xml.csproj" />
-    <ProjectReference Include="..\..\Ips\Ips.IdentityProvider.Abstractions\Ips.IdentityProvider.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Common\Xml\src\ParusRx.Xml.csproj" />
+    <ProjectReference Include="..\Ips\Ips.IdentityProvider.Abstractions\Ips.IdentityProvider.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

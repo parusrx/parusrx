@@ -125,7 +125,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frmo", "src\Services\Egisz\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ips.IdentityProvider.Tests", "src\Services\Egisz\Ips\Ips.IdentityProvider.Tests\Ips.IdentityProvider.Tests.csproj", "{F3198CB1-E043-4885-B525-7C6FD54CD9F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParusRx.Egisz.Common", "src\Services\Egisz\Common\ParusRx.Egisz.Common\ParusRx.Egisz.Common.csproj", "{62E6CB99-9830-451D-AE79-2ACBE3DE15F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egisz.Common", "src\Services\Egisz\Common\ParusRx.Egisz.Common.csproj", "{62E6CB99-9830-451D-AE79-2ACBE3DE15F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

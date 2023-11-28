@@ -1,9 +1,7 @@
 ﻿// // Copyright (c) The Parus RX Authors. All rights reserved.
 // // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using ParusRx.Frmo.Services;
-
-namespace ParusRx.Frmo.Tests;
+namespace ParusRx.Egisz.Frmo.Tests;
 
 public class BuildingServiceTests
 {

@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPublishable>false</IsPublishable>
+    <RootNamespace>ParusRx.Egisz.Frmr.Domain</RootNamespace>
   </PropertyGroup>
 
 </Project>

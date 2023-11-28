@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPublishable>false</IsPublishable>
-    <RootNamespace>ParusRx.Frmo.Domain</RootNamespace>
+    <RootNamespace>ParusRx.Egisz.Frmo.Domain</RootNamespace>
   </PropertyGroup>
 
 </Project>

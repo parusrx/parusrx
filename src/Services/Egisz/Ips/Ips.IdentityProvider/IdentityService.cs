@@ -6,7 +6,7 @@ using System.Net.Http.Json;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
 
-namespace ParusRx.Ips.IdentityProvider;
+namespace ParusRx.Egisz.Ips.IdentityProvider;
 
 public class IdentityService(HttpClient httpClient, IDistributedCache cache, IOptionsSnapshot<IdentitySettings> settings) : IIdentityService
 {

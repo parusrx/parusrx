@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 
-namespace ParusRx.Frmo.Services;
+namespace ParusRx.Egisz.Frmo.Services;
 
 public class BuildingService(HttpClient httpClient) : IBuildingService
 {

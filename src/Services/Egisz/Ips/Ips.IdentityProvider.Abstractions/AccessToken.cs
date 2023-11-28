@@ -3,7 +3,7 @@
 
 using System.Text.Json.Serialization;
 
-namespace ParusRx.Ips.IdentityProvider;
+namespace ParusRx.Egisz.Ips.IdentityProvider;
 
 public record AccessToken(
     [property: JsonPropertyName("token")] string Token,
