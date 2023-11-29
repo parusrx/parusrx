@@ -461,6 +461,66 @@ Content-Type: application/json
 
 ###
 
+GET {{FrmoAPI_HostAddress}}/org/territorialDepart?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
+GET {{FrmoAPI_HostAddress}}/org/territorialDepart/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=d344c071-a8d1-4a1b-95b1-7be88dfff906
+Content-Type: application/json
+
+###
+
+POST {{FrmoAPI_HostAddress}}/org/territorialDepart?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "moTerritorialDepartName": "Кардиохирургический центр",
+  "buildings": [
+    {
+      "buildingId": "9c5ad425-a60f-440e-a43c-c78c0f4e711f",
+      "buildingName": "Кардиохирургический центр"
+    },
+    {
+      "buildingId": "e037d2f6-5998-4ad7-9a24-d7c7ca653e6d",
+      "buildingName": "Пансионат"
+    }
+  ],
+  "marks": []
+}
+
+###
+
+PUT {{FrmoAPI_HostAddress}}/org/territorialDepart?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=d344c071-a8d1-4a1b-95b1-7be88dfff906
+Content-Type: application/json
+
+{
+  "moTerritorialDepartName": "Кардиохирургический центр",
+  "buildings": [
+    {
+      "buildingId": "9c5ad425-a60f-440e-a43c-c78c0f4e711f",
+      "buildingName": "Кардиохирургический центр"
+    },
+    {
+      "buildingId": "e037d2f6-5998-4ad7-9a24-d7c7ca653e6d",
+      "buildingName": "Пансионат"
+    }
+  ],
+  "marks": [
+    {
+      "code": 1,
+      "name": "МО с медицинскими подразделениями"
+    }
+  ]
+}
+
+###
+
+DELETE {{FrmoAPI_HostAddress}}/org/territorialDepart?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=d344c071-a8d1-4a1b-95b1-7be88dfff906
+Content-Type: application/json
+
+###
+
 GET {{FrmoAPI_HostAddress}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
