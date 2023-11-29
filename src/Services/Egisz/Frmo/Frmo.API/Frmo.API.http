@@ -521,6 +521,233 @@ Content-Type: application/json
 
 ###
 
+GET {{FrmoAPI_HostAddress}}/org/airAmbulance?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
+GET {{FrmoAPI_HostAddress}}/org/airAmbulance/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+###
+
+POST {{FrmoAPI_HostAddress}}/org/airAmbulance?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "airAmbulanceName": "string",
+  "depart": {
+    "code": "string",
+    "name": "string"
+  },
+  "address": {
+
+    "aoidArea": "string",
+    "aoidStreet": "string",
+    "houseid": "string",
+    "houseguid": "string",
+    "GARguid": "string",
+    "region": {
+      "id": 1,
+      "region": "string",
+      "territoryCode": 55,
+      "isFederalCity": true
+    },
+    "areaName": "string",
+    "prefixArea": "string",
+    "streetName": "string",
+    "prefixStreet": "string",
+    "house": "string",
+    "building": "string",
+    "struct": "string",
+    "flat": "string"
+  },
+  "addressLatitude": 56.125454,
+  "addressLongitude": 56.125454,
+  "hasHelicopter": true,
+  "nightStart": true,
+  "nightStartPossibility": 1,
+  "helipadCount": 1,
+  "helipadNightStart": 1,
+  "weightRestrictions": 1,
+  "farHelipadCount": 1,
+  "farHelipadNightStart": 1,
+  "farHelipadWeightRestrictions": 1,
+  "helipadAddresses": [
+    {
+
+      "aoidArea": "string",
+      "aoidStreet": "string",
+      "houseid": "string",
+      "houseguid": "string",
+      "GARguid": "string",
+      "region": {
+        "id": 1,
+        "region": "string",
+        "territoryCode": 55,
+        "isFederalCity": true
+      },
+      "areaName": "string",
+      "prefixArea": "string",
+      "streetName": "string",
+      "prefixStreet": "string",
+      "house": "string",
+      "building": "string",
+      "struct": "string",
+      "flat": "string",
+      "latitude": 56.125454,
+      "longitude": 56.125454
+    }
+  ],
+  "reanimationHelipadCount": 1,
+  "nonReanimationHelipadCount": 1,
+  "helicopterEquipment": [
+    "string"
+  ],
+  "reanimobileCount": 10,
+  "reanimobileAddresses": [
+    {
+      "aoidArea": "string",
+      "aoidStreet": "string",
+      "houseid": "string",
+      "houseguid": "string",
+      "GARguid": "string",
+      "region": {
+        "id": 1,
+        "region": "string",
+        "territoryCode": 55,
+        "isFederalCity": true
+      },
+      "areaName": "string",
+      "prefixArea": "string",
+      "streetName": "string",
+      "prefixStreet": "string",
+      "house": "string",
+      "building": "string",
+      "struct": "string",
+      "flat": "string",
+      "latitude": 56.125454,
+      "longitude": 56.125454
+    }
+  ],
+  "reanimobileEquipment": [
+    "string"
+  ]
+}
+
+###
+
+PUT {{FrmoAPI_HostAddress}}/org/airAmbulance?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+{
+  "airAmbulanceName": "string",
+  "depart": {
+    "code": "string",
+    "name": "string"
+  },
+  "address": {
+
+    "aoidArea": "string",
+    "aoidStreet": "string",
+    "houseid": "string",
+    "houseguid": "string",
+    "GARguid": "string",
+    "region": {
+      "id": 1,
+      "region": "string",
+      "territoryCode": 55,
+      "isFederalCity": true
+    },
+    "areaName": "string",
+    "prefixArea": "string",
+    "streetName": "string",
+    "prefixStreet": "string",
+    "house": "string",
+    "building": "string",
+    "struct": "string",
+    "flat": "string"
+  },
+  "addressLatitude": 56.125454,
+  "addressLongitude": 56.125454,
+  "hasHelicopter": true,
+  "nightStart": true,
+  "nightStartPossibility": 1,
+  "helipadCount": 1,
+  "helipadNightStart": 1,
+  "weightRestrictions": 1,
+  "farHelipadCount": 1,
+  "farHelipadNightStart": 1,
+  "farHelipadWeightRestrictions": 1,
+  "helipadAddresses": [
+    {
+
+      "aoidArea": "string",
+      "aoidStreet": "string",
+      "houseid": "string",
+      "houseguid": "string",
+      "GARguid": "string",
+      "region": {
+        "id": 1,
+        "region": "string",
+        "territoryCode": 55,
+        "isFederalCity": true
+      },
+      "areaName": "string",
+      "prefixArea": "string",
+      "streetName": "string",
+      "prefixStreet": "string",
+      "house": "string",
+      "building": "string",
+      "struct": "string",
+      "flat": "string",
+      "latitude": 56.125454,
+      "longitude": 56.125454
+    }
+  ],
+  "reanimationHelipadCount": 1,
+  "nonReanimationHelipadCount": 1,
+  "helicopterEquipment": [
+    "string"
+  ],
+  "reanimobileCount": 10,
+  "reanimobileAddresses": [
+    {
+      "aoidArea": "string",
+      "aoidStreet": "string",
+      "houseid": "string",
+      "houseguid": "string",
+      "GARguid": "string",
+      "region": {
+        "id": 1,
+        "region": "string",
+        "territoryCode": 55,
+        "isFederalCity": true
+      },
+      "areaName": "string",
+      "prefixArea": "string",
+      "streetName": "string",
+      "prefixStreet": "string",
+      "house": "string",
+      "building": "string",
+      "struct": "string",
+      "flat": "string",
+      "latitude": 56.125454,
+      "longitude": 56.125454
+    }
+  ],
+  "reanimobileEquipment": [
+    "string"
+  ]
+}
+
+###
+
+DELETE {{FrmoAPI_HostAddress}}/org/airAmbulance/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+###
+
 GET {{FrmoAPI_HostAddress}}/org/equipment?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 

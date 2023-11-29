@@ -49,6 +49,10 @@ app.MapGroup("/org/territorialDepart")
     .WithTags("Territorial Department API")
     .MapTerritorialDepartApi();
 
+app.MapGroup("/org/airAmbulance")
+    .WithTags("Air Ambulance API")
+    .MapAirAmbulanceApi();
+
 app.MapGroup("/org/equipment")
     .WithTags("Equipment API")
     .MapEquipmentApi();
@@ -77,6 +81,10 @@ app.MapGroup("/subscribe/org/tpgg")
 app.MapGroup("/subscribe/org/territorialDepart")
     .WithTags("Territorial Department Subscribe API")
     .MapTerritorialDepartSubscribeApi();
+
+app.MapGroup("/subscribe/org/airAmbulance")
+    .WithTags("Air Ambulance Subscribe API")
+    .MapAirAmbulanceSubscribeApi();
 
 app.MapGroup("/subscribe/org/equipment")
     .WithTags("Equipment Subscribe API")
