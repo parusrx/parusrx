@@ -44,6 +44,12 @@ public static class ServiceCollectionExtensions
         services.AddTransient<UpdateEquipmentIntegrationEventHandler>();
         services.AddTransient<DeleteEquipmentIntegrationEventHandler>();
 
+        services.AddTransient<ListMobileDepartIntegrationEventHandler>();
+        services.AddTransient<GetMobileDepartIntegrationEventHandler>();
+        services.AddTransient<CreateMobileDepartIntegrationEventHandler>();
+        services.AddTransient<UpdateMobileDepartIntegrationEventHandler>();
+        services.AddTransient<DeleteMobileDepartIntegrationEventHandler>();
+
         services.AddTransient<ListStaffIntegrationEventHandler>();
         services.AddTransient<GetStaffIntegrationEventHandler>();
         services.AddTransient<CreateStaffIntegrationEventHandler>();

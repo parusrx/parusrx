@@ -891,6 +891,131 @@ Content-Type: application/json
 
 ###
 
+GET {{FrmoAPI_HostAddress}}/org/mobileDeparts?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
+GET {{FrmoAPI_HostAddress}}/org/mobileDeparts/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+###
+
+POST {{FrmoAPI_HostAddress}}/org/mobileDeparts?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "mobileDepartName": "Передвижной ФАП № 1",
+  "buildingId": "string",
+  "buildingName": "string",
+  "departId": "1.2.643.5.1.13.13.12.2.50.4609.0.281",
+  "departName": "string",
+  "departureCount": 2000,
+  "paymentSourceId": {
+    "code": 0,
+    "name": "string"
+  },
+  "typeId": {
+    "code": 0,
+    "name": "string"
+  },
+  "patientCount": 200,
+  "vehicle": [
+    {
+      "vehicleId": "string",
+      "hasRegistrationCertificate": true,
+      "registrationCertificate": "string",
+      "productYear": "string",
+      "beginYear": "string",
+      "isForPacient": true,
+      "isParamedic": true,
+      "ownerOrg": "string",
+      "rightToUse": "string",
+      "VIN": "string",
+      "carMark": "string",
+      "carModel": "string",
+      "releaseDate": "2019",
+      "useDate": "2019-01-01T00:00:00Z",
+      "mileage": 10,
+      "isNavigation": true,
+      "codeNavigation": "string"
+    }
+  ],
+  "addresses": [
+    {
+      "mobileDepartAddress": {
+        "mobileDepartAddressId": "string",
+        "GARguid": "string",
+        "regionId": 55,
+        "latitude": 55.163353,
+        "longitude": 37.388834
+      }
+    }
+  ]
+}
+
+###
+
+PUT {{FrmoAPI_HostAddress}}/org/mobileDeparts?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+{
+  "mobileDepartName": "Передвижной ФАП № 1",
+  "buildingId": "string",
+  "buildingName": "string",
+  "departId": "1.2.643.5.1.13.13.12.2.50.4609.0.281",
+  "departName": "string",
+  "departureCount": 2000,
+  "paymentSourceId": {
+    "code": 0,
+    "name": "string"
+  },
+  "typeId": {
+    "code": 0,
+    "name": "string"
+  },
+  "patientCount": 200,
+  "vehicle": [
+    {
+      "vehicleId": "string",
+      "hasRegistrationCertificate": true,
+      "registrationCertificate": "string",
+      "productYear": "string",
+      "beginYear": "string",
+      "isForPacient": true,
+      "isParamedic": true,
+      "ownerOrg": "string",
+      "rightToUse": "string",
+      "VIN": "string",
+      "carMark": "string",
+      "carModel": "string",
+      "releaseDate": "2019",
+      "useDate": "2019-01-01T00:00:00Z",
+      "mileage": 10,
+      "isNavigation": true,
+      "codeNavigation": "string"
+    }
+  ],
+  "addresses": [
+    {
+      "mobileDepartAddress": {
+        "mobileDepartAddressId": "string",
+        "GARguid": "string",
+        "regionId": 55,
+        "latitude": 55.163353,
+        "longitude": 37.388834
+      }
+    }
+  ]
+}
+
+###
+
+DELETE {{FrmoAPI_HostAddress}}/org/mobileDeparts?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+###
+
 GET {{FrmoAPI_HostAddress}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
