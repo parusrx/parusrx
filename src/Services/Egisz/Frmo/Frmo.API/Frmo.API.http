@@ -1016,6 +1016,101 @@ Content-Type: application/json
 
 ###
 
+GET {{FrmoAPI_HostAddress}}/org/houseGround?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
+GET {{FrmoAPI_HostAddress}}/org/houseGround/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+###
+
+POST {{FrmoAPI_HostAddress}}/org/houseGround?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "houseGround": "Основное",
+  "contactPerson": "Иванов",
+  "contactPhone": "9051119149",
+  "houseGroundAddress": {
+    "houseGroundAddressId": "string",
+    "postIndex": "234567",
+    "address": {
+
+      "aoidArea": "string",
+      "aoidStreet": "string",
+      "houseid": "string",
+      "houseguid": "string",
+      "GARguid": "string",
+      "region": {
+        "id": 1,
+        "region": "string",
+        "territoryCode": 55,
+        "isFederalCity": true
+      },
+      "areaName": "string",
+      "prefixArea": "string",
+      "streetName": "string",
+      "prefixStreet": "string",
+      "house": "string",
+      "building": "string",
+      "struct": "string",
+      "flat": "string"
+    },
+    "cadastralNumber": "12:34:123456:12",
+    "latitude": 52.035497,
+    "longitude": 113.496468
+  }
+}
+
+###
+
+PUT {{FrmoAPI_HostAddress}}/org/houseGround?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+{
+  "houseGround": "Основное",
+  "contactPerson": "Иванов",
+  "contactPhone": "9051119149",
+  "houseGroundAddress": {
+    "houseGroundAddressId": "string",
+    "postIndex": "234567",
+    "address": {
+
+      "aoidArea": "string",
+      "aoidStreet": "string",
+      "houseid": "string",
+      "houseguid": "string",
+      "GARguid": "string",
+      "region": {
+        "id": 1,
+        "region": "string",
+        "territoryCode": 55,
+        "isFederalCity": true
+      },
+      "areaName": "string",
+      "prefixArea": "string",
+      "streetName": "string",
+      "prefixStreet": "string",
+      "house": "string",
+      "building": "string",
+      "struct": "string",
+      "flat": "string"
+    },
+    "cadastralNumber": "12:34:123456:12",
+    "latitude": 52.035497,
+    "longitude": 113.496468
+  }
+}
+
+###
+
+DELETE {{FrmoAPI_HostAddress}}/org/houseGround?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+###
+
 GET {{FrmoAPI_HostAddress}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
