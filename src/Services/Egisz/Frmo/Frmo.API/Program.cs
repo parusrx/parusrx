@@ -65,6 +65,10 @@ app.MapGroup("/org/houseGround")
     .WithTags("House Ground API")
     .MapHouseGroundApi();
 
+app.MapGroup("/org/sites")
+    .WithTags("Site API")
+    .MapSiteApi();
+
 app.MapGroup("/org/staff")
     .WithTags("Staff API")
     .MapStaffApi();
@@ -105,6 +109,10 @@ app.MapGroup("/subscribe/org/mobileDeparts")
 app.MapGroup("/subscribe/org/houseGround")
     .WithTags("House Ground Subscribe API")
     .MapHouseGroundSubscribeApi();
+
+app.MapGroup("/subscribe/org/sites")
+    .WithTags("Site Subscribe API")
+    .MapSiteSubscribeApi();
 
 app.MapGroup("/subscribe/org/staff")
     .WithTags("Staff Subscribe API")

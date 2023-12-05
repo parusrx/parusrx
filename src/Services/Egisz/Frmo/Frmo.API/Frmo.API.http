@@ -1111,6 +1111,153 @@ Content-Type: application/json
 
 ###
 
+GET {{FrmoAPI_HostAddress}}/org/sites?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
+GET {{FrmoAPI_HostAddress}}/org/sites/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+###
+
+POST {{FrmoAPI_HostAddress}}/org/sites?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "siteName": "string",
+  "beginDate": "2021-10-12T20:38:22.914Z",
+  "type": {
+    "code": 1,
+    "name": "string"
+  },
+  "category": [
+    {
+      "code": 1,
+      "name": "string"
+    }
+  ],
+  "patientAttached": 0,
+  "endDate": "2021-10-12T20:38:22.914Z",
+  "sitePersons": [
+    {
+      "sitePersonId": "string",
+      "beginDate": "2021-10-12T20:38:22.914Z",
+      "endDate": "2021-10-12T20:38:22.914Z",
+      "regRoomSingleOid": "string",
+      "regRoomOid": "string",
+      "regRoomName": "string",
+      "personOid": "string",
+      "personFio": "string"
+    }
+  ],
+  "siteAddresses": [
+    {
+      "siteAddressId": "string",
+      "address": {
+        "addrRegion": "string",
+        "postIndex": "string",
+        "address": {
+
+          "aoidArea": "string",
+          "aoidStreet": "string",
+          "houseid": "string",
+          "houseguid": "string",
+          "region": {
+            "id": 1,
+            "region": "string",
+            "territoryCode": 1,
+            "isFederalCity": true
+          },
+          "areaName": "string",
+          "prefixArea": "string",
+          "streetName": "string",
+          "prefixStreet": "string",
+          "house": "string",
+          "building": "string",
+          "struct": "string",
+          "flat": "string"
+        },
+        "beginDate": "2021-10-12T20:38:22.914Z",
+        "endDate": "2021-10-12T20:38:22.914Z"
+      }
+    }
+  ]
+}
+
+###
+
+PUT {{FrmoAPI_HostAddress}}/org/sites?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+{
+  "siteName": "string",
+  "beginDate": "2021-10-12T20:38:22.914Z",
+  "type": {
+    "code": 1,
+    "name": "string"
+  },
+  "category": [
+    {
+      "code": 1,
+      "name": "string"
+    }
+  ],
+  "patientAttached": 0,
+  "endDate": "2021-10-12T20:38:22.914Z",
+  "sitePersons": [
+    {
+      "sitePersonId": "string",
+      "beginDate": "2021-10-12T20:38:22.914Z",
+      "endDate": "2021-10-12T20:38:22.914Z",
+      "regRoomSingleOid": "string",
+      "regRoomOid": "string",
+      "regRoomName": "string",
+      "personOid": "string",
+      "personFio": "string"
+    }
+  ],
+  "siteAddresses": [
+    {
+      "siteAddressId": "string",
+      "address": {
+        "addrRegion": "string",
+        "postIndex": "string",
+        "address": {
+
+          "aoidArea": "string",
+          "aoidStreet": "string",
+          "houseid": "string",
+          "houseguid": "string",
+          "region": {
+            "id": 1,
+            "region": "string",
+            "territoryCode": 1,
+            "isFederalCity": true
+          },
+          "areaName": "string",
+          "prefixArea": "string",
+          "streetName": "string",
+          "prefixStreet": "string",
+          "house": "string",
+          "building": "string",
+          "struct": "string",
+          "flat": "string"
+        },
+        "beginDate": "2021-10-12T20:38:22.914Z",
+        "endDate": "2021-10-12T20:38:22.914Z"
+      }
+    }
+  ]
+}
+
+###
+
+DELETE {{FrmoAPI_HostAddress}}/org/sites?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=365ee8b2-cf6f-4e0c-a949-f470f17678de
+Content-Type: application/json
+
+###
+
 GET {{FrmoAPI_HostAddress}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 
