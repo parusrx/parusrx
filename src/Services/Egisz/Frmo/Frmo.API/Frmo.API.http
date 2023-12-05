@@ -1344,3 +1344,13 @@ DELETE {{FrmoAPI_HostAddress}}/org/staff?oid=1.2.643.5.1.13.13.12.2.31.2855&enti
 Content-Type: application/json
 
 ###
+
+GET {{FrmoAPI_HostAddress}}/org/licenses?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
+GET {{FrmoAPI_HostAddress}}/org/licenses/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=001cd24d-2f93-4060-8cbf-90ff1efeb9af
+Content-Type: application/json
+
+###
