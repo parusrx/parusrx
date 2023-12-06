@@ -71,6 +71,11 @@ public static class ServiceCollectionExtensions
         services.AddTransient<ListLicenseIntegrationEventHandler>();
         services.AddTransient<GetLicenseIntegrationEventHandler>();
 
+        services.AddTransient<ListServiceInfoIntegrationEventHandler>();
+        services.AddTransient<CreateServiceInfoIntegrationEventHandler>();
+        services.AddTransient<UpdateServiceInfoIntegrationEventHandler>();
+        services.AddTransient<DeleteServiceInfoIntegrationEventHandler>();
+
         return services;
     }
 

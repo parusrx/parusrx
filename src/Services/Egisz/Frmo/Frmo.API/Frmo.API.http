@@ -1354,3 +1354,49 @@ GET {{FrmoAPI_HostAddress}}/org/licenses/get?oid=1.2.643.5.1.13.13.12.2.31.2855&
 Content-Type: application/json
 
 ###
+
+GET {{FrmoAPI_HostAddress}}/org/servicesInfo?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
+POST {{FrmoAPI_HostAddress}}/org/servicesInfo?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "activity": {
+    "code": 1,
+    "name": "Медицинская деятельность"
+  },
+  "services": [
+    {
+      "code": 18,
+      "name": "стоматология"
+    }
+  ]
+}
+
+###
+
+PUT {{FrmoAPI_HostAddress}}/org/servicesInfo?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=001cd24d-2f93-4060-8cbf-90ff1efeb9af
+Content-Type: application/json
+
+{
+  "activity": {
+    "code": 1,
+    "name": "Медицинская деятельность"
+  },
+  "services": [
+    {
+      "code": 114,
+      "name": "Санаторно-курортная помощь"
+    }
+  ]
+}
+
+###
+
+DELETE {{FrmoAPI_HostAddress}}/org/servicesInfo?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=001cd24d-2f93-4060-8cbf-90ff1efeb9af
+Content-Type: application/json
+
+###

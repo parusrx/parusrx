@@ -77,6 +77,10 @@ app.MapGroup("/org/licenses")
     .WithTags("License API")
     .MapLicenseApi();
 
+app.MapGroup("/org/servicesInfo")
+    .WithTags("Service Info API")
+    .MapServiceInfoApi();
+
 // Dapr pub/sub endpoints
 app.MapGroup("/subscribe/org")
     .WithTags("Organization Subscribe API")
@@ -125,5 +129,9 @@ app.MapGroup("/subscribe/org/staff")
 app.MapGroup("/subscribe/org/licenses")
     .WithTags("License Subscribe API")
     .MapLicenseSubscribeApi();
+
+app.MapGroup("/subscribe/org/servicesInfo")
+    .WithTags("Service Info Subscribe API")
+    .MapServiceInfoSubscribeApi();
 
 app.Run();

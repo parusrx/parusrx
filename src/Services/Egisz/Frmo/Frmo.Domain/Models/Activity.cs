@@ -3,7 +3,7 @@
 
 namespace ParusRx.Egisz.Frmo.Domain;
 
-public record Service
+public record Activity
 {
     [XmlElement("code")]
     [JsonPropertyName("code")]
