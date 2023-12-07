@@ -81,6 +81,10 @@ app.MapGroup("/org/servicesInfo")
     .WithTags("Service Info API")
     .MapServiceInfoApi();
 
+app.MapGroup("/org/telemedicine")
+    .WithTags("Telemedicine API")
+    .MapTelemedicineApi();
+
 // Dapr pub/sub endpoints
 app.MapGroup("/subscribe/org")
     .WithTags("Organization Subscribe API")
@@ -133,5 +137,9 @@ app.MapGroup("/subscribe/org/licenses")
 app.MapGroup("/subscribe/org/servicesInfo")
     .WithTags("Service Info Subscribe API")
     .MapServiceInfoSubscribeApi();
+
+app.MapGroup("/subscribe/org/telemedicine")
+    .WithTags("Telemedicine Subscribe API")
+    .MapTelemedicineSubscribeApi();
 
 app.Run();

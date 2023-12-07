@@ -1400,3 +1400,102 @@ DELETE {{FrmoAPI_HostAddress}}/org/servicesInfo?oid=1.2.643.5.1.13.13.12.2.31.28
 Content-Type: application/json
 
 ###
+
+GET {{FrmoAPI_HostAddress}}/org/telemedicine?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
+GET {{FrmoAPI_HostAddress}}/org/telemedicine/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=001cd24d-2f93-4060-8cbf-90ff1efeb9af
+Content-Type: application/json
+
+###
+
+POST {{FrmoAPI_HostAddress}}/org/telemedicine?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "name": "string",
+  "buildingId": "string",
+  "depart": {
+    "code": "string",
+    "name": "string"
+  },
+  "subdivision": {
+    "code": "string",
+    "name": "string"
+  },
+  "cabinet": {
+    "code": "string",
+    "name": "string"
+  },
+  "buildings": [
+    {
+      "buildingId": "string",
+      "buildingName": "string",
+      "floors": [
+        {
+          "floorId": "string",
+          "floorName": "string",
+          "rooms": [
+            {
+              "roomId": "string",
+              "roomName": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "schedule": "string",
+  "isSecure": true
+}
+
+###
+
+PUT {{FrmoAPI_HostAddress}}/org/telemedicine?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=001cd24d-2f93-4060-8cbf-90ff1efeb9af
+Content-Type: application/json
+
+{
+  "name": "string",
+  "buildingId": "string",
+  "depart": {
+    "code": "string",
+    "name": "string"
+  },
+  "subdivision": {
+    "code": "string",
+    "name": "string"
+  },
+  "cabinet": {
+    "code": "string",
+    "name": "string"
+  },
+  "buildings": [
+    {
+      "buildingId": "string",
+      "buildingName": "string",
+      "floors": [
+        {
+          "floorId": "string",
+          "floorName": "string",
+          "rooms": [
+            {
+              "roomId": "string",
+              "roomName": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "schedule": "string",
+  "isSecure": true
+}
+
+###
+
+DELETE {{FrmoAPI_HostAddress}}/org/telemedicine?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=001cd24d-2f93-4060-8cbf-90ff1efeb9af
+Content-Type: application/json
+
+###
