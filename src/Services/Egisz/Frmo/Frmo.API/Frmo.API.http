@@ -1499,3 +1499,55 @@ DELETE {{FrmoAPI_HostAddress}}/org/telemedicine?oid=1.2.643.5.1.13.13.12.2.31.28
 Content-Type: application/json
 
 ###
+
+GET {{FrmoAPI_HostAddress}}/eoDepart?eo=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
+POST {{FrmoAPI_HostAddress}}/eoDepart?eo=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "eoDepartName": "Тестовое",
+  "educationType": [
+    {
+      "code": 1,
+      "name": "Среднее – профессиональное",
+      "educationSpec": [
+        {
+          "code": 7,
+          "name": "Медико-профилактическое дело"
+        }
+      ]
+    }
+  ]
+} 
+
+###
+
+PUT {{FrmoAPI_HostAddress}}/eoDepart?eo=1.2.643.5.1.13.13.12.2.31.2855&entityId=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "eoDepartName": "Тестовое",
+  "educationType": [
+    {
+      "code": 1,
+      "name": "Среднее – профессиональное",
+      "educationSpec": [
+        {
+          "code": 7,
+          "name": "Медико-профилактическое дело"
+        }
+      ]
+    }
+  ]
+} 
+
+###
+
+DELETE {{FrmoAPI_HostAddress}}/eoDepart?eo=1.2.643.5.1.13.13.12.2.31.2855&entityId=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###

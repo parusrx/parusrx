@@ -122,5 +122,13 @@ public static class FrmoServiceCollectionExtensions
                 ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true
               })
               .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+
+        services.AddHttpClient<IEducationOrganizationDepartService, EducationOrganizationDepartService>(options => options.BaseAddress = new Uri(uri))
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+            {
+                ClientCertificateOptions = ClientCertificateOption.Manual,
+                ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true
+              })
+              .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
     }
 }
