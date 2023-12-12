@@ -15,6 +15,12 @@ public static class EducationOrganizationDepartSubscribeApi
             return Results.Ok();
         });
 
+        app.MapPost("/", [Topic(daprPubSubName, "GetEducationOrganizationDepartIntegrationEvent")] async([FromBody] MqIntegrationEvent @event, GetEducationOrganizationDepartIntegrationEventHandler handler) =>
+        {
+            await handler.HandleAsync(@event);
+            return Results.Ok();
+        });
+
         app.MapPost("/create", [Topic(daprPubSubName, "CreateEducationOrganizationDepartIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, CreateEducationOrganizationDepartIntegrationEventHandler handler) =>
         {
             await handler.HandleAsync(@event);

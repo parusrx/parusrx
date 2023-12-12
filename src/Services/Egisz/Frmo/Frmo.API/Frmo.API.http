@@ -1505,6 +1505,11 @@ Content-Type: application/json
 
 ###
 
+GET {{FrmoAPI_HostAddress}}/eoDepart/1?eo=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+###
+
 POST {{FrmoAPI_HostAddress}}/eoDepart?eo=1.2.643.5.1.13.13.12.2.31.2855
 Content-Type: application/json
 

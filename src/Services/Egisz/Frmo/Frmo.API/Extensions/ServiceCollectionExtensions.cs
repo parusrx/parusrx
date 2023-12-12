@@ -83,6 +83,7 @@ public static class ServiceCollectionExtensions
         services.AddTransient<DeleteTelemedicineIntegrationEventHandler>();
 
         services.AddTransient<ListEducationOrganizationDepartIntegrationEventHandler>();
+        services.AddTransient<GetEducationOrganizationDepartIntegrationEventHandler>();
         services.AddTransient<CreateEducationOrganizationDepartIntegrationEventHandler>();
         services.AddTransient<UpdateEducationOrganizationDepartIntegrationEventHandler>();
         services.AddTransient<DeleteEducationOrganizationDepartIntegrationEventHandler>();
