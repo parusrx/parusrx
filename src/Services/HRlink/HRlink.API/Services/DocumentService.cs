@@ -36,7 +36,7 @@ public sealed class DocumentService(HttpClient httpClient) : IDocumentService
                 sb.AppendLine("Error Data:");
                 foreach (var (key, value) in errorDetails.ErrorData)
                 {
-                    sb.AppendLine($"{key}: {value}");
+                    sb.AppendLine($"{key}: {value?.ToString()}");
                 }
             }
 

@@ -42,5 +42,5 @@ public record ErrorDetails
     /// Gets or sets the error data.
     /// </summary>
     [JsonPropertyName("errorData")]
-    public Dictionary<string, string>? ErrorData { get; init; }
+    public Dictionary<string, object>? ErrorData { get; init; }
 }
