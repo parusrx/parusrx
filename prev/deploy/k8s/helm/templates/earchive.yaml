@@ -1,0 +1,74 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: earchive-cm
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: parusrx
+    service: earchive
+data:
+  ASPNETCORE_ENVIRONMENT: Development
+  ASPNETCORE_URLS: http://0.0.0.0:80
+  TZ: {{ .Values.db.oracle.tz }}
+  Database__Provider: {{ .Values.db.common.provider }}
+  Database__ConnectionString: {{ .Values.db.common.connectionString }}
+  Urls__EArchive: {{ .Values.earchive.url }}
+
+---
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: earchive
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: parusrx
+    service: earchive
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: earchive
+  template:
+    metadata:
+      labels:
+        app: parusrx
+        service: earchive
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "earchive-api"
+        dapr.io/app-port: "80"
+        dapr.io/config: "dapr-config"
+    spec:
+      containers:
+        - name: earchive-api
+          image: pcr.parusnik.org/parusrx/earchive-api:edge
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: earchive-cm
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: earchive-api
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: parusrx
+    service: earchive
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30004
+      protocol: TCP
+      name: http
+  selector:
+    service: earchive

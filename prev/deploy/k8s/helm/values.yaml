@@ -1,0 +1,22 @@
+namespace: parusrx
+externalDnsNameOrIP: localhost
+
+db:
+  common:
+    provider: Oracle
+    connectionString: User Id=username;Password=password;Data Source=localhost:1521/meta8561
+  oracle:
+    tz: Europe/Moscow
+
+mgd:
+  url: http://185.2.32.120:8888/app
+
+earchive:
+  url: http://194.153.112.64:8123/app
+
+cipher:
+  url: http://127.0.0.1/cipher
+
+dadata:
+  urls:
+    suggestions: https://suggestions.dadata.ru/suggestions/api/4_1/rs

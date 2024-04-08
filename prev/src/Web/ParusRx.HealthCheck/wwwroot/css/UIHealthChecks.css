@@ -1,0 +1,8 @@
+﻿:root {
+    --primaryColor: #0063B1;
+    --secondaryColor: #0078D7;
+    --bgMenuActive: #0078D7;
+    --bgButton: #0063B1;
+    --logoImageUrl: url('https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RWIZMs');
+    --bgAside: var(--primaryColor);
+}

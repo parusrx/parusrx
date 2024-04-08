@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>Preview</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Product>Parus RX</Product>
+    <Authors>Parusnik</Authors>
+    <Company>Parusnik</Company>
+    <Copyright>© Parusnik. All rights reserved.</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageLicenseType>MIT</PackageLicenseType>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
+  </PropertyGroup>
+
+</Project>

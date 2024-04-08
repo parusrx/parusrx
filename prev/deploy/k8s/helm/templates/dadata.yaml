@@ -1,0 +1,74 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: dadata-cm
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: parusrx
+    service: dadata
+data:
+  ASPNETCORE_ENVIRONMENT: Production
+  ASPNETCORE_URLS: http://0.0.0.0:80
+  TZ: {{ .Values.db.oracle.tz }}
+  Database__Provider: {{ .Values.db.common.provider }}
+  Database__ConnectionString: {{ .Values.db.common.connectionString }}
+  Urls__Suggestions: {{ .Values.dadata.urls.suggestions }}
+
+---
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: dadata
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: parusrx
+    service: dadata
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: dadata
+  template:
+    metadata:
+      labels:
+        app: parusrx
+        service: dadata
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "dadata-api"
+        dapr.io/app-port: "80"
+        dapr.io/config: "dapr-config"
+    spec:
+      containers:
+        - name: dadata-api
+          image: pcr.parusnik.org/parusrx/dadata-api:edge
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: dadata-cm
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: dadata-api
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: parusrx
+    service: dadata
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30005
+      protocol: TCP
+      name: http
+  selector:
+    service: dadata

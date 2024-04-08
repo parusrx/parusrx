@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:element name="StoreDocumentRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Credential">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Username">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="Password">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string" />
+                </xsd:simpleType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="StoreDocumentBody">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Name">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:minLength value="1" />
+                    <xsd:maxLength value="4000" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="DocNumber">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:minLength value="1" />
+                    <xsd:maxLength value="160" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="DocSum" minOccurs="0">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="DocDate">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:dateTime" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="DtEnd" minOccurs="0">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:dateTime" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="ExtId">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:long">
+                    <xsd:totalDigits value="17" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="SrcSystem">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:minLength value="1" />
+                    <xsd:maxLength value="36" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="AutomaticResigning">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:boolean" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="DocType">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Name">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:minLength value="1" />
+                          <xsd:maxLength value="400" />
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="Code">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:minLength value="1" />
+                          <xsd:maxLength value="20" />
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="Organisation">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Name">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:minLength value="1" />
+                          <xsd:maxLength value="160" />
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="Inn">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:length value="10" />
+                          <xsd:pattern value="[0-9]{10}"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="Ogrn">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:length value="13" />
+                          <xsd:pattern value="[0-9]{13}"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="Kpp">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                          <xsd:length value="9" />
+                          <xsd:pattern value="[0-9]{9}"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="Attachs">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" name="Attach">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ExtId">
+                            <xsd:simpleType>
+                              <xsd:restriction base="xsd:long">
+                                <xsd:totalDigits value="17" />
+                              </xsd:restriction>
+                            </xsd:simpleType>
+                          </xsd:element>
+                          <xsd:element name="FileName">
+                            <xsd:simpleType>
+                              <xsd:restriction base="xsd:string">
+                                <xsd:minLength value="1" />
+                                <xsd:maxLength value="240" />
+                              </xsd:restriction>
+                            </xsd:simpleType>
+                          </xsd:element>
+                          <xsd:element name="AttachFileType">
+                            <xsd:simpleType>
+                              <xsd:restriction base="xsd:string">
+                                <xsd:minLength value="1" />
+                                <xsd:maxLength value="10" />
+                              </xsd:restriction>
+                            </xsd:simpleType>
+                          </xsd:element>
+                          <xsd:element name="AttachType">
+                            <xsd:simpleType>
+                              <xsd:restriction base="xsd:string">
+                                <xsd:enumeration value="signeddata" />
+                                <xsd:enumeration value="attach" />
+                                <xsd:enumeration value="document" />
+                              </xsd:restriction>
+                            </xsd:simpleType>
+                          </xsd:element>
+                          <xsd:element name="AttachCategory" minOccurs="0">
+                            <xsd:simpleType>
+                              <xsd:restriction base="xsd:string" />
+                            </xsd:simpleType>
+                          </xsd:element>
+                          <xsd:element name="Author" minOccurs="0">
+                            <xsd:simpleType>
+                              <xsd:restriction base="xsd:string" />
+                            </xsd:simpleType>
+                          </xsd:element>
+                          <xsd:element name="File">
+                            <xsd:simpleType>
+                              <xsd:restriction base="xsd:string" />
+                            </xsd:simpleType>
+                          </xsd:element>
+                          <xsd:element name="Signatures">
+                            <xsd:complexType>
+                              <xsd:sequence minOccurs="0">
+                                <xsd:choice maxOccurs="unbounded">
+                                  <xsd:element name="ExtId">
+                                    <xsd:simpleType>
+                                      <xsd:restriction base="xsd:long">
+                                        <xsd:totalDigits value="17" />
+                                      </xsd:restriction>
+                                    </xsd:simpleType>
+                                  </xsd:element>
+                                  <xsd:element name="SignDate">
+                                    <xsd:simpleType>
+                                      <xsd:restriction base="xsd:dateTime" />
+                                    </xsd:simpleType>
+                                  </xsd:element>
+                                  <xsd:element name="File">
+                                    <xsd:simpleType>
+                                      <xsd:restriction base="xsd:string" />
+                                    </xsd:simpleType>
+                                  </xsd:element>
+                                </xsd:choice>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

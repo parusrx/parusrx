@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:element name="DaDataSuggestPartyRequest">
+    <xsd:complexType>
+      <xsd:annotation>
+        <xsd:documentation>Состав и структура файла запроса на получение сведений из DaData.ru (API - подсказки, организация по ИНН или ОГРН).</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+        <xsd:element name="Authorization">
+          <xsd:annotation>
+            <xsd:documentation>Авторизация.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="AccessToken">
+                <xsd:annotation>
+                  <xsd:documentation>Токен доступа.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string" />
+                </xsd:simpleType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="SuggestPartyRequest">
+          <xsd:annotation>
+            <xsd:documentation>Тело запроса на получение информации из DaData.ru.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Query" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                  <xsd:documentation>ИНН или ОГРН юридического лица.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="Count" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                  <xsd:documentation>Количество результатов (максимум 300).</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:int">
+                    <xsd:minInclusive value="1" />
+                    <xsd:maxExclusive value="300" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="Kpp" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>КПП для поиска по филиалам.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="BranchType" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Головная организация (MAIN) или филиал (BRANCH).</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="MAIN" />
+                    <xsd:enumeration value="LEGAL" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="Type" minOccurs="0">
+                <xsd:annotation>
+                  <xsd:documentation>Юрлицо (LEGAL) или индивидуальный предприниматель (INDIVIDUAL).</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="LEGAL" />
+                    <xsd:enumeration value="INDIVIDUAL" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

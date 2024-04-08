@@ -1,0 +1,24 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "dapr-placement": "StartWithoutDebugging",
+        "dadata-api": "StartDebugging",
+        "dadata-api-dapr": "StartWithoutDebugging",
+        "earchive-api": "StartDebugging",
+        "earchive-api-dapr": "StartWithoutDebugging",
+        "healthcheck": "StartDebugging",
+        "helloworld-api": "StartDebugging",
+        "helloworld-api-dapr": "StartWithoutDebugging",
+        "mgd-api": "StartDebugging",
+        "mgd-api-dapr": "StartWithoutDebugging",
+        "rabbitmq": "StartWithoutDebugging",
+        "webproxy": "StartDebugging",
+        "webproxy-dapr": "StartWithoutDebugging",
+        "zipkin": "StartWithoutDebugging"
+      }
+    }
+  }
+}

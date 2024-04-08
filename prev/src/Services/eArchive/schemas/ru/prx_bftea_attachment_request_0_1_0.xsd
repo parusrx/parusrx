@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:element name="AttachmentRequest">
+    <xsd:annotation>
+      <xsd:documentation>Состав и структура файла запроса на получение файла вложения из БФТ.е-Архив.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Credential">
+          <xsd:annotation>
+            <xsd:documentation>Учетные данные.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Username" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>Имя пользователя.</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Password" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>Пароль.</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="AttachmentRequestBody">
+          <xsd:annotation>
+            <xsd:documentation>Тело запроса на получение вложения.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="FileUUID">
+                <xsd:annotation>
+                  <xsd:documentation>Идентификатор файла вложения.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:length value="36" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

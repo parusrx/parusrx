@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:element name="MgdMessageRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Credential">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Username" type="xsd:string" />
+              <xsd:element name="Password" type="xsd:string" />
+              <xsd:element name="CompanyId">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:long">
+                    <xsd:totalDigits value="17" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="CatalogId">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:long">
+                    <xsd:totalDigits value="17" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="JuridicalPersonId">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:long">
+                    <xsd:totalDigits value="17" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

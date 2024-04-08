@@ -1,0 +1,65 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
+  zipkin:
+    image: openzipkin/zipkin-slim
+
+  webproxy:
+    image: ${REGISTRY:-parusrx}/webproxy:${TAG:-edge}
+    build:
+      context: .
+      dockerfile: src/ApiGateways/WebProxy/ParusRx.WebProxy/Dockerfile
+
+  webproxy-dapr:
+    image: "daprio/daprd:1.4.3"
+    network_mode: "service:webproxy"
+    depends_on: 
+      - webproxy
+
+  healthcheck:
+    image: ${REGISTRY:-parusrx}/healthcheck:${TAG:-edge}
+    build:
+      context: .
+      dockerfile: src/Web/ParusRx.HealthCheck/Dockerfile
+
+  mgd-api:
+    image: ${REGISTRY:-parusrx}/mgd-api:${TAG:-edge}
+    build:
+      context: .
+      dockerfile: src/Services/Mgd/ParusRx.Mgd.Api/Dockerfile
+
+  mgd-api-dapr:
+    image: "daprio/daprd:1.4.3"
+    network_mode: "service:mgd-api"
+    depends_on: 
+      - mgd-api
+
+  earchive-api:
+    image: ${REGISTRY:-parusrx}/earchive-api:${TAG:-edge}
+    build:
+      context: .
+      dockerfile: src/Services/eArchive/ParusRx.EArchive.Api/Dockerfile
+
+  earchive-api-dapr:
+    image: "daprio/daprd:1.4.3"
+    network_mode: "service:earchive-api"
+    depends_on: 
+      - earchive-api
+
+  dadata-api:
+    image: ${REGISTRY:-parusrx}/dadata-api:${TAG:-edge}
+    build:
+      context: .
+      dockerfile: src/Services/DaData/ParusRx.DaData.Api/Dockerfile
+
+  dadata-api-dapr:
+    image: "daprio/daprd:1.4.3"
+    network_mode: "service:dadata-api"
+    depends_on:
+      - dadata-api
+
+  dapr-placement:
+    image: "daprio/dapr:1.4.3"

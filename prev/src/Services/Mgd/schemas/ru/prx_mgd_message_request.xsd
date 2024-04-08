@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:element name="MgdMessageRequest">
+    <xsd:annotation>
+      <xsd:documentation>Состав и структура файла запроса на получение сообщения из МГД.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Credential">
+          <xsd:annotation>
+            <xsd:documentation>Учетные данные</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Username" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>Имя пользователя.</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Password" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>Пароль.</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="CompanyId">
+                <xsd:annotation>
+                  <xsd:documentation>Идентификатор органиации.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:long">
+                    <xsd:totalDigits value="17" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="CatalogId">
+                <xsd:annotation>
+                  <xsd:documentation>Идентификатор каталога.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:long">
+                    <xsd:totalDigits value="17" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="JuridicalPersonId">
+                <xsd:annotation>
+                  <xsd:documentation>Идентификатор юридического лица.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:long">
+                    <xsd:totalDigits value="17" />
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:element name="StoreDocumentResponse">
+    <xsd:annotation>
+      <xsd:documentation>Состав и структура сохраненного документа в БФТ.е-Архив.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Document">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Id">
+                <xsd:annotation>
+                  <xsd:documentation>Идентификатор документа.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="Name">
+                <xsd:annotation>
+                  <xsd:documentation>Название документа.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="DocNumber">
+                <xsd:annotation>
+                  <xsd:documentation>Номер документа.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="DtChanged" nillable="true">
+                <xsd:annotation>
+                  <xsd:documentation>Дата изменения.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:dateTime" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="DocDate">
+                <xsd:annotation>
+                  <xsd:documentation>Дата создания документа.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:dateTime" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="DtCreated">
+                <xsd:annotation>
+                  <xsd:documentation>Дата создания документа в архиве.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:dateTime" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="DtEnd" nillable="true">
+                <xsd:annotation>
+                  <xsd:documentation>Дата окончания срока хранения.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:dateTime" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="AutomaticResigning">
+                <xsd:annotation>
+                  <xsd:documentation>Автоматическое переподписание.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:boolean" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="TechnologySignatureExpirationDate" nillable="true">
+                <xsd:annotation>
+                  <xsd:documentation>Дата истечения технологической подписи.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:dateTime" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="ExtId">
+                <xsd:annotation>
+                  <xsd:documentation>Идентификатор документа из внешней системы.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="Version">
+                <xsd:annotation>
+                  <xsd:documentation>Версия.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:int" />
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="DocType">
+                <xsd:annotation>
+                  <xsd:documentation>Тип документа.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Name">
+                      <xsd:annotation>
+                        <xsd:documentation>Название типа документа.</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string" />
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="Code">
+                      <xsd:annotation>
+                        <xsd:documentation>Код типа документа.</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string" />
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="SrcSystem">
+                <xsd:annotation>
+                  <xsd:documentation>Система источник.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Name">
+                      <xsd:annotation>
+                        <xsd:documentation>Название системы источника.</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string" />
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="Code">
+                      <xsd:annotation>
+                        <xsd:documentation>Код системы источника.</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string" />
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="Organisation">
+                <xsd:annotation>
+                  <xsd:documentation>Организация.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Name">
+                      <xsd:annotation>
+                        <xsd:documentation>Название организации.</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string" />
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="Inn">
+                      <xsd:annotation>
+                        <xsd:documentation>ИНН.</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string" />
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="Ogrn">
+                      <xsd:annotation>
+                        <xsd:documentation>ОГРН.</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string" />
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="Kpp">
+                      <xsd:annotation>
+                        <xsd:documentation>КПП.</xsd:documentation>
+                      </xsd:annotation>
+                      <xsd:simpleType>
+                        <xsd:restriction base="xsd:string" />
+                      </xsd:simpleType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="Attachs">
+                <xsd:annotation>
+                  <xsd:documentation>Файлы вложений.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" name="Attach">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Id">
+                            <xsd:annotation>
+                              <xsd:documentation>Идентификатор файла вложения.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                              <xsd:restriction base="xsd:string" />
+                            </xsd:simpleType>
+                          </xsd:element>
+                          <xsd:element name="ExtId">
+                            <xsd:annotation>
+                              <xsd:documentation>Внешний Id файла вложения.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                              <xsd:restriction base="xsd:string" />
+                            </xsd:simpleType>
+                          </xsd:element>
+                          <xsd:element name="FileName">
+                            <xsd:annotation>
+                              <xsd:documentation>Имя файла.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                              <xsd:restriction base="xsd:string" />
+                            </xsd:simpleType>
+                          </xsd:element>
+                          <xsd:element name="Signatures">
+                            <xsd:annotation>
+                              <xsd:documentation>Подписи.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                              <xsd:sequence minOccurs="0">
+                                <xsd:choice maxOccurs="unbounded">
+                                  <xsd:element name="Id">
+                                    <xsd:annotation>
+                                      <xsd:documentation>Идентификатор подписи.</xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:simpleType>
+                                      <xsd:restriction base="xsd:string" />
+                                    </xsd:simpleType>
+                                  </xsd:element>
+                                  <xsd:element name="ExtId">
+                                    <xsd:annotation>
+                                      <xsd:documentation>Внешний идентификатор подписи.</xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:simpleType>
+                                      <xsd:restriction base="xsd:string" />
+                                    </xsd:simpleType>
+                                  </xsd:element>
+                                  <xsd:element name="FileName">
+                                    <xsd:annotation>
+                                      <xsd:documentation>Имя файла подписи.</xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:simpleType>
+                                      <xsd:restriction base="xsd:string" />
+                                    </xsd:simpleType>
+                                  </xsd:element>
+                                </xsd:choice>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
