@@ -115,17 +115,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frmr.Domain", "src\Services
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frmr", "src\Services\Egisz\Frmr\Frmr\Frmr.csproj", "{5C701C84-1485-46B5-9ADF-54C08E10D2A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ips.IdentityProvider", "src\Services\Egisz\Ips\Ips.IdentityProvider\Ips.IdentityProvider.csproj", "{7642B4DE-DAE8-49DC-AF61-1ED6EE424D42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ips.IdentityProvider", "src\Services\Egisz\Ips\Ips.IdentityProvider\Ips.IdentityProvider.csproj", "{7642B4DE-DAE8-49DC-AF61-1ED6EE424D42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ips.IdentityProvider.Abstractions", "src\Services\Egisz\Ips\Ips.IdentityProvider.Abstractions\Ips.IdentityProvider.Abstractions.csproj", "{9C20A9B6-2D7B-4A9A-86F8-BFD3F9890FE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ips.IdentityProvider.Abstractions", "src\Services\Egisz\Ips\Ips.IdentityProvider.Abstractions\Ips.IdentityProvider.Abstractions.csproj", "{9C20A9B6-2D7B-4A9A-86F8-BFD3F9890FE1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D73F88A5-A020-456B-9138-4A6F704CDAA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frmo", "src\Services\Egisz\Frmo\Frmo\Frmo.csproj", "{906176C8-CE6F-412D-9DB2-DB7C67733A4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frmo", "src\Services\Egisz\Frmo\Frmo\Frmo.csproj", "{906176C8-CE6F-412D-9DB2-DB7C67733A4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ips.IdentityProvider.Tests", "src\Services\Egisz\Ips\Ips.IdentityProvider.Tests\Ips.IdentityProvider.Tests.csproj", "{F3198CB1-E043-4885-B525-7C6FD54CD9F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ips.IdentityProvider.Tests", "src\Services\Egisz\Ips\Ips.IdentityProvider.Tests\Ips.IdentityProvider.Tests.csproj", "{F3198CB1-E043-4885-B525-7C6FD54CD9F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egisz.Common", "src\Services\Egisz\Common\ParusRx.Egisz.Common.csproj", "{62E6CB99-9830-451D-AE79-2ACBE3DE15F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParusRx.Egisz.Common", "src\Services\Egisz\Common\ParusRx.Egisz.Common.csproj", "{62E6CB99-9830-451D-AE79-2ACBE3DE15F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Astral", "Astral", "{46087E6A-84B3-4DE0-87CD-2372C3B131F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Astral.API", "src\Services\Astral\Astral.API\Astral.API.csproj", "{001884CB-5C10-4AE1-9D3A-A107E2BAB57C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Astral.Domain", "src\Services\Astral\Astral.Domain\Astral.Domain.csproj", "{70117068-0E19-47E9-97E1-7C9DA580D29C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -277,6 +283,14 @@ Global
 		{62E6CB99-9830-451D-AE79-2ACBE3DE15F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62E6CB99-9830-451D-AE79-2ACBE3DE15F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62E6CB99-9830-451D-AE79-2ACBE3DE15F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{001884CB-5C10-4AE1-9D3A-A107E2BAB57C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{001884CB-5C10-4AE1-9D3A-A107E2BAB57C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{001884CB-5C10-4AE1-9D3A-A107E2BAB57C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{001884CB-5C10-4AE1-9D3A-A107E2BAB57C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70117068-0E19-47E9-97E1-7C9DA580D29C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70117068-0E19-47E9-97E1-7C9DA580D29C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70117068-0E19-47E9-97E1-7C9DA580D29C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70117068-0E19-47E9-97E1-7C9DA580D29C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -343,6 +357,9 @@ Global
 		{906176C8-CE6F-412D-9DB2-DB7C67733A4D} = {FA114103-4BFC-4822-A6C2-6295BB0E4433}
 		{F3198CB1-E043-4885-B525-7C6FD54CD9F1} = {03B301F5-D9BA-424F-8597-EFF51D510A4C}
 		{62E6CB99-9830-451D-AE79-2ACBE3DE15F6} = {D73F88A5-A020-456B-9138-4A6F704CDAA5}
+		{46087E6A-84B3-4DE0-87CD-2372C3B131F8} = {C54BA83C-0E7C-4DEE-B5EC-D51113EED0BC}
+		{001884CB-5C10-4AE1-9D3A-A107E2BAB57C} = {46087E6A-84B3-4DE0-87CD-2372C3B131F8}
+		{70117068-0E19-47E9-97E1-7C9DA580D29C} = {46087E6A-84B3-4DE0-87CD-2372C3B131F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E3B1AA8-DE08-4FE2-85A0-6BC3A39EC317}
