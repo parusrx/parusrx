@@ -3,7 +3,7 @@
 
 namespace ParusRx.Astral.API.Models;
 
-public record SuccessConfirmResponse
+public record PublishEventsResponse
 {
     [XmlElement("status")]
     [JsonPropertyName("status")]
@@ -17,7 +17,8 @@ public record SuccessConfirmResponse
     [JsonPropertyName("title")]
     public required string Title { get; init; }
 
-    [XmlElement("count")]
-    [JsonPropertyName("count")]
-    public required int Count { get; init; }
+    [XmlArray("events")]
+    [XmlArrayItem("event")]
+    [JsonPropertyName("events")]
+    public required EventResult[] Events { get; init; } = Array.Empty<EventResult>();
 }

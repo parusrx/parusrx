@@ -1,6 +1,11 @@
 // Copyright (c) Alexander Bocharov.
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+
+using ParusRx.Astral.API;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,7 +13,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDataAccess(builder.Configuration);
+
+builder.Services.AddIntegrationEventHandlers();
+
+builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<IEventService, EventService>();
+
+builder.Services.AddDaprClient();
+builder.Services.AddDaprEventBus();
+
+builder.Services.AddHealthChecks()
+    .AddCheck("self", () => HealthCheckResult.Healthy());
+
 var app = builder.Build();
+
+app.UseExceptionHandler(options => { });
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -17,29 +37,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.UseCloudEvents();
+app.MapSubscribeHandler();
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true });
+app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Name.Contains("self") });
+
+app.MapGroup("/subscribe")
+    .WithTags("Events Subscribe API")
+    .WithName("EventsSubscribe")
+    .WithOpenApi()
+    .MapEventsSubscribeApi();
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

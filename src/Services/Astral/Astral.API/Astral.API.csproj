@@ -15,6 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapr.AspNetCore" Version="1.13.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
@@ -22,7 +23,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Data\Oracle\src\ParusRx.Data.Oracle.csproj" />
     <ProjectReference Include="..\..\..\Common\Data\PostgreSQL\src\ParusRx.Data.PostgreSQL.csproj" />
+    <ProjectReference Include="..\..\..\Common\EventBus\Dapr\src\ParusRx.EventBus.Dapr.csproj" />
     <ProjectReference Include="..\..\..\Common\EventBus\EventBus\src\ParusRx.EventBus.csproj" />
+    <ProjectReference Include="..\..\..\Common\Storage\Oracle\src\ParusRx.Storage.Oracle.csproj" />
+    <ProjectReference Include="..\..\..\Common\Storage\PostgreSQL\src\ParusRx.Storage.PostgreSQL.csproj" />
     <ProjectReference Include="..\..\..\Common\Xml\src\ParusRx.Xml.csproj" />
     <ProjectReference Include="..\Astral.Domain\Astral.Domain.csproj" />
   </ItemGroup>
