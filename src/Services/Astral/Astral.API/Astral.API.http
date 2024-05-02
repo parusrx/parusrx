@@ -1,6 +1,6 @@
 @Astral.API_HostAddress = http://localhost:5261
 
-GET {{Astral.API_HostAddress}}/weatherforecast/
+POST {{Astral.API_HostAddress}}/subscribe/publish-events/
 Accept: application/json
 
 ###
