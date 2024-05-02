@@ -17,6 +17,7 @@ public record PoaCreateUnifiedRequest
 
     [XmlElement("ВозможностьПередоверия")]
     [JsonPropertyName("ВозможностьПередоверия")]
+    [JsonConverter(typeof(JsonStringEnumMemberConverter<DelegationPossibility>))]
     public required DelegationPossibility DelegationPossibility { get; init; }
 
     [XmlElement("КодНОРегистрацииМЧД")]
@@ -74,6 +75,7 @@ public record Principal
 {
     [XmlElement("Тип")]
     [JsonPropertyName("Тип")]
+    [JsonConverter(typeof(JsonStringEnumMemberConverter<PrincipalType>))]
     public required PrincipalType Type { get; init; }
 
     [XmlElement("Наименование")]
@@ -181,6 +183,7 @@ public record LegalEntityRepresentative
 {
     [XmlElement("Тип")]
     [JsonPropertyName("Тип")]
+    [JsonConverter(typeof(JsonStringEnumMemberConverter<LegalEntityRepresentativeType>))]
     public required LegalEntityRepresentativeType Type { get; init; }
 
     [XmlElement("Наименование")]
@@ -232,6 +235,7 @@ public record PersonalData
 
     [XmlElement("Пол")]
     [JsonPropertyName("Пол")]
+    [JsonConverter(typeof(JsonStringEnumMemberConverter<Gender>))]
     public Gender? Gender { get; init; }
 
     [XmlElement("ИННФЛ")]
@@ -302,6 +306,7 @@ public record IdentityDocument
 
     [XmlElement("Тип")]
     [JsonPropertyName("Тип")]
+    [JsonConverter(typeof(JsonStringEnumMemberConverter<IdentityDocumentType>))]
     public required IdentityDocumentType Type { get; init; }
 
     [XmlElement("СерияНомер")]
@@ -368,6 +373,7 @@ public record AuthorizedRepresentative
 {
     [XmlElement("Тип")]
     [JsonPropertyName("Тип")]
+    [JsonConverter(typeof(JsonStringEnumMemberConverter<AuthorizedRepresentativeType>))]
     public required AuthorizedRepresentativeType Type { get; init; }
 
     [XmlElement("Наименование")]
