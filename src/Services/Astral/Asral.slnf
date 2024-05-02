@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "path": "..\\..\\..\\ParusRX.sln",
+    "projects": [
+      "src\\Services\\Astral\\Astral.API\\Astral.API.csproj",
+      "src\\Services\\Astral\\Astral.Domain\\Astral.Domain.csproj"
+    ]
+  }
+}
