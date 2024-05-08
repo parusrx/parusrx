@@ -7,7 +7,7 @@ public record EducationProf
 {
     [XmlElement("isStudentEducation")]
     [JsonPropertyName("isStudentEducation")]
-    public bool IsStudentEducation { get; init; }
+    public bool? IsStudentEducation { get; init; }
 
     [XmlElement("profId")]
     [JsonPropertyName("profId")]
@@ -15,7 +15,7 @@ public record EducationProf
 
     [XmlElement("isDuplicate")]
     [JsonPropertyName("isDuplicate")]
-    public bool IsDuplicate { get; init; }
+    public bool? IsDuplicate { get; init; }
 
     [XmlElement("educPlace")]
     [JsonPropertyName("educPlace")]
@@ -92,7 +92,7 @@ public record EducationProf
 
     [XmlElement("isTargeted")]
     [JsonPropertyName("isTargeted")]
-    public bool IsTargeted { get; init; }
+    public bool? IsTargeted { get; init; }
 
     [XmlElement("targetedRegionId")]
     [JsonPropertyName("targetedRegionId")]
