@@ -7,6 +7,8 @@ on:
     paths:
       - src/Common/**
       - src/Services/Egisz/Mis/**
+      - src/Services/Egisz/Frmr/Frmr/**
+      - src/Services/Egisz/Frmr/Frmr.Domain/**
       - .github/workflows/mis-api.yml
   pull_request:
     branches:
@@ -14,6 +16,8 @@ on:
     paths:
       - src/Common/**
       - src/Services/Egisz/Mis/**
+      - src/Services/Egisz/Frmr/Frmr/**
+      - src/Services/Egisz/Frmr/Frmr.Domain/**
       - .github/workflows/mis-api.yml
 
 env:
