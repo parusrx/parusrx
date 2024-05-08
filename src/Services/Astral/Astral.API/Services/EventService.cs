@@ -2,6 +2,9 @@
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 
 namespace ParusRx.Astral.API.Services;
 
@@ -11,10 +14,17 @@ public sealed class EventService(HttpClient httpClient) : IEventService
     {
         ArgumentNullException.ThrowIfNull(request);
 
-        string uri = $"{request.Authorization.Uri}\events";
+        string uri = $"{request.Authorization.Url}/events";
         httpClient.DefaultRequestHeaders.Add("X-API-Key", request.Authorization.ApiKey);
 
-        var response = await httpClient.PostAsJsonAsync(uri, request.PublishEventsRequest, cancellationToken);
+        JsonSerializerOptions options = new()
+        {
+            WriteIndented = true,
+            Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+
+        var response = await httpClient.PostAsJsonAsync(uri, request.PublishEventsRequest, options, cancellationToken);
 
         if (!response.IsSuccessStatusCode) 
         {

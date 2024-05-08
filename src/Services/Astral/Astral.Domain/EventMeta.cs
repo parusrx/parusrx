@@ -1,9 +1,13 @@
 ﻿// Copyright (c) Alexander Bocharov.
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
+using System.Runtime.Serialization;
+
 namespace ParusRx.Astral.Domain;
 
 [JsonConverter(typeof(EventJsonConverter))]
+[XmlInclude(typeof(PoaCreateUnifiedRequest))]
+[KnownType(typeof(PoaCreateUnifiedRequest))]
 public record EventMeta
 {
     [XmlElement("id")]

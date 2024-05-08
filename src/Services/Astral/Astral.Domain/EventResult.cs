@@ -1,8 +1,15 @@
 ﻿// Copyright (c) Alexander Bocharov.
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
-namespace ParusRx.Astral.API.Models;
+using System.Runtime.Serialization;
 
+namespace ParusRx.Astral.Domain;
+
+[JsonConverter(typeof(EventResultJsonConverter))]
+[XmlInclude(typeof(PoaCreateUnifiedRequest))]
+[XmlInclude(typeof(PoaCreateUnifiedResponse))]
+[KnownType(typeof(PoaCreateUnifiedRequest))]
+[KnownType(typeof(PoaCreateUnifiedResponse))]
 public record EventResult
 {
     [XmlElement("id")]

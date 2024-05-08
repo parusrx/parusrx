@@ -5,8 +5,8 @@ namespace ParusRx.Astral.API.Models;
 
 public sealed record Authorization
 {
-    [XmlElement("uri")]
-    public required string Uri { get; init; }
+    [XmlElement("url")]
+    public required string Url { get; init; }
 
     [XmlElement("apiKey")]
     public required string ApiKey { get; init; }

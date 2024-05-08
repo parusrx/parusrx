@@ -378,11 +378,11 @@ public record AuthorizedRepresentative
 
     [XmlElement("Наименование")]
     [JsonPropertyName("Наименование")]
-    public required string Name { get; init; }
+    public string? Name { get; init; }
 
     [XmlElement("ИНН")]
     [JsonPropertyName("ИНН")]
-    public required string Inn { get; init; }
+    public string? Inn { get; init; }
 
     [XmlElement("ОГРН")]
     [JsonPropertyName("ОГРН")]
@@ -390,15 +390,15 @@ public record AuthorizedRepresentative
 
     [XmlElement("КПП")]
     [JsonPropertyName("КПП")]
-    public required string Kpp { get; init; }
+    public string? Kpp { get; init; }
 
     [XmlElement("КодСтраныРегистрации")]
     [JsonPropertyName("КодСтраныРегистрации")]
-    public required string RegistrationCountryCode { get; init; }
+    public string? RegistrationCountryCode { get; init; }
 
     [XmlElement("РегистрационныйНомер")]
     [JsonPropertyName("РегистрационныйНомер")]
-    public required string RegistrationNumber { get; init; }
+    public string? RegistrationNumber { get; init; }
 
     [XmlElement("НомерЗаписиОбАккредитации")]
     [JsonPropertyName("НомерЗаписиОбАккредитации")]
@@ -448,7 +448,7 @@ public record Authority
 
     [XmlElement("ТекстовоеОписаниеПолномочий")]
     [JsonPropertyName("ТекстовоеОписаниеПолномочий")]
-    public required string Description { get; init; }
+    public string? Description { get; init; }
 
     [XmlArray("СписокПолномочий")]
     [XmlArrayItem("Полномочие")]
