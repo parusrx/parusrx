@@ -52,7 +52,7 @@ public record EducationProf
 
     [XmlElement("docDate")]
     [JsonPropertyName("docDate")]
-    public DateTime DocDate { get; init; }
+    public DateTime? DocDate { get; init; }
 
     [XmlElement("institutionId")]
     [JsonPropertyName("institutionId")]
