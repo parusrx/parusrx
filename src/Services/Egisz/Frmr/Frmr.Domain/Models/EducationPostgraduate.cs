@@ -11,7 +11,7 @@ public record EducationPostgraduate
 
     [XmlElement("isDuplicate")]
     [JsonPropertyName("isDuplicate")]
-    public bool IsDuplicate { get; set; }
+    public bool? IsDuplicate { get; set; }
 
     [XmlElement("educPlace")]
     [JsonPropertyName("educPlace")]
@@ -27,7 +27,7 @@ public record EducationPostgraduate
 
     [XmlElement("isStudying")]
     [JsonPropertyName("isStudying")]
-    public bool IsStudying { get; set; }
+    public bool? IsStudying { get; set; }
 
     [XmlElement("beginYear")]
     [JsonPropertyName("beginYear")]
@@ -95,7 +95,7 @@ public record EducationPostgraduate
 
     [XmlElement("isTargeted")]
     [JsonPropertyName("isTargeted")]
-    public bool IsTargeted { get; set; }
+    public bool? IsTargeted { get; set; }
 
     [XmlElement("targetedRegionId")]
     [JsonPropertyName("targetedRegionId")]
