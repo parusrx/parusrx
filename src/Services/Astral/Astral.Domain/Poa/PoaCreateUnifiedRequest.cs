@@ -9,11 +9,11 @@ public record PoaCreateUnifiedRequest
 {
     [XmlElement("ДатаНачалаДействия")]
     [JsonPropertyName("ДатаНачалаДействия")]
-    public required DateTime EffectiveDate { get; init; }
+    public required string EffectiveDate { get; init; }
 
     [XmlElement("ДатаОкончанияДействия")]
     [JsonPropertyName("ДатаОкончанияДействия")]
-    public required DateTime ExpirationDate { get; init; }
+    public required string ExpirationDate { get; init; }
 
     [XmlElement("ВозможностьПередоверия")]
     [JsonPropertyName("ВозможностьПередоверия")]
@@ -39,7 +39,7 @@ public record PoaCreateUnifiedRequest
 
     [XmlElement("ДатаВнутреннейРегистрации")]
     [JsonPropertyName("ДатаВнутреннейРегистрации")]
-    public DateTime? InternalRegistrationDate { get; init; }
+    public string? InternalRegistrationDate { get; init; }
 
     [XmlArray("СведенияОДоверителях")]
     [XmlArrayItem("СведенияОДоверителе")]
