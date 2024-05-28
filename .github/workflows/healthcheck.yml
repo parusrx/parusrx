@@ -1,0 +1,64 @@
+name: healthcheck
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/Web/HealthCheck/**
+      - .github/workflows/healthcheck.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/Web/HealthCheck/**
+      - .github/workflows/healthcheck.yml
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  REGISTRY_ENDPOINT: docker.io
+
+jobs:
+  build-for-pr-linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Build
+        run: dotnet build -c Release src/Web/Web.slnf
+
+      - name: Test
+        run: dotnet test -c Release src/Web/Web.slnf
+
+  build-linux:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Login to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ ENV.REGISTRY_ENDPOINT }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Build
+        run: dotnet build -c Release src/Web/Web.slnf
+
+      - name: Test
+        run: dotnet test -c Release src/Web/Web.slnf
+
+      - name: Publish
+        run: dotnet publish src/Web/Web.slnf -r linux-x64 -p PublishProfile=DefaultContainer -p ContainerRegistry=${{ ENV.REGISTRY_ENDPOINT }} -p ContainerImageTag=dev
