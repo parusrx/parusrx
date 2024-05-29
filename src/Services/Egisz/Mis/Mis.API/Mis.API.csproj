@@ -15,6 +15,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Frmo\Frmo\Frmo.csproj" />
     <ProjectReference Include="..\..\Frmr\Frmr\Frmr.csproj" />
     <ProjectReference Include="..\..\Ips\Ips.IdentityProvider\Ips.IdentityProvider.csproj" />

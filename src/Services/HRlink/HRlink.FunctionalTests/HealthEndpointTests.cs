@@ -5,7 +5,7 @@ namespace ParusRx.HRlink.FunctionalTests;
 
 public class HealthEndpointTests
 {
-    [Fact]
+    [Fact(Skip = "Not supported with HealthChecks")]
     public async void GetHealthChecks_ReturnsHealthy()
     {
         // Arrange

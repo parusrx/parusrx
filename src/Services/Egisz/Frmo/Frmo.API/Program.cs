@@ -1,6 +1,8 @@
 // Copyright (c) Alexander Bocharov.
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
+using HealthChecks.UI.Client;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDistributedMemoryCache();
@@ -26,7 +28,7 @@ app.UseExceptionHandler(options => { });
 app.UseCloudEvents();
 app.MapSubscribeHandler();
 
-app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true });
+app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true, ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
 app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Name.Contains("self") });
 
 app.MapGroup("/org")

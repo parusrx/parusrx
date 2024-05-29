@@ -2,6 +2,8 @@
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
 using System.Text.Json.Serialization;
+using HealthChecks.UI.Client;
+
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -22,7 +24,7 @@ var app = builder.Build();
 app.UseCloudEvents();
 app.MapSubscribeHandler();
 
-app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true });
+app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true, ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
 app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Name.Contains("self") });
 
 app.MapPost("api/v1/mq", async (MessageQueue message, [FromServices] IEventBus eventBus) =>

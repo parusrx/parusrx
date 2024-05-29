@@ -2,6 +2,8 @@
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
 using Dapr;
+using HealthChecks.UI.Client;
+
 using ParusRx.DaData.API;
 
 var builder = WebApplication.CreateSlimBuilder(args);
@@ -47,7 +49,7 @@ var app = builder.Build();
 app.UseCloudEvents();
 app.MapSubscribeHandler();
 
-app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true });
+app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true, ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
 app.MapHealthChecks("/liveness", new HealthCheckOptions { Predicate = r => r.Name.Contains("self") });
 
 app.MapPost("/api/v1/suggestions", [Topic("pubsub", "DaDataSuggestionsFindByIdPartyIntegrationEvent")] async (MqIntegrationEvent @event, SuggestPartyIntegrationEventHandler handler) =>
