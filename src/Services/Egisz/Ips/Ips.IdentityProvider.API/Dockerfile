@@ -41,5 +41,5 @@ RUN dotnet publish "src/Services/Egisz/Ips/Ips.IdentityProvider.API/Ips.Identity
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-HEALTHCHECK CMD wget -q0- -t1 http://localhost:80/health || exit 1
+#HEALTHCHECK CMD wget -q0- -t1 http://localhost:80/health || exit 1
 ENTRYPOINT ["dotnet", "Ips.IdentityProvider.API.dll"]
