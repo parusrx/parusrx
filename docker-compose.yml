@@ -121,7 +121,7 @@ services:
   ips-identity-provider-api:
     image: parusrx/ips-identity-provider-api:dev
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - JWT__AUTH__SUBJECT=${JWT_AUTH_SUBJECT}
       - JWT__AUTH__AUDIENCE=${JWT_AUTH_AUDIENCE}
       - JWT__AUTH__TOKENLIFETIME=0.00:05:00
