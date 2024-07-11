@@ -51,17 +51,13 @@ public record AccreditationProcedure
     [JsonPropertyName("post")]
     public string? Post { get; init; }
 
-    [XmlElement("specId")]
-    [JsonPropertyName("specId")]
-    public int? SpecId { get; init; }
-
     [XmlElement("spec")]
     [JsonPropertyName("spec")]
-    public string? Spec { get; init; }
+    public Spec? Spec { get; init; }
 
-    [XmlElement("mpSpecId")]
-    [JsonPropertyName("mpSpecId")]
-    public int? MpSpecId { get; init; }
+    [XmlElement("mpSpec")]
+    [JsonPropertyName("mpSpec")]
+    public MpSpec? MpSpec { get; init; }
 
     [XmlElement("profStandardId")]
     [JsonPropertyName("profStandardId")]
