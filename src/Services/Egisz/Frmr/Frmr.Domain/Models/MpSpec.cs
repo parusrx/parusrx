@@ -7,7 +7,7 @@ public record MpSpec
 {
     [XmlElement("code")]
     [JsonPropertyName("code")]
-    public string? Code { get; init; }
+    public int? Code { get; init; }
 
     [XmlElement("name")]
     [JsonPropertyName("name")]
