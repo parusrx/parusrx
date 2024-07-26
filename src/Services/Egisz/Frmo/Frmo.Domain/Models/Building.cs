@@ -173,9 +173,9 @@ public record Building
     [JsonPropertyName("isAdapted")]
     public bool? IsAdapted { get; init; }
 
-    [XmlElement("isAccesibleEnv")]
-    [JsonPropertyName("isAccesibleEnv")]
-    public bool? IsAccesibleEnv { get; init; }
+    [XmlElement("isAccessibleEnv")]
+    [JsonPropertyName("isAccessibleEnv")]
+    public bool? IsAccessibleEnv { get; init; }
 
     [XmlElement("isHistorical")]
     [JsonPropertyName("isHistorical")]
@@ -193,9 +193,9 @@ public record Building
     [JsonPropertyName("builtUpArea")]
     public double? BuiltUpArea { get; init; }
 
-    [XmlElement("starCost")]
-    [JsonPropertyName("starCost")]
-    public double? StarCost { get; init; }
+    [XmlElement("startCost")]
+    [JsonPropertyName("startCost")]
+    public double? StartCost { get; init; }
 
     [XmlElement("depreciationCost")]
     [JsonPropertyName("depreciationCost")]
