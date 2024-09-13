@@ -34,6 +34,7 @@ builder.Services.AddTransient<LegalEntityBulkDataSyncTaskRequestIntegrationEvent
 builder.Services.AddTransient<UserBulkDataSyncTaskRequestIntegrationEventHandler>();
 builder.Services.AddTransient<FilesUploadRequestIntegrationEventHandler>();
 builder.Services.AddTransient<CreateDocumentGroupIntegrationEventHandler>();
+builder.Services.AddTransient<SendToSigningIntegrationEventHandler>();
 
 // Data access
 string provider = builder.Configuration["Database:Provider"] ?? string.Empty;
@@ -110,7 +111,13 @@ pubsub.MapPost("/files", [Topic(DaprPubSubName, "FilesUploadRequestIntegrationEv
     return Results.Created();
 });
 
-pubsub.MapPost("/doument-groups", [Topic(DaprPubSubName, "CreateDocumentGroupIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] CreateDocumentGroupIntegrationEventHandler handler) => 
+pubsub.MapPost("/document-groups", [Topic(DaprPubSubName, "CreateDocumentGroupIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] CreateDocumentGroupIntegrationEventHandler handler) => 
+{
+    await handler.HandleAsync(@event);
+    return Results.Created();
+});
+
+pubsub.MapPost("/document-groups/send-to-signing", [Topic(DaprPubSubName, "SendToSigningIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] SendToSigningIntegrationEventHandler handler) =>
 {
     await handler.HandleAsync(@event);
     return Results.Created();
