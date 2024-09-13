@@ -119,8 +119,21 @@ public class PubSubEndpointsTests
         var @event = new MqIntegrationEvent(Guid.NewGuid().ToString());
 
         // Act
-        var response = await client.PostAsJsonAsync("/api/v1/pubsub/doument-groups", @event);
+        var response = await client.PostAsJsonAsync("/api/v1/pubsub/document-groups", @event);
 
+        // Assert
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+    }
+
+    [Fact]
+    public async Task Post_SendToSigningIntegrationEvent_Returns_Created()
+    {
+        // Arrange
+        var application = new HRlinkApplication();
+        var client = application.CreateClient();
+        var @event = new MqIntegrationEvent(Guid.NewGuid().ToString());
+        // Act
+        var response = await client.PostAsJsonAsync("/api/v1/pubsub/document-groups/send-to-signing", @event);
         // Assert
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
     }

@@ -5,8 +5,6 @@ using HealthChecks.UI.Client;
 
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using ParusRx.HRlink.API.Services;
-
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
