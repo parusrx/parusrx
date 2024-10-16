@@ -21,6 +21,7 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddHttpClient<IFileService, FileService>();
 builder.Services.AddHttpClient<IDocumentService, DocumentService>();
+builder.Services.AddHttpClient<IRouteTemplateService, RouteTemplateService>();
 
 builder.Services.AddTransient<IBulkDataSyncTaskClient, BulkDataSyncTaskClient>();
 builder.Services.AddTransient<DocumentTypeRequestIntegrationEventHandler>();
