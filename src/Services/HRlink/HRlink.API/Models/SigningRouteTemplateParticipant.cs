@@ -71,6 +71,7 @@ public record SigningRouteTemplateParticipant
     /// </summary>
     [XmlElement("autoSelectRuleType")]
     [JsonPropertyName("autoSelectRuleType")]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public AutoSelectParticipantRuleType? AutoSelectRuleType { get; init; }
 
     /// <summary>

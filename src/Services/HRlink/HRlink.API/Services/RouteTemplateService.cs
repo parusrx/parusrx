@@ -41,7 +41,7 @@ public sealed class RouteTemplateService(HttpClient httpClient) : IRouteTemplate
                 null,
                 response.StatusCode);
         }
-
+        var str = await response.Content.ReadAsStringAsync(cancellationToken);
         var routeTemplateResponse = await response.Content.ReadFromJsonAsync<RouteTemplateResponse>(cancellationToken);
         return routeTemplateResponse;
     }

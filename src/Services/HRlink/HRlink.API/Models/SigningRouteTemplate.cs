@@ -50,8 +50,9 @@ public record SigningRouteTemplate
     /// </summary>
     [XmlElement("templateKey")]
     [JsonPropertyName("templateKey")]
-    [JsonConverter(typeof(JsonStringEnumConverter))]
-    public TemplateKey? TemplateKey { get; init; }
+    //[JsonConverter(typeof(JsonStringEnumConverter))]
+    //public TemplateKey? TemplateKey { get; init; }
+    public string? TemplateKey { get; init; }
 
     /// <summary>
     /// Gets or sets the created date of the signing route template.
