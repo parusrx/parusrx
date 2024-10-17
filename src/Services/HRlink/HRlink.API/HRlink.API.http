@@ -39,3 +39,13 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{url}}/api/v1/pubsub/route-templates
+Accept: application/json
+Content-Type: application/json
+
+{
+    "body": "03693B95-D933-9B85-E063-910A14ACFEBF"
+}
+
+###

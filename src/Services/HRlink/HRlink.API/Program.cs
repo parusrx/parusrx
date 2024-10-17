@@ -21,6 +21,7 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddHttpClient<IFileService, FileService>();
 builder.Services.AddHttpClient<IDocumentService, DocumentService>();
+builder.Services.AddHttpClient<IRouteTemplateService, RouteTemplateService>();
 
 builder.Services.AddTransient<IBulkDataSyncTaskClient, BulkDataSyncTaskClient>();
 builder.Services.AddTransient<DocumentTypeRequestIntegrationEventHandler>();
@@ -33,6 +34,7 @@ builder.Services.AddTransient<UserBulkDataSyncTaskRequestIntegrationEventHandler
 builder.Services.AddTransient<FilesUploadRequestIntegrationEventHandler>();
 builder.Services.AddTransient<CreateDocumentGroupIntegrationEventHandler>();
 builder.Services.AddTransient<SendToSigningIntegrationEventHandler>();
+builder.Services.AddTransient<RouteTemplateRequestIntegrationEventHandler>();
 
 // Data access
 string provider = builder.Configuration["Database:Provider"] ?? string.Empty;
@@ -116,6 +118,12 @@ pubsub.MapPost("/document-groups", [Topic(DaprPubSubName, "CreateDocumentGroupIn
 });
 
 pubsub.MapPost("/document-groups/send-to-signing", [Topic(DaprPubSubName, "SendToSigningIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] SendToSigningIntegrationEventHandler handler) =>
+{
+    await handler.HandleAsync(@event);
+    return Results.Created();
+});
+
+pubsub.MapPost("/route-templates", [Topic(DaprPubSubName, "RouteTemplateListIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] RouteTemplateRequestIntegrationEventHandler handler) =>
 {
     await handler.HandleAsync(@event);
     return Results.Created();
