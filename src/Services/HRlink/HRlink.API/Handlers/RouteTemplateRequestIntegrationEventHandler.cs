@@ -21,17 +21,8 @@ public class RouteTemplateRequestIntegrationEventHandler(IParusRxStore store, IR
 
         try
         {
-            //byte[] data = await store.ReadDataRequestAsync(id);
-            //var request = XmlSerializerUtility.Deserialize<RouteTemplateRequest>(data);
-            var request = new RouteTemplateRequest
-            {
-                Authorization = new AuthorizationContext
-                { 
-                    ApiToken = "1d551d11-de1b-4c86-931a-11a8aaa5da0d",
-                    ClientId = "84af8abc-3720-4f7f-966a-05d2c6fcc8e2",
-                    Url = "https://testparusnik.hr-link.ru",
-                }
-            };
+            byte[] data = await store.ReadDataRequestAsync(id);
+            var request = XmlSerializerUtility.Deserialize<RouteTemplateRequest>(data);
 
             if (request is not null)
             {
