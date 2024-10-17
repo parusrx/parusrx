@@ -12,7 +12,7 @@ namespace ParusRx.HRlink.API.Services;
 public sealed class RouteTemplateService(HttpClient httpClient) : IRouteTemplateService
 {
     /// <inheritdoc />
-    public async ValueTask<RouteTemplateResponse> GetRouteTemplatesAsync(RouteTemplateRequest request, CancellationToken cancellationToken = default)
+    public async ValueTask<RouteTemplateResponse?> GetRouteTemplatesAsync(RouteTemplateRequest request, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(request);
 
@@ -43,8 +43,6 @@ public sealed class RouteTemplateService(HttpClient httpClient) : IRouteTemplate
         }
 
         var routeTemplateResponse = await response.Content.ReadFromJsonAsync<RouteTemplateResponse>(cancellationToken);
-        return routeTemplateResponse is null
-            ? throw new HttpRequestException("Failed to deserialize RouteTemplateResponse.", null, response.StatusCode)
-            : routeTemplateResponse;
+        return routeTemplateResponse;
     }
 }

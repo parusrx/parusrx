@@ -14,5 +14,5 @@ public interface IRouteTemplateService
     /// <param name="request">The <see cref="RouteTemplateRequest"/>.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The <see cref="RouteTemplateResponse"/>.</returns>
-    ValueTask<RouteTemplateResponse> GetRouteTemplatesAsync(RouteTemplateRequest request, CancellationToken cancellationToken = default);
+    ValueTask<RouteTemplateResponse?> GetRouteTemplatesAsync(RouteTemplateRequest request, CancellationToken cancellationToken = default);
 }
