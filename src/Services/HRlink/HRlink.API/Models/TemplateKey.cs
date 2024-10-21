@@ -75,6 +75,12 @@ public enum TemplateKey
     EMPLOYEE_AND_HEAD_MANAGER_AND_ADDITIONAL_FOUR_HEAD_MANAGER_AND_HR,
 
     /// <summary>
+    /// The employee and additional four employees and HR.
+    /// </summary>
+    [XmlEnum("EMPLOYEE_ADDITIONAL_FOUR_EMPLOYEES_AND_HR")]
+    EMPLOYEE_ADDITIONAL_FOUR_EMPLOYEES_AND_HR,
+
+    /// <summary>
     /// The manager first.
     /// </summary>
     [XmlEnum("MANAGER_FIRST")]
