@@ -29,6 +29,54 @@ public enum TemplateKey
     /// <summary>
     /// The two approver and HR.
     /// </summary>
-    [XmlEnum("TWO_APPROVER_AND_HR ")]
-    TWO_APPROVER_AND_HR
+    [XmlEnum("TWO_APPROVER_AND_HR")]
+    TWO_APPROVER_AND_HR,
+
+    /// <summary>
+    /// The employee functional head, manager, and HR.
+    /// </summary>
+    [XmlEnum("EMPLOYEE_FUNCTIONAL_HEAD_MANAGER_AND_HR")]
+    EMPLOYEE_FUNCTIONAL_HEAD_MANAGER_AND_HR,
+
+    /// <summary>
+    /// The employee functional head, manager, department head, manager, and HR.
+    /// </summary>
+    [XmlEnum("EMPLOYEE_FUNCTIONAL_HEAD_MANAGER_DEPARTMENT_HEAD_MANAGER_AND_HR")]
+    EMPLOYEE_FUNCTIONAL_HEAD_MANAGER_DEPARTMENT_HEAD_MANAGER_AND_HR,
+
+    /// <summary>
+    /// The employee department head, manager, functional head, manager, and HR.
+    /// </summary>
+    [XmlEnum("EMPLOYEE_DEPARTMENT_HEAD_MANAGER_FUNCTIONAL_HEAD_MANAGER_AND_HR")]
+    EMPLOYEE_DEPARTMENT_HEAD_MANAGER_FUNCTIONAL_HEAD_MANAGER_AND_HR,
+
+    /// <summary>
+    /// The manager first.
+    /// </summary>
+    [XmlEnum("MANAGER_FIRST")]
+    MANAGER_FIRST,
+
+    /// <summary>
+    /// The employee first.
+    /// </summary>
+    [XmlEnum("EMPLOYEE_FIRST")]
+    EMPLOYEE_FIRST,
+
+    /// <summary>
+    /// The employee only.
+    /// </summary>
+    [XmlEnum("EMPLOYEE_ONLY")]
+    EMPLOYEE_ONLY,
+
+    /// <summary>
+    /// The manager only.
+    /// </summary>
+    [XmlEnum("MANAGER_ONLY")]
+    MANAGER_ONLY,
+
+    /// <summary>
+    /// The route.
+    /// </summary>
+    [XmlEnum("ROUTE")]
+    ROUTE
 }
