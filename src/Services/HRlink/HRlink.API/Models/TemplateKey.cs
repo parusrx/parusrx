@@ -108,5 +108,11 @@ public enum TemplateKey
     /// The route.
     /// </summary>
     [XmlEnum("ROUTE")]
-    ROUTE
+    ROUTE,
+
+    /// <summary>
+    /// The inform.
+    /// </summary>
+    [XmlEnum("TO_INFORM")]
+    TO_INFORM
 }
