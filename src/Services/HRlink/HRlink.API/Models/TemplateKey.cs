@@ -63,6 +63,12 @@ public enum TemplateKey
     EMPLOYEE_DEPARTMENT_HEAD_MANAGER_AND_HIS_DEPARTMENT_HEAD_MANAGER_AND_HR,
 
     /// <summary>
+    /// The HR and employee department head manager and HR.
+    /// </summary>
+    [XmlEnum("HR_AND_EMPLOYEE_DEPARTMENT_HEAD_MANAGER_AND_HR")]
+    HR_AND_EMPLOYEE_DEPARTMENT_HEAD_MANAGER_AND_HR,
+
+    /// <summary>
     /// The manager first.
     /// </summary>
     [XmlEnum("MANAGER_FIRST")]
