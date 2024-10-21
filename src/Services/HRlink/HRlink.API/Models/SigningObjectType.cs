@@ -17,6 +17,6 @@ public enum SigningObjectType
     /// <summary>
     /// The application.
     /// </summary>
-    [XmlEnum("APPLICATION ")]
+    [XmlEnum("APPLICATION")]
     APPLICATION
 }
