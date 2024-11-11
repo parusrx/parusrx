@@ -6,6 +6,18 @@ namespace ParusRx.HRlink.API.Models;
 /// <summary>
 /// Represents a send to signing request.
 /// </summary>
-public record SendToSigningRequest : CreateDocumentGroupRequest
+[XmlRoot("sendToSigningRequest")]
+public record SendToSigningRequest
 {
+    /// <summary>
+    /// Gets or sets the authorization context.
+    /// </summary>
+    [XmlElement("authorization")]
+    public required AuthorizationContext Authorization { get; init; }
+
+    /// <summary>
+    /// Gets or sets the document group.
+    /// </summary>
+    [XmlElement("documentGroup")]
+    public required DocumentGroupRequestItem DocumentGroup { get; init; }
 }
