@@ -3,7 +3,7 @@
 
 namespace ParusRx.Egisz.Frmo.Domain;
 
-public record HospitalModelId
+public record HospitalModeId
 {
     [XmlElement("code")]
     [JsonPropertyName("code")]

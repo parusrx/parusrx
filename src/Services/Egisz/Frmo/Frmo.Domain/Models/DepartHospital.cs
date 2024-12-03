@@ -5,9 +5,9 @@ namespace ParusRx.Egisz.Frmo.Domain;
 
 public record DepartHospital
 {
-    [XmlElement("hospitalModelId")]
-    [JsonPropertyName("hospitalModelId")]
-    public HospitalModelId? HospitalModelId { get; init; }
+    [XmlElement("hospitalModeId")]
+    [JsonPropertyName("hospitalModeId")]
+    public HospitalModeId? HospitalModeId { get; init; }
 
     [XmlElement("ambulance")]
     [JsonPropertyName("ambulance")]
