@@ -9,6 +9,8 @@ on:
       - src/Services/Egisz/Mis/**
       - src/Services/Egisz/Frmr/Frmr/**
       - src/Services/Egisz/Frmr/Frmr.Domain/**
+      - src/Services/Egisz/Frmo/Frmo/**
+      - src/Services/Egisz/Frmo/Frmo.Domain/**
       - .github/workflows/mis-api.yml
   pull_request:
     branches:
@@ -18,6 +20,8 @@ on:
       - src/Services/Egisz/Mis/**
       - src/Services/Egisz/Frmr/Frmr/**
       - src/Services/Egisz/Frmr/Frmr.Domain/**
+      - src/Services/Egisz/Frmo/Frmo/**
+      - src/Services/Egisz/Frmo/Frmo.Domain/**
       - .github/workflows/mis-api.yml
 
 env:
