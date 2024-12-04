@@ -9,7 +9,8 @@ public record DepartRegRoom
     [JsonPropertyName("oid")]
     public string Oid { get; init; } = default!;
 
-    [XmlElement("healthCareProfile")]
+    [XmlArray("healthCareProfile")]
+    [XmlArrayItem("healthCareProfileItem")]
     [JsonPropertyName("healthCareProfile")]
     public HealthCareProfile[]? HealthCareProfile { get; init; }
 
