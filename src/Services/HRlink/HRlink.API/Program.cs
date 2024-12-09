@@ -23,6 +23,8 @@ builder.Services.AddHttpClient<IFileService, FileService>();
 builder.Services.AddHttpClient<IDocumentService, DocumentService>();
 builder.Services.AddHttpClient<IRouteTemplateService, RouteTemplateService>();
 
+builder.Services.AddSingleton<IAutoUpdateDocumentStatusService, OracleAutoUpdateDocumentStatusService>();
+
 builder.Services.AddTransient<IBulkDataSyncTaskClient, BulkDataSyncTaskClient>();
 builder.Services.AddTransient<DocumentTypeRequestIntegrationEventHandler>();
 builder.Services.AddTransient<EmployeeRoleRequestIntegrationEventHandler>();
@@ -126,6 +128,12 @@ pubsub.MapPost("/document-groups/send-to-signing", [Topic(DaprPubSubName, "SendT
 pubsub.MapPost("/route-templates", [Topic(DaprPubSubName, "RouteTemplateListIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] RouteTemplateRequestIntegrationEventHandler handler) =>
 {
     await handler.HandleAsync(@event);
+    return Results.Created();
+});
+
+pubsub.MapPost("/auto-update-document", [Topic(DaprPubSubName, "AutoUpdateDocumentStatusIntegrationEvent")] async ([FromServices] IAutoUpdateDocumentStatusService autoUpdaterDocument) =>
+{
+    await autoUpdaterDocument.ExecuteAsync();
     return Results.Created();
 });
 

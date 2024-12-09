@@ -49,3 +49,9 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{url}}/api/v1/pubsub/auto-update-document
+Accept: application/json
+Content-Type: application/json
+
+###
