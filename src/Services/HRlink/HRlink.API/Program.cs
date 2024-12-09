@@ -131,7 +131,7 @@ pubsub.MapPost("/route-templates", [Topic(DaprPubSubName, "RouteTemplateListInte
     return Results.Created();
 });
 
-pubsub.MapPost("/auto-update-document", [Topic(DaprPubSubName, "AutoUpdateDocumentStatusIntegrationEvent")] async ([FromServices] IAutoUpdateDocumentStatusService autoUpdaterDocument) =>
+app.MapPost("/auto-update-document", async ([FromServices] IAutoUpdateDocumentStatusService autoUpdaterDocument) =>
 {
     await autoUpdaterDocument.ExecuteAsync();
     return Results.Created();
