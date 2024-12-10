@@ -23,7 +23,7 @@ builder.Services.AddHttpClient<IFileService, FileService>();
 builder.Services.AddHttpClient<IDocumentService, DocumentService>();
 builder.Services.AddHttpClient<IRouteTemplateService, RouteTemplateService>();
 
-builder.Services.AddSingleton<IAutoUpdateDocumentStatusService, OracleAutoUpdateDocumentStatusService>();
+builder.Services.AddTransient<IAutoUpdateDocumentStatusService, OracleAutoUpdateDocumentStatusService>();
 
 builder.Services.AddTransient<IBulkDataSyncTaskClient, BulkDataSyncTaskClient>();
 builder.Services.AddTransient<DocumentTypeRequestIntegrationEventHandler>();
