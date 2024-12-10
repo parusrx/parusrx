@@ -20,11 +20,11 @@ public sealed class OracleAutoUpdateDocumentStatusService(IConnection connection
 {
     public async Task ExecuteAsync(CancellationToken cancellationToken = default)
     {
-        foreach (var (company, juridicalPerson, url, clientId, apiToken) in await GetCredentials())
+        foreach (var (company, hrlinkId, url, clientId, apiToken) in await GetCredentials())
         {
             DocumentGroupRegistryFilter filter = new()
             {
-                DocumentExternalIds = [.. (await GetDocumentIds(juridicalPerson))]
+                DocumentExternalIds = [.. (await GetDocumentIds(hrlinkId))]
             };
 
             string uri = $"{url}/api/v1/clients/{clientId}/documentGroups/getHrRegistry";
@@ -34,7 +34,6 @@ public sealed class OracleAutoUpdateDocumentStatusService(IConnection connection
 
             if (response.IsSuccessStatusCode)
             {
-                var str = await response.Content.ReadAsStringAsync();
                 var getHrRegistryResponse = await response.Content.ReadFromJsonAsync<GetHrRegistryResponse>(cancellationToken);
                 if (getHrRegistryResponse is not null && getHrRegistryResponse.Result)
                 {
@@ -82,7 +81,7 @@ public sealed class OracleAutoUpdateDocumentStatusService(IConnection connection
         using var conn = (OracleConnection)connection.ConnectionFactory.CreateConnection();
         using var command = conn.CreateCommand();
         command.CommandText = """
-            select COMPANY, JUR_PERS, URL, CLIENT_ID, API_TOKEN
+            select COMPANY, RN, URL, CLIENT_ID, API_TOKEN
               from PARUS.HRLINTERACTION
             """;
 
@@ -98,18 +97,18 @@ public sealed class OracleAutoUpdateDocumentStatusService(IConnection connection
         return result;
     }
 
-    private async ValueTask<List<string>> GetDocumentIds(long juridicalPerson)
+    private async ValueTask<List<string>> GetDocumentIds(long hrlinkId)
     {
         using var conn = (OracleConnection)connection.ConnectionFactory.CreateConnection();
         using var command = conn.CreateCommand();
         command.CommandText = """
             select RN
               from PARUS.HRLDOCS
-             where JUR_PERS = :juridicalPerson
-               and STATUS in (1, 2)
+             where STATUS in (1,2)
+               and PRN in (select RN from PARUS.HRLPACKS where HRLINTERACTION = :hrlinkId)
             """;
 
-        command.Parameters.Add(new OracleParameter("juridicalPerson", OracleDbType.Int64) { Value = juridicalPerson });
+        command.Parameters.Add(new OracleParameter("hrlinkId", OracleDbType.Int64) { Value = hrlinkId });
 
         List<string> result = [];
 
