@@ -16,58 +16,65 @@ namespace ParusRx.HRlink.API.Services;
 /// <param name="connection">The connection.</param>
 /// <param name="httpClient">The HTTP client.</param>
 /// <param name="logger">The logger.</param>
-public sealed class OracleAutoUpdateDocumentStatusService(IConnection connection, HttpClient httpClient, ILogger<OracleAutoUpdateDocumentStatusService> logger) : IAutoUpdateDocumentStatusService
+public sealed class OracleAutoUpdateDocumentStatusService(IConnection connection, IHttpClientFactory httpClientFactory, ILogger<OracleAutoUpdateDocumentStatusService> logger) : IAutoUpdateDocumentStatusService
 {
     public async Task ExecuteAsync(CancellationToken cancellationToken = default)
     {
         foreach (var (company, hrlinkId, url, clientId, apiToken) in await GetCredentials())
         {
-            DocumentGroupRegistryFilter filter = new()
+            int pageSize = 50;
+            List<string> documentIds = await GetDocumentIds(hrlinkId);
+
+            for (int i = 0; i < documentIds.Count; i += pageSize)
             {
-                DocumentExternalIds = [.. (await GetDocumentIds(hrlinkId))]
-            };
-
-            string uri = $"{url}/api/v1/clients/{clientId}/documentGroups/getHrRegistry";
-            httpClient.DefaultRequestHeaders.Add("User-Api-Token", apiToken);
-
-            var response = await httpClient.PostAsJsonAsync(uri, filter, cancellationToken);
-
-            if (response.IsSuccessStatusCode)
-            {
-                var getHrRegistryResponse = await response.Content.ReadFromJsonAsync<GetHrRegistryResponse>(cancellationToken);
-                if (getHrRegistryResponse is not null && getHrRegistryResponse.Result)
+                DocumentGroupRegistryFilter filter = new()
                 {
-                    foreach (var documentGroup in getHrRegistryResponse.DocumentGroups)
+                    DocumentExternalIds = [.. (documentIds.Skip(i).Take(pageSize).ToList())]
+                };
+
+                using HttpClient httpClient = httpClientFactory.CreateClient();
+                string uri = $"{url}/api/v1/clients/{clientId}/documentGroups/getHrRegistry";
+                httpClient.DefaultRequestHeaders.Add("User-Api-Token", apiToken);
+
+                using var response = await httpClient.PostAsJsonAsync(uri, filter, cancellationToken);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var getHrRegistryResponse = await response.Content.ReadFromJsonAsync<GetHrRegistryResponse>(cancellationToken);
+                    if (getHrRegistryResponse is not null && getHrRegistryResponse.Result)
                     {
-                        foreach (var document in documentGroup.Documents)
+                        foreach (var documentGroup in getHrRegistryResponse.DocumentGroups)
                         {
-                            int status = CalculateDocumentStatusHelper.GetStatus(document);
-                            if (long.TryParse(document.ExternalId, out long documentId))
+                            foreach (var document in documentGroup.Documents)
                             {
-                                await UpdateStatusAsync(document, company, status);
-                                logger.LogInformation("Document {DocumentId} status updated to {Status}", documentId, status);
-                            }
+                                int status = CalculateDocumentStatusHelper.GetStatus(document);
+                                if (long.TryParse(document.ExternalId, out long documentId))
+                                {
+                                    await UpdateStatusAsync(document, company, status);
+                                    logger.LogInformation("Document {DocumentId} status updated to {Status}", documentId, status);
+                                }
 
-                            List<DocumentSigner> signers = [];
-                            if (document.HeadManager is not null)
-                            {
-                                signers.Add(document.HeadManager);
-                            }
+                                List<DocumentSigner> signers = [];
+                                if (document.HeadManager is not null)
+                                {
+                                    signers.Add(document.HeadManager);
+                                }
 
-                            if (document.Employees is not null)
-                            {
-                                signers.AddRange(document.Employees);
-                            }
+                                if (document.Employees is not null)
+                                {
+                                    signers.AddRange(document.Employees);
+                                }
 
-                            if (document.Participants is not null)
-                            {
-                                signers.AddRange(document.Participants);
-                            }
+                                if (document.Participants is not null)
+                                {
+                                    signers.AddRange(document.Participants);
+                                }
 
-                            foreach (var signer in signers)
-                            {
-                                await UpsertSignersAsync(signer, long.Parse(document.ExternalId ?? "-1"), company);
-                                logger.LogInformation("Signer {SignerId} updated", signer.ExternalId);
+                                foreach (var signer in signers)
+                                {
+                                    await UpsertSignersAsync(signer, long.Parse(document.ExternalId ?? "-1"), company);
+                                    logger.LogInformation("Signer {SignerId} updated", signer.ExternalId);
+                                }
                             }
                         }
                     }

@@ -13,4 +13,9 @@ public record DocumentGroupRegistryFilter
     /// </summary>
     [JsonPropertyName("documentExternalIds")]
     public string[]? DocumentExternalIds { get; init; }
+
+    /// <summary>
+    /// Gets or sets the limit of the number of documents to return.
+    /// </summary>
+    public int Limit { get; init; } = 50;
 }
