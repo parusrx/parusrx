@@ -51,7 +51,7 @@ public record Course
 
     [XmlElement("educationalOrgEndCourseId")]
     [JsonPropertyName("educationalOrgEndCourseId")]
-    public int EducationalOrgEndCourseId { get; init; }
+    public int? EducationalOrgEndCourseId { get; init; }
 
     [XmlElement("academicDegreeId")]
     [JsonPropertyName("academicDegreeId")]
