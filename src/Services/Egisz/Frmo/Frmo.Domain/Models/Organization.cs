@@ -182,10 +182,10 @@ public record Organization
     [JsonPropertyName("medicalAidForm")]
     public MedicalAidForm[]? MedicalAidForm { get; init; }
 
-    [XmlArray("medicalAidCondition")]
-    [XmlArrayItem("medicalAidConditionItem")]
-    [JsonPropertyName("medicalAidCondition")]
-    public MedicalAidCondition[]? MedicalAidCondition { get; init; }
+    [XmlArray("medicalAidConditions")]
+    [XmlArrayItem("medicalAidConditionsItem")]
+    [JsonPropertyName("medicalAidConditions")]
+    public MedicalAidCondition[]? MedicalAidConditions { get; init; }
 
     [XmlElement("maxServiceDistance")]
     [JsonPropertyName("maxServiceDistance")]
