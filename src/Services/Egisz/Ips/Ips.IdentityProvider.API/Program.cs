@@ -7,9 +7,11 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json.Serialization;
 
+using CryptoPro.Security.Cryptography.Pkcs;
+using CryptoPro.Security.Cryptography.X509Certificates;
+
 using HealthChecks.UI.Client;
 
-using LibCore.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
@@ -23,8 +25,6 @@ builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection(JwtSett
 builder.Services.AddHealthChecks()
     .AddCheck("self", () => HealthCheckResult.Healthy());
 
-LibCore.Initializer.Initialize();
-
 var app = builder.Build();
 
 app.MapHealthChecks("/health", new HealthCheckOptions { Predicate = _ => true, ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse });
@@ -36,7 +36,8 @@ app.MapGet("auth/token", (IOptionsSnapshot<JwtSettings> settings) =>
 
     JwtSettings jwtSettings = settings.Value;
 
-    using X509Certificate2 certificate = X509CertificateExtensions.Create(jwtSettings.Certificate.Path, jwtSettings.Certificate.Password, CpX509KeyStorageFlags.CspNoPersistKeySet);
+    //using X509Certificate2 certificate = X509CertificateExtensions.Create(jwtSettings.Certificate.Path, jwtSettings.Certificate.Password, CpX509KeyStorageFlags.CspNoPersistKeySet);
+    using var certificate = new CpX509Certificate2(jwtSettings.Certificate.Path, jwtSettings.Certificate.Password, X509KeyStorageFlags.EphemeralKeySet);
 
     string alg = certificate.GetKeyAlgorithm() switch
     {
@@ -44,7 +45,7 @@ app.MapGet("auth/token", (IOptionsSnapshot<JwtSettings> settings) =>
         "1.2.643.7.1.1.1.2" => "ECGOST3410-2012",
         _ => throw new NotSupportedException($"Key algorithm {certificate.GetKeyAlgorithm()} is not supported.")
     };
-
+    
     JwtHeader header = new()
     {
         { "alg", alg },
@@ -64,11 +65,16 @@ app.MapGet("auth/token", (IOptionsSnapshot<JwtSettings> settings) =>
     string message = token.EncodedHeader + "." + token.EncodedPayload;
     
     ContentInfo contentInfo = new(Encoding.UTF8.GetBytes(message));
-    SignedCms signedCms = new(contentInfo, true);
-    CmsSigner cmsSigner = new(certificate)
-    { 
-        IncludeOption = X509IncludeOption.EndCertOnly 
+    //SignedCms signedCms = new(contentInfo, true);
+    CpSignedCms signedCms = new(contentInfo, true);
+    CpCmsSigner cmsSigner = new(certificate)
+    {
+        IncludeOption = X509IncludeOption.EndCertOnly
     };
+    //CmsSigner cmsSigner = new(certificate)
+    //{ 
+    //    IncludeOption = X509IncludeOption.EndCertOnly 
+    //};
     signedCms.ComputeSignature(cmsSigner);
     signedCms.RemoveCertificate(certificate);
 

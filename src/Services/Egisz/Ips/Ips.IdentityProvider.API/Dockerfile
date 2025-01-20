@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0.25 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 80
 
@@ -20,10 +20,11 @@ RUN cd /tmp/tools && \
     ln -s /opt/cprocsp/sbin/amd64/cpconfig && \
     rm -rf /tmp/tools
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG configuration=Release
 WORKDIR /src
-COPY ".nuget/packages/LibCore.Linux.2023.8.9.1.nupkg" ".nuget/packages/LibCore.Linux.2023.8.9.1.nupkg"
+COPY ".nuget/packages/cryptopro.security.cryptography.2024.11.19.nupkg" ".nuget/packages/cryptopro.security.cryptography.2024.11.19.nupkg"
+COPY ".nuget/packages/cryptopro.security.cryptography.xml.2024.11.19.nupkg" ".nuget/packages/cryptopro.security.cryptography.xml.2024.11.19.nupkg"
 COPY "src/Services/Egisz/Ips/Ips.IdentityProvider.API/Ips.IdentityProvider.API.csproj" "src/Services/Egisz/Ips/Ips.IdentityProvider.API/Ips.IdentityProvider.API.csproj"
 
 COPY . .
