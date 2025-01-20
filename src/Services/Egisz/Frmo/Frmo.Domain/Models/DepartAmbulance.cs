@@ -7,7 +7,7 @@ public record DepartAmbulance
 {
     [XmlElement("id")]
     [JsonPropertyName("id")]
-    public int Id { get; init; }
+    public string? Id { get; init; }
 
     [XmlElement("brigadeCount")]
     [JsonPropertyName("brigadeCount")]
