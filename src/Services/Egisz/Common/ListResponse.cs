@@ -9,6 +9,10 @@ namespace ParusRx.Egisz.Common;
 [XmlRoot("response")]
 public record ListResponse<TContent> : DefaultResponse
 {
+    [XmlElement("total")]
+    [JsonPropertyName("total")]
+    public int Total { get; init; }
+
     [XmlArray("content")]
     [XmlArrayItem("contentItem")]
     [JsonPropertyName("content")]
