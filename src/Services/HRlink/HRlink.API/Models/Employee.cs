@@ -50,4 +50,32 @@ public record Employee
     [XmlElement("roleIds")]
     [JsonPropertyName("roleIds")]
     public string[]? RoleIds { get; init; }
+
+    /// <summary>
+    /// Gets or sets the number of available vacation days.
+    /// </summary>
+    [XmlElement("availableVacationDayCount")]
+    [JsonPropertyName("availableVacationDayCount")]
+    public int? AvailableVacationDayCount { get; init; }
+
+    /// <summary>
+    /// Gets or sets the number of used vacation days.
+    /// </summary>
+    [XmlElement("number")]
+    [JsonPropertyName("number")]
+    public string? Number { get; init; }
+
+    /// <summary>
+    /// Gets or sets the employee's payroll number.
+    /// </summary>
+    [XmlElement("payrollNumber")]
+    [JsonPropertyName("payrollNumber")]
+    public string? PayrollNumber { get; init; }
+
+    /// <summary>
+    /// Gets or sets the main workplace flag.
+    /// </summary>
+    [XmlElement("mainWorkplace")]
+    [JsonPropertyName("mainWorkplace")]
+    public bool? MainWorkplace { get; init; }
 }
