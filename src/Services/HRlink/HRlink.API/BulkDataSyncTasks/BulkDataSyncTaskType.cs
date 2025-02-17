@@ -21,6 +21,12 @@ public enum BulkDataSyncTaskType
     CLIENT_USERS,
 
     /// <summary>
+    /// The client users.
+    /// </summary>
+    [XmlEnum("CLIENT_USERS_V5")]
+    CLIENT_USERS_V5,
+
+    /// <summary>
     /// The legal entities.
     /// </summary>
     [XmlEnum("LEGAL_ENTITIES")]

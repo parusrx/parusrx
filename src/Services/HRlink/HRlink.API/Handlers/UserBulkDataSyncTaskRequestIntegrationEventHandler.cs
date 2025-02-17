@@ -25,7 +25,7 @@ public sealed class UserBulkDataSyncTaskRequestIntegrationEventHandler(IParusRxS
             var createUserListBulkDataSyncTaskRequest = XmlSerializerUtility.Deserialize<CreateUserListBulkDataSyncTaskRequest>(data);
             if (createUserListBulkDataSyncTaskRequest is not null)
             {
-                var createBulkDataSyncTaskRequest = new CreateBulkDataSyncTaskRequest<User>(BulkDataSyncTaskType.CLIENT_USERS, createUserListBulkDataSyncTaskRequest.Users);
+                var createBulkDataSyncTaskRequest = new CreateBulkDataSyncTaskRequest<User>(BulkDataSyncTaskType.CLIENT_USERS_V5, createUserListBulkDataSyncTaskRequest.Users);
                 var createBulkDataSyncTaskResponse = await client.CreateBulkDataSyncTaskAsync(
                     createUserListBulkDataSyncTaskRequest.Authorization.Url,
                     createUserListBulkDataSyncTaskRequest.Authorization.ClientId,
@@ -43,7 +43,6 @@ public sealed class UserBulkDataSyncTaskRequestIntegrationEventHandler(IParusRxS
                         createUserListBulkDataSyncTaskRequest.Authorization.ApiToken,
                         createBulkDataSyncTaskResponse.BulkDataSyncTask.Id,
                         cancellationToken);
-
                     if (bulkDataSyncTaskResponse is not null)
                     {
                         byte[]? response = XmlSerializerUtility.Serialize(bulkDataSyncTaskResponse);

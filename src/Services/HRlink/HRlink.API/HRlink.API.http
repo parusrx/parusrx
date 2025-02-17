@@ -55,3 +55,13 @@ Accept: application/json
 Content-Type: application/json
 
 ###
+
+POST {{url}}/api/v1/pubsub/users/bulk
+Accept: application/json
+Content-Type: application/json
+
+{
+    "body": "2E521581-1F1B-B919-E063-910A14ACBDE0"
+}
+
+###

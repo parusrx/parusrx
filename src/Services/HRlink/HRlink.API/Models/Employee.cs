@@ -59,18 +59,11 @@ public record Employee
     public int? AvailableVacationDayCount { get; init; }
 
     /// <summary>
-    /// Gets or sets the number of used vacation days.
+    /// Gets or sets the employee's payroll number.
     /// </summary>
     [XmlElement("number")]
     [JsonPropertyName("number")]
     public string? Number { get; init; }
-
-    /// <summary>
-    /// Gets or sets the employee's payroll number.
-    /// </summary>
-    [XmlElement("payrollNumber")]
-    [JsonPropertyName("payrollNumber")]
-    public string? PayrollNumber { get; init; }
 
     /// <summary>
     /// Gets or sets the main workplace flag.
