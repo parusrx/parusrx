@@ -43,4 +43,9 @@ public record Site
     [XmlArrayItem("siteAddressesItem")]
     [JsonPropertyName("siteAddresses")]
     public SiteAddress[] SiteAddresses { get; init; } = [];
+
+    [XmlArray("attachmentType")]
+    [XmlArrayItem("attachmentTypeItem")]
+    [JsonPropertyName("attachmentType")]
+    public AttachmentType[] AttachmentType { get; init; } = [];
 }
