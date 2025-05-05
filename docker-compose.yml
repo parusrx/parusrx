@@ -13,7 +13,7 @@ services:
       - "5411:9411"
 
   dapr-placement:
-    image: "daprio/dapr:1.12.0"
+    image: "daprio/dapr:1.15.4"
     command: ["./placement", "-port", "50000", "-log-level", "debug"]
     ports:
       - "50000:50000"
@@ -51,7 +51,7 @@ services:
       - "51001:8080"
 
   gateway-dapr:
-    image: "daprio/daprd:1.12.0"
+    image: "daprio/daprd:1.15.4"
     command: ["./daprd",
       "-app-id", "gateway",
       "-app-port", "8080",
@@ -78,7 +78,7 @@ services:
       - "51002:8080"
   
   dadata-api-dapr:
-    image: "daprio/daprd:1.12.0"
+    image: "daprio/daprd:1.15.4"
     command: ["./daprd",
       "-app-id", "dadata-api",
       "-app-port", "8080",
@@ -104,7 +104,7 @@ services:
       - "51003:8080"
 
   hrlink-api-dapr:
-    image: "daprio/dapr:1.12.0"
+    image: "daprio/dapr:1.15.4"
     command: ["./daprd",
       "-app-id", "hrlink-api",
       "-app-port", "8080",
@@ -134,7 +134,7 @@ services:
       - ${JWT_CERTIFICATE_LOCAL_PATH}:${JWT_CERTIFICATE_PATH}:ro
 
   ips-identity-provider-api-dapr:
-    image: "daprio/daprd:1.12.0"
+    image: "daprio/daprd:1.15.4"
     command: ["./daprd",
       "-app-id", "ips-identity-provider-api",
       "-app-port", "80",
@@ -162,7 +162,7 @@ services:
       - "51005:8080"
 
   frmo-api-dapr:
-    image: "daprio/daprd:1.12.0"
+    image: "daprio/daprd:1.15.4"
     command: ["./daprd",
       "-app-id", "frmo-api",
       "-app-port", "8080",
@@ -190,7 +190,7 @@ services:
       - "51006:8080"
 
   frmr-api-dapr:
-    image: "daprio/daprd:1.12.0"
+    image: "daprio/daprd:1.15.4"
     command: ["./daprd",
       "-app-id", "frmo-api",
       "-app-port", "8080",
@@ -218,7 +218,7 @@ services:
       - "51007:8080"
 
   mis-api-dapr:
-    image: "daprio/daprd:1.12.0"
+    image: "daprio/daprd:1.15.4"
     command: ["./daprd",
       "-app-id", "mis-api",
       "-app-port", "8080",
