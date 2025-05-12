@@ -63,7 +63,7 @@ public record MobileDepartVehicle
 
     [XmlElement("mileage")]
     [JsonPropertyName("mileage")]
-    public int? Mileage { get; set; }
+    public double? Mileage { get; set; }
 
     [XmlElement("isNavigation")]
     [JsonPropertyName("isNavigation")]
