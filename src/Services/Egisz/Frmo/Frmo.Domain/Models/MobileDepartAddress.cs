@@ -3,6 +3,13 @@
 
 namespace ParusRx.Egisz.Frmo.Domain;
 
+public record MobileDepartAddresses
+{
+    [XmlElement("mobileDepartAddress")]
+    [JsonPropertyName("mobileDepartAddress")]
+    public MobileDepartAddress MobileDepartAddress { get; set; } = default!;
+}
+
 public record MobileDepartAddress
 {
     [XmlElement("mobileDepartAddressId")]
