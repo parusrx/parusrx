@@ -51,7 +51,7 @@ public record MobileDepart
     public MobileDepartVehicle[]? Vehicle { get; set; }
 
     [XmlArray("addresses")]
-    [XmlArrayItem("addressesItem")]
+    [XmlArrayItem("mobileDepartAddress")]
     [JsonPropertyName("addresses")]
     public MobileDepartAddress[] Addresses { get; set; } = [];
 }
