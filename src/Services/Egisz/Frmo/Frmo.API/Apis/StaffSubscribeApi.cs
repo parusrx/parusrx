@@ -21,19 +21,19 @@ public static class StaffSubscribeApi
             return Results.Ok();
         });
 
-        app.MapPost("/create", [Topic(daprPubSubName, "FrmoCreateStafffIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] CreateStaffIntegrationEventHandler handler) =>
+        app.MapPost("/create", [Topic(daprPubSubName, "FrmoCreateStaffIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] CreateStaffIntegrationEventHandler handler) =>
         {
             await handler.HandleAsync(@event);
             return Results.Ok();
         });
 
-        app.MapPost("/update", [Topic(daprPubSubName, "FrmoUpdateStaffIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] UpdateDepartmentIntegrationEventHandler handler) =>
+        app.MapPost("/update", [Topic(daprPubSubName, "FrmoUpdateStaffIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] UpdateStaffIntegrationEventHandler handler) =>
         {
             await handler.HandleAsync(@event);
             return Results.Ok();
         });
 
-        app.MapPost("/delete", [Topic(daprPubSubName, "FrmoDeleteStaffIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] DeleteDepartmentIntegrationEventHandler handler) =>
+        app.MapPost("/delete", [Topic(daprPubSubName, "FrmoDeleteStaffIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] DeleteStaffIntegrationEventHandler handler) =>
         {
             await handler.HandleAsync(@event);
             return Results.Ok();
