@@ -22,6 +22,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<IFileService, FileService>();
 builder.Services.AddHttpClient<IDocumentService, DocumentService>();
 builder.Services.AddHttpClient<IRouteTemplateService, RouteTemplateService>();
+builder.Services.AddHttpClient<IApplicationTypeService, ApplicationTypeService>();
 
 builder.Services.AddTransient<IAutoUpdateDocumentStatusService, OracleAutoUpdateDocumentStatusService>();
 
@@ -37,6 +38,7 @@ builder.Services.AddTransient<FilesUploadRequestIntegrationEventHandler>();
 builder.Services.AddTransient<CreateDocumentGroupIntegrationEventHandler>();
 builder.Services.AddTransient<SendToSigningIntegrationEventHandler>();
 builder.Services.AddTransient<RouteTemplateRequestIntegrationEventHandler>();
+builder.Services.AddTransient<ApplicationTypeRequestIntegrationEventHandler>();
 
 // Data access
 string provider = builder.Configuration["Database:Provider"] ?? string.Empty;
@@ -134,6 +136,12 @@ pubsub.MapPost("/route-templates", [Topic(DaprPubSubName, "RouteTemplateListInte
 app.MapPost("/auto-update-document", async ([FromServices] IAutoUpdateDocumentStatusService autoUpdaterDocument) =>
 {
     await autoUpdaterDocument.ExecuteAsync();
+    return Results.Created();
+});
+
+pubsub.MapPost("/application-types", [Topic(DaprPubSubName, "ApplicationTypeListIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] ApplicationTypeRequestIntegrationEventHandler habdler) =>
+{
+    await habdler.HandleAsync(@event);
     return Results.Created();
 });
 
