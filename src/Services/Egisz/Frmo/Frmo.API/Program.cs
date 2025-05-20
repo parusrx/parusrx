@@ -91,6 +91,14 @@ app.MapGroup("/eoDepart")
     .WithTags("Education Organization Department API")
     .MapEducationOrganizationDepartApi();
 
+app.MapGroup("/org/oms")
+    .WithTags("Organization OMS API")
+    .MapOrganizationOmsApi();
+
+app.MapGroup("/org/depart/oms")
+    .WithTags("Department OMS API")
+    .MapDepartmentOmsApi();
+
 // Dapr pub/sub endpoints
 app.MapGroup("/subscribe/org")
     .WithTags("Organization Subscribe API")
@@ -151,5 +159,13 @@ app.MapGroup("/subscribe/org/telemedicine")
 app.MapGroup("/subscribe/eoDepart")
     .WithTags("Education Organization Department Subscribe API")
     .MapEducationOrganizationDepartSubscribeApi();
+
+app.MapGroup("subscribe/org/oms")
+    .WithTags("Organization OMS Subscribe API")
+    .MapOrganizationOmsSubscribeApi();
+
+app.MapGroup("/subscribe/org/depart/oms")
+    .WithTags("Department OMS Subscribe API")
+    .MapDepartmentOmsSubscribeApi();
 
 app.Run();

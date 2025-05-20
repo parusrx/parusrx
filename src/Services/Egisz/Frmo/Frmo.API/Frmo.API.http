@@ -1556,3 +1556,73 @@ DELETE {{FrmoAPI_HostAddress}}/eoDepart?eo=1.2.643.5.1.13.13.12.2.31.2855&entity
 Content-Type: application/json
 
 ###
+
+GET {{FrmoAPI_HostAddress}}/org/oms?oid=1.2.643.5.1.13.13.12.2.31.2855&offset=0&limit=10
+Content-Type: application/json
+
+###
+
+GET {{FrmoAPI_HostAddress}}/org/oms/get?oid=1.2.643.5.1.13.13.12.2.31.2855&entityId=7ea2f619-77ac-4019-aac0-1b974e215d05
+Content-Type: application/json
+
+###
+
+PUT {{FrmoAPI_HostAddress}}/org/oms?oid=1.2.643.5.1.13.13.12.2.31.2855
+Content-Type: application/json
+
+{
+  "omsMarkId": "7ea2f619-77ac-4019-aac0-1b974e215d05",
+  "codeOktmo": "14000000000",
+  "omsId": "310001",
+  "beginDate": "2024-08-23T00:00:00Z",
+  "endDate": null,
+  "stacSublevels": [
+    {
+      "sublevelId": "a5189275-4727-4790-bf02-289c40970422",
+      "sublevel": "1",
+      "beginDate": "2025-01-01T00:00:00Z",
+      "endDate": "2025-12-31T00:00:00Z"
+    }
+  ],
+  "dayStacSublevels": [],
+  "ambSublevels": [],
+  "additionalAgreementOms": [],
+  "horizontalCalculations": []
+}
+
+###
+
+GET {{FrmoAPI_HostAddress}}/org/depart/oms?oid=1.2.643.5.1.13.13.12.2.31.2855&departOid=1.2.643.5.1.13.13.12.2.31.2855.0.286665&offset=0&limit=10
+Content-Type: application/json
+
+###
+
+GET {{FrmoAPI_HostAddress}}/org/depart/oms/get?oid=1.2.643.5.1.13.13.12.2.31.2855&departOid=1.2.643.5.1.13.13.12.2.31.2855.0.286665&entityId=7ea2f619-77ac-4019-aac0-1b974e215d05
+Content-Type: application/json
+
+###
+
+PUT {{FrmoAPI_HostAddress}}/org/depart/oms?oid=1.2.643.5.1.13.13.12.2.31.2855&departOid=1.2.643.5.1.13.13.12.2.31.2855.0.286665&entityId=7ea2f619-77ac-4019-aac0-1b974e215d05
+Content-Type: application/json
+
+{
+  "omsMarkId": "7ea2f619-77ac-4019-aac0-1b974e215d05",
+  "codeOktmo": "14000000000",
+  "omsId": "310001",
+  "beginDate": "2024-08-23T00:00:00Z",
+  "endDate": null,
+  "stacSublevels": [
+    {
+      "sublevelId": "a5189275-4727-4790-bf02-289c40970422",
+      "sublevel": "1",
+      "beginDate": "2025-01-01T00:00:00Z",
+      "endDate": "2025-12-31T00:00:00Z"
+    }
+  ],
+  "dayStacSublevels": [],
+  "ambSublevels": [],
+  "additionalAgreementOms": [],
+  "horizontalCalculations": []
+}
+
+###
