@@ -3,9 +3,9 @@
 
 namespace ParusRx.Egisz.Frmo.Services;
 
-public interface IDepartOmsService
+public interface IDepartmentOmsService
 {
-    ValueTask<ListResponse<DepartOms>> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default);
+    ValueTask<ListPagedResponse<DepartOms>> ListPagedAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default);
     ValueTask<SingleResponse<DepartOms>> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken = default);
     ValueTask<DefaultResponse> UpdateAsync(Dictionary<string, string?> queryParameters, DepartOms departOms, CancellationToken cancellationToken = default);
 }

@@ -88,6 +88,14 @@ public static class ServiceCollectionExtensions
         services.AddTransient<UpdateEducationOrganizationDepartIntegrationEventHandler>();
         services.AddTransient<DeleteEducationOrganizationDepartIntegrationEventHandler>();
 
+        services.AddTransient<ListPagedOrganizationOmsIntegrationEventHandler>();
+        services.AddTransient<GetOrganizationOmsIntegrationEventHandler>();
+        services.AddTransient<UpdateOrganizationOmsIntegrationEventHandler>();
+
+        services.AddTransient<ListPagedDepartmentOmsIntegrationEventHandler>();
+        services.AddTransient<GetDepartmentOmsIntegrationEventHandler>();
+        services.AddTransient<UpdateDepartmentOmsIntegrationEventHandler>();
+
         return services;
     }
 
