@@ -47,3 +47,44 @@ public sealed class ApplicationTypeRequestIntegrationEventHandler(IParusRxStore 
         }
     }
 }
+
+/// <summary>
+/// Represents the application type request.
+/// </summary>
+[XmlRoot("applicationTypeRequest")]
+public record ApplicationTypeRequest
+{
+    /// <summary>
+    /// Gets or sets the URL.
+    /// </summary>
+    [XmlElement("url")]
+    public required string Url { get; init; }
+
+    /// <summary>
+    /// Gets or sets the API token.
+    /// </summary>
+    [XmlElement("apiToken")]
+    public required string ApiToken { get; init; }
+}
+
+/// <summary>
+/// Represents an application type response.
+/// </summary>
+[XmlRoot("applicationTypeResponse")]
+public record ApplicationTypeResponse
+{
+    /// <summary>
+    /// The result of the files upload.
+    /// </summary>
+    [XmlElement("result")]
+    [JsonPropertyName("result")]
+    public required bool Result { get; init; }
+
+    /// <summary>
+    /// The list of application types.
+    /// </summary>
+    [XmlArray("applicationTypes")]
+    [XmlArrayItem("applicationTypesItem")]
+    [JsonPropertyName("applicationTypes")]
+    public required ApplicationType[] ApplicationTypes { get; init; } = [];
+}

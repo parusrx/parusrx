@@ -13,12 +13,8 @@ public class ApplicationTypeRequestIntegrationEventHandlerTests
 
         var request = new ApplicationTypeRequest
         {
-            Authorization = new AuthorizationContext
-            {
-                Url = "https://demo.hr-link.ru",
-                ClientId = "78DB35C3-64E4-4D06-B34D-793070E970C6",
-                ApiToken = "81255B76-7F18-46E2-93C0-7ED60BE814F9"
-            }
+            Url = "https://demo.hr-link.ru",
+            ApiToken = "81255B76-7F18-46E2-93C0-7ED60BE814F9"
         };
         var response = new ApplicationTypeResponse
         { 

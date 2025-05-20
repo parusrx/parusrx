@@ -31,12 +31,8 @@ public class ApplicationTypeServiceTests
         var service = new ApplicationTypeService(httpClient);
         var request = new ApplicationTypeRequest
         {
-            Authorization = new AuthorizationContext
-            {
-                Url = "https://test",
-                ClientId = "client",
-                ApiToken = "token"
-            }
+            Url = "https://demo.hr-link.ru",
+            ApiToken = "81255B76-7F18-46E2-93C0-7ED60BE814F9"
         };
 
         // Act
@@ -76,12 +72,8 @@ public class ApplicationTypeServiceTests
         var service = new ApplicationTypeService(httpClient);
         var request = new ApplicationTypeRequest
         {
-            Authorization = new AuthorizationContext
-            {
-                Url = "https://test",
-                ClientId = "client",
-                ApiToken = "token"
-            }
+            Url = "https://demo.hr-link.ru",
+            ApiToken = "81255B76-7F18-46E2-93C0-7ED60BE814F9"
         };
 
         // Act & Assert

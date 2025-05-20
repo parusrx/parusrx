@@ -6,7 +6,7 @@ namespace ParusRx.HRlink.FunctionalTests;
 public class LivenessEndpointTests
 {
     [Fact]
-    public async void GetLiveness_ReturnsHealthy()
+    public async Task GetLiveness_ReturnsHealthy()
     {
         // Arrange
         using var app = new HRlinkApplication();

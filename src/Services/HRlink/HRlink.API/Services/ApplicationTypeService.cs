@@ -18,8 +18,8 @@ public sealed class ApplicationTypeService(HttpClient httpClient) : IApplication
     {
         ArgumentNullException.ThrowIfNull(request);
 
-        string uri = $"{request.Authorization.Url}/api/v1/applicationTypes";
-        httpClient.DefaultRequestHeaders.Add("User-Api-Token", request.Authorization.ApiToken);
+        string uri = $"{request.Url}/api/v1/applicationTypes";
+        httpClient.DefaultRequestHeaders.Add("User-Api-Token", request.ApiToken);
 
         HttpResponseMessage response = await httpClient.GetAsync(uri, cancellationToken);
         if (!response.IsSuccessStatusCode)
