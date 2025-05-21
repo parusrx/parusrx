@@ -31,6 +31,14 @@ public record ApplicationType
     public MintrudDocumentType? MintrudDocumentType { get; init; }
 
     /// <summary>
+    /// The list of custom user fields for substitution in the application type template.
+    /// </summary>
+    [XmlArray("templateFields")]
+    [XmlArrayItem("templateFieldsItem")]
+    [JsonPropertyName("templateFields")]
+    public ApplicationTypeTemplateField[]? TemplateFields { get; init; }
+
+    /// <summary>
     /// The indicator of whether the application type is a template.
     /// </summary>
     /// <remarks>
