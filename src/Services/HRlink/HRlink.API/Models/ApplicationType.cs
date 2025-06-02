@@ -77,3 +77,39 @@ public record ApplicationType
     [JsonPropertyName("signingRouteTemplate")]
     public SigningRouteTemplate? SigningRouteTemplate { get; init; }
 }
+
+/// <summary>
+/// Represents a short version of an application type in the HRlink system.
+/// </summary>
+public record ApplicationShortType
+{
+    /// <summary>
+    /// The unique identifier for the application type.
+    /// </summary>
+    [XmlElement("id")]
+    [JsonPropertyName("id")]
+    public string? Id { get; init; }
+
+    /// <summary>
+    /// The name of the application type.
+    /// </summary>
+    [XmlElement("name")]
+    [JsonPropertyName("name")]
+    public string? Name { get; init; }
+
+
+    /// <summary>
+    /// Indicates whether the ability for the employee to sign with an electronic signature (SES) is enabled.
+    /// </summary>
+    [XmlElement("signingByEmployeeSesEnabled")]
+    [JsonPropertyName("signingByEmployeeSesEnabled")]
+    public bool? SigningByEmployeeSesEnabled { get; init; }
+
+    
+    /// <summary>
+    /// Indicates whether the hint for the possibility of appointing a substitutor is enabled.
+    /// </summary>
+    [XmlElement("substitutorCreationHintEnabled")]
+    [JsonPropertyName("substitutorCreationHintEnabled")]
+    public bool? SubstitutorCreationHintEnabled { get; init; }
+}
