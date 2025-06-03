@@ -4,10 +4,9 @@
 namespace ParusRx.HRlink.API.Models;
 
 /// <summary>
-/// Represents a participant in a signing route template.
+/// Represents a participant in a signing route.
 /// </summary>
-[XmlRoot("signingRouteTemplateParticipant")]
-public record SigningRouteTemplateParticipant
+public record SigningRouteParticipant
 {
     /// <summary>
     /// Gets or sets the identifier of the participant.
@@ -17,15 +16,8 @@ public record SigningRouteTemplateParticipant
     public string? Id { get; init; }
 
     /// <summary>
-    /// Gets or sets the ID of the signing route template stage to which the participant belongs.
-    /// </summary>
-    [XmlElement("templateStageId")]
-    [JsonPropertyName("templateStageId")]
-    public string? TemplateStageId { get; init; }
-
-    /// <summary>
     /// Gets or sets the type of the participant.
-    /// </summary>
+    /// </summary
     [XmlElement("type")]
     [JsonPropertyName("type")]
     [JsonConverter(typeof(JsonStringEnumConverter))]
@@ -60,7 +52,7 @@ public record SigningRouteTemplateParticipant
     /// </summary>
     [XmlElement("employee")]
     [JsonPropertyName("employee")]
-    public SigningRouteTemplateParticipantEmployee? Employee { get; init; }
+    public SigningRouteParticipantEmployee? Employee { get; init; }
 
     /// <summary>
     /// Gets or sets whether a set of signers is created based on the participant.
@@ -70,6 +62,13 @@ public record SigningRouteTemplateParticipant
     public bool? IsMultipleSigners { get; init; }
 
     /// <summary>
+    /// Gets or sets the Docflow system role data.
+    /// </summary>
+    [XmlElement("systemRole")]
+    [JsonPropertyName("systemRole")]
+    public DocflowSystemRole? SystemRole { get; init; }
+
+    /// <summary>
     /// Gets or sets the type of the rule for automatically selecting participants.
     /// </summary>
     [XmlElement("autoSelectRuleType")]
@@ -77,6 +76,20 @@ public record SigningRouteTemplateParticipant
     //[JsonConverter(typeof(JsonStringEnumConverter))]
     //public AutoSelectParticipantRuleType? AutoSelectRuleType { get; init; }
     public string? AutoSelectRuleType { get; init; }
+
+    /// <summary>
+    /// Gets or sets the related participant identifier.
+    /// </summary>
+    [XmlElement("relatedParticipantId")]
+    [JsonPropertyName("relatedParticipantId")]
+    public string? RelatedParticipantId { get; init; }
+
+    /// <summary>
+    /// Gets or sets the ID of the signing route template stage to which the participant belongs.
+    /// </summary>
+    [XmlElement("templateId")]
+    [JsonPropertyName("templateId")]
+    public string? TemplateId { get; init; }
 
     /// <summary>
     /// Get or sets the required participant.
@@ -91,15 +104,4 @@ public record SigningRouteTemplateParticipant
     [XmlElement("unchangeable")]
     [JsonPropertyName("unchangeable")]
     public bool? Unchangeable { get; init; }
-
-    /// <summary>
-    /// Gets or sets the related participant identifier.
-    /// </summary>
-    [XmlElement("relatedParticipantId")]
-    [JsonPropertyName("relatedParticipantId")]
-    public string? RelatedParticipantId { get; init; }
-
-    [XmlElement("version")]
-    [JsonPropertyName("version")]
-    public long? Version { get; init; }
 }

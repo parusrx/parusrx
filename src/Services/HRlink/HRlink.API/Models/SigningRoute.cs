@@ -3,38 +3,37 @@
 
 namespace ParusRx.HRlink.API.Models;
 
+/// <summary>
+/// Represents the participants of a stage.
+/// </summary>
 public record SigningRoute
 {
+    /// <summary>
+    /// Gets or sets the identifier of the signing route template.
+    /// </summary>
     [XmlElement("id")]
     [JsonPropertyName("id")]
     public string? Id { get; init; }
 
+    /// <summary>
+    /// Gets or sets the name of the signing route template.
+    /// </summary>
     [XmlElement("name")]
     [JsonPropertyName("name")]
     public string? Name { get; init; }
 
+    /// <summary>
+    /// Gets or sets the template identifier of the signing route.
+    /// </summary>
     [XmlElement("templateId")]
     [JsonPropertyName("templateId")]
     public string? TemplateId { get; init; }
-}
 
-public record SigningRouteStage 
-{
-    [XmlElement("id")]
-    [JsonPropertyName("id")]
-    public string? Id { get; init; }
-
-    [XmlElement("indexNumber")]
-    [JsonPropertyName("indexNumber")]
-    public long? IndexNumber { get; init; }
-
-    [XmlElement("type")]
-    [JsonPropertyName("type")]
-    [JsonConverter(typeof(JsonStringEnumConverter))]
-    public SigningRouteStageType? Type { get; init; }
-
-    [XmlElement("completenessCondition")]
-    [JsonPropertyName("completenessCondition")]
-    [JsonConverter(typeof(JsonStringEnumConverter))]
-    public SigningRouteStageCompletenessCondition? CompletenessCondition { get; init; }
+    /// <summary>
+    /// Gets or sets the participans of a stage.
+    /// </summary>
+    [XmlArray("stages")]
+    [XmlArrayItem("stage")]
+    [JsonPropertyName("stages")]
+    public SigningRouteStage[]? Stages { get; init; }
 }
