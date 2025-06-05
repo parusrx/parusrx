@@ -1,6 +1,8 @@
 // Copyright (c) Alexander Bocharov.
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
+using System;
+
 using HealthChecks.UI.Client;
 
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -23,6 +25,7 @@ builder.Services.AddHttpClient<IFileService, FileService>();
 builder.Services.AddHttpClient<IDocumentService, DocumentService>();
 builder.Services.AddHttpClient<IRouteTemplateService, RouteTemplateService>();
 builder.Services.AddHttpClient<IApplicationTypeService, ApplicationTypeService>();
+builder.Services.AddHttpClient<IApplicationGroupService, ApplicationGroupService>();
 
 builder.Services.AddTransient<IAutoUpdateDocumentStatusService, OracleAutoUpdateDocumentStatusService>();
 
@@ -39,6 +42,7 @@ builder.Services.AddTransient<CreateDocumentGroupIntegrationEventHandler>();
 builder.Services.AddTransient<SendToSigningIntegrationEventHandler>();
 builder.Services.AddTransient<RouteTemplateRequestIntegrationEventHandler>();
 builder.Services.AddTransient<ApplicationTypeRequestIntegrationEventHandler>();
+builder.Services.AddTransient<ApplicationGroupIntegrationEventHandler>();
 
 // Data access
 string provider = builder.Configuration["Database:Provider"] ?? string.Empty;
@@ -139,10 +143,30 @@ app.MapPost("/auto-update-document", async ([FromServices] IAutoUpdateDocumentSt
     return Results.Created();
 });
 
-pubsub.MapPost("/application-types", [Topic(DaprPubSubName, "ApplicationTypeListIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] ApplicationTypeRequestIntegrationEventHandler habdler) =>
+pubsub.MapPost("/application-types", [Topic(DaprPubSubName, "ApplicationTypeListIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] ApplicationTypeRequestIntegrationEventHandler handler) =>
 {
-    await habdler.HandleAsync(@event);
+    await handler.HandleAsync(@event);
     return Results.Created();
+});
+
+pubsub.MapPost("/application-groups", [Topic(DaprPubSubName, "ApplicationGroupListIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] ApplicationGroupIntegrationEventHandler handler) =>
+{
+    await handler.HandleAsync(@event);
+    return Results.Created();
+});
+
+app.MapGet("/application-groups", async ([FromServices] IApplicationGroupService service, [FromBody] GetHrRegistryV2ApplicationGroupsRequest request) =>
+{
+    var response = await service.GetApplicationGroupsAsync(request);
+
+    byte[]? responseData = XmlSerializerUtility.Serialize(response);
+    var str = responseData is not null ? System.Text.Encoding.UTF8.GetString(responseData) : string.Empty;
+
+    if (response is null)
+    {
+        return Results.NotFound();
+    }
+    return Results.Ok(response);
 });
 
 app.Run();

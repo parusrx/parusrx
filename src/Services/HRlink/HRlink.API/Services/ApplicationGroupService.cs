@@ -2,26 +2,21 @@
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
 using System.Text;
+using System.Text.Json;
 
 namespace ParusRx.HRlink.API.Services;
 
-/// <summary>
-/// Provides functionality to interact with application types through a remote API.
-/// </summary>
-/// <remarks>This service is used to retrieve application type information by making HTTP requests to a specified
-/// API endpoint. It requires a valid authorization token and URL to function correctly.</remarks>
-/// <param name="httpClient">The <see cref="HttpClient"/> used to make HTTP requests.</param>
-public sealed class ApplicationTypeService(HttpClient httpClient) : IApplicationTypeService
+public sealed class ApplicationGroupService(HttpClient httpClient) : IApplicationGroupService
 {
-    /// </inheritdoc />
-    public async ValueTask<ApplicationTypeResponse?> GetApplicationTypesAsync(ApplicationTypeRequest request, CancellationToken cancellationToken = default)
+    public async ValueTask<GetHrRegistryV2ApplicationGroupsResponse?> GetApplicationGroupsAsync(GetHrRegistryV2ApplicationGroupsRequest request, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(request);
-
-        string uri = $"{request.Url}/api/v1/applicationTypes";
-        httpClient.DefaultRequestHeaders.Add("User-Api-Token", request.ApiToken);
-
-        HttpResponseMessage response = await httpClient.GetAsync(uri, cancellationToken);
+    
+        string uri = $"{request.Authorization.Url}/api/v2/clients/{request.Authorization.ClientId}/applicationGroups/getHrRegistry";
+        httpClient.DefaultRequestHeaders.Add("User-Api-Token", request.Authorization.ApiToken);
+        byte[]? responseData = XmlSerializerUtility.Serialize(request);
+        var str = responseData is not null ? System.Text.Encoding.UTF8.GetString(responseData) : string.Empty;
+        var response = await httpClient.PostAsJsonAsync(uri, request.Filter, cancellationToken);
         if (!response.IsSuccessStatusCode)
         {
             var errorDetails = await response.Content.ReadFromJsonAsync<ErrorDetails>(cancellationToken);
@@ -43,7 +38,8 @@ public sealed class ApplicationTypeService(HttpClient httpClient) : IApplication
                 null,
                 response.StatusCode);
         }
-        var applicationTypeResponse = await response.Content.ReadFromJsonAsync<ApplicationTypeResponse>(cancellationToken);
-        return applicationTypeResponse;
+
+        var applicationGroupsResponse = await response.Content.ReadFromJsonAsync<GetHrRegistryV2ApplicationGroupsResponse>(cancellationToken);
+        return applicationGroupsResponse;
     }
 }

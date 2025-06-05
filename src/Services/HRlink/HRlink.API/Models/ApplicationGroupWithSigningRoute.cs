@@ -42,9 +42,9 @@ public record ApplicationGroupWithSigningRoute
     [JsonPropertyName("sentDate")]
     public DateTime? SentDate { get; set; }
 
-    [XmlElement("route")]
-    [JsonPropertyName("route")]
-    public required SigningRoute Route { get; set; } = default!;
+    //[XmlElement("route")]
+    //[JsonPropertyName("route")]
+    //public required SigningRoute Route { get; set; } = default!;
 
     [XmlArray("applications")]
     [XmlArrayItem("applicationsItem")]
