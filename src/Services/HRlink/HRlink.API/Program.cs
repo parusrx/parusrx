@@ -26,6 +26,7 @@ builder.Services.AddHttpClient<IDocumentService, DocumentService>();
 builder.Services.AddHttpClient<IRouteTemplateService, RouteTemplateService>();
 builder.Services.AddHttpClient<IApplicationTypeService, ApplicationTypeService>();
 builder.Services.AddHttpClient<IApplicationGroupService, ApplicationGroupService>();
+builder.Services.AddHttpClient<IApplicationPrintFormFileService, ApplicationPrintFormFileService>();
 
 builder.Services.AddTransient<IAutoUpdateDocumentStatusService, OracleAutoUpdateDocumentStatusService>();
 
@@ -43,6 +44,7 @@ builder.Services.AddTransient<SendToSigningIntegrationEventHandler>();
 builder.Services.AddTransient<RouteTemplateRequestIntegrationEventHandler>();
 builder.Services.AddTransient<ApplicationTypeRequestIntegrationEventHandler>();
 builder.Services.AddTransient<ApplicationGroupIntegrationEventHandler>();
+builder.Services.AddTransient<ApplicationPrintFormFileIntegrationEventHandler>();
 
 // Data access
 string provider = builder.Configuration["Database:Provider"] ?? string.Empty;
@@ -155,6 +157,12 @@ pubsub.MapPost("/application-groups", [Topic(DaprPubSubName, "ApplicationGroupLi
     return Results.Created();
 });
 
+pubsub.MapPost("/application-print-form-file", [Topic(DaprPubSubName, "ApplicationPrintFormFileIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] ApplicationPrintFormFileIntegrationEventHandler handler) =>
+{
+    await handler.HandleAsync(@event);
+    return Results.Created();
+});
+
 app.MapGet("/application-groups", async ([FromServices] IApplicationGroupService service, [FromBody] GetHrRegistryV2ApplicationGroupsRequest request) =>
 {
     var response = await service.GetApplicationGroupsAsync(request);
@@ -166,6 +174,20 @@ app.MapGet("/application-groups", async ([FromServices] IApplicationGroupService
     {
         return Results.NotFound();
     }
+    return Results.Ok(response);
+});
+
+app.MapGet("/print-form-file", async ([FromServices] IApplicationPrintFormFileService service, [FromBody] PrintFormFileRequest request) =>
+{
+    var response = await service.GetPrintFormFileAsync(request);
+    if (response is null)
+    {
+        return Results.NotFound();
+    }
+
+    byte[]? responseData = XmlSerializerUtility.Serialize(response);
+    var str = responseData is not null ? System.Text.Encoding.UTF8.GetString(responseData) : string.Empty;
+
     return Results.Ok(response);
 });
 
