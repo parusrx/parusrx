@@ -163,34 +163,6 @@ pubsub.MapPost("/application-print-form-file", [Topic(DaprPubSubName, "Applicati
     return Results.Created();
 });
 
-app.MapGet("/application-groups", async ([FromServices] IApplicationGroupService service, [FromBody] GetHrRegistryV2ApplicationGroupsRequest request) =>
-{
-    var response = await service.GetApplicationGroupsAsync(request);
-
-    byte[]? responseData = XmlSerializerUtility.Serialize(response);
-    var str = responseData is not null ? System.Text.Encoding.UTF8.GetString(responseData) : string.Empty;
-
-    if (response is null)
-    {
-        return Results.NotFound();
-    }
-    return Results.Ok(response);
-});
-
-app.MapGet("/print-form-file", async ([FromServices] IApplicationPrintFormFileService service, [FromBody] PrintFormFileRequest request) =>
-{
-    var response = await service.GetPrintFormFileAsync(request);
-    if (response is null)
-    {
-        return Results.NotFound();
-    }
-
-    byte[]? responseData = XmlSerializerUtility.Serialize(response);
-    var str = responseData is not null ? System.Text.Encoding.UTF8.GetString(responseData) : string.Empty;
-
-    return Results.Ok(response);
-});
-
 app.Run();
 
 public partial class Program { }

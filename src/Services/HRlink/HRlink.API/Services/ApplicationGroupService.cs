@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
 using System.Text;
-using System.Text.Json;
 
 namespace ParusRx.HRlink.API.Services;
 
@@ -14,8 +13,7 @@ public sealed class ApplicationGroupService(HttpClient httpClient) : IApplicatio
     
         string uri = $"{request.Authorization.Url}/api/v2/clients/{request.Authorization.ClientId}/applicationGroups/getHrRegistry";
         httpClient.DefaultRequestHeaders.Add("User-Api-Token", request.Authorization.ApiToken);
-        byte[]? responseData = XmlSerializerUtility.Serialize(request);
-        var str = responseData is not null ? System.Text.Encoding.UTF8.GetString(responseData) : string.Empty;
+        
         var response = await httpClient.PostAsJsonAsync(uri, request.Filter, cancellationToken);
         if (!response.IsSuccessStatusCode)
         {
