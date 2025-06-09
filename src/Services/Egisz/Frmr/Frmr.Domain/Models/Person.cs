@@ -16,10 +16,25 @@ public record Person
     [JsonPropertyOrder(-1)]
     public bool Student { get; init; }
 
+    [XmlElement("isMedicalWorker")]
+    [JsonPropertyName("isMedicalWorker")]
+    [JsonPropertyOrder(-1)]
+    public bool IsMedicalWorker { get; init; }
+
+    [XmlElement("isPharmWorker")]
+    [JsonPropertyName("isPharmWorker")]
+    [JsonPropertyOrder(-1)]
+    public bool IsPharmWorker { get; init; }
+
     [XmlElement("oid")]
     [JsonPropertyName("oid")]
     [JsonPropertyOrder(-1)]
     public string? Oid { get; init; }
+
+    [XmlElement("ernId")]
+    [JsonPropertyName("ernId")]
+    [JsonPropertyOrder(-1)]
+    public string? ErnId { get; init; }
 
     [XmlElement("lastName")]
     [JsonPropertyName("lastName")]
@@ -45,6 +60,16 @@ public record Person
     [JsonPropertyName("birthDate")]
     [JsonPropertyOrder(-1)]
     public DateTime BirthDate { get; init; }
+
+    [XmlElement("deathDate")]
+    [JsonPropertyName("deathDate")]
+    [JsonPropertyOrder(-1)]
+    public DateTime? DeathDate { get; init; }
+
+    [XmlElement("birthPlace")]
+    [JsonPropertyName("birthPlace")]
+    [JsonPropertyOrder(-1)]
+    public string? BirthPlace { get; init; }
 
     [XmlElement("snils")]
     [JsonPropertyName("snils")]

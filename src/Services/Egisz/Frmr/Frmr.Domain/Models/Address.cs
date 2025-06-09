@@ -56,4 +56,28 @@ public record Address
     [XmlElement("flat")]
     [JsonPropertyName("flat")]
     public string? Flat { get; init; }
+
+    [XmlElement("apartmentId")]
+    [JsonPropertyName("apartmentId")]
+    public string? ApartmentId { get; init; }
+
+    [XmlElement("apartment")]
+    [JsonPropertyName("apartment")]
+    public string? Apartment { get; init; }
+
+    [XmlElement("prefixApartment")]
+    [JsonPropertyName("prefixApartment")]
+    public string? PrefixApartment { get; init; }
+
+    [XmlElement("microdistrictId")]
+    [JsonPropertyName("microdistrictId")]
+    public string? MicrodistrictId { get; init; }
+
+    [XmlElement("microdistrict")]
+    [JsonPropertyName("microdistrict")]
+    public string? Microdistrict { get; init; }
+
+    [XmlElement("prefixmicrodistrict")]
+    [JsonPropertyName("prefixmicrodistrict")]
+    public string? PrefixMicrodistrict { get; init; }
 }
