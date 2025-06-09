@@ -9,7 +9,7 @@ public record Territory
     [JsonPropertyName("id")]
     public int Id { get; init; }
 
-    [XmlElement("parentId")]
-    [JsonPropertyName("parentId")]
-    public string? ParentId { get; init; }
+    [XmlElement("territoryName")]
+    [JsonPropertyName("territoryName")]
+    public string? TerritoryName { get; init; }
 }

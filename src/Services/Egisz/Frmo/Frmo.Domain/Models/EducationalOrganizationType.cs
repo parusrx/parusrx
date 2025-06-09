@@ -9,7 +9,7 @@ public record EducationalOrganizationType
     [JsonPropertyName("id")]
     public int Id { get; init; }
 
-    [XmlElement("organizationType")]
-    [JsonPropertyName("organizationType")]
+    [XmlElement("orgType.code")]
+    [JsonPropertyName("orgType.code")]
     public string? OrganizationType { get; init; }
 }

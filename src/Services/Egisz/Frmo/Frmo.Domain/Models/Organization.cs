@@ -145,8 +145,8 @@ public record Organization
     [JsonPropertyName("moLevelId")]
     public OrganizationLevel? MoLevelId { get; init; }
 
-    [XmlElement("eoOrganizationType")]
-    [JsonPropertyName("eoOrganizationType")]
+    [XmlElement("eoOrgType.code")]
+    [JsonPropertyName("eoOrgType.code")]
     public EducationalOrganizationType? EoOrganizationType { get; init; }
 
     [XmlElement("email")]
