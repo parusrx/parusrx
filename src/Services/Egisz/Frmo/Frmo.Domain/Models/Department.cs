@@ -89,6 +89,11 @@ public record Department
     [JsonPropertyName("services")]
     public Service[]? Services { get; init; }
 
+    [XmlArray("servicesDepartKindIds")]
+    [XmlArrayItem("servicesDepartKindIdsItem")]
+    [JsonPropertyName("servicesDepartKindIds")]
+    public int[]? ServicesDepartKindIds { get; init; }
+
     [XmlArray("serviceLocality")]
     [XmlArrayItem("serviceLocalityItem")]
     [JsonPropertyName("serviceLocality")]

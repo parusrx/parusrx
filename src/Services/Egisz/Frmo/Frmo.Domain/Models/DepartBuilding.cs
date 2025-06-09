@@ -61,6 +61,11 @@ public record DepartBuilding
     [JsonPropertyName("visitPerShiftAged")]
     public int? VisitPerShiftAged { get; init; }
 
+    [XmlArray("services")]
+    [XmlArrayItem("servicesItem")]
+    [JsonPropertyName("services")]
+    public Service[]? Services { get; init; }
+
     [XmlArray("floors")]
     [XmlArrayItem("floorsItem")]
     [JsonPropertyName("floors")]

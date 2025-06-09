@@ -9,6 +9,10 @@ public record DepartAmbulance
     [JsonPropertyName("id")]
     public string? Id { get; init; }
 
+    [XmlElement("brigadeId")]
+    [JsonPropertyName("brigadeId")]
+    public string? BrigadeId { get; init; }
+
     [XmlElement("brigadeCount")]
     [JsonPropertyName("brigadeCount")]
     public int BrigadeCount { get; init; }
@@ -53,4 +57,13 @@ public record DepartAmbulance
     [XmlArrayItem("buildingsItem")]
     [JsonPropertyName("buildings")]
     public Building[] Buildings { get; init; } = [];
+
+    [XmlArray("category")]
+    [XmlArrayItem("categoryItem")]
+    [JsonPropertyName("category")]
+    public Category[]? Category { get; init; }
+
+    [XmlElement("healthCareConditions")]
+    [JsonPropertyName("healthCareConditions")]
+    public HealthCareCondition? HealthCareConditions { get; init; } = default!;
 }

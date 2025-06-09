@@ -26,4 +26,13 @@ public record DepartRegRoom
     [XmlArrayItem("buildingsItem")]
     [JsonPropertyName("buildings")]
     public Building[] Buildings { get; init; } = [];
+
+    [XmlArray("category")]
+    [XmlArrayItem("categoryItem")]
+    [JsonPropertyName("category")]
+    public Category[]? Category { get; init; }
+
+    [XmlElement("healthCareConditions")]
+    [JsonPropertyName("healthCareConditions")]
+    public HealthCareCondition? HealthCareConditions { get; init; } = default!;
 }
