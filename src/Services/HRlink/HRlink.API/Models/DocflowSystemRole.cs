@@ -22,10 +22,10 @@ public record DocflowSystemRole
     [JsonPropertyName("key")]
     public string? Key { get; init; }
 
-    /// <summary>
-    /// Gets or sets the name of the role.
-    /// </summary>
-    [XmlElement("name")]
-    [JsonPropertyName("name")]
-    public I18nMessage? Name { get; init; }
+    ///// <summary>
+    ///// Gets or sets the name of the role.
+    ///// </summary>
+    //[XmlElement("name")]
+    //[JsonPropertyName("name")]
+    //public I18nMessage? Name { get; init; }
 }
