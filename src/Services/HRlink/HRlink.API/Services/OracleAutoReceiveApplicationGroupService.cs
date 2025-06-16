@@ -121,6 +121,7 @@ public sealed class OracleAutoReceiveApplicationGroupService(IConnection connect
         command.CommandType = CommandType.StoredProcedure;
         command.Parameters.Add(new OracleParameter("nCOMPANY", OracleDbType.Int64) { Value = company });
         command.Parameters.Add(new OracleParameter("bRESPONSE", OracleDbType.Blob) { Value = data });
+        command.Parameters.Add(new OracleParameter("nCOUNT_NODES", OracleDbType.Int32) { Direction = ParameterDirection.Output });
 
         await conn.OpenAsync();
         await command.ExecuteNonQueryAsync();
