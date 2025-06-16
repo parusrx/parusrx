@@ -75,3 +75,39 @@ Content-Type: application/json
 }
 
 ###
+
+GET {{url}}/application-groups
+Accept: application/json
+Content-Type: application/json
+
+{
+    "authorization": {
+      "url": "https://testparusnik.hr-link.ru",
+      "clientId": "84af8abc-3720-4f7f-966a-05d2c6fcc8e2",
+      "apiToken": "7672463e-ed4a-4e57-9d78-5068e3cdbda5"
+    },
+    "filter": {
+      "limit": 50,
+      "offset": 0,
+      "applicationStatuses": [
+        "SIGNED"
+      ]
+    }
+}
+
+###
+
+GET {{url}}/print-form-file
+Accept: application/json
+Content-Type: application/json
+
+{
+    "authorization": {
+      "url": "https://testparusnik.hr-link.ru",
+      "clientId": "84af8abc-3720-4f7f-966a-05d2c6fcc8e2",
+      "apiToken": "7672463e-ed4a-4e57-9d78-5068e3cdbda5"
+    },
+    "applicationId": "acfaad9f-777c-4962-8cc0-96b888a979a8"
+}
+
+###

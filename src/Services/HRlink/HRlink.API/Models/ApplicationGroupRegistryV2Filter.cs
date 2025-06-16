@@ -71,12 +71,10 @@ public record ApplicationGroupRegistryV2Filter
 
     [XmlElement("limit")]
     [JsonPropertyName("limit")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public int Limit { get; init; } = 3;
+    public int Limit { get; init; } = 50;
 
     [XmlElement("offset")]
     [JsonPropertyName("offset")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public int Offset { get; init; } = 0;
 
     [XmlArray("applicationIds")]
