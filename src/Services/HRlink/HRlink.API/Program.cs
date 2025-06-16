@@ -29,6 +29,7 @@ builder.Services.AddHttpClient<IApplicationGroupService, ApplicationGroupService
 builder.Services.AddHttpClient<IApplicationPrintFormFileService, ApplicationPrintFormFileService>();
 
 builder.Services.AddTransient<IAutoUpdateDocumentStatusService, OracleAutoUpdateDocumentStatusService>();
+builder.Services.AddTransient<IAutoReceiveApplicationGroupService, OracleAutoReceiveApplicationGroupService>();
 
 builder.Services.AddTransient<IBulkDataSyncTaskClient, BulkDataSyncTaskClient>();
 builder.Services.AddTransient<DocumentTypeRequestIntegrationEventHandler>();
@@ -139,12 +140,6 @@ pubsub.MapPost("/route-templates", [Topic(DaprPubSubName, "RouteTemplateListInte
     return Results.Created();
 });
 
-app.MapPost("/auto-update-document", async ([FromServices] IAutoUpdateDocumentStatusService autoUpdaterDocument) =>
-{
-    await autoUpdaterDocument.ExecuteAsync();
-    return Results.Created();
-});
-
 pubsub.MapPost("/application-types", [Topic(DaprPubSubName, "ApplicationTypeListIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] ApplicationTypeRequestIntegrationEventHandler handler) =>
 {
     await handler.HandleAsync(@event);
@@ -160,6 +155,18 @@ pubsub.MapPost("/application-groups", [Topic(DaprPubSubName, "ApplicationGroupLi
 pubsub.MapPost("/application-print-form-file", [Topic(DaprPubSubName, "ApplicationPrintFormFileIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] ApplicationPrintFormFileIntegrationEventHandler handler) =>
 {
     await handler.HandleAsync(@event);
+    return Results.Created();
+});
+
+app.MapPost("/auto-update-document", async ([FromServices] IAutoUpdateDocumentStatusService autoUpdaterDocument) =>
+{
+    await autoUpdaterDocument.ExecuteAsync();
+    return Results.Created();
+});
+
+app.MapPost("/auto-receive-application-group", async ([FromServices] IAutoReceiveApplicationGroupService autoReceiveApplicationGroup) =>
+{
+    await autoReceiveApplicationGroup.ExecuteAsync();
     return Results.Created();
 });
 
