@@ -21,7 +21,7 @@ public sealed class OracleAutoReceiveApplicationGroupService(IConnection connect
                 using var conn = (OracleConnection)connection.ConnectionFactory.CreateConnection();
                 using var command = conn.CreateCommand();
                 command.CommandText = """
-                    begin PARUS.HRLINTERACTION.GET_APPLICATION_REGISTRY(:nCOMPANY, :nHRLINTERACTION); end;
+                    begin PARUS.PKG_HRLINK.GET_APPLICATION_REGISTRY(:nCOMPANY, :nHRLINTERACTION); end;
                     """;
                 command.Parameters.Add("nCOMPANY", OracleDbType.Int64).Value = context.company;
                 command.Parameters.Add("nHRLINTERACTION", OracleDbType.Int64).Value = context.hrlinteraction;
