@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Alexander Bocharov.
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
+using System.Data;
 using Oracle.ManagedDataAccess.Client;
-
 using ParusRx.Data.Core;
 
 using AuthorizationContextExt = (long company, long hrlinteraction, long juridicalPerson, string url, string clientId, string apiToken);
@@ -41,22 +41,32 @@ public sealed class OracleAutoReceiveApplicationGroupService(IConnection connect
                 };
 
                 GetHrRegistryV2ApplicationGroupsResponse? response = await service.GetApplicationGroupsAsync(request, cancellationToken);
-                if (response is null)
+                
+                // Ensure the response is not null before calling Serialize
+                if (response is not null)
                 {
-                    logger.LogWarning("Failed to retrieve application groups for company {Company}, juridical person {JuridicalPerson}", context.company, context.juridicalPerson);
-                    break;
+                    byte[]? data = XmlSerializerUtility.Serialize(response);
+                    if (data is not null)
+                    {
+                        await ApplicationGroudHandlerAsync(context.company, data);
+                    }
+                    else
+                    {
+                        logger.LogWarning("Serialized data is null for company {Company}, juridical person {JuridicalPerson}", context.company, context.juridicalPerson);
+                    }
+                
+                    totalCount = response.ApplicationGroups.Length;
+                    logger.LogInformation("Total count of application groups: {TotalCount}", totalCount);
                 }
                 else
                 {
-                    logger.LogInformation("Received {Count} application groups for company {Company}, juridical person {JuridicalPerson}", response.ApplicationGroups.Length, context.company, context.juridicalPerson);
+                    logger.LogWarning("Received a null response for application groups.");
                 }
 
-                totalCount = response.ApplicationGroups.Length;
-                logger.LogInformation("Total count of application groups: {TotalCount}", totalCount);
-
-                offset += pageSize;
+                // Process each application group
+                offset += totalCount;
             }
-            while (offset < totalCount);
+            while (totalCount >= pageSize && !cancellationToken.IsCancellationRequested);
 
             logger.LogInformation("Finished processing application groups for company {Company}, juridical person {JuridicalPerson}", context.company, context.juridicalPerson);
         }
@@ -99,6 +109,20 @@ public sealed class OracleAutoReceiveApplicationGroupService(IConnection connect
         command.Parameters.Add(new OracleParameter("nJUR_PERS", OracleDbType.Int64) { Value = juridicalPerson });
         await conn.OpenAsync();
         object? result = await command.ExecuteScalarAsync();
-        return result is DBNull || result is null ? DateTime.MinValue : Convert.ToDateTime(result);
+        return result is DBNull || result is null ? new DateTime(1900,1,1,0,0,0) : Convert.ToDateTime(result);
+    }
+
+    private async Task ApplicationGroudHandlerAsync(long company, byte[] data)
+    {
+        using var conn = (OracleConnection)connection.ConnectionFactory.CreateConnection();
+        using var command = conn.CreateCommand();
+
+        command.CommandText = "PARUS.PKG_HRLINK.GET_APP_REGISTRY_HANDLER";
+        command.CommandType = CommandType.StoredProcedure;
+        command.Parameters.Add(new OracleParameter("nCOMPANY", OracleDbType.Int64) { Value = company });
+        command.Parameters.Add(new OracleParameter("bRESPONSE", OracleDbType.Blob) { Value = data });
+
+        await conn.OpenAsync();
+        await command.ExecuteNonQueryAsync();
     }
 }

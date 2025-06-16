@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Alexander Bocharov.
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
+using ParusRx.HRlink.API.Converters;
+
 namespace ParusRx.HRlink.API.Models;
 
 public record ApplicationGroupRegistryV2Filter
@@ -13,41 +15,49 @@ public record ApplicationGroupRegistryV2Filter
 
     [XmlElement("applicationDateFrom")]
     [JsonPropertyName("applicationDateFrom")]
+    [JsonConverter(typeof(DateTimeConverter))]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public DateTime? ApplicationDateFrom { get; init; }
 
     [XmlElement("applicationDateTo")]
     [JsonPropertyName("applicationDateTo")]
+    [JsonConverter(typeof(DateTimeConverter))]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public DateTime? ApplicationDateTo { get; init; }
 
     [XmlElement("applicationCreatedDateFrom")]
     [JsonPropertyName("applicationCreatedDateFrom")]
+    [JsonConverter(typeof(DateTimeConverter))]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public DateTime? ApplicationCreatedDateFrom { get; init; }
 
     [XmlElement("applicationCreatedDateTo")]
     [JsonPropertyName("applicationCreatedDateTo")]
+    [JsonConverter(typeof(DateTimeConverter))]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public DateTime? ApplicationCreatedDateTo { get; init; }
 
     [XmlElement("applicationDocflowFinishedDateFrom")]
     [JsonPropertyName("applicationDocflowFinishedDateFrom")]
+    [JsonConverter(typeof(DateTimeConverter))]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public DateTime? ApplicationDocflowFinishedDateFrom { get; init; }
 
     [XmlElement("applicationDocflowFinishedDateTo")]
     [JsonPropertyName("applicationDocflowFinishedDateTo")]
+    [JsonConverter(typeof(DateTimeConverter))]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public DateTime? ApplicationDocflowFinishedDateTo { get; init; }
 
     [XmlElement("applicationEventDateFrom")]
     [JsonPropertyName("applicationEventDateFrom")]
+    [JsonConverter(typeof(DateTimeConverter))]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public DateTime? ApplicationEventDateFrom { get; init; }
 
     [XmlElement("applicationEventDateTo")]
     [JsonPropertyName("applicationEventDateTo")]
+    [JsonConverter(typeof(DateTimeConverter))]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public DateTime? ApplicationEventDateTo { get; init; }
 
