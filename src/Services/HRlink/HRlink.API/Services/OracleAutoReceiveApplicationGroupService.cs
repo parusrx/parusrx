@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
 using System.Data;
+
 using Oracle.ManagedDataAccess.Client;
 using ParusRx.Data.Core;
 
@@ -41,22 +42,19 @@ public sealed class OracleAutoReceiveApplicationGroupService(IConnection connect
                 };
 
                 GetHrRegistryV2ApplicationGroupsResponse? response = await service.GetApplicationGroupsAsync(request, cancellationToken);
-                
+
                 // Ensure the response is not null before calling Serialize
                 if (response is not null)
                 {
                     byte[]? data = XmlSerializerUtility.Serialize(response);
                     if (data is not null)
                     {
-                        await ApplicationGroudHandlerAsync(context.company, data);
+                        totalCount = await ApplicationGroudHandlerAsync(context.company, data);
                     }
                     else
                     {
                         logger.LogWarning("Serialized data is null for company {Company}, juridical person {JuridicalPerson}", context.company, context.juridicalPerson);
                     }
-                
-                    totalCount = response.ApplicationGroups.Length;
-                    logger.LogInformation("Total count of application groups: {TotalCount}", totalCount);
                 }
                 else
                 {
@@ -112,8 +110,10 @@ public sealed class OracleAutoReceiveApplicationGroupService(IConnection connect
         return result is DBNull || result is null ? new DateTime(1900,1,1,0,0,0) : Convert.ToDateTime(result);
     }
 
-    private async Task ApplicationGroudHandlerAsync(long company, byte[] data)
+    private async ValueTask<int> ApplicationGroudHandlerAsync(long company, byte[] data)
     {
+        int totalCount = 0;
+
         using var conn = (OracleConnection)connection.ConnectionFactory.CreateConnection();
         using var command = conn.CreateCommand();
 
@@ -125,5 +125,17 @@ public sealed class OracleAutoReceiveApplicationGroupService(IConnection connect
 
         await conn.OpenAsync();
         await command.ExecuteNonQueryAsync();
+
+        if (command.Parameters["nCOUNT_NODES"].Value is int count)
+        {
+            totalCount = count;
+            logger.LogInformation("Processed {Count} application groups for company {Company}", totalCount, company);
+        }
+        else
+        {
+            logger.LogWarning("Failed to retrieve count of processed application groups for company {Company}", company);
+        }
+
+        return totalCount;
     }
 }
