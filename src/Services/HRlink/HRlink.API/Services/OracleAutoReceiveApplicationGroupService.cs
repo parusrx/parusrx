@@ -34,8 +34,8 @@ public sealed class OracleAutoReceiveApplicationGroupService(IConnection connect
                     },
                     Filter = new()
                     {
-                        ApplicationCreatedDateFrom = lastReceiveTime,
-                        ApplicationCreatedDateTo = DateTime.Now,
+                        ApplicationDocflowFinishedDateFrom = lastReceiveTime,
+                        ApplicationDocflowFinishedDateTo = DateTime.Now,
                         Limit = pageSize,
                         Offset = offset
                     }
