@@ -98,7 +98,7 @@ public sealed class OracleAutoReceiveApplicationGroupService(IConnection connect
         using var conn = (OracleConnection)connection.ConnectionFactory.CreateConnection();
         using var command = conn.CreateCommand();
         command.CommandText = """
-            select max(APPLICATION_CREATED_DATE)
+            select max(APPLICATION_FINISHED_DATE)
               from PARUS.HRLAPPREG
              where COMPANY = :nCOMPANY
                and JUR_PERS = :nJUR_PERS
