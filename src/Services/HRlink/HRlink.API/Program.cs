@@ -30,6 +30,7 @@ builder.Services.AddHttpClient<IApplicationPrintFormFileService, ApplicationPrin
 
 builder.Services.AddTransient<IAutoUpdateDocumentStatusService, OracleAutoUpdateDocumentStatusService>();
 builder.Services.AddTransient<IAutoReceiveApplicationGroupService, OracleAutoReceiveApplicationGroupService>();
+builder.Services.AddTransient<IAutoReceiveApplicationTypeService, OracleAutoReceiveApplicationTypeService>();
 
 builder.Services.AddTransient<IBulkDataSyncTaskClient, BulkDataSyncTaskClient>();
 builder.Services.AddTransient<DocumentTypeRequestIntegrationEventHandler>();
@@ -167,6 +168,12 @@ app.MapPost("/auto-update-document", async ([FromServices] IAutoUpdateDocumentSt
 app.MapPost("/auto-receive-application-group", async ([FromServices] IAutoReceiveApplicationGroupService autoReceiveApplicationGroup) =>
 {
     await autoReceiveApplicationGroup.ExecuteAsync();
+    return Results.Created();
+});
+
+app.MapPost("/auto-receive-application-type", async ([FromServices] IAutoReceiveApplicationTypeService autoReceiveApplicationType) =>
+{
+    await autoReceiveApplicationType.ExecuteAsync();
     return Results.Created();
 });
 
