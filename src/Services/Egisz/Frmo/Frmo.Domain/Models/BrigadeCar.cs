@@ -23,7 +23,7 @@ public record BrigadeCar
 
     [XmlElement("releaseDate")]
     [JsonPropertyName("releaseDate")]
-    public DateTime? ReleaseDate { get; init; }
+    public int? ReleaseDate { get; init; }
 
     [XmlElement("useDate")]
     [JsonPropertyName("useDate")]
