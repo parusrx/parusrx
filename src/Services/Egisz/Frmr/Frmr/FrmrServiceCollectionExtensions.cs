@@ -29,6 +29,14 @@ public static class FrmrServiceCollectionExtensions
             })
             .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
+        services.AddHttpClient<IResolutionClient, ResolutionClient>(options => options.BaseAddress = new Uri(uri))
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+            {
+                ClientCertificateOptions = ClientCertificateOption.Manual,
+                ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true
+            })
+            .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+
         services.AddHttpClient<IEducationCommonService, EducationCommonService>(options => options.BaseAddress = new Uri(uri))
             .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
             {

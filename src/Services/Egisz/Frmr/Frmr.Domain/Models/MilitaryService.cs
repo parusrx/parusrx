@@ -12,7 +12,7 @@ public record MilitaryService
 
     [XmlElement("militaryService")]
     [JsonPropertyName("militaryService")]
-    public bool MilitaryService { get; init; }
+    public bool IsMilitaryService { get; init; }
 
     [XmlElement("beginDate")]
     [JsonPropertyName("beginDate")]

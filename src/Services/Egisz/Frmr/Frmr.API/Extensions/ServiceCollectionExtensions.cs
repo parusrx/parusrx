@@ -18,6 +18,8 @@ public static class ServiceCollectionExtensions
         services.AddTransient<UpdateMilitaryServiceIntegrationEventHandler>();
         services.AddTransient<DeleteMilitaryServiceIntegrationEventHandler>();
 
+        services.AddTransient<ListResolutionIntegrationEventHandler>();
+
         services.AddTransient<GetEducationCommonIntegrationEventHandler>();
         services.AddTransient<CreateEducationCommonIntegrationEventHandler>();
         services.AddTransient<UpdateEducationCommonIntegrationEventHandler>();
