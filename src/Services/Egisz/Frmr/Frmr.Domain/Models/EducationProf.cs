@@ -62,13 +62,21 @@ public record EducationProf
     [JsonPropertyName("institutionName")]
     public string? InstitutionName { get; init; }
 
-    [XmlElement("levelEducation")]
-    [JsonPropertyName("levelEducation")]
-    public int? LevelEducation { get; init; }
+    [XmlElement("levelEducationId")]
+    [JsonPropertyName("levelEducationId")]
+    public int? LevelEducationId { get; init; }
 
     [XmlElement("formEducation")]
     [JsonPropertyName("formEducation")]
     public string? FormEducation { get; init; }
+
+    [XmlElement("educationProgramDurationYears")]
+    [JsonPropertyName("educationProgramDurationYears")]
+    public int? EducationProgramDurationYears { get; init; }
+
+    [XmlElement("educationProgramDurationMonths")]
+    [JsonPropertyName("educationProgramDurationMonths")]
+    public int? EducationProgramDurationMonths { get; init; }
 
     [XmlElement("budget")]
     [JsonPropertyName("budget")]
@@ -153,4 +161,40 @@ public record EducationProf
     [XmlElement("foreignCertDate")]
     [JsonPropertyName("foreignCertDate")]
     public DateTime? ForeignCertDate { get; init; }
+
+    [XmlElement("customerContractDate")]
+    [JsonPropertyName("customerContractDate")]
+    public DateTime? CustomerContractDate { get; init; }
+
+    [XmlElement("customerContractNumber")]
+    [JsonPropertyName("customerContractNumber")]
+    public string? CustomerContractNumber { get; init; }
+
+    [XmlElement("сustomerName")]
+    [JsonPropertyName("сustomerName")]
+    public string? СustomerName { get; init; }
+
+    [XmlElement("сustomerInn")]
+    [JsonPropertyName("сustomerInn")]
+    public string? СustomerInn { get; init; }
+
+    [XmlElement("customerOgrn")]
+    [JsonPropertyName("customerOgrn")]
+    public string? CustomerOgrn { get; init; }
+
+    [XmlElement("isMatchEmployingOrganization")]
+    [JsonPropertyName("isMatchEmployingOrganization")]
+    public bool IsMatchEmployingOrganization { get; init; }
+
+    [XmlElement("employingOrganizationName")]
+    [JsonPropertyName("employingOrganizationName")]
+    public string? EmployingOrganizationName { get; init; }
+
+    [XmlElement("employingOrganizationInn")]
+    [JsonPropertyName("employingOrganizationInn")]
+    public string? EmployingOrganizationInn { get; init; }
+
+    [XmlElement("employingOrganizationOgrn")]
+    [JsonPropertyName("employingOrganizationOgrn")]
+    public string? EmployingOrganizationOgrn { get; init; }
 }

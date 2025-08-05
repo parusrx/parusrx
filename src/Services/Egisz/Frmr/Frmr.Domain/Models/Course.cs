@@ -17,6 +17,10 @@ public record Course
     [JsonPropertyName("enrollmentSpecialtyId")]
     public int EnrollmentSpecialtyId { get; init; }
 
+    [XmlElement("enrollmentSpecialtyCode")]
+    [JsonPropertyName("enrollmentSpecialtyCode")]
+    public string? EnrollmentSpecialtyCode { get; init; }
+
     [XmlElement("learningOutcomeId")]
     [JsonPropertyName("learningOutcomeId")]
     public int? LearningOutcomeId { get; init; }
