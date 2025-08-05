@@ -5,6 +5,10 @@ namespace ParusRx.Egisz.Frmr.Domain;
 
 public record FullPerson : Person
 {
+    [XmlElement("militaryService")]
+    [JsonPropertyName("militaryService")]
+    public MilitaryService? MilitaryService { get; init; }
+
     [XmlArray("personCard")]
     [XmlArrayItem("personCardItem")]
     [JsonPropertyName("personCard")]

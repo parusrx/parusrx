@@ -35,6 +35,10 @@ app.MapGroup("/person")
     .WithTags("Person API")
     .MapPersonApi();
 
+app.MapGroup("/person/militaryService")
+    .WithTags("Military Service API")
+    .MapMilitaryServiceApi();
+
 app.MapGroup("/person/common")
     .WithTags("Person Common API")
     .MapEducationCommonApi();
@@ -83,6 +87,10 @@ app.MapGroup("/person/full")
 app.MapGroup("/subscribe/person")
     .WithTags("Person Subscribe API")
     .MapPersonSubscribeHandlers();
+
+app.MapGroup("/subscribe/person/militaryService")
+    .WithTags("Military Service Subscribe API")
+    .MapMilitaryServiceSubscribeHandlers();
 
 app.MapGroup("/subscribe/person/common")
     .WithTags("Person Common Subscribe API")
