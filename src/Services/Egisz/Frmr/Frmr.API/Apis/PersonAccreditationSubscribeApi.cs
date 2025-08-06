@@ -15,24 +15,6 @@ public static class PersonAccreditationSubscribeApi
             return Results.Ok();
         });
 
-        app.MapPost("/create", [Topic(daprPubSubName, "CreatePersonAccreditationIntegrationEvent")] async([FromBody] MqIntegrationEvent @event, CreatePersonAccreditationIntegrationEventHandler handler) =>
-        {
-            await handler.HandleAsync(@event);
-            return Results.Ok();
-        });
-
-        app.MapPost("/update", [Topic(daprPubSubName, "UpdatePersonAccreditationIntegrationEvent")] async([FromBody] MqIntegrationEvent @event, UpdatePersonAccreditationIntegrationEventHandler handler) =>
-        {
-            await handler.HandleAsync(@event);
-            return Results.Ok();
-        });
-
-        app.MapPost("/delete", [Topic(daprPubSubName, "DeletePersonAccreditationIntegrationEvent")] async([FromBody] MqIntegrationEvent @event, DeletePersonAccreditationIntegrationEventHandler handler) =>
-        {
-            await handler.HandleAsync(@event);
-            return Results.Ok();
-        });
-
         return app;
     }
 }
