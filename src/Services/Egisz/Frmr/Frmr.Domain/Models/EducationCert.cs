@@ -44,4 +44,8 @@ public record EducationCert
     [XmlElement("specName")]
     [JsonPropertyName("specName")]
     public string? SpecName { get; init; }
+
+    [XmlElement("endDateExtension")]
+    [JsonPropertyName("endDateExtension")]
+    public bool? EndDateExtension { get; init; }
 }
