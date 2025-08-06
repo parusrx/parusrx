@@ -156,4 +156,40 @@ public record EducationPostgraduate
     [XmlElement("foreignCertDate")]
     [JsonPropertyName("foreignCertDate")]
     public DateTime? ForeignCertDate { get; set; }
+
+    [XmlElement("customerContractDate")]
+    [JsonPropertyName("customerContractDate")]
+    public DateTime? CustomerContractDate { get; set; }
+
+    [XmlElement("customerContractNumber")]
+    [JsonPropertyName("customerContractNumber")]
+    public string? CustomerContractNumber { get; set; }
+
+    [XmlElement("сustomerName")]
+    [JsonPropertyName("сustomerName")]
+    public string? СustomerName { get; set; }
+
+    [XmlElement("сustomerInn")]
+    [JsonPropertyName("сustomerInn")]
+    public string? СustomerInn { get; set; }
+
+    [XmlElement("customerOgrn")]
+    [JsonPropertyName("customerOgrn")]
+    public string? CustomerOgrn { get; set; }
+
+    [XmlElement("isMatchEmployingOrganization")]
+    [JsonPropertyName("isMatchEmployingOrganization")]
+    public bool? IsMatchEmployingOrganization { get; set; }
+
+    [XmlElement("employingOrganizationName")]
+    [JsonPropertyName("employingOrganizationName")]
+    public string? EmployingOrganizationName { get; set; }
+
+    [XmlElement("employingOrganizationInn")]
+    [JsonPropertyName("employingOrganizationInn")]
+    public string? EmployingOrganizationInn { get; set; }
+
+    [XmlElement("employingOrganizationOgrn")]
+    [JsonPropertyName("employingOrganizationOgrn")]
+    public string? EmployingOrganizationOgrn { get; set; }
 }
