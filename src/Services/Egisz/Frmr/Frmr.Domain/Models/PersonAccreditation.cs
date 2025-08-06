@@ -9,14 +9,6 @@ public record PersonAccreditation
     [JsonPropertyName("id")]
     public string? Id { get; init; }
 
-    [XmlElement("protocolDate")]
-    [JsonPropertyName("protocolDate")]
-    public DateTime? ProtocolDate { get; init; }
-
-    [XmlElement("protocolNumber")]
-    [JsonPropertyName("protocolNumber")]
-    public string? ProtocolNumber { get; init; }
-
     [XmlElement("docSerial")]
     [JsonPropertyName("docSerial")]
     public string? DocSerial { get; init; }

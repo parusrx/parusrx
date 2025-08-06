@@ -47,13 +47,9 @@ public record AccreditationProcedure
     [JsonPropertyName("accreditationKind")]
     public string? AccreditationKind { get; init; }
 
-    [XmlElement("postId")]
-    [JsonPropertyName("postId")]
-    public int? PostId { get; init; }
-
     [XmlElement("post")]
     [JsonPropertyName("post")]
-    public string? Post { get; init; }
+    public Post? Post { get; init; }
 
     [XmlElement("spec")]
     [JsonPropertyName("spec")]
@@ -110,4 +106,8 @@ public record AccreditationProcedure
     [XmlElement("educationLevel")]
     [JsonPropertyName("educationLevel")]
     public int? EducationLevel { get; init; }
+
+    [XmlElement("endDateExtension")]
+    [JsonPropertyName("endDateExtension")]
+    public bool? EndDateExtension { get; init; }
 }
