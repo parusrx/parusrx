@@ -48,4 +48,8 @@ public record PersonQualification
     [XmlElement("postName")]
     [JsonPropertyName("postName")]
     public string? PostName { get; init; }
+
+    [XmlElement("endDateExtension")]
+    [JsonPropertyName("endDateExtension")]
+    public bool? EndDateExtension { get; init; }
 }
