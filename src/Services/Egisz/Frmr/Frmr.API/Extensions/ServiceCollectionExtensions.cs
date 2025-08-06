@@ -35,7 +35,7 @@ public static class ServiceCollectionExtensions
         services.AddTransient<UpdateEducationPostgraduateIntegrationEventHandler>();
         services.AddTransient<DeleteEducationPostgraduateIntegrationEventHandler>();
 
-        services.AddTransient<ListPagedEducationExtIntegrationEventHandler>();
+        services.AddTransient<ListEducationExtIntegrationEventHandler>();
         services.AddTransient<CreateEducationExtIntegrationEventHandler>();
         services.AddTransient<UpdateEducationExtIntegrationEventHandler>();
         services.AddTransient<DeleteEducationExtIntegrationEventHandler>();

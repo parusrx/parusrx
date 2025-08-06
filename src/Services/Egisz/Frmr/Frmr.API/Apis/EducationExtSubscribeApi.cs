@@ -9,7 +9,7 @@ public static class EducationExtSubscribeApi
     {
         const string daprPubSubName = "pubsub";
 
-        app.MapPost("/", [Topic(daprPubSubName, "ListPagedEducationExtIntegrationEvent")] async([FromBody] MqIntegrationEvent @event, ListPagedEducationExtIntegrationEventHandler handler) =>
+        app.MapPost("/", [Topic(daprPubSubName, "ListEducationExtIntegrationEvent")] async([FromBody] MqIntegrationEvent @event, ListEducationExtIntegrationEventHandler handler) =>
         {
             await handler.HandleAsync(@event);
             return Results.Ok();

@@ -3,7 +3,7 @@
 
 namespace ParusRx.Egisz.Frmr.API.Handlers;
 
-public class ListPagedEducationExtIntegrationEventHandler(IParusRxStore store, IEducationExtService service, ILogger<ListPagedEducationExtIntegrationEventHandler> logger)
+public class ListEducationExtIntegrationEventHandler(IParusRxStore store, IEducationExtService service, ILogger<ListEducationExtIntegrationEventHandler> logger)
     : IIntegrationEventHandler<MqIntegrationEvent>
 {
     public async Task HandleAsync(MqIntegrationEvent @event, CancellationToken cancellationToken = default)
