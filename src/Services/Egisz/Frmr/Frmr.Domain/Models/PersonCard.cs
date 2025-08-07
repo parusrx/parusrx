@@ -114,4 +114,18 @@ public record PersonCard
     [XmlArrayItem("temporaryDerelictionsItem")]
     [JsonPropertyName("temporaryDerelictions")]
     public TemporaryDereliction[]? TemporaryDerelictions { get; init; }
+
+    [XmlElement("personalFileNumber")]
+    [JsonPropertyName("personalFileNumber")]
+    public string? PersonalFileNumber { get; init; }
+
+    [XmlArray("periodsDate")]
+    [XmlArrayItem("periodsDateItem")]
+    [JsonPropertyName("periodsDate")]
+    public PeriodDateItem[]? PeriodsDate { get; init; }
+
+    [XmlArray("omsMarks")]
+    [XmlArrayItem("omsMarksItem")]
+    [JsonPropertyName("omsMarks")]
+    public OmsMarkItem[]? OmsMarks { get; init; }
 }
