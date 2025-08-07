@@ -11,7 +11,7 @@ public record EducationProf
 
     [XmlElement("profId")]
     [JsonPropertyName("profId")]
-    public string ProfId { get; init; } = default!;
+    public string? ProfId { get; init; }
 
     [XmlElement("isDuplicate")]
     [JsonPropertyName("isDuplicate")]
@@ -23,7 +23,7 @@ public record EducationProf
 
     [XmlElement("educationTypeId")]
     [JsonPropertyName("educationTypeId")]
-    public EducationTypeId EducationTypeId { get; init; } = default!;
+    public EducationTypeId? EducationTypeId { get; init; }
 
     [XmlElement("beginYear")]
     [JsonPropertyName("beginYear")]
