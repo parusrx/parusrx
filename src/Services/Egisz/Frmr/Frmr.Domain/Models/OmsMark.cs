@@ -3,7 +3,7 @@
 
 namespace ParusRx.Egisz.Frmr.Domain;
 
-public record OmsMarkItem
+public record OmsMark
 {
     [XmlArray("preferentialPrescriptions")]
     [XmlArrayItem("preferentialPrescriptionsItem")]

@@ -124,8 +124,7 @@ public record PersonCard
     [JsonPropertyName("periodsDate")]
     public PeriodDateItem[]? PeriodsDate { get; init; }
 
-    [XmlArray("omsMarks")]
-    [XmlArrayItem("omsMarksItem")]
+    [XmlElement("omsMarks")]
     [JsonPropertyName("omsMarks")]
-    public OmsMarkItem[]? OmsMarks { get; init; }
+    public OmsMark? OmsMarks { get; init; }
 }
