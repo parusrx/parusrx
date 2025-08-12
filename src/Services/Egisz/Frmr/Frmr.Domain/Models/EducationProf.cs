@@ -184,7 +184,7 @@ public record EducationProf
 
     [XmlElement("isMatchEmployingOrganization")]
     [JsonPropertyName("isMatchEmployingOrganization")]
-    public bool IsMatchEmployingOrganization { get; init; }
+    public bool? IsMatchEmployingOrganization { get; init; }
 
     [XmlElement("employingOrganizationName")]
     [JsonPropertyName("employingOrganizationName")]
