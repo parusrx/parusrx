@@ -12,8 +12,4 @@ public record BuildingFloorRoom
     [XmlElement("roomName")]
     [JsonPropertyName("roomName")]
     public string RoomName { get; init; } = default!;
-
-    [XmlElement("roomArea")]
-    [JsonPropertyName("roomArea")]
-    public double? RoomArea { get; init; }
 }
