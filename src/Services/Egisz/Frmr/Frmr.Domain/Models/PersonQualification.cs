@@ -5,8 +5,8 @@ namespace ParusRx.Egisz.Frmr.Domain;
 
 public record PersonQualification
 {
-    [XmlElement("qulificationId")]
-    [JsonPropertyName("qulificationId")]
+    [XmlElement("qualificationId")]
+    [JsonPropertyName("qualificationId")]
     public string? QualificationId { get; init; }
 
     [XmlElement("qualifyCategoryId")]
