@@ -9,7 +9,7 @@ public static class EducationProfSubscribeApi
     {
         const string daprPubSubName = "pubsub";
 
-        app.MapPost("/", [Topic(daprPubSubName, "GetEducationProfIntegrationEvent")] async([FromBody] MqIntegrationEvent @event, GetEducationProfIntegrationEventHandler handler) =>
+        app.MapPost("/", [Topic(daprPubSubName, "ListEducationProfIntegrationEvent")] async([FromBody] MqIntegrationEvent @event, GetEducationProfIntegrationEventHandler handler) =>
         {
             await handler.HandleAsync(@event);
             return Results.Ok();

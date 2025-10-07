@@ -7,7 +7,7 @@ public static class EducationProfApi
 {
     public static IEndpointRouteBuilder MapEducationProfApi(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/", GetEducationProf);
+        app.MapGet("/", ListEducationProf);
         app.MapPost("/", CreateEducationProf);
         app.MapPut("/", UpdateEducationProf);
         app.MapDelete("/", DeleteEducationProf);
@@ -15,11 +15,11 @@ public static class EducationProfApi
         return app;
     }
 
-    public static async ValueTask<Ok<SingleResponse<EducationProf>>> GetEducationProf(HttpRequest request, IEducationProfService service, CancellationToken cancellationToken)
+    public static async ValueTask<Ok<ListResponse<EducationProf>>> ListEducationProf(HttpRequest request, IEducationProfService service, CancellationToken cancellationToken)
     {
         var queryParameters = request.Query.ToDictionary(x => x.Key, x => (string?)x.Value.ToString());
         
-        var response = await service.GetAsync(queryParameters, cancellationToken);
+        var response = await service.ListAsync(queryParameters, cancellationToken);
         
         return TypedResults.Ok(response);
     }

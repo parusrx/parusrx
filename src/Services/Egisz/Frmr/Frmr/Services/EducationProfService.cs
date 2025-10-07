@@ -5,7 +5,7 @@ namespace ParusRx.Egisz.Frmr.Services;
 
 public sealed class EducationProfService(HttpClient httpClient) : IEducationProfService
 {
-    public async ValueTask<SingleResponse<EducationProf>> GetAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
+    public async ValueTask<ListResponse<EducationProf>> ListAsync(Dictionary<string, string?> queryParameters, CancellationToken cancellationToken)
     {
         var requestUri = QueryHelpers.AddQueryString($"person/prof", queryParameters);
         
@@ -15,8 +15,8 @@ public sealed class EducationProfService(HttpClient httpClient) : IEducationProf
             var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken);
             throw new HttpResponseException((int)response.StatusCode, problemDetails);
         }
-        
-        return await response.Content.ReadFromJsonAsync<SingleResponse<EducationProf>>(cancellationToken) ?? new();
+
+        return await response.Content.ReadFromJsonAsync<ListResponse<EducationProf>>(cancellationToken) ?? new();
     }
 
     public async ValueTask<SingleResponse<Entity>> CreateAsync(Dictionary<string, string?> queryParameters, EducationProf educationProf, CancellationToken cancellationToken)

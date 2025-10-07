@@ -19,7 +19,7 @@ public sealed class GetEducationProfIntegrationEventHandler(IParusRxStore store,
             var request = XmlSerializerUtility.Deserialize<DefaultRequest>(data)
                 ?? throw new InvalidOperationException($"Cannot deserialize request data for integration event: {@event.Id}");
 
-            var response = await service.GetAsync(request.Parameters, cancellationToken);
+            var response = await service.ListAsync(request.Parameters, cancellationToken);
 
             var responseBytes = XmlSerializerUtility.Serialize(response)
                 ?? throw new InvalidOperationException($"Cannot serialize response data for integration event: {@event.Id}");
