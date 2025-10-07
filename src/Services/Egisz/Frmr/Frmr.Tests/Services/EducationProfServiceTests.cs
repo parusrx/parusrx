@@ -21,11 +21,11 @@ public class EducationProfServiceTests
     }
 
     [Fact]
-    public async Task GetAsync_ShouldReturnGetEducationProfResponse_WhenRequestIsSuccessful()
+    public async Task GetAsync_ShouldReturnListEducationProfResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
-        var expectedResponse = new SingleResponse<EducationProf>();
+        var expectedResponse = new ListResponse<EducationProf>();
 
         _httpMessageHandlerMock.Protected()
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
