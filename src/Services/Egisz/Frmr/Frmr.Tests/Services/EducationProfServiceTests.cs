@@ -21,7 +21,7 @@ public class EducationProfServiceTests
     }
 
     [Fact]
-    public async Task GetAsync_ShouldReturnListEducationProfResponse_WhenRequestIsSuccessful()
+    public async Task GetAllAsync_ShouldReturnGetAllAsyncEducationProfResponse_WhenRequestIsSuccessful()
     {
         // Arrange
         var queryParameters = new Dictionary<string, string?> { { "key", "value" } };
@@ -41,7 +41,9 @@ public class EducationProfServiceTests
         var response = await _service.ListAsync(queryParameters, cts.Token);
 
         // Assert
-        Assert.Equal(expectedResponse, response);
+        Assert.Equal(expectedResponse.RequestId, response.RequestId);
+        Assert.Equal(expectedResponse.Message, response.Message);
+        Assert.Equal(expectedResponse.Content, response.Content);
     }
 
     [Fact]
