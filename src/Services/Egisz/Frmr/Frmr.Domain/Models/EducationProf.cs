@@ -170,9 +170,9 @@ public record EducationProf
     [JsonPropertyName("customerContractNumber")]
     public string? CustomerContractNumber { get; init; }
 
-    [XmlElement("сustomerName")]
-    [JsonPropertyName("сustomerName")]
-    public string? СustomerName { get; init; }
+    [XmlElement("customerName")]
+    [JsonPropertyName("customerName")]
+    public string? CustomerName { get; init; }
 
     [XmlElement("сustomerInn")]
     [JsonPropertyName("сustomerInn")]
