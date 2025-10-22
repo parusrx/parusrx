@@ -169,9 +169,9 @@ public record EducationPostgraduate
     [JsonPropertyName("customerName")]
     public string? CustomerName { get; set; }
 
-    [XmlElement("сustomerInn")]
-    [JsonPropertyName("сustomerInn")]
-    public string? СustomerInn { get; set; }
+    [XmlElement("customerInn")]
+    [JsonPropertyName("customerInn")]
+    public string? CustomerInn { get; set; }
 
     [XmlElement("customerOgrn")]
     [JsonPropertyName("customerOgrn")]
