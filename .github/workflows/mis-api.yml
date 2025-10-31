@@ -25,7 +25,8 @@ on:
       - .github/workflows/mis-api.yml
 
 env:
-  DOTNET_VERSION: '9.0.x'
+  DOTNET_VERSION: '10.x'
+  DOTNET_QUALITY: 'preview'
   REGISTRY_ENDPOINT: docker.io
 
 jobs:
@@ -36,9 +37,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-quality: ${{ env.DOTNET_QUALITY }}
 
       - name: Build
         run: dotnet build -c Release src/Services/Egisz/Mis/Mis.slnf
@@ -53,7 +55,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
