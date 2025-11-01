@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:9.0-alpine</ContainerBaseImage>
+    <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:10.0-alpine</ContainerBaseImage>
     <ContainerRepository>parusrx/hrlink-api</ContainerRepository>
   </PropertyGroup>
 

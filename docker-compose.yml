@@ -1,23 +1,27 @@
 services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
+    restart: always
     ports:
       - "5672:5672"
       - "15672:15672"
 
   zipkin:
     image: openzipkin/zipkin-slim
+    restart: always
     ports:
       - "5411:9411"
 
   dapr-placement:
-    image: "daprio/dapr:1.15.4"
+    image: "daprio/dapr:1.16.0"
+    restart: always
     command: ["./placement", "-port", "50000", "-log-level", "debug"]
     ports:
       - "50000:50000"
 
   healthcheck:
     image: parusrx/healthcheck:dev
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://0.0.0.0:80
@@ -42,6 +46,7 @@ services:
 
   gateway:
     image: parusrx/gateway:dev
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - PATH_BASE=/gateway
@@ -50,6 +55,7 @@ services:
 
   gateway-dapr:
     image: "daprio/daprd:1.16.0"
+    restart: always
     command: ["./daprd",
       "-app-id", "gateway",
       "-app-port", "8080",
@@ -65,6 +71,7 @@ services:
 
   dadata-api:
     image: parusrx/dadata-api:dev
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - TZ=${ORACLE_TZ:-Europe/Moscow}
@@ -77,11 +84,12 @@ services:
   
   dadata-api-dapr:
     image: "daprio/daprd:1.16.0"
+    restart: always
     command: ["./daprd",
       "-app-id", "dadata-api",
       "-app-port", "8080",
       "-components-path", "/components",
-      "-config", "/configuration/config.yaml"
+      "-config", "/configuration/config.yml"
       ]
     volumes:
       - "./dapr/components/:/components"
@@ -92,6 +100,7 @@ services:
 
   hrlink-api:
     image: parusrx/hrlink-api:dev
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - TZ=${ORACLE_TZ:-Europe/Moscow}
@@ -102,7 +111,8 @@ services:
       - "51003:8080"
 
   hrlink-api-dapr:
-    image: "daprio/dapr:1.15.4"
+    image: "daprio/dapr:1.16.0"
+    restart: always
     command: ["./daprd",
       "-app-id", "hrlink-api",
       "-app-port", "8080",
@@ -118,6 +128,7 @@ services:
 
   ips-identity-provider-api:
     image: parusrx/ips-identity-provider-api:dev
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - JWT__AUTH__SUBJECT=${JWT_AUTH_SUBJECT}
@@ -133,6 +144,7 @@ services:
 
   ips-identity-provider-api-dapr:
     image: "daprio/daprd:1.16.0"
+    restart: always
     command: ["./daprd",
       "-app-id", "ips-identity-provider-api",
       "-app-port", "80",
@@ -148,6 +160,7 @@ services:
 
   frmo-api:
     image: parusrx/frmo-api:dev
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - IDENTITY__URL=http://ips-identity-provider-api
@@ -161,6 +174,7 @@ services:
 
   frmo-api-dapr:
     image: "daprio/daprd:1.16.0"
+    restart: always
     command: ["./daprd",
       "-app-id", "frmo-api",
       "-app-port", "8080",
@@ -176,6 +190,7 @@ services:
 
   frmr-api:
     image: parusrx/frmr-api:dev
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - IDENTITY__URL=http://ips-identity-provider-api
@@ -189,6 +204,7 @@ services:
 
   frmr-api-dapr:
     image: "daprio/daprd:1.16.0"
+    restart: always
     command: ["./daprd",
       "-app-id", "frmo-api",
       "-app-port", "8080",
@@ -204,6 +220,7 @@ services:
 
   mis-api:
     image: parusrx/mis-api:dev
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - IDENTITY__URL=http://ips-identity-provider-api
@@ -217,6 +234,7 @@ services:
 
   mis-api-dapr:
     image: "daprio/daprd:1.16.0"
+    restart: always
     command: ["./daprd",
       "-app-id", "mis-api",
       "-app-port", "8080",
