@@ -59,6 +59,7 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
           dotnet-quality: ${{ env.DOTNET_QUALITY }}
+          dotnet-quality: ${{ env.DOTNET_QUALITY }}
 
       - name: Login to Container Registry
         uses: docker/login-action@v3
