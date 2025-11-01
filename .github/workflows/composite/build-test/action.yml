@@ -24,9 +24,10 @@ runs:
   using: composite
   steps:
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ inputs.dotnet-version }}
+        dotnet-quality: ${{ inputs.dotnet-quality }}
     - name: Build and run tests
       shell: bash
       run: |

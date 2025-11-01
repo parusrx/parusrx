@@ -4,7 +4,7 @@ EXPOSE 80
 
 ENV ASPNETCORE_URLS=http://+:80
 
-ADD tools /tmp/tools 
+COPY tools /tmp/tools 
 RUN cd /tmp/tools && \
     tar -xzf linux-amd64_deb.tgz && \
     linux-amd64_deb/install.sh && \
@@ -23,8 +23,9 @@ RUN cd /tmp/tools && \
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG configuration=Release
 WORKDIR /src
-COPY ".nuget/packages/cryptopro.security.cryptography.2024.11.19.nupkg" ".nuget/packages/cryptopro.security.cryptography.2024.11.19.nupkg"
-COPY ".nuget/packages/cryptopro.security.cryptography.xml.2024.11.19.nupkg" ".nuget/packages/cryptopro.security.cryptography.xml.2024.11.19.nupkg"
+COPY ".nuget/packages/cryptopro.net.security.2025.7.21.nupkg" ".nuget/packages/cryptopro.net.security.2025.7.21.nupkg"
+COPY ".nuget/packages/cryptopro.security.cryptography.2025.7.21.nupkg" ".nuget/packages/cryptopro.security.cryptography.2025.7.21.nupkg"
+COPY ".nuget/packages/cryptopro.security.cryptography.xml.2025.7.21.nupkg" ".nuget/packages/cryptopro.security.cryptography.xml.2025.7.21.nupkg"
 COPY "src/Services/Egisz/Ips/Ips.IdentityProvider.API/Ips.IdentityProvider.API.csproj" "src/Services/Egisz/Ips/Ips.IdentityProvider.API/Ips.IdentityProvider.API.csproj"
 
 COPY . .
