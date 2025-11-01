@@ -9,10 +9,10 @@
 
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
-    <PackageReference Include="CryptoPro.Net.Security" Version="2024.11.19" />
-    <PackageReference Include="CryptoPro.Security.Cryptography" Version="2024.11.19" />
-    <PackageReference Include="CryptoPro.Security.Cryptography.Xml" Version="2024.11.19" />
-    <PackageReference Include="CryptoPro.Security.Cryptography.Pkcs" Version="2024.11.19" />
+    <PackageReference Include="CryptoPro.Net.Security" Version="2025.7.21" />
+    <PackageReference Include="CryptoPro.Security.Cryptography" Version="2025.7.21" />
+    <PackageReference Include="CryptoPro.Security.Cryptography.Xml" Version="2025.7.21" />
+    <PackageReference Include="CryptoPro.Security.Cryptography.Pkcs" Version="2025.7.21" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
   </ItemGroup>
 
