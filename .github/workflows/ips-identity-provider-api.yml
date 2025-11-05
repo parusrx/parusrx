@@ -17,7 +17,8 @@ on:
       - .github/workflows/composite/**
 
 env:
-  DOTNET_VERSION: '8.0.x'
+  DOTNET_VERSION: '10.x'
+  DOTNET_QUALITY: 'preview'
 
 jobs:
   build-for-pr-linux:

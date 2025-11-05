@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
 WORKDIR /app
-EXPOSE 80
+EXPOSE 8080
 
-ENV ASPNETCORE_URLS=http://+:80
+ENV ASPNETCORE_URLS=http://+:8080
 
 COPY tools /tmp/tools 
 RUN cd /tmp/tools && \
@@ -20,7 +20,7 @@ RUN cd /tmp/tools && \
     ln -s /opt/cprocsp/sbin/amd64/cpconfig && \
     rm -rf /tmp/tools
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG configuration=Release
 WORKDIR /src
 COPY ".nuget/packages/cryptopro.net.security.2025.7.21.nupkg" ".nuget/packages/cryptopro.net.security.2025.7.21.nupkg"
@@ -43,5 +43,5 @@ RUN dotnet publish "src/Services/Egisz/Ips/Ips.IdentityProvider.API/Ips.Identity
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-HEALTHCHECK CMD wget -q0- -t1 http://localhost:80/health || exit 1
+HEALTHCHECK CMD wget -q0- -t1 http://localhost:8080/health || exit 1
 ENTRYPOINT ["dotnet", "Ips.IdentityProvider.API.dll"]

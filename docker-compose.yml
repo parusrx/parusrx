@@ -138,7 +138,7 @@ services:
       - JWT__CERTIFICATE__PASSWORD=${JWT_CERTIFICATE_PASSWORD}
       - PATH_BASE=/ips-identity-provider-api
     ports:
-      - "51004:80"
+      - "51004:8080"
     volumes:
       - ${JWT_CERTIFICATE_LOCAL_PATH}:${JWT_CERTIFICATE_PATH}:ro
 
@@ -147,7 +147,7 @@ services:
     restart: always
     command: ["./daprd",
       "-app-id", "ips-identity-provider-api",
-      "-app-port", "80",
+      "-app-port", "8080",
       "-components-path", "/components",
       "-config", "/configuration/config.yml"
       ]
