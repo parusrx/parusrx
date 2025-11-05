@@ -17,7 +17,8 @@ on:
       - .github/workflows/composite/**
 
 env:
-  DOTNET_VERSION: '8.0.x'
+  DOTNET_VERSION: '10.x'
+  DOTNET_QUALITY: 'preview'
 
 jobs:
   build-for-pr-linux:
@@ -29,7 +30,7 @@ jobs:
         with:
           submodules: 'recursive'
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       - name: Build
@@ -45,7 +46,7 @@ jobs:
         with:
           submodules: 'recursive'
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       - name: Build
