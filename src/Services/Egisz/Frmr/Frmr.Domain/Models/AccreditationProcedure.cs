@@ -5,9 +5,9 @@ namespace ParusRx.Egisz.Frmr.Domain;
 
 public record AccreditationProcedure
 {
-    [XmlElement("accreditationРrocedureId")]
-    [JsonPropertyName("accreditationРrocedureId")]
-    public string? AccreditationРrocedureId { get; init; }
+    [XmlElement("accreditationProcedureId")]
+    [JsonPropertyName("accreditationProcedureId")]
+    public string? AccreditationProcedureId { get; init; }
 
     [XmlElement("registryNumber")]
     [JsonPropertyName("registryNumber")]
