@@ -160,6 +160,12 @@ pubsub.MapPost("/application-print-form-file", [Topic(DaprPubSubName, "Applicati
     return Results.Created();
 });
 
+pubsub.MapPost("/document-print-form-file", [Topic(DaprPubSubName, "DocumentPrintFormFileIntegrationEvent")] async ([FromBody] MqIntegrationEvent @event, [FromServices] DocumentPrintFormFileIntegrationEventHandler handler) =>
+{
+    await handler.HandleAsync(@event);
+    return Results.Created();
+});
+
 app.MapPost("/auto-update-document", async ([FromServices] IAutoUpdateDocumentStatusService autoUpdaterDocument) =>
 {
     await autoUpdaterDocument.ExecuteAsync();
