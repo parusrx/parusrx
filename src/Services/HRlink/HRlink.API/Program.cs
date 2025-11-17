@@ -27,6 +27,7 @@ builder.Services.AddHttpClient<IRouteTemplateService, RouteTemplateService>();
 builder.Services.AddHttpClient<IApplicationTypeService, ApplicationTypeService>();
 builder.Services.AddHttpClient<IApplicationGroupService, ApplicationGroupService>();
 builder.Services.AddHttpClient<IApplicationPrintFormFileService, ApplicationPrintFormFileService>();
+builder.Services.AddHttpClient<IDocumentPrintFormFileService, DocumentPrintFormFileService>();
 
 builder.Services.AddTransient<IAutoUpdateDocumentStatusService, OracleAutoUpdateDocumentStatusService>();
 builder.Services.AddTransient<IAutoReceiveApplicationGroupService, OracleAutoReceiveApplicationGroupService>();
