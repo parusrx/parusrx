@@ -75,3 +75,13 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{url}}/api/v1/pubsub/document-print-form-file
+Accept: application/json
+Content-Type: application/json
+
+{
+    "body": "43C7336F-EB1B-80C7-E063-910A14AC3C9E"
+}
+
+###

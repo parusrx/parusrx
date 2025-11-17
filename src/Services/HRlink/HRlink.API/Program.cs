@@ -49,6 +49,7 @@ builder.Services.AddTransient<RouteTemplateRequestIntegrationEventHandler>();
 builder.Services.AddTransient<ApplicationTypeRequestIntegrationEventHandler>();
 builder.Services.AddTransient<ApplicationGroupIntegrationEventHandler>();
 builder.Services.AddTransient<ApplicationPrintFormFileIntegrationEventHandler>();
+builder.Services.AddTransient<DocumentPrintFormFileIntegrationEventHandler>();
 
 // Data access
 string provider = builder.Configuration["Database:Provider"] ?? string.Empty;
