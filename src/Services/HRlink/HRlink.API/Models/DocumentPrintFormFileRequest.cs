@@ -4,11 +4,11 @@
 namespace ParusRx.HRlink.API.Models;
 
 [XmlRoot("printFormFileRequest")]
-public sealed record PrintFormFileRequest
+public sealed record DocumentPrintFormFileRequest
 {
     [XmlElement("authorization")]
     public required AuthorizationContext Authorization { get; init; }
 
-    [XmlElement("applicationId")]
-    public required string ApplicationId { get; init; }
+    [XmlElement("documentId")]
+    public required string DocumentId { get; init; }
 }

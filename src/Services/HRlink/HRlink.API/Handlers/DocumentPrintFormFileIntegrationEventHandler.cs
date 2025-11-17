@@ -1,10 +1,9 @@
 ﻿// Copyright (c) Alexander Bocharov.
 // Licensed under the MIT License. See the LICENSE file in the project root for more information.
 
-
 namespace ParusRx.HRlink.API.Handlers;
 
-public sealed class ApplicationPrintFormFileIntegrationEventHandler(IParusRxStore store, IApplicationPrintFormFileService service, ILogger<ApplicationPrintFormFileIntegrationEventHandler> logger)
+public sealed class DocumentPrintFormFileIntegrationEventHandler(IParusRxStore store, IDocumentPrintFormFileService service, ILogger<DocumentPrintFormFileIntegrationEventHandler> logger)
         : IIntegrationEventHandler<MqIntegrationEvent>
 {
     public async Task HandleAsync(MqIntegrationEvent @event, CancellationToken cancellationToken = default)
@@ -14,7 +13,7 @@ public sealed class ApplicationPrintFormFileIntegrationEventHandler(IParusRxStor
         try
         {
             byte[] data = await store.ReadDataRequestAsync(id);
-            var request = XmlSerializerUtility.Deserialize<ApplicationPrintFormFileRequest>(data);
+            var request = XmlSerializerUtility.Deserialize<DocumentPrintFormFileRequest>(data);
             if (request is not null)
             {
                 var response = await service.GetPrintFormFileAsync(request, cancellationToken);

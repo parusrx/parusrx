@@ -5,13 +5,13 @@ using System.Text;
 
 namespace ParusRx.HRlink.API.Services;
 
-public sealed class ApplicationPrintFormFileService(HttpClient httpClient) : IApplicationPrintFormFileService
+public sealed class DocumentPrintFormFileService(HttpClient httpClient) : IDocumentPrintFormFileService
 {
-    public async ValueTask<PrintFormFileResponse> GetPrintFormFileAsync(ApplicationPrintFormFileRequest request, CancellationToken cancellationToken = default)
+    public async ValueTask<PrintFormFileResponse> GetPrintFormFileAsync(DocumentPrintFormFileRequest request, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(request);
 
-        string uri = $"{request.Authorization.Url}/api/v1/clients/{request.Authorization.ClientId}/applications/{request.ApplicationId}/printFormFile";
+        string uri = $"{request.Authorization.Url}/api/v1/clients/{request.Authorization.ClientId}/documents/{request.DocumentId}/printFormFile";
         httpClient.DefaultRequestHeaders.Add("User-Api-Token", request.Authorization.ApiToken);
 
         var response = await httpClient.GetAsync(uri, cancellationToken);
@@ -42,7 +42,7 @@ public sealed class ApplicationPrintFormFileService(HttpClient httpClient) : IAp
         byte[]? data = await response.Content.ReadAsByteArrayAsync(cancellationToken);
 
         return new PrintFormFileResponse
-        { 
+        {
             FileName = fileName,
             Data = Convert.ToBase64String(data ?? [])
         };

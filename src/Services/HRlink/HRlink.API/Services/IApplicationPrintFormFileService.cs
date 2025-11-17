@@ -5,5 +5,5 @@ namespace ParusRx.HRlink.API.Services;
 
 public interface IApplicationPrintFormFileService
 {
-    ValueTask<PrintFormFileResponse> GetPrintFormFileAsync(PrintFormFileRequest request, CancellationToken cancellationToken = default);
+    ValueTask<PrintFormFileResponse> GetPrintFormFileAsync(ApplicationPrintFormFileRequest request, CancellationToken cancellationToken = default);
 }
